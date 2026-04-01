@@ -1,0 +1,8 @@
+D:\2604340037 서준원\CSharp-Study\20260401 Project 1\bin\Debug\20260401 Project 1.exe.config
+D:\2604340037 서준원\CSharp-Study\20260401 Project 1\bin\Debug\20260401 Project 1.exe
+D:\2604340037 서준원\CSharp-Study\20260401 Project 1\bin\Debug\20260401 Project 1.pdb
+D:\2604340037 서준원\CSharp-Study\20260401 Project 1\obj\Debug\20260401 Project 1.csproj.AssemblyReference.cache
+D:\2604340037 서준원\CSharp-Study\20260401 Project 1\obj\Debug\20260401 Project 1.csproj.CoreCompileInputs.cache
+D:\2604340037 서준원\CSharp-Study\20260401 Project 1\obj\Debug\20260401 Project 1.exe
+D:\2604340037 서준원\CSharp-Study\20260401 Project 1\obj\Debug\20260401 Project 1.pdb
+D:\2604340037 서준원\CSharp-Study\20260401 Project 1\obj\Debug\20260401 Project 1.exe.config

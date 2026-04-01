@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\ConsoleApp2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AAEB35EE-8C87-4113-941A-15C0551E6720}|ConsoleApp2.csproj|c:\\users\\sjwni\\onedrive\\\uBC14\uD0D5 \uD654\uBA74\\csharp-study\\consoleapp2\\test1\\filename.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAEB35EE-8C87-4113-941A-15C0551E6720}|ConsoleApp2.csproj|solutionrelative:test1\\filename.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAEB35EE-8C87-4113-941A-15C0551E6720}|ConsoleApp2.csproj|c:\\users\\sjwni\\onedrive\\\uBC14\uD0D5 \uD654\uBA74\\csharp-study\\consoleapp2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAEB35EE-8C87-4113-941A-15C0551E6720}|ConsoleApp2.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FileName.cs",
+              "DocumentMoniker": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\ConsoleApp2\\test1\\FileName.cs",
+              "RelativeDocumentMoniker": "test1\\FileName.cs",
+              "ToolTip": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\ConsoleApp2\\test1\\FileName.cs",
+              "RelativeToolTip": "test1\\FileName.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T13:47:31.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\ConsoleApp2\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\ConsoleApp2\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAQwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T12:34:02.868Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
