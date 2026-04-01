@@ -43,10 +43,6 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "If_else.cs",
@@ -73,6 +69,10 @@
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Switch_case.cs",
@@ -80,7 +80,7 @@
               "RelativeDocumentMoniker": "Switch_case.cs",
               "ToolTip": "D:\\2604340037 \uC11C\uC900\uC6D0\\CSharp-Study\\20260401 Project 1\\Switch_case.cs",
               "RelativeToolTip": "Switch_case.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAywDMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-01T06:55:32.569Z",
               "EditorCaption": ""

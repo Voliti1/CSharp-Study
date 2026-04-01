@@ -1,8 +1,0 @@
-D:\2604340037 서준원\CSharp-Study\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
-D:\2604340037 서준원\CSharp-Study\ConsoleApp1\bin\Debug\ConsoleApp1.exe
-D:\2604340037 서준원\CSharp-Study\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
-D:\2604340037 서준원\CSharp-Study\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
-D:\2604340037 서준원\CSharp-Study\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
-D:\2604340037 서준원\CSharp-Study\ConsoleApp1\obj\Debug\ConsoleApp1.exe
-D:\2604340037 서준원\CSharp-Study\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
-D:\2604340037 서준원\CSharp-Study\ConsoleApp1\obj\Debug\ConsoleApp1.exe.config
