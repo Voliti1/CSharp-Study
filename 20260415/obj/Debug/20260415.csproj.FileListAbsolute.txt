@@ -6,3 +6,11 @@ D:\2604340037 서준원\CSharp-Study Stored\20260415\obj\Debug\20260415.csproj.C
 D:\2604340037 서준원\CSharp-Study Stored\20260415\obj\Debug\20260415.exe
 D:\2604340037 서준원\CSharp-Study Stored\20260415\obj\Debug\20260415.pdb
 D:\2604340037 서준원\CSharp-Study Stored\20260415\obj\Debug\20260415.exe.config
+C:\Users\User\Desktop\CSharp-Study\20260415\bin\Debug\20260415.exe.config
+C:\Users\User\Desktop\CSharp-Study\20260415\bin\Debug\20260415.exe
+C:\Users\User\Desktop\CSharp-Study\20260415\bin\Debug\20260415.pdb
+C:\Users\User\Desktop\CSharp-Study\20260415\obj\Debug\20260415.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\CSharp-Study\20260415\obj\Debug\20260415.exe.config
+C:\Users\User\Desktop\CSharp-Study\20260415\obj\Debug\20260415.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\CSharp-Study\20260415\obj\Debug\20260415.exe
+C:\Users\User\Desktop\CSharp-Study\20260415\obj\Debug\20260415.pdb

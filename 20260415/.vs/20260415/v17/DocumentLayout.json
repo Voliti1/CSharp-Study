@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|c:\\users\\user\\desktop\\csharp-study\\20260415\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|c:\\users\\user\\desktop\\csharp-study\\20260415\\break.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|solutionrelative:break.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\continue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|solutionrelative:continue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|c:\\users\\user\\desktop\\csharp-study\\20260415\\goto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|solutionrelative:goto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|c:\\users\\user\\desktop\\csharp-study\\20260415\\list_and_math.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\list_and_math.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|solutionrelative:list_and_math.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|c:\\users\\user\\desktop\\csharp-study\\20260415\\split.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|solutionrelative:split.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|c:\\users\\user\\desktop\\csharp-study\\20260415\\snail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|solutionrelative:snail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|c:\\users\\user\\desktop\\csharp-study\\20260415\\randomtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA829A1A-E5D0-4F92-AD5C-668CA4A1BACF}|20260415.csproj|solutionrelative:randomtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,106 +22,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Break.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Break.cs",
-              "RelativeDocumentMoniker": "Break.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Break.cs",
-              "RelativeToolTip": "Break.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T05:26:44.098Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Goto.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Goto.cs",
-              "RelativeDocumentMoniker": "Goto.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Goto.cs",
-              "RelativeToolTip": "Goto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T05:26:40.329Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "List_And_Math.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\List_And_Math.cs",
               "RelativeDocumentMoniker": "List_And_Math.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\List_And_Math.cs",
               "RelativeToolTip": "List_And_Math.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAkwC4AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-29T05:26:37.06Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Split.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Split.cs",
-              "RelativeDocumentMoniker": "Split.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Split.cs",
-              "RelativeToolTip": "Split.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T05:26:32.87Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Snail.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Snail.cs",
-              "RelativeDocumentMoniker": "Snail.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Snail.cs",
-              "RelativeToolTip": "Snail.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T05:26:26.192Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RandomTest.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\RandomTest.cs",
-              "RelativeDocumentMoniker": "RandomTest.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\RandomTest.cs",
-              "RelativeToolTip": "RandomTest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T05:26:23.981Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Continue.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Continue.cs",
-              "RelativeDocumentMoniker": "Continue.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Continue.cs",
-              "RelativeToolTip": "Continue.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-15T08:24:50.669Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260415\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-15T08:24:48.321Z",
               "EditorCaption": ""
             }
           ]

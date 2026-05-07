@@ -1,0 +1,17 @@
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\_20260506_WinForm.Form1.resources
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\20260506_WinForm.csproj.GenerateResource.cache
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\20260506_WinForm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\20260506_WinForm.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\20260506_WinForm.AssemblyInfo.cs
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\20260506_WinForm.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\20260506_WinForm.sourcelink.json
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\bin\Debug\net8.0-windows\20260506_WinForm.exe
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\bin\Debug\net8.0-windows\20260506_WinForm.deps.json
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\bin\Debug\net8.0-windows\20260506_WinForm.runtimeconfig.json
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\bin\Debug\net8.0-windows\20260506_WinForm.dll
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\bin\Debug\net8.0-windows\20260506_WinForm.pdb
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\20260506_WinForm.dll
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\refint\20260506_WinForm.dll
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\20260506_WinForm.pdb
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\20260506_WinForm.genruntimeconfig.cache
+C:\Users\User\Desktop\CSharp-Study\20260506_WinForm\obj\Debug\net8.0-windows\ref\20260506_WinForm.dll

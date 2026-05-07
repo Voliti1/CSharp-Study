@@ -10,14 +10,19 @@ namespace _20260415
     {
         class Product
         {
-            public string name;
-            public int price;
+            public string name { get; set; }
+            public int price { get; set; }
         }
+
         static void Main(string[] args)
         {
-            Product product1 = new Product() { name = "감자", price = 2000 };
+            Product product1 = new Product() { name = "감자", price = 2000};
+            Product product2 = new Product() { name = "고구마", price = 3000 };
 
             Console.WriteLine(product1.name + " : " + product1.price + "원");
+            Console.WriteLine(product2.name + " : " + product2.price + "원");
+
+
         }
     }
 }
