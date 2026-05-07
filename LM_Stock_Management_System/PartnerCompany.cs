@@ -19,7 +19,7 @@ namespace LM_Stock_Management_System
 
         public void ProduceProduct(int count)
         {
-            Console.WriteLine($"{Company_product_name}가 {count}개 생산되었습니다.");
+            Console.WriteLine($"{Company_product_name}이/가 {count}개 생산되었습니다.");
         }
 
         public void Order(int count)
@@ -29,7 +29,7 @@ namespace LM_Stock_Management_System
 
         public void GiveMoney(int money)
         {
-            Console.WriteLine($"{Company_id} {Company_name} {Company_account}로 {money}원을 입금하였습니다.");
+            Console.WriteLine($"{Company_name}의 {Company_account} 계좌로 {money}원을 입금하였습니다.");
         }
 
         public void DeliverProduct(int count)

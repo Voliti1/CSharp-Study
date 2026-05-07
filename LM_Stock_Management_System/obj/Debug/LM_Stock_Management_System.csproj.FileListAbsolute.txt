@@ -5,3 +5,10 @@ D:\2604340037 서준원\CSharp-Study Stored\LM_Stock_Management_System\obj\Debug
 D:\2604340037 서준원\CSharp-Study Stored\LM_Stock_Management_System\obj\Debug\LM_Stock_Management_System.csproj.CoreCompileInputs.cache
 D:\2604340037 서준원\CSharp-Study Stored\LM_Stock_Management_System\obj\Debug\LM_Stock_Management_System.exe
 D:\2604340037 서준원\CSharp-Study Stored\LM_Stock_Management_System\obj\Debug\LM_Stock_Management_System.pdb
+C:\Users\sjwni\OneDrive\바탕 화면\CSharp-Study\LM_Stock_Management_System\bin\Debug\LM_Stock_Management_System.exe.config
+C:\Users\sjwni\OneDrive\바탕 화면\CSharp-Study\LM_Stock_Management_System\bin\Debug\LM_Stock_Management_System.exe
+C:\Users\sjwni\OneDrive\바탕 화면\CSharp-Study\LM_Stock_Management_System\bin\Debug\LM_Stock_Management_System.pdb
+C:\Users\sjwni\OneDrive\바탕 화면\CSharp-Study\LM_Stock_Management_System\obj\Debug\LM_Stock_Management_System.csproj.AssemblyReference.cache
+C:\Users\sjwni\OneDrive\바탕 화면\CSharp-Study\LM_Stock_Management_System\obj\Debug\LM_Stock_Management_System.csproj.CoreCompileInputs.cache
+C:\Users\sjwni\OneDrive\바탕 화면\CSharp-Study\LM_Stock_Management_System\obj\Debug\LM_Stock_Management_System.exe
+C:\Users\sjwni\OneDrive\바탕 화면\CSharp-Study\LM_Stock_Management_System\obj\Debug\LM_Stock_Management_System.pdb

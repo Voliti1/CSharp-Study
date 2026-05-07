@@ -42,6 +42,8 @@ namespace LM_Stock_Management_System
             };
             
             customer1.BuyProduct("N-001", "신라면", 3);
+            customer1.ExchangeProduct("N-001", "신라면", "O-001", "진라면");
+            customer1.Refund(50000);
 
             PartnerCompany nongshim = new PartnerCompany
             {
@@ -54,9 +56,34 @@ namespace LM_Stock_Management_System
                 Company_product_count = 500
             };
 
+            PartnerCompany otoki = new PartnerCompany
+            {
+                Company_id = "002-02-00002",
+                Company_name = "오뚜기",
+                Company_president = "함영준",
+                Company_phone_number = "031-0002-0002",
+                Company_product_name = "진라면",
+                Company_account = "000002-02-000002",
+                Company_product_count = 500
+            };
+
+            nongshim.ProduceProduct(100);
+            nongshim.GiveMoney(10000000);
+            nongshim.ProduceProduct(200);
+
             Product product1 = new Product { 
                 Product_id = "N-001",
                 Product_name = "신라면",
+                Count = 500,
+                Price = 2000,
+                ExpirationDate = "2026-04-29",
+                Classification = "라면"
+            };
+
+            Product product2 = new Product
+            {
+                Product_id = "O-001",
+                Product_name = "진라면",
                 Count = 500,
                 Price = 2000,
                 ExpirationDate = "2026-04-29",
