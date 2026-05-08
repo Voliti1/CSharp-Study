@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|c:\\users\\sjwni\\onedrive\\\uBC14\uD0D5 \uD654\uBA74\\csharp-study\\lm_stock_management_system\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\partnercompany.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:partnercompany.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,6 +43,44 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ClassDiagram1.cd",
+              "DocumentMoniker": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\ClassDiagram1.cd",
+              "RelativeDocumentMoniker": "ClassDiagram1.cd",
+              "ToolTip": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\ClassDiagram1.cd",
+              "RelativeToolTip": "ClassDiagram1.cd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
+              "WhenOpened": "2026-04-29T09:43:48.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Customer.cs",
+              "RelativeDocumentMoniker": "Customer.cs",
+              "ToolTip": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Customer.cs",
+              "RelativeToolTip": "Customer.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAkwBcAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T08:58:45.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAgwDwAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T08:58:45.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "PartnerCompany.cs",
               "DocumentMoniker": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\PartnerCompany.cs",
               "RelativeDocumentMoniker": "PartnerCompany.cs",
@@ -52,32 +94,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Customer.cs",
-              "DocumentMoniker": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Customer.cs",
-              "RelativeDocumentMoniker": "Customer.cs",
-              "ToolTip": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Customer.cs",
-              "RelativeToolTip": "Customer.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAkwBcAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T08:58:45.651Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Product.cs",
               "RelativeDocumentMoniker": "Product.cs",
               "ToolTip": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Product.cs",
               "RelativeToolTip": "Product.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAowA0AAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA4wA0AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-29T08:58:45.464Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Employee.cs",
               "DocumentMoniker": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Employee.cs",
               "RelativeDocumentMoniker": "Employee.cs",
@@ -86,19 +115,6 @@
               "ViewState": "AgIAACIAAAAAAAAAAAAQwCIAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-29T08:58:45.526Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\sjwni\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\CSharp-Study\\LM_Stock_Management_System\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAAADwAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T08:58:45.807Z",
               "EditorCaption": ""
             }
           ]
