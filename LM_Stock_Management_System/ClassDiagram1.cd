@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="LM_Stock_Management_System.PartnerCompany">
-    <Position X="1.25" Y="0.75" Width="1.5" />
+    <Position X="1.25" Y="0.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AIEAIgQEAAAAAAACAggAEAAAAAAACAAAAAAAAAAAAAA=</HashCode>
       <FileName>PartnerCompany.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LM_Stock_Management_System.Customer">
-    <Position X="5.25" Y="0.75" Width="1.5" />
+    <Position X="5.25" Y="0.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAQIAAAIEAAAgAABQAAAAAAAAAAAAAIBAAgAAAAAIAA=</HashCode>
       <FileName>Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LM_Stock_Management_System.Employee">
-    <Position X="7" Y="0.75" Width="1.5" />
+    <Position X="7.75" Y="0.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAQCIAAQiAAABAAgAgAAACQAAIAAAAADAAAEAAAAiAA=</HashCode>
       <FileName>Employee.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LM_Stock_Management_System.Product">
-    <Position X="3.25" Y="0.75" Width="1.5" />
+    <Position X="3.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAQAAAQAQAAAAAAAABAAAABAAAA=</HashCode>
       <FileName>Product.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LM_Stock_Management_System.Program">
-    <Position X="8.75" Y="0.75" Width="1.5" />
+    <Position X="5.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
