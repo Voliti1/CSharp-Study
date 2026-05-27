@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{BE863B44-7061-4E2D-892D-C8A155156EBF}|20260527.csproj|solutionrelative:codefile1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE863B44-7061-4E2D-892D-C8A155156EBF}|20260527.csproj|c:\\users\\user\\desktop\\csharp-study\\20260527\\method.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BE863B44-7061-4E2D-892D-C8A155156EBF}|20260527.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\20260527\\method.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BE863B44-7061-4E2D-892D-C8A155156EBF}|20260527.csproj|solutionrelative:method.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -34,8 +34,7 @@
               "RelativeToolTip": "Method.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAowF0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T07:58:58.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T07:58:58.345Z"
             },
             {
               "$type": "Document",
@@ -45,7 +44,7 @@
               "RelativeDocumentMoniker": "CodeFile1.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260527\\CodeFile1.cs",
               "RelativeToolTip": "CodeFile1.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAQwCAAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAQwBsAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-27T08:11:47.962Z",
               "EditorCaption": ""
