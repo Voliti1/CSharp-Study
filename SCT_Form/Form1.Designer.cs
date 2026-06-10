@@ -28,13 +28,150 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.YellowLightOn = new System.Windows.Forms.Button();
+            this.RedLightOn = new System.Windows.Forms.Button();
+            this.YellowLightOFF = new System.Windows.Forms.Button();
+            this.RedLightOFF = new System.Windows.Forms.Button();
+            this.GreenLightOn = new System.Windows.Forms.Button();
+            this.GreenLightOFF = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(31, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "연결상태";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(31, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "label2";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(101, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "ON";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(101, 45);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "OFF";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // YellowLightOn
+            // 
+            this.YellowLightOn.Location = new System.Drawing.Point(631, 51);
+            this.YellowLightOn.Name = "YellowLightOn";
+            this.YellowLightOn.Size = new System.Drawing.Size(75, 23);
+            this.YellowLightOn.TabIndex = 5;
+            this.YellowLightOn.Text = "황색 ON";
+            this.YellowLightOn.UseVisualStyleBackColor = true;
+            this.YellowLightOn.Click += new System.EventHandler(this.YellowLightOn_Click);
+            // 
+            // RedLightOn
+            // 
+            this.RedLightOn.Location = new System.Drawing.Point(631, 22);
+            this.RedLightOn.Name = "RedLightOn";
+            this.RedLightOn.Size = new System.Drawing.Size(75, 23);
+            this.RedLightOn.TabIndex = 4;
+            this.RedLightOn.Text = "적색 ON";
+            this.RedLightOn.UseVisualStyleBackColor = true;
+            this.RedLightOn.Click += new System.EventHandler(this.RedLightOn_Click);
+            // 
+            // YellowLightOFF
+            // 
+            this.YellowLightOFF.Location = new System.Drawing.Point(712, 51);
+            this.YellowLightOFF.Name = "YellowLightOFF";
+            this.YellowLightOFF.Size = new System.Drawing.Size(75, 23);
+            this.YellowLightOFF.TabIndex = 7;
+            this.YellowLightOFF.Text = "황색 OFF";
+            this.YellowLightOFF.UseVisualStyleBackColor = true;
+            this.YellowLightOFF.Click += new System.EventHandler(this.YellowLightOFF_Click);
+            // 
+            // RedLightOFF
+            // 
+            this.RedLightOFF.Location = new System.Drawing.Point(713, 22);
+            this.RedLightOFF.Name = "RedLightOFF";
+            this.RedLightOFF.Size = new System.Drawing.Size(75, 23);
+            this.RedLightOFF.TabIndex = 6;
+            this.RedLightOFF.Text = "적색 OFF";
+            this.RedLightOFF.UseVisualStyleBackColor = true;
+            this.RedLightOFF.Click += new System.EventHandler(this.RedLightOFF_Click);
+            // 
+            // GreenLightOn
+            // 
+            this.GreenLightOn.Location = new System.Drawing.Point(631, 80);
+            this.GreenLightOn.Name = "GreenLightOn";
+            this.GreenLightOn.Size = new System.Drawing.Size(75, 23);
+            this.GreenLightOn.TabIndex = 8;
+            this.GreenLightOn.Text = "녹색 ON";
+            this.GreenLightOn.UseVisualStyleBackColor = true;
+            this.GreenLightOn.Click += new System.EventHandler(this.GreenLightOn_Click);
+            // 
+            // GreenLightOFF
+            // 
+            this.GreenLightOFF.Location = new System.Drawing.Point(713, 80);
+            this.GreenLightOFF.Name = "GreenLightOFF";
+            this.GreenLightOFF.Size = new System.Drawing.Size(75, 23);
+            this.GreenLightOFF.TabIndex = 9;
+            this.GreenLightOFF.Text = "녹색 OFF";
+            this.GreenLightOFF.UseVisualStyleBackColor = true;
+            this.GreenLightOFF.Click += new System.EventHandler(this.GreenLightOFF_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.GreenLightOFF);
+            this.Controls.Add(this.GreenLightOn);
+            this.Controls.Add(this.YellowLightOFF);
+            this.Controls.Add(this.RedLightOFF);
+            this.Controls.Add(this.YellowLightOn);
+            this.Controls.Add(this.RedLightOn);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button YellowLightOn;
+        private System.Windows.Forms.Button RedLightOn;
+        private System.Windows.Forms.Button YellowLightOFF;
+        private System.Windows.Forms.Button RedLightOFF;
+        private System.Windows.Forms.Button GreenLightOn;
+        private System.Windows.Forms.Button GreenLightOFF;
     }
 }
 
