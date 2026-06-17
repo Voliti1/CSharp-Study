@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\bin\Debug\SCT_Form_Backup.exe.config
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\bin\Debug\SCT_Form_Backup.exe
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\bin\Debug\SCT_Form_Backup.pdb
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\bin\Debug\IEG3268_Dll.dll
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\obj\Debug\SCT_Form_Backup.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\obj\Debug\SCT_Form_Backup.Properties.Resources.resources
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\obj\Debug\SCT_Form_Backup.csproj.GenerateResource.cache
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\obj\Debug\SCT_Form_Backup.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\obj\Debug\SCT_Form.0D86B699.Up2Date
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\obj\Debug\SCT_Form_Backup.exe
+C:\Users\User\Desktop\CSharp-Study\SCT_Form_Backup\obj\Debug\SCT_Form_Backup.pdb
