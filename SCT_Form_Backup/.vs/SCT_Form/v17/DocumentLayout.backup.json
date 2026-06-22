@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAhwCUAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAHkBAAAAAAAAAAAQwJABAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-10T08:32:19.374Z",
               "EditorCaption": ""
