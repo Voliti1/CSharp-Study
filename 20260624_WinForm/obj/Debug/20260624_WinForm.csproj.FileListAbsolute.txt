@@ -1,0 +1,12 @@
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\bin\Debug\20260624_WinForm.exe.config
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\bin\Debug\20260624_WinForm.exe
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\bin\Debug\20260624_WinForm.pdb
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\obj\Debug\20260624_WinForm.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\obj\Debug\_20260624_WinForm.Form1.resources
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\obj\Debug\_20260624_WinForm.Properties.Resources.resources
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\obj\Debug\20260624_WinForm.csproj.GenerateResource.cache
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\obj\Debug\20260624_WinForm.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\obj\Debug\20260624_WinForm.exe
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\obj\Debug\20260624_WinForm.pdb
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\obj\Debug\20260624_WinForm.exe.config
+C:\Users\User\Desktop\CSharp-Study\20260624_WinForm\obj\Debug\_20260624_WinForm.CustomForm1.resources

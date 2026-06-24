@@ -87,7 +87,9 @@
             this.btn_Auto = new System.Windows.Forms.Button();
             this.btn_Manual = new System.Windows.Forms.Button();
             this.SystemLog = new System.Windows.Forms.GroupBox();
-            this.lbl_SystemLog = new System.Windows.Forms.Label();
+            this.LogView = new System.Windows.Forms.ListView();
+            this.btnWarnTest = new System.Windows.Forms.Button();
+            this.btnErrorTest = new System.Windows.Forms.Button();
             this.grpbox_Cham_A_Manual.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnl_Cham_A_Lamp.SuspendLayout();
@@ -725,6 +727,8 @@
             this.tableLayoutPanel6.Controls.Add(this.btn_Manual, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.groupBox5, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.SystemLog, 0, 5);
+            this.tableLayoutPanel6.Controls.Add(this.btnErrorTest, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnWarnTest, 4, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -840,7 +844,7 @@
             // SystemLog
             // 
             this.tableLayoutPanel6.SetColumnSpan(this.SystemLog, 4);
-            this.SystemLog.Controls.Add(this.lbl_SystemLog);
+            this.SystemLog.Controls.Add(this.LogView);
             this.SystemLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SystemLog.Location = new System.Drawing.Point(3, 678);
             this.SystemLog.Name = "SystemLog";
@@ -849,14 +853,38 @@
             this.SystemLog.TabStop = false;
             this.SystemLog.Text = "SystemLog";
             // 
-            // lbl_SystemLog
+            // LogView
             // 
-            this.lbl_SystemLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_SystemLog.Location = new System.Drawing.Point(3, 17);
-            this.lbl_SystemLog.Name = "lbl_SystemLog";
-            this.lbl_SystemLog.Size = new System.Drawing.Size(772, 99);
-            this.lbl_SystemLog.TabIndex = 0;
-            this.lbl_SystemLog.Text = "label3";
+            this.LogView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LogView.FullRowSelect = true;
+            this.LogView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.LogView.HideSelection = false;
+            this.LogView.Location = new System.Drawing.Point(3, 17);
+            this.LogView.Name = "LogView";
+            this.LogView.Size = new System.Drawing.Size(772, 99);
+            this.LogView.TabIndex = 0;
+            this.LogView.UseCompatibleStateImageBehavior = false;
+            this.LogView.View = System.Windows.Forms.View.Details;
+            // 
+            // btnWarnTest
+            // 
+            this.btnWarnTest.Location = new System.Drawing.Point(787, 3);
+            this.btnWarnTest.Name = "btnWarnTest";
+            this.btnWarnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnWarnTest.TabIndex = 40;
+            this.btnWarnTest.Text = "Warn Test";
+            this.btnWarnTest.UseVisualStyleBackColor = true;
+            this.btnWarnTest.Click += new System.EventHandler(this.btnWarnTest_Click);
+            // 
+            // btnErrorTest
+            // 
+            this.btnErrorTest.Location = new System.Drawing.Point(591, 3);
+            this.btnErrorTest.Name = "btnErrorTest";
+            this.btnErrorTest.Size = new System.Drawing.Size(75, 23);
+            this.btnErrorTest.TabIndex = 41;
+            this.btnErrorTest.Text = "Error Test";
+            this.btnErrorTest.UseVisualStyleBackColor = true;
+            this.btnErrorTest.Click += new System.EventHandler(this.btnErrorTest_Click);
             // 
             // Form1
             // 
@@ -955,7 +983,9 @@
         private System.Windows.Forms.Button btn_Auto;
         private System.Windows.Forms.Button btn_Manual;
         private System.Windows.Forms.GroupBox SystemLog;
-        private System.Windows.Forms.Label lbl_SystemLog;
+        private System.Windows.Forms.ListView LogView;
+        private System.Windows.Forms.Button btnErrorTest;
+        private System.Windows.Forms.Button btnWarnTest;
     }
 }
 
