@@ -9,32 +9,32 @@ namespace LM_Stock_Management_System
 {
     internal class PartnerCompany
     {
+        public string AccountNumber { get; set; }
         public string Company_id { get; set; } //사업자번호
-        public string Company_name { get; set; }
+        public string CompanyName { get; set; }
         public string Company_president { get; set; }
-        public string Company_phone_number { get; set; }
-        public string Company_product_name { get; set; }
-        public string Company_account { get; set; }
-        public int Company_product_count { get; set; }
+        public string PhoneNumber { get; set; }
+        public string ProductName { get; set; }
+        public int ProductQuantity { get; set; }
 
         public void ProduceProduct(int count)
         {
-            Console.WriteLine($"{Company_product_name}이/가 {count}개 생산되었습니다.");
+            Console.WriteLine($"{ProductName}이/가 {count}개 생산되었습니다.");
         }
 
         public void Order(int count)
         {
-            Console.WriteLine($"{Company_product_name}을/를 {count}개를 발주하였습니다.");
+            Console.WriteLine($"{ProductName}을/를 {count}개를 발주하였습니다.");
         }
 
         public void GiveMoney(int money)
         {
-            Console.WriteLine($"{Company_name}의 {Company_account} 계좌로 {money}원을 입금하였습니다.");
+            Console.WriteLine($"{CompanyName}의 {AccountNumber} 계좌로 {money}원을 입금하였습니다.");
         }
 
         public void DeliverProduct(int count)
         {
-            Console.WriteLine($"{Company_product_name}을/를 {count}개 납품중입니다.");
+            Console.WriteLine($"{ProductName}을/를 {count}개 납품중입니다.");
         }
     }
 }

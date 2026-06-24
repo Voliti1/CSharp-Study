@@ -6,55 +6,49 @@ using System.Threading.Tasks;
 
 namespace LM_Stock_Management_System
 {
-    internal class Employee
+    internal class Employee : Person
     {
-        public string Employee_id { get; set; }
-        public string Employee_name { get; set; }
-        public string Employee_resident_number { get; set; }// 주민번호
-        public string Employee_gender { get; set; }
-        public string Employee_address { get; set; }
-        public string Employee_phone_number { get; set; }
-        public string Employee_rank { get; set; } //직급
-        public string Employee_birth { get; set; }
-        public string Employee_account { get; set; }
-        public string Employee_duty { get; set; } //현재 직무
-        public string Employee_status { get; set; } //출퇴근여부
+        public string BirthDate { get; set; } 
+        public string Duty { get; set; }
+        public string EmployeeID { get; set; }
+        public string IsWorking { get; set; }
+        public string Position { get; set; }
 
         public void GoToWork()
         {
-            Employee_status = "출근";
-            Console.WriteLine($"{Employee_id} {Employee_name} 직원이 {Employee_status}하였습니다.");  
+            IsWorking = "출근";
+            Console.WriteLine($"{EmployeeID} {Name} 직원이 {IsWorking}하였습니다.");  
         }
 
         public void LeaveWork()
         {
-            Employee_status = "퇴근";
-            Console.WriteLine($"{Employee_id} {Employee_name} 직원이 {Employee_status}하였습니다.");
+            IsWorking = "퇴근";
+            Console.WriteLine($"{EmployeeID} {Name} 직원이 {IsWorking}하였습니다.");
         }
 
         public void ManageStock()
         {
-            Employee_duty = "재고관리중";
-            Console.WriteLine($"{Employee_id} {Employee_name} 직원이 {Employee_duty}입니다.");
+            Duty = "재고관리중";
+            Console.WriteLine($"{EmployeeID} {Name} 직원이 {Duty}입니다.");
             
         }
 
         public void CheckOut()
         {
-            Employee_duty = "계산대에서 일하는 중";
-            Console.WriteLine($"{Employee_id} {Employee_name} 직원이 {Employee_duty}입니다.");
+            Duty = "계산대에서 일하는 중";
+            Console.WriteLine($"{EmployeeID} {Name} 직원이 {Duty}입니다.");
         }
 
         public void Cleaning()
         {
-            Employee_duty = "청소중";
-            Console.WriteLine($"{Employee_id} {Employee_name} 직원이 {Employee_duty}입니다.");
+            Duty = "청소중";
+            Console.WriteLine($"{EmployeeID} {Name} 직원이 {Duty}입니다.");
         }
 
         public void DisposalProcessing()
         {
-            Employee_duty = "폐기처리중";
-            Console.WriteLine($"{Employee_id} {Employee_name} 직원이 {Employee_duty}입니다.");
+            Duty = "폐기처리중";
+            Console.WriteLine($"{EmployeeID} {Name} 직원이 {Duty}입니다.");
         }
         
 

@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260624\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2EFBD976-7A1D-4A05-818D-90EF7ACFE62E}|20260624.csproj|c:\\users\\user\\desktop\\csharp-study\\20260624\\animals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EFBD976-7A1D-4A05-818D-90EF7ACFE62E}|20260624.csproj|solutionrelative:animals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EFBD976-7A1D-4A05-818D-90EF7ACFE62E}|20260624.csproj|c:\\users\\user\\desktop\\csharp-study\\20260624\\hiding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EFBD976-7A1D-4A05-818D-90EF7ACFE62E}|20260624.csproj|solutionrelative:hiding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Animals.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260624\\Animals.cs",
+              "RelativeDocumentMoniker": "Animals.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260624\\Animals.cs",
+              "RelativeToolTip": "Animals.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAUwB4AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-24T02:35:16.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Hiding.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260624\\Hiding.cs",
+              "RelativeDocumentMoniker": "Hiding.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\20260624\\Hiding.cs",
+              "RelativeToolTip": "Hiding.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-24T02:31:39.501Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

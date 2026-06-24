@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|c:\\users\\user\\desktop\\csharp-study\\lm_stock_management_system\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\partnercompany.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:partnercompany.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|c:\\users\\user\\desktop\\csharp-study\\lm_stock_management_system\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|c:\\users\\user\\desktop\\csharp-study\\lm_stock_management_system\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D796A6B-EB2C-45FB-8916-80FE10C53C87}|LM_Stock_Management_System.csproj|solutionrelative:person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,7 +30,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "ClassDiagram1.cd",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\ClassDiagram1.cd",
+              "RelativeDocumentMoniker": "ClassDiagram1.cd",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\ClassDiagram1.cd",
+              "RelativeToolTip": "ClassDiagram1.cd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
+              "WhenOpened": "2026-06-24T01:09:06.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\Product.cs",
               "RelativeDocumentMoniker": "Product.cs",
@@ -42,43 +50,20 @@
               "RelativeToolTip": "Product.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T06:10:56.143Z"
+              "WhenOpened": "2026-04-29T06:10:56.143Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PartnerCompany.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\PartnerCompany.cs",
-              "RelativeDocumentMoniker": "PartnerCompany.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\PartnerCompany.cs",
-              "RelativeToolTip": "PartnerCompany.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAUwCQAAABCAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "person.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\person.cs",
+              "RelativeDocumentMoniker": "person.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\person.cs",
+              "RelativeToolTip": "person.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T06:11:36.573Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Employee.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\Employee.cs",
-              "RelativeDocumentMoniker": "Employee.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\Employee.cs",
-              "RelativeToolTip": "Employee.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACIAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T05:22:46.569Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Customer.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\Customer.cs",
-              "RelativeDocumentMoniker": "Customer.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\LM_Stock_Management_System\\Customer.cs",
-              "RelativeToolTip": "Customer.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAywBQAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T06:08:19.579Z",
+              "WhenOpened": "2026-06-24T00:44:56.299Z",
               "EditorCaption": ""
             }
           ]

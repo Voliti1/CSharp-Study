@@ -1,38 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="LM_Stock_Management_System.PartnerCompany">
-    <Position X="1.25" Y="0.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AIEAIgQEAAAAAAACAggAEAAAAAAACAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PartnerCompany.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="LM_Stock_Management_System.Customer">
-    <Position X="5.25" Y="0.75" Width="2.25" />
+    <Position X="4.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQIAAAIEAAAgAABQAAAAAAAAAAAAAIBAAgAAAAAIAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAAQAAAAAAAEAAAAAIBAAgAAAAAAAA=</HashCode>
       <FileName>Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LM_Stock_Management_System.Employee">
-    <Position X="7.75" Y="0.75" Width="2.25" />
+    <Position X="2.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQCIAAQiAAABAAgAgAAACQAAIAAAAADAAAEAAAAiAA=</HashCode>
+      <HashCode>AAIAIAAAiAAABAAgAgAAASQAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Employee.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="LM_Stock_Management_System.PartnerCompany">
+    <Position X="6.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEAYAQAAAAAAAAAAgAAUAAAAAgAAAAAAAAAAEAIAAA=</HashCode>
+      <FileName>PartnerCompany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LM_Stock_Management_System.Person">
+    <Position X="3.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAACAAAAAQAQAAAAAAAACAAAAAAAAAEA=</HashCode>
+      <FileName>person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="LM_Stock_Management_System.Product">
-    <Position X="3.5" Y="0.75" Width="1.5" />
+    <Position X="6.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAQAAAQAQAAAAAAAABAAAABAAAA=</HashCode>
       <FileName>Product.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="LM_Stock_Management_System.Program">
-    <Position X="5.25" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="맑은 고딕" Size="9" />
