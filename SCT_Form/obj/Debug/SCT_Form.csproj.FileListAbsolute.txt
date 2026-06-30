@@ -6,7 +6,6 @@ C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\Debug\SCT_Form.exe.config
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\Debug\SCT_Form.exe
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\Debug\SCT_Form.pdb
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\Debug\IEG3268_Dll.dll
-C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.Form1.resources
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.csproj.Up2Date
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.exe
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.pdb
@@ -15,3 +14,7 @@ C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\Debug\log4net.config
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\Debug\log4net.dll
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\Debug\log4net.pdb
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\Debug\log4net.xml
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.MainGUI.resources
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.Setting.resources
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.ManualProcessControl.resources
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.AutoProcessControl.resources
