@@ -19,3 +19,4 @@ C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.WaferControl.reso
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.CurrentStateGUI.resources
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.logPanel.resources
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.MaintGUI.resources
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.exe.config
