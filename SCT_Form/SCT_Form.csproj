@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrentStateGUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CurrentStateGUI.Designer.cs">
+      <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,23 +74,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AutoProcessControl.cs">
+    <Compile Include="MaintGUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AutoProcessControl.Designer.cs">
-      <DependentUpon>AutoProcessControl.cs</DependentUpon>
+    <Compile Include="MaintGUI.Designer.cs">
+      <DependentUpon>MaintGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManualProcessControl.cs">
+    <Compile Include="logPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ManualProcessControl.Designer.cs">
-      <DependentUpon>ManualProcessControl.cs</DependentUpon>
+    <Compile Include="logPanel.Designer.cs">
+      <DependentUpon>logPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="WaferControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WaferControl.Designer.cs">
+      <DependentUpon>WaferControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CurrentStateGUI.resx">
+      <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="logPanel.resx">
+      <DependentUpon>logPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainGUI.resx">
       <DependentUpon>MainGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManualProcessControl.resx">
-      <DependentUpon>ManualProcessControl.cs</DependentUpon>
+    <EmbeddedResource Include="MaintGUI.resx">
+      <DependentUpon>MaintGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,8 +116,8 @@
     <EmbeddedResource Include="Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AutoProcessControl.resx">
-      <DependentUpon>AutoProcessControl.cs</DependentUpon>
+    <EmbeddedResource Include="WaferControl.resx">
+      <DependentUpon>WaferControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
