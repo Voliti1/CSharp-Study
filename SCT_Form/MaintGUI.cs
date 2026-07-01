@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -235,38 +235,60 @@ namespace SCT_Form
 
         private void btn_MoveLeft_Click(object sender, EventArgs e)
         {
-            if (!main.EtherCAT_M.Digital_Input(13) && Int64.Parse(nUpDown_MovementDistance.Text) >= 0)
+            if (main.EtherCAT_M.Digital_Input(13))
             {
-                main.EtherCAT_M.Axis2_LR_POS_Update((Int64)nUpDown_MovementDistance.Value);
-                main.EtherCAT_M.Axis2_LR_Move_Send();
+                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
+                return;
             }
-            else
+
+            if (!long.TryParse(lbl_LRcurrentPos.Text, out long currentLRPos))
             {
-                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있거나 값이 0미만입니다.");
+                currentLRPos = 0;
             }
+            long pos = currentLRPos - (long)nUpDown_MovementDistance.Value;
+
+            main.EtherCAT_M.Axis2_LR_POS_Update(pos);
+            main.EtherCAT_M.Axis2_LR_Move_Send();
         }
 
         private void btn_MoveRight_Click(object sender, EventArgs e)
         {
-            if (!main.EtherCAT_M.Digital_Input(13) && Int64.Parse(nUpDown_MovementDistance.Text) >= 0)
+            if (main.EtherCAT_M.Digital_Input(13))
             {
-                main.EtherCAT_M.Axis2_LR_POS_Update((Int64)nUpDown_MovementDistance.Value);
-                main.EtherCAT_M.Axis2_LR_Move_Send();
+                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
+                return;
             }
-            else
+
+            if (!long.TryParse(lbl_LRcurrentPos.Text, out long currentLRPos))
             {
-                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있거나 값이 0미만입니다.");
+                currentLRPos = 0;
             }
+            long pos = currentLRPos + (long)nUpDown_MovementDistance.Value;
+
+            main.EtherCAT_M.Axis2_LR_POS_Update(pos);
+            main.EtherCAT_M.Axis2_LR_Move_Send();
         }
 
         private void btn_UDMove_Click(object sender, EventArgs e)
         {
+            if (main.EtherCAT_M.Digital_Input(13))
+            {
+                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
+                return;
+            }
+
             main.EtherCAT_M.Axis1_UD_POS_Update((Int64)pnl_TargetPosition.Value);
             main.EtherCAT_M.Axis1_UD_Move_Send();
         }
 
         private void btn_LRMove_Click(object sender, EventArgs e)
         {
+            if (main.EtherCAT_M.Digital_Input(13))
+            {
+                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
+                return;
+            }
+
             main.EtherCAT_M.Axis2_LR_POS_Update((Int64)pnl_TargetPosition.Value);
             main.EtherCAT_M.Axis2_LR_Move_Send();
         }
