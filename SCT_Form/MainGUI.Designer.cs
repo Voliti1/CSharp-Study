@@ -298,7 +298,7 @@
             // 
             this.pnl_ChamA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_ChamA.Controls.Add(this.lbl_ChamA);
-            this.pnl_ChamA.Location = new System.Drawing.Point(389, 73);
+            this.pnl_ChamA.Location = new System.Drawing.Point(160, 298);
             this.pnl_ChamA.Name = "pnl_ChamA";
             this.pnl_ChamA.Size = new System.Drawing.Size(191, 194);
             this.pnl_ChamA.TabIndex = 34;
@@ -319,7 +319,7 @@
             // 
             this.pnl_ChamB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_ChamB.Controls.Add(this.lbl_ChamB);
-            this.pnl_ChamB.Location = new System.Drawing.Point(151, 72);
+            this.pnl_ChamB.Location = new System.Drawing.Point(372, 99);
             this.pnl_ChamB.Name = "pnl_ChamB";
             this.pnl_ChamB.Size = new System.Drawing.Size(191, 194);
             this.pnl_ChamB.TabIndex = 36;
@@ -340,7 +340,7 @@
             // 
             this.pnl_ChamC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_ChamC.Controls.Add(this.lbl_ChamC);
-            this.pnl_ChamC.Location = new System.Drawing.Point(797, 72);
+            this.pnl_ChamC.Location = new System.Drawing.Point(628, 299);
             this.pnl_ChamC.Name = "pnl_ChamC";
             this.pnl_ChamC.Size = new System.Drawing.Size(191, 194);
             this.pnl_ChamC.TabIndex = 36;
@@ -452,7 +452,7 @@
             // 
             // pnl_BottomContainer
             // 
-            this.pnl_BottomContainer.Location = new System.Drawing.Point(42, 634);
+            this.pnl_BottomContainer.Location = new System.Drawing.Point(31, 639);
             this.pnl_BottomContainer.Name = "pnl_BottomContainer";
             this.pnl_BottomContainer.Size = new System.Drawing.Size(585, 144);
             this.pnl_BottomContainer.TabIndex = 45;
@@ -860,7 +860,7 @@
             this.pnl_Top.Name = "pnl_Top";
             this.pnl_Top.RowCount = 1;
             this.pnl_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnl_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnl_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.pnl_Top.Size = new System.Drawing.Size(988, 50);
             this.pnl_Top.TabIndex = 36;
             // 
