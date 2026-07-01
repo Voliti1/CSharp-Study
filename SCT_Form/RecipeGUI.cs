@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace SCT_Form
 {
-    public partial class logPanel : UserControl
+    public partial class RecipeGUI : UserControl
     {
-        public logPanel()
+        private MainGUI main;
+        public RecipeGUI()
         {
             InitializeComponent();
+        }
+        public RecipeGUI(MainGUI mainGUI)
+        {
+            InitializeComponent();
+            this.main = mainGUI;
         }
     }
 }

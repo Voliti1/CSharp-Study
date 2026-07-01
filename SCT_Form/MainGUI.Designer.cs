@@ -47,12 +47,24 @@
             this.tBox_ID = new System.Windows.Forms.TextBox();
             this.lbl_ID = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_Log = new System.Windows.Forms.Button();
+            this.btn_Recipe = new System.Windows.Forms.Button();
             lbl1 = new System.Windows.Forms.Label();
             this.pnl_Top.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // lbl1
+            // 
+            lbl1.AutoSize = true;
+            lbl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            lbl1.Location = new System.Drawing.Point(753, 0);
+            lbl1.Name = "lbl1";
+            lbl1.Size = new System.Drawing.Size(244, 50);
+            lbl1.TabIndex = 55;
+            lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_Connection
             // 
@@ -108,7 +120,7 @@
             this.btn_Operate.Location = new System.Drawing.Point(1, 1);
             this.btn_Operate.Margin = new System.Windows.Forms.Padding(1);
             this.btn_Operate.Name = "btn_Operate";
-            this.btn_Operate.Size = new System.Drawing.Size(107, 48);
+            this.btn_Operate.Size = new System.Drawing.Size(98, 48);
             this.btn_Operate.TabIndex = 37;
             this.btn_Operate.Text = "Operate";
             this.btn_Operate.UseVisualStyleBackColor = false;
@@ -121,10 +133,10 @@
             this.btn_Maint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Maint.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold);
             this.btn_Maint.ForeColor = System.Drawing.Color.Silver;
-            this.btn_Maint.Location = new System.Drawing.Point(110, 1);
+            this.btn_Maint.Location = new System.Drawing.Point(101, 1);
             this.btn_Maint.Margin = new System.Windows.Forms.Padding(1);
             this.btn_Maint.Name = "btn_Maint";
-            this.btn_Maint.Size = new System.Drawing.Size(107, 48);
+            this.btn_Maint.Size = new System.Drawing.Size(98, 48);
             this.btn_Maint.TabIndex = 38;
             this.btn_Maint.Text = "MAINT";
             this.btn_Maint.UseVisualStyleBackColor = true;
@@ -137,9 +149,10 @@
             this.btn_Setting.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Setting.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
             this.btn_Setting.ForeColor = System.Drawing.Color.Black;
-            this.btn_Setting.Location = new System.Drawing.Point(221, 3);
+            this.btn_Setting.Location = new System.Drawing.Point(401, 1);
+            this.btn_Setting.Margin = new System.Windows.Forms.Padding(1);
             this.btn_Setting.Name = "btn_Setting";
-            this.btn_Setting.Size = new System.Drawing.Size(103, 44);
+            this.btn_Setting.Size = new System.Drawing.Size(98, 48);
             this.btn_Setting.TabIndex = 44;
             this.btn_Setting.Text = "SETTING";
             this.btn_Setting.UseVisualStyleBackColor = true;
@@ -150,7 +163,7 @@
             this.Mainpnl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Mainpnl.Location = new System.Drawing.Point(0, 50);
             this.Mainpnl.Name = "Mainpnl";
-            this.Mainpnl.Size = new System.Drawing.Size(1000, 750);
+            this.Mainpnl.Size = new System.Drawing.Size(1000, 576);
             this.Mainpnl.TabIndex = 45;
             // 
             // timer1
@@ -252,37 +265,61 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 4;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.90909F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.90909F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.90909F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.27273F));
+            this.tableLayoutPanel5.ColumnCount = 6;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.btn_Log, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btn_Recipe, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.btn_Operate, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.btn_Maint, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.btn_Setting, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btn_Setting, 4, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 800);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 626);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1000, 50);
             this.tableLayoutPanel5.TabIndex = 38;
             // 
-            // lbl1
+            // btn_Log
             // 
-            lbl1.AutoSize = true;
-            lbl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            lbl1.Location = new System.Drawing.Point(753, 0);
-            lbl1.Name = "lbl1";
-            lbl1.Size = new System.Drawing.Size(244, 50);
-            lbl1.TabIndex = 55;
-            lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Log.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Log.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Log.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
+            this.btn_Log.ForeColor = System.Drawing.Color.Black;
+            this.btn_Log.Location = new System.Drawing.Point(301, 1);
+            this.btn_Log.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Log.Name = "btn_Log";
+            this.btn_Log.Size = new System.Drawing.Size(98, 48);
+            this.btn_Log.TabIndex = 46;
+            this.btn_Log.Text = "LOG";
+            this.btn_Log.UseVisualStyleBackColor = true;
+            this.btn_Log.Click += new System.EventHandler(this.btn_Log_Click);
+            // 
+            // btn_Recipe
+            // 
+            this.btn_Recipe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Recipe.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Recipe.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
+            this.btn_Recipe.ForeColor = System.Drawing.Color.Black;
+            this.btn_Recipe.Location = new System.Drawing.Point(201, 1);
+            this.btn_Recipe.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Recipe.Name = "btn_Recipe";
+            this.btn_Recipe.Size = new System.Drawing.Size(98, 48);
+            this.btn_Recipe.TabIndex = 45;
+            this.btn_Recipe.Text = "RECIPE";
+            this.btn_Recipe.UseVisualStyleBackColor = true;
+            this.btn_Recipe.Click += new System.EventHandler(this.btn_Recipe_Click);
             // 
             // MainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 850);
+            this.ClientSize = new System.Drawing.Size(1000, 676);
             this.Controls.Add(this.Mainpnl);
             this.Controls.Add(this.tableLayoutPanel5);
             this.Controls.Add(this.pnl_Top);
@@ -319,6 +356,8 @@
         internal System.Windows.Forms.Label lbl_ID;
         internal System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         internal System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        internal System.Windows.Forms.Button btn_Log;
+        internal System.Windows.Forms.Button btn_Recipe;
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿namespace SCT_Form
 {
-    partial class logPanel
+    partial class LogGUI
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -56,13 +56,13 @@
             this.LogView.UseCompatibleStateImageBehavior = false;
             this.LogView.View = System.Windows.Forms.View.Details;
             // 
-            // logPanel
+            // LogGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.SystemLog);
-            this.Name = "logPanel";
-            this.Size = new System.Drawing.Size(960, 518);
+            this.Name = "LogGUI";
+            this.Size = new System.Drawing.Size(1000, 750);
             this.SystemLog.ResumeLayout(false);
             this.ResumeLayout(false);
 

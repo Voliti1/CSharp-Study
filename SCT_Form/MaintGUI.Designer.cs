@@ -100,14 +100,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grpbox_currentPos = new System.Windows.Forms.GroupBox();
             this.pnl_AxisStatus = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_LRcurrentPos = new System.Windows.Forms.Label();
             this.lbl_UD = new System.Windows.Forms.Label();
             this.lbl_LR = new System.Windows.Forms.Label();
             this.lbl_UDcurrentPos = new System.Windows.Forms.Label();
-            this.lbl_LRcurrentPos = new System.Windows.Forms.Label();
             this.grpbox_RobotSylinder = new System.Windows.Forms.GroupBox();
-            this.btn_moveFront = new System.Windows.Forms.Button();
-            this.btn_moveBack = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_moveBack = new System.Windows.Forms.Button();
+            this.btn_moveFront = new System.Windows.Forms.Button();
             this.pnl_ProcessManualControl.SuspendLayout();
             this.grpbox_Cham_A_Manual.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -1018,9 +1018,9 @@
             // grpbox_currentPos
             // 
             this.grpbox_currentPos.Controls.Add(this.pnl_AxisStatus);
-            this.grpbox_currentPos.Location = new System.Drawing.Point(465, 150);
+            this.grpbox_currentPos.Location = new System.Drawing.Point(465, 214);
             this.grpbox_currentPos.Name = "grpbox_currentPos";
-            this.grpbox_currentPos.Size = new System.Drawing.Size(313, 138);
+            this.grpbox_currentPos.Size = new System.Drawing.Size(313, 74);
             this.grpbox_currentPos.TabIndex = 53;
             this.grpbox_currentPos.TabStop = false;
             this.grpbox_currentPos.Text = "Axis Status";
@@ -1040,15 +1040,25 @@
             this.pnl_AxisStatus.RowCount = 2;
             this.pnl_AxisStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.pnl_AxisStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnl_AxisStatus.Size = new System.Drawing.Size(307, 118);
+            this.pnl_AxisStatus.Size = new System.Drawing.Size(307, 54);
             this.pnl_AxisStatus.TabIndex = 0;
+            // 
+            // lbl_LRcurrentPos
+            // 
+            this.lbl_LRcurrentPos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_LRcurrentPos.Location = new System.Drawing.Point(156, 27);
+            this.lbl_LRcurrentPos.Name = "lbl_LRcurrentPos";
+            this.lbl_LRcurrentPos.Size = new System.Drawing.Size(148, 27);
+            this.lbl_LRcurrentPos.TabIndex = 3;
+            this.lbl_LRcurrentPos.Text = "0";
+            this.lbl_LRcurrentPos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_UD
             // 
             this.lbl_UD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_UD.Location = new System.Drawing.Point(3, 0);
             this.lbl_UD.Name = "lbl_UD";
-            this.lbl_UD.Size = new System.Drawing.Size(147, 59);
+            this.lbl_UD.Size = new System.Drawing.Size(147, 27);
             this.lbl_UD.TabIndex = 0;
             this.lbl_UD.Text = "UD current Pos : ";
             this.lbl_UD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1056,9 +1066,9 @@
             // lbl_LR
             // 
             this.lbl_LR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_LR.Location = new System.Drawing.Point(3, 59);
+            this.lbl_LR.Location = new System.Drawing.Point(3, 27);
             this.lbl_LR.Name = "lbl_LR";
-            this.lbl_LR.Size = new System.Drawing.Size(147, 59);
+            this.lbl_LR.Size = new System.Drawing.Size(147, 27);
             this.lbl_LR.TabIndex = 1;
             this.lbl_LR.Text = "LR current Pos : ";
             this.lbl_LR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1068,20 +1078,10 @@
             this.lbl_UDcurrentPos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_UDcurrentPos.Location = new System.Drawing.Point(156, 0);
             this.lbl_UDcurrentPos.Name = "lbl_UDcurrentPos";
-            this.lbl_UDcurrentPos.Size = new System.Drawing.Size(148, 59);
+            this.lbl_UDcurrentPos.Size = new System.Drawing.Size(148, 27);
             this.lbl_UDcurrentPos.TabIndex = 2;
             this.lbl_UDcurrentPos.Text = "0";
             this.lbl_UDcurrentPos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_LRcurrentPos
-            // 
-            this.lbl_LRcurrentPos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_LRcurrentPos.Location = new System.Drawing.Point(156, 59);
-            this.lbl_LRcurrentPos.Name = "lbl_LRcurrentPos";
-            this.lbl_LRcurrentPos.Size = new System.Drawing.Size(148, 59);
-            this.lbl_LRcurrentPos.TabIndex = 3;
-            this.lbl_LRcurrentPos.Text = "0";
-            this.lbl_LRcurrentPos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // grpbox_RobotSylinder
             // 
@@ -1092,28 +1092,6 @@
             this.grpbox_RobotSylinder.TabIndex = 54;
             this.grpbox_RobotSylinder.TabStop = false;
             this.grpbox_RobotSylinder.Text = "Robot Sylinder";
-            // 
-            // btn_moveFront
-            // 
-            this.btn_moveFront.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_moveFront.Location = new System.Drawing.Point(3, 3);
-            this.btn_moveFront.Name = "btn_moveFront";
-            this.btn_moveFront.Size = new System.Drawing.Size(91, 48);
-            this.btn_moveFront.TabIndex = 0;
-            this.btn_moveFront.Text = "Move Front";
-            this.btn_moveFront.UseVisualStyleBackColor = true;
-            this.btn_moveFront.Click += new System.EventHandler(this.btn_moveFront_Click);
-            // 
-            // btn_moveBack
-            // 
-            this.btn_moveBack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_moveBack.Location = new System.Drawing.Point(100, 3);
-            this.btn_moveBack.Name = "btn_moveBack";
-            this.btn_moveBack.Size = new System.Drawing.Size(91, 48);
-            this.btn_moveBack.TabIndex = 1;
-            this.btn_moveBack.Text = "Move Back";
-            this.btn_moveBack.UseVisualStyleBackColor = true;
-            this.btn_moveBack.Click += new System.EventHandler(this.btn_moveBack_Click);
             // 
             // tableLayoutPanel7
             // 
@@ -1130,6 +1108,28 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(194, 54);
             this.tableLayoutPanel7.TabIndex = 55;
+            // 
+            // btn_moveBack
+            // 
+            this.btn_moveBack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_moveBack.Location = new System.Drawing.Point(100, 3);
+            this.btn_moveBack.Name = "btn_moveBack";
+            this.btn_moveBack.Size = new System.Drawing.Size(91, 48);
+            this.btn_moveBack.TabIndex = 1;
+            this.btn_moveBack.Text = "Move Back";
+            this.btn_moveBack.UseVisualStyleBackColor = true;
+            this.btn_moveBack.Click += new System.EventHandler(this.btn_moveBack_Click);
+            // 
+            // btn_moveFront
+            // 
+            this.btn_moveFront.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_moveFront.Location = new System.Drawing.Point(3, 3);
+            this.btn_moveFront.Name = "btn_moveFront";
+            this.btn_moveFront.Size = new System.Drawing.Size(91, 48);
+            this.btn_moveFront.TabIndex = 0;
+            this.btn_moveFront.Text = "Move Front";
+            this.btn_moveFront.UseVisualStyleBackColor = true;
+            this.btn_moveFront.Click += new System.EventHandler(this.btn_moveFront_Click);
             // 
             // MaintGUI
             // 

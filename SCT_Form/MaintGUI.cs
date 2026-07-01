@@ -14,7 +14,7 @@ namespace SCT_Form
     {
         // ⭐ 부모인 MainGUI의 자원(EtherCAT, 로그, 패널색상)을 쓰기 위한 참조 변수
         private MainGUI main;
-
+        
         // 기본 생성자 (디자이너 뷰 호환용)
         public MaintGUI()
         {
@@ -26,14 +26,6 @@ namespace SCT_Form
         {
             InitializeComponent();
             this.main = mainGUI;
-        }
-        public void UpdateAxisPosition(string udPos, string lrPos)
-        {
-            if (!string.IsNullOrEmpty(udPos))
-                lbl_UDcurrentPos.Text = udPos;
-
-            if (!string.IsNullOrEmpty(lrPos))
-                lbl_LRcurrentPos.Text = lrPos;
         }
 
         // --- Chamber A 제어 영역 ---
@@ -323,6 +315,12 @@ namespace SCT_Form
         {
             main.EtherCAT_M.Digital_Output(12, false);
             main.EtherCAT_M.Digital_Output(13, true);
+        }
+
+        public void SetCurrentPositionLabel(string currentUDPos, string currentLRPos)
+        {
+            lbl_UDcurrentPos.Text = currentUDPos;
+            lbl_LRcurrentPos.Text = currentLRPos;
         }
     }
 }

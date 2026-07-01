@@ -1,5 +1,6 @@
 ﻿using IEG3268_Dll;
 using log4net;
+using log4net.Repository.Hierarchy;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,10 +34,12 @@ namespace SCT_Form
 
         internal string currentUbarState = "Operate";
 
-        private CurrentStateGUI currentUI;
-        private MaintGUI maintui;
-        private Setting settingUI;
-
+        private CurrentStateGUI currentGUI;
+        private MaintGUI maintGUI;
+        private LogGUI logGUI;
+        private RecipeGUI recipeGUI;
+        private Setting settingGUI;
+        
         public MainGUI()
         {
             InitializeComponent();
@@ -66,9 +69,11 @@ namespace SCT_Form
             isServoMotorOn = true;
             setBasicPoint();
 
-            currentUI = new CurrentStateGUI(this);
-            maintui = new MaintGUI(this);
-            settingUI = new Setting(this);
+            currentGUI = new CurrentStateGUI(this);
+            maintGUI = new MaintGUI(this);
+            logGUI = new LogGUI(this);
+            recipeGUI = new RecipeGUI(this);
+            settingGUI = new Setting(this);
 
             Mainpnl_CurrentStateGUI();
 
@@ -295,7 +300,7 @@ namespace SCT_Form
         // --- 상단 모드 변경 조작 ---
         private void btn_Operate_Click(object sender, EventArgs e)
         {
-            if (currentUbarState == "Operate") return; // 중복 제어 차단
+            if (currentUbarState == "Operate") return;
 
             currentUbarState = "Operate";
 
@@ -310,7 +315,7 @@ namespace SCT_Form
 
         private void btn_maint_Click(object sender, EventArgs e)
         {
-            if (currentUbarState == "Maint") return; // 중복 제어 차단
+            if (currentUbarState == "Maint") return;
 
             currentUbarState = "Maint";
 
@@ -322,7 +327,20 @@ namespace SCT_Form
 
             EtherCAT_M.Digital_Output(1, true);
         }
+        private void btn_Recipe_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btn_Log_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btn_Setting_Click(object sender, EventArgs e)
+        {
+            Setting setting = new Setting(this);
+            setting.Show();
+        }
         private void ForceStopAllChambers()
         {
             WriteSystemLog("INFO", "모드 변경에 따른 전 공정 인터록(Force Stop) 가동");
@@ -401,39 +419,32 @@ namespace SCT_Form
             EtherCAT_M.Axis1_UD_Homming(); //상하 원점복귀
             EtherCAT_M.Axis2_LR_Homming(); //좌우 원점복귀
         }
-
-        private void btn_Setting_Click(object sender, EventArgs e)
-        {
-            Setting setting = new Setting(this);
-            setting.Show();
-        }
-
+        
         private void Mainpnl_CurrentStateGUI() {
             Mainpnl.Controls.Clear();
-            currentUI.Dock = DockStyle.Fill;
-            Mainpnl.Controls.Add(currentUI);
+            currentGUI.Dock = DockStyle.Fill;
+            Mainpnl.Controls.Add(currentGUI);
         }
 
         private void Mainpnl_MaintGUI()
         {
             Mainpnl.Controls.Clear();
-            maintui.Dock = DockStyle.Fill;
-            Mainpnl.Controls.Add(maintui);
+            maintGUI.Dock = DockStyle.Fill;
+            Mainpnl.Controls.Add(maintGUI);
         }
 
         internal void timer1_Tick(object sender, EventArgs e)
         {
             if (!isConnect || EtherCAT_M == null) return;
-            if (isAxisMoving) return;
 
             try
             {
                 string currentUDPos = EtherCAT_M.Axis1_is_PosData();
                 string currentLRPos = EtherCAT_M.Axis2_is_PosData();
 
-                if (maintui != null)
+                if (maintGUI != null)
                 {
-                    maintui.UpdateAxisPosition(currentUDPos, currentLRPos);
+                    maintGUI.SetCurrentPositionLabel(currentUDPos, currentLRPos);
                 }
             }
             catch (Exception ex)
