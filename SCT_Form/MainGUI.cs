@@ -138,7 +138,6 @@ namespace SCT_Form
                 if (EtherCAT_M.CIFX_50RE_Connect() == true)
                 {
                     WriteSystemLog("INFO", "EtherCAT 마스터 연결 성공 (Connect OK)");
-                    label2.Text = "Connect OK";
                     isConnect = true;
 
                     EtherCAT_M.ReadData_Send_Start(300);
@@ -146,7 +145,7 @@ namespace SCT_Form
                     // 타이머 시작 같은 개발 분석용 세부 로직은 라벨을 가리지 않고 파일에만 남김
                     log.Debug("EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)");
 
-                    panel_Connection.BackColor = Color.DodgerBlue;
+                    lbl_CurrentConnect.ForeColor = Color.Lime;
 
                     // 플래그 초기화
                     isChamALampOn = false; isChamBLampOn = false; isChamCLampOn = false;
@@ -189,8 +188,6 @@ namespace SCT_Form
                 else
                 {
                     WriteSystemLog("WARN", "EtherCAT 마스터 연결 실패 (하드웨어 감지 안 됨)");
-                    label2.Text = "NG";
-                    panel_Connection.BackColor = Color.Yellow;
                 }
             }
             catch (Exception ex)
@@ -199,54 +196,12 @@ namespace SCT_Form
                 WriteSystemLog("ERROR", $"연결 예외 오류: {ex.Message}");
             }
         }
-        private void Connect_Click(object sender, EventArgs e)
+        private void Reconnect_Click(object sender, EventArgs e)
         {
             if (isConnect) return;
             SystemConnect();
             servoMotorON();
         }
-
-        private void DisConnect_Click(object sender, EventArgs e)
-        {
-            WriteSystemLog("INFO", "EtherCAT 마스터 연결 해제 시도 중...");
-            try
-            {
-                EtherCAT_M.Digital_Output(1, false);
-                EtherCAT_M.CIFX_50RE_Disconnect();
-
-                WriteSystemLog("INFO", "EtherCAT 마스터 연결 해제 완료 (Disconnect)");
-                label2.Text = "Disconnect";
-                panel_Connection.BackColor = Color.Red;
-
-                isChamALampOn = false; isChamBLampOn = false; isChamCLampOn = false;
-                isChamADoorOpen = false; isChamBDoorOpen = false; isChamCDoorOpen = false;
-                isGreenLightOn = false;
-
-                btn_Auto.Enabled = false;
-                btn_Manual.Enabled = false;
-
-                btn_Auto.BackColor = Color.FromArgb(60, 60, 60);
-                btn_Manual.BackColor = Color.FromArgb(60, 60, 60);
-                btn_Auto.Invalidate();
-                btn_Manual.Invalidate();
-
-                Color grayOffline = SystemColors.ControlDark;
-                pnl_ChamA.BackColor = grayOffline;
-                pnl_ChamB.BackColor = grayOffline;
-                pnl_ChamC.BackColor = grayOffline;
-
-                setBasicPoint();
-                servoMotorOFF();
-                isServoMotorOn = false;
-                isConnect = false;
-            }
-            catch (Exception ex)
-            {
-                log.Error("EtherCAT 해제 처리 중 예외 발생: ", ex);
-                WriteSystemLog("ERROR", $"해제 예외 오류: {ex.Message}");
-            }
-        }
-
         // --- 타워 램프 제어 영역 ---
         private void RedLightOn_Click(object sender, EventArgs e)
         {
@@ -635,6 +590,11 @@ namespace SCT_Form
             {
                 log.Error("UI 모니터링 타이머 처리 중 예외 발생: ", ex);
             }
+        }
+
+        private void MainGUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
