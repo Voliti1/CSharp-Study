@@ -49,8 +49,24 @@
             this.pnl_FOUP_B_5 = new System.Windows.Forms.Panel();
             this.pnl_FOUP_B_4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.pnl_FOUPB_Manual = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_FOUPB_Empty = new System.Windows.Forms.Button();
+            this.btn_FOUPB_Full = new System.Windows.Forms.Button();
+            this.pnl_FOUPB = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_FOUPB_cuurentLockStatus = new System.Windows.Forms.Label();
+            this.label1lbl_FOUPB_cuurentLOTID = new System.Windows.Forms.Label();
+            this.lbl_FOUPB_LotID = new System.Windows.Forms.Label();
+            this.label4lbl_FOUPB_LockStatus = new System.Windows.Forms.Label();
             this.lbl_FOUP_A = new System.Windows.Forms.Label();
             this.lbl_FOUP_B = new System.Windows.Forms.Label();
+            this.pnl_FOUPA = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_FOUPA_cuurentLockStatus = new System.Windows.Forms.Label();
+            this.lbl_FOUPA_LotID = new System.Windows.Forms.Label();
+            this.lbl_FOUPA_LockStatus = new System.Windows.Forms.Label();
+            this.lbl_FOUPA_cuurentLOTID = new System.Windows.Forms.Label();
+            this.pnl_FOUPA_Manual = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_FOUPA_Empty = new System.Windows.Forms.Button();
+            this.btn_FOUPA_Full = new System.Windows.Forms.Button();
             this.tablepnl_PMA = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMA_recipe = new System.Windows.Forms.Label();
             this.lbl_PMA_step = new System.Windows.Forms.Label();
@@ -67,7 +83,9 @@
             this.pnl_PMA_progressbar = new System.Windows.Forms.Panel();
             this.toppnl_PMA = new System.Windows.Forms.Panel();
             this.table_lbl_PMA = new System.Windows.Forms.Label();
+            this.btn_PMA_Setting = new System.Windows.Forms.Button();
             this.tablepnl_PMB = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_PMB_Setting = new System.Windows.Forms.Button();
             this.lbl_PMB_recipe = new System.Windows.Forms.Label();
             this.lbl_PMB_step = new System.Windows.Forms.Label();
             this.lbl_PMB_name = new System.Windows.Forms.Label();
@@ -84,6 +102,7 @@
             this.toppnl_PMB = new System.Windows.Forms.Panel();
             this.table_lbl_PMB = new System.Windows.Forms.Label();
             this.tablepnl_PMC = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_PMC_Setting = new System.Windows.Forms.Button();
             this.lbl_PMC_recipe = new System.Windows.Forms.Label();
             this.lbl_PMC_step = new System.Windows.Forms.Label();
             this.lbl_PMC_name = new System.Windows.Forms.Label();
@@ -102,6 +121,9 @@
             this.waferControl3 = new SCT_Form.WaferControl();
             this.waferControl2 = new SCT_Form.WaferControl();
             this.waferControl1 = new SCT_Form.WaferControl();
+            this.lbl_PMA_Status = new System.Windows.Forms.Label();
+            this.lbl_PMB_Status = new System.Windows.Forms.Label();
+            this.lbl_PMC_Status = new System.Windows.Forms.Label();
             this.pnl_PMC.SuspendLayout();
             this.pnl_PMA.SuspendLayout();
             this.pnl_PMB.SuspendLayout();
@@ -109,6 +131,10 @@
             this.pnl_FOUP_A.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.pnl_FOUPB_Manual.SuspendLayout();
+            this.pnl_FOUPB.SuspendLayout();
+            this.pnl_FOUPA.SuspendLayout();
+            this.pnl_FOUPA_Manual.SuspendLayout();
             this.tablepnl_PMA.SuspendLayout();
             this.toppnl_PMA.SuspendLayout();
             this.tablepnl_PMB.SuspendLayout();
@@ -124,7 +150,7 @@
             this.pnl_PMC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnl_PMC.Controls.Add(this.lbl_PMC, 0, 0);
             this.pnl_PMC.Controls.Add(this.waferControl3, 0, 1);
-            this.pnl_PMC.Location = new System.Drawing.Point(448, 246);
+            this.pnl_PMC.Location = new System.Drawing.Point(443, 202);
             this.pnl_PMC.Name = "pnl_PMC";
             this.pnl_PMC.RowCount = 2;
             this.pnl_PMC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -151,7 +177,7 @@
             this.pnl_PMA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnl_PMA.Controls.Add(this.lbl_PMA, 0, 0);
             this.pnl_PMA.Controls.Add(this.waferControl2, 0, 1);
-            this.pnl_PMA.Location = new System.Drawing.Point(19, 247);
+            this.pnl_PMA.Location = new System.Drawing.Point(17, 203);
             this.pnl_PMA.Name = "pnl_PMA";
             this.pnl_PMA.RowCount = 3;
             this.pnl_PMA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -179,7 +205,7 @@
             this.pnl_PMB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnl_PMB.Controls.Add(this.lbl_PMB, 0, 0);
             this.pnl_PMB.Controls.Add(this.waferControl1, 0, 1);
-            this.pnl_PMB.Location = new System.Drawing.Point(223, 19);
+            this.pnl_PMB.Location = new System.Drawing.Point(223, 3);
             this.pnl_PMB.Name = "pnl_PMB";
             this.pnl_PMB.RowCount = 3;
             this.pnl_PMB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -204,9 +230,9 @@
             // 
             this.pnl_Robot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_Robot.Controls.Add(this.lbl_Robot);
-            this.pnl_Robot.Location = new System.Drawing.Point(223, 283);
+            this.pnl_Robot.Location = new System.Drawing.Point(223, 239);
             this.pnl_Robot.Name = "pnl_Robot";
-            this.pnl_Robot.Size = new System.Drawing.Size(191, 194);
+            this.pnl_Robot.Size = new System.Drawing.Size(182, 193);
             this.pnl_Robot.TabIndex = 40;
             // 
             // lbl_Robot
@@ -216,7 +242,7 @@
             this.lbl_Robot.Location = new System.Drawing.Point(0, 0);
             this.lbl_Robot.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_Robot.Name = "lbl_Robot";
-            this.lbl_Robot.Size = new System.Drawing.Size(189, 192);
+            this.lbl_Robot.Size = new System.Drawing.Size(180, 191);
             this.lbl_Robot.TabIndex = 0;
             this.lbl_Robot.Text = "TRANSFER ROBOT";
             this.lbl_Robot.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -232,7 +258,7 @@
             this.pnl_FOUP_A.Controls.Add(this.pnl_FOUP_A_5, 0, 0);
             this.pnl_FOUP_A.Controls.Add(this.pnl_FOUP_A_4, 0, 1);
             this.pnl_FOUP_A.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUP_A.Location = new System.Drawing.Point(3, 33);
+            this.pnl_FOUP_A.Location = new System.Drawing.Point(3, 30);
             this.pnl_FOUP_A.Name = "pnl_FOUP_A";
             this.pnl_FOUP_A.RowCount = 5;
             this.pnl_FOUP_A.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -241,34 +267,34 @@
             this.pnl_FOUP_A.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.pnl_FOUP_A.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.pnl_FOUP_A.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.pnl_FOUP_A.Size = new System.Drawing.Size(114, 164);
+            this.pnl_FOUP_A.Size = new System.Drawing.Size(85, 149);
             this.pnl_FOUP_A.TabIndex = 41;
             // 
             // pnl_FOUP_A_1
             // 
             this.pnl_FOUP_A_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_FOUP_A_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUP_A_1.Location = new System.Drawing.Point(4, 132);
+            this.pnl_FOUP_A_1.Location = new System.Drawing.Point(4, 120);
             this.pnl_FOUP_A_1.Name = "pnl_FOUP_A_1";
-            this.pnl_FOUP_A_1.Size = new System.Drawing.Size(106, 28);
+            this.pnl_FOUP_A_1.Size = new System.Drawing.Size(77, 25);
             this.pnl_FOUP_A_1.TabIndex = 2;
             // 
             // pnl_FOUP_A_2
             // 
             this.pnl_FOUP_A_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_FOUP_A_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUP_A_2.Location = new System.Drawing.Point(4, 100);
+            this.pnl_FOUP_A_2.Location = new System.Drawing.Point(4, 91);
             this.pnl_FOUP_A_2.Name = "pnl_FOUP_A_2";
-            this.pnl_FOUP_A_2.Size = new System.Drawing.Size(106, 25);
+            this.pnl_FOUP_A_2.Size = new System.Drawing.Size(77, 22);
             this.pnl_FOUP_A_2.TabIndex = 2;
             // 
             // pnl_FOUP_A_3
             // 
             this.pnl_FOUP_A_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_FOUP_A_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUP_A_3.Location = new System.Drawing.Point(4, 68);
+            this.pnl_FOUP_A_3.Location = new System.Drawing.Point(4, 62);
             this.pnl_FOUP_A_3.Name = "pnl_FOUP_A_3";
-            this.pnl_FOUP_A_3.Size = new System.Drawing.Size(106, 25);
+            this.pnl_FOUP_A_3.Size = new System.Drawing.Size(77, 22);
             this.pnl_FOUP_A_3.TabIndex = 2;
             // 
             // pnl_FOUP_A_5
@@ -277,16 +303,16 @@
             this.pnl_FOUP_A_5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_FOUP_A_5.Location = new System.Drawing.Point(4, 4);
             this.pnl_FOUP_A_5.Name = "pnl_FOUP_A_5";
-            this.pnl_FOUP_A_5.Size = new System.Drawing.Size(106, 25);
+            this.pnl_FOUP_A_5.Size = new System.Drawing.Size(77, 22);
             this.pnl_FOUP_A_5.TabIndex = 0;
             // 
             // pnl_FOUP_A_4
             // 
             this.pnl_FOUP_A_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_FOUP_A_4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUP_A_4.Location = new System.Drawing.Point(4, 36);
+            this.pnl_FOUP_A_4.Location = new System.Drawing.Point(4, 33);
             this.pnl_FOUP_A_4.Name = "pnl_FOUP_A_4";
-            this.pnl_FOUP_A_4.Size = new System.Drawing.Size(106, 25);
+            this.pnl_FOUP_A_4.Size = new System.Drawing.Size(77, 22);
             this.pnl_FOUP_A_4.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -300,7 +326,7 @@
             this.tableLayoutPanel1.Controls.Add(this.pnl_FOUP_B_5, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnl_FOUP_B_4, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(183, 33);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(336, 30);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -308,34 +334,34 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(114, 164);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(85, 149);
             this.tableLayoutPanel1.TabIndex = 42;
             // 
             // pnl_FOUP_B_1
             // 
             this.pnl_FOUP_B_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_FOUP_B_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUP_B_1.Location = new System.Drawing.Point(4, 132);
+            this.pnl_FOUP_B_1.Location = new System.Drawing.Point(4, 120);
             this.pnl_FOUP_B_1.Name = "pnl_FOUP_B_1";
-            this.pnl_FOUP_B_1.Size = new System.Drawing.Size(106, 28);
+            this.pnl_FOUP_B_1.Size = new System.Drawing.Size(77, 25);
             this.pnl_FOUP_B_1.TabIndex = 2;
             // 
             // pnl_FOUP_B_2
             // 
             this.pnl_FOUP_B_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_FOUP_B_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUP_B_2.Location = new System.Drawing.Point(4, 100);
+            this.pnl_FOUP_B_2.Location = new System.Drawing.Point(4, 91);
             this.pnl_FOUP_B_2.Name = "pnl_FOUP_B_2";
-            this.pnl_FOUP_B_2.Size = new System.Drawing.Size(106, 25);
+            this.pnl_FOUP_B_2.Size = new System.Drawing.Size(77, 22);
             this.pnl_FOUP_B_2.TabIndex = 2;
             // 
             // pnl_FOUP_B_3
             // 
             this.pnl_FOUP_B_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_FOUP_B_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUP_B_3.Location = new System.Drawing.Point(4, 68);
+            this.pnl_FOUP_B_3.Location = new System.Drawing.Point(4, 62);
             this.pnl_FOUP_B_3.Name = "pnl_FOUP_B_3";
-            this.pnl_FOUP_B_3.Size = new System.Drawing.Size(106, 25);
+            this.pnl_FOUP_B_3.Size = new System.Drawing.Size(77, 22);
             this.pnl_FOUP_B_3.TabIndex = 2;
             // 
             // pnl_FOUP_B_5
@@ -344,35 +370,147 @@
             this.pnl_FOUP_B_5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_FOUP_B_5.Location = new System.Drawing.Point(4, 4);
             this.pnl_FOUP_B_5.Name = "pnl_FOUP_B_5";
-            this.pnl_FOUP_B_5.Size = new System.Drawing.Size(106, 25);
+            this.pnl_FOUP_B_5.Size = new System.Drawing.Size(77, 22);
             this.pnl_FOUP_B_5.TabIndex = 0;
             // 
             // pnl_FOUP_B_4
             // 
             this.pnl_FOUP_B_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_FOUP_B_4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUP_B_4.Location = new System.Drawing.Point(4, 36);
+            this.pnl_FOUP_B_4.Location = new System.Drawing.Point(4, 33);
             this.pnl_FOUP_B_4.Name = "pnl_FOUP_B_4";
-            this.pnl_FOUP_B_4.Size = new System.Drawing.Size(106, 25);
+            this.pnl_FOUP_B_4.Size = new System.Drawing.Size(77, 22);
             this.pnl_FOUP_B_4.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.pnl_FOUP_A, 0, 1);
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.Controls.Add(this.pnl_FOUPB_Manual, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pnl_FOUPB, 4, 1);
             this.tableLayoutPanel2.Controls.Add(this.lbl_FOUP_A, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lbl_FOUP_B, 2, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(169, 513);
+            this.tableLayoutPanel2.Controls.Add(this.pnl_FOUP_A, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lbl_FOUP_B, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.pnl_FOUPA, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.pnl_FOUPA_Manual, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(17, 444);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(300, 200);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(607, 182);
             this.tableLayoutPanel2.TabIndex = 43;
+            // 
+            // pnl_FOUPB_Manual
+            // 
+            this.pnl_FOUPB_Manual.ColumnCount = 2;
+            this.pnl_FOUPB_Manual.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPB_Manual.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPB_Manual.Controls.Add(this.btn_FOUPB_Empty, 1, 0);
+            this.pnl_FOUPB_Manual.Controls.Add(this.btn_FOUPB_Full, 0, 0);
+            this.pnl_FOUPB_Manual.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_FOUPB_Manual.Location = new System.Drawing.Point(424, 0);
+            this.pnl_FOUPB_Manual.Margin = new System.Windows.Forms.Padding(0);
+            this.pnl_FOUPB_Manual.Name = "pnl_FOUPB_Manual";
+            this.pnl_FOUPB_Manual.RowCount = 1;
+            this.pnl_FOUPB_Manual.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPB_Manual.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPB_Manual.Size = new System.Drawing.Size(183, 27);
+            this.pnl_FOUPB_Manual.TabIndex = 49;
+            // 
+            // btn_FOUPB_Empty
+            // 
+            this.btn_FOUPB_Empty.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_FOUPB_Empty.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_FOUPB_Empty.Location = new System.Drawing.Point(92, 1);
+            this.btn_FOUPB_Empty.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_FOUPB_Empty.Name = "btn_FOUPB_Empty";
+            this.btn_FOUPB_Empty.Size = new System.Drawing.Size(90, 25);
+            this.btn_FOUPB_Empty.TabIndex = 1;
+            this.btn_FOUPB_Empty.Text = "Empty";
+            this.btn_FOUPB_Empty.UseVisualStyleBackColor = true;
+            this.btn_FOUPB_Empty.Click += new System.EventHandler(this.btn_FOUPB_Empty_Click);
+            // 
+            // btn_FOUPB_Full
+            // 
+            this.btn_FOUPB_Full.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_FOUPB_Full.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_FOUPB_Full.Location = new System.Drawing.Point(1, 1);
+            this.btn_FOUPB_Full.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_FOUPB_Full.Name = "btn_FOUPB_Full";
+            this.btn_FOUPB_Full.Size = new System.Drawing.Size(89, 25);
+            this.btn_FOUPB_Full.TabIndex = 0;
+            this.btn_FOUPB_Full.Text = "Full";
+            this.btn_FOUPB_Full.UseVisualStyleBackColor = true;
+            this.btn_FOUPB_Full.Click += new System.EventHandler(this.btn_FOUPB_Full_Click);
+            // 
+            // pnl_FOUPB
+            // 
+            this.pnl_FOUPB.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.pnl_FOUPB.ColumnCount = 2;
+            this.pnl_FOUPB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.pnl_FOUPB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.pnl_FOUPB.Controls.Add(this.lbl_FOUPB_cuurentLockStatus, 1, 1);
+            this.pnl_FOUPB.Controls.Add(this.label1lbl_FOUPB_cuurentLOTID, 1, 0);
+            this.pnl_FOUPB.Controls.Add(this.lbl_FOUPB_LotID, 0, 0);
+            this.pnl_FOUPB.Controls.Add(this.label4lbl_FOUPB_LockStatus, 0, 1);
+            this.pnl_FOUPB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_FOUPB.Location = new System.Drawing.Point(427, 30);
+            this.pnl_FOUPB.Name = "pnl_FOUPB";
+            this.pnl_FOUPB.RowCount = 2;
+            this.pnl_FOUPB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPB.Size = new System.Drawing.Size(177, 149);
+            this.pnl_FOUPB.TabIndex = 47;
+            // 
+            // lbl_FOUPB_cuurentLockStatus
+            // 
+            this.lbl_FOUPB_cuurentLockStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_FOUPB_cuurentLockStatus.Font = new System.Drawing.Font("맑은 고딕", 14F);
+            this.lbl_FOUPB_cuurentLockStatus.Location = new System.Drawing.Point(83, 75);
+            this.lbl_FOUPB_cuurentLockStatus.Name = "lbl_FOUPB_cuurentLockStatus";
+            this.lbl_FOUPB_cuurentLockStatus.Size = new System.Drawing.Size(90, 73);
+            this.lbl_FOUPB_cuurentLockStatus.TabIndex = 4;
+            this.lbl_FOUPB_cuurentLockStatus.Text = "Clamped";
+            this.lbl_FOUPB_cuurentLockStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1lbl_FOUPB_cuurentLOTID
+            // 
+            this.label1lbl_FOUPB_cuurentLOTID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1lbl_FOUPB_cuurentLOTID.Font = new System.Drawing.Font("맑은 고딕", 15F);
+            this.label1lbl_FOUPB_cuurentLOTID.Location = new System.Drawing.Point(83, 1);
+            this.label1lbl_FOUPB_cuurentLOTID.Name = "label1lbl_FOUPB_cuurentLOTID";
+            this.label1lbl_FOUPB_cuurentLOTID.Size = new System.Drawing.Size(90, 73);
+            this.label1lbl_FOUPB_cuurentLOTID.TabIndex = 3;
+            this.label1lbl_FOUPB_cuurentLOTID.Text = "L002";
+            this.label1lbl_FOUPB_cuurentLOTID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_FOUPB_LotID
+            // 
+            this.lbl_FOUPB_LotID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_FOUPB_LotID.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
+            this.lbl_FOUPB_LotID.Location = new System.Drawing.Point(4, 1);
+            this.lbl_FOUPB_LotID.Name = "lbl_FOUPB_LotID";
+            this.lbl_FOUPB_LotID.Size = new System.Drawing.Size(72, 73);
+            this.lbl_FOUPB_LotID.TabIndex = 0;
+            this.lbl_FOUPB_LotID.Text = "Lot ID";
+            this.lbl_FOUPB_LotID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4lbl_FOUPB_LockStatus
+            // 
+            this.label4lbl_FOUPB_LockStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4lbl_FOUPB_LockStatus.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
+            this.label4lbl_FOUPB_LockStatus.Location = new System.Drawing.Point(4, 75);
+            this.label4lbl_FOUPB_LockStatus.Name = "label4lbl_FOUPB_LockStatus";
+            this.label4lbl_FOUPB_LockStatus.Size = new System.Drawing.Size(72, 73);
+            this.label4lbl_FOUPB_LockStatus.TabIndex = 1;
+            this.label4lbl_FOUPB_LockStatus.Text = "Lock Status";
+            this.label4lbl_FOUPB_LockStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_FOUP_A
             // 
@@ -380,8 +518,8 @@
             this.lbl_FOUP_A.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl_FOUP_A.Location = new System.Drawing.Point(3, 0);
             this.lbl_FOUP_A.Name = "lbl_FOUP_A";
-            this.lbl_FOUP_A.Size = new System.Drawing.Size(114, 30);
-            this.lbl_FOUP_A.TabIndex = 43;
+            this.lbl_FOUP_A.Size = new System.Drawing.Size(85, 27);
+            this.lbl_FOUP_A.TabIndex = 45;
             this.lbl_FOUP_A.Text = "FOUP A";
             this.lbl_FOUP_A.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -389,12 +527,119 @@
             // 
             this.lbl_FOUP_B.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_FOUP_B.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbl_FOUP_B.Location = new System.Drawing.Point(183, 0);
+            this.lbl_FOUP_B.Location = new System.Drawing.Point(336, 0);
             this.lbl_FOUP_B.Name = "lbl_FOUP_B";
-            this.lbl_FOUP_B.Size = new System.Drawing.Size(114, 30);
+            this.lbl_FOUP_B.Size = new System.Drawing.Size(85, 27);
             this.lbl_FOUP_B.TabIndex = 44;
             this.lbl_FOUP_B.Text = "FOUP B";
             this.lbl_FOUP_B.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnl_FOUPA
+            // 
+            this.pnl_FOUPA.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.pnl_FOUPA.ColumnCount = 2;
+            this.pnl_FOUPA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.pnl_FOUPA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.pnl_FOUPA.Controls.Add(this.lbl_FOUPA_cuurentLockStatus, 1, 1);
+            this.pnl_FOUPA.Controls.Add(this.lbl_FOUPA_LotID, 0, 0);
+            this.pnl_FOUPA.Controls.Add(this.lbl_FOUPA_LockStatus, 0, 1);
+            this.pnl_FOUPA.Controls.Add(this.lbl_FOUPA_cuurentLOTID, 1, 0);
+            this.pnl_FOUPA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_FOUPA.Location = new System.Drawing.Point(94, 30);
+            this.pnl_FOUPA.Name = "pnl_FOUPA";
+            this.pnl_FOUPA.RowCount = 2;
+            this.pnl_FOUPA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnl_FOUPA.Size = new System.Drawing.Size(176, 149);
+            this.pnl_FOUPA.TabIndex = 46;
+            // 
+            // lbl_FOUPA_cuurentLockStatus
+            // 
+            this.lbl_FOUPA_cuurentLockStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_FOUPA_cuurentLockStatus.Font = new System.Drawing.Font("맑은 고딕", 14F);
+            this.lbl_FOUPA_cuurentLockStatus.Location = new System.Drawing.Point(82, 75);
+            this.lbl_FOUPA_cuurentLockStatus.Name = "lbl_FOUPA_cuurentLockStatus";
+            this.lbl_FOUPA_cuurentLockStatus.Size = new System.Drawing.Size(90, 73);
+            this.lbl_FOUPA_cuurentLockStatus.TabIndex = 3;
+            this.lbl_FOUPA_cuurentLockStatus.Text = "Clamped";
+            this.lbl_FOUPA_cuurentLockStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_FOUPA_LotID
+            // 
+            this.lbl_FOUPA_LotID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_FOUPA_LotID.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
+            this.lbl_FOUPA_LotID.Location = new System.Drawing.Point(4, 1);
+            this.lbl_FOUPA_LotID.Name = "lbl_FOUPA_LotID";
+            this.lbl_FOUPA_LotID.Size = new System.Drawing.Size(71, 73);
+            this.lbl_FOUPA_LotID.TabIndex = 0;
+            this.lbl_FOUPA_LotID.Text = "Lot ID";
+            this.lbl_FOUPA_LotID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_FOUPA_LockStatus
+            // 
+            this.lbl_FOUPA_LockStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_FOUPA_LockStatus.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
+            this.lbl_FOUPA_LockStatus.Location = new System.Drawing.Point(4, 75);
+            this.lbl_FOUPA_LockStatus.Name = "lbl_FOUPA_LockStatus";
+            this.lbl_FOUPA_LockStatus.Size = new System.Drawing.Size(71, 73);
+            this.lbl_FOUPA_LockStatus.TabIndex = 1;
+            this.lbl_FOUPA_LockStatus.Text = "Lock Status";
+            this.lbl_FOUPA_LockStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_FOUPA_cuurentLOTID
+            // 
+            this.lbl_FOUPA_cuurentLOTID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_FOUPA_cuurentLOTID.Font = new System.Drawing.Font("맑은 고딕", 15F);
+            this.lbl_FOUPA_cuurentLOTID.Location = new System.Drawing.Point(82, 1);
+            this.lbl_FOUPA_cuurentLOTID.Name = "lbl_FOUPA_cuurentLOTID";
+            this.lbl_FOUPA_cuurentLOTID.Size = new System.Drawing.Size(90, 73);
+            this.lbl_FOUPA_cuurentLOTID.TabIndex = 2;
+            this.lbl_FOUPA_cuurentLOTID.Text = "L001";
+            this.lbl_FOUPA_cuurentLOTID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnl_FOUPA_Manual
+            // 
+            this.pnl_FOUPA_Manual.ColumnCount = 2;
+            this.pnl_FOUPA_Manual.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPA_Manual.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPA_Manual.Controls.Add(this.btn_FOUPA_Empty, 1, 0);
+            this.pnl_FOUPA_Manual.Controls.Add(this.btn_FOUPA_Full, 0, 0);
+            this.pnl_FOUPA_Manual.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_FOUPA_Manual.Location = new System.Drawing.Point(91, 0);
+            this.pnl_FOUPA_Manual.Margin = new System.Windows.Forms.Padding(0);
+            this.pnl_FOUPA_Manual.Name = "pnl_FOUPA_Manual";
+            this.pnl_FOUPA_Manual.RowCount = 1;
+            this.pnl_FOUPA_Manual.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPA_Manual.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnl_FOUPA_Manual.Size = new System.Drawing.Size(182, 27);
+            this.pnl_FOUPA_Manual.TabIndex = 48;
+            // 
+            // btn_FOUPA_Empty
+            // 
+            this.btn_FOUPA_Empty.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_FOUPA_Empty.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_FOUPA_Empty.Location = new System.Drawing.Point(92, 1);
+            this.btn_FOUPA_Empty.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_FOUPA_Empty.Name = "btn_FOUPA_Empty";
+            this.btn_FOUPA_Empty.Size = new System.Drawing.Size(89, 25);
+            this.btn_FOUPA_Empty.TabIndex = 1;
+            this.btn_FOUPA_Empty.Text = "Empty";
+            this.btn_FOUPA_Empty.UseVisualStyleBackColor = true;
+            this.btn_FOUPA_Empty.Click += new System.EventHandler(this.btn_FOUPA_Empty_Click);
+            // 
+            // btn_FOUPA_Full
+            // 
+            this.btn_FOUPA_Full.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_FOUPA_Full.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_FOUPA_Full.Location = new System.Drawing.Point(1, 1);
+            this.btn_FOUPA_Full.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_FOUPA_Full.Name = "btn_FOUPA_Full";
+            this.btn_FOUPA_Full.Size = new System.Drawing.Size(89, 25);
+            this.btn_FOUPA_Full.TabIndex = 0;
+            this.btn_FOUPA_Full.Text = "Full";
+            this.btn_FOUPA_Full.UseVisualStyleBackColor = true;
+            this.btn_FOUPA_Full.Click += new System.EventHandler(this.btn_FOUPA_Full_Click);
             // 
             // tablepnl_PMA
             // 
@@ -417,7 +662,8 @@
             this.tablepnl_PMA.Controls.Add(this.lbl_PMA_messagecontent, 0, 5);
             this.tablepnl_PMA.Controls.Add(this.pnl_PMA_progressbar, 1, 6);
             this.tablepnl_PMA.Controls.Add(this.toppnl_PMA, 0, 0);
-            this.tablepnl_PMA.Location = new System.Drawing.Point(671, 20);
+            this.tablepnl_PMA.Controls.Add(this.btn_PMA_Setting, 0, 1);
+            this.tablepnl_PMA.Location = new System.Drawing.Point(671, 29);
             this.tablepnl_PMA.Margin = new System.Windows.Forms.Padding(0);
             this.tablepnl_PMA.Name = "tablepnl_PMA";
             this.tablepnl_PMA.RowCount = 7;
@@ -577,20 +823,23 @@
             // 
             this.tablepnl_PMA.SetColumnSpan(this.pnl_PMA_progressbar, 2);
             this.pnl_PMA_progressbar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_PMA_progressbar.Location = new System.Drawing.Point(87, 165);
+            this.pnl_PMA_progressbar.Location = new System.Drawing.Point(84, 162);
+            this.pnl_PMA_progressbar.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_PMA_progressbar.Name = "pnl_PMA_progressbar";
-            this.pnl_PMA_progressbar.Size = new System.Drawing.Size(189, 20);
+            this.pnl_PMA_progressbar.Size = new System.Drawing.Size(195, 26);
             this.pnl_PMA_progressbar.TabIndex = 13;
             // 
             // toppnl_PMA
             // 
             this.toppnl_PMA.BackColor = System.Drawing.Color.Silver;
             this.tablepnl_PMA.SetColumnSpan(this.toppnl_PMA, 3);
+            this.toppnl_PMA.Controls.Add(this.lbl_PMA_Status);
             this.toppnl_PMA.Controls.Add(this.table_lbl_PMA);
             this.toppnl_PMA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toppnl_PMA.Location = new System.Drawing.Point(4, 4);
+            this.toppnl_PMA.Location = new System.Drawing.Point(1, 1);
+            this.toppnl_PMA.Margin = new System.Windows.Forms.Padding(0);
             this.toppnl_PMA.Name = "toppnl_PMA";
-            this.toppnl_PMA.Size = new System.Drawing.Size(272, 29);
+            this.toppnl_PMA.Size = new System.Drawing.Size(278, 35);
             this.toppnl_PMA.TabIndex = 14;
             // 
             // table_lbl_PMA
@@ -599,10 +848,22 @@
             this.table_lbl_PMA.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
             this.table_lbl_PMA.Location = new System.Drawing.Point(0, 0);
             this.table_lbl_PMA.Name = "table_lbl_PMA";
-            this.table_lbl_PMA.Size = new System.Drawing.Size(76, 29);
+            this.table_lbl_PMA.Size = new System.Drawing.Size(76, 35);
             this.table_lbl_PMA.TabIndex = 0;
             this.table_lbl_PMA.Text = "PM A";
             this.table_lbl_PMA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btn_PMA_Setting
+            // 
+            this.btn_PMA_Setting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_PMA_Setting.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            this.btn_PMA_Setting.Location = new System.Drawing.Point(2, 38);
+            this.btn_PMA_Setting.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_PMA_Setting.Name = "btn_PMA_Setting";
+            this.btn_PMA_Setting.Size = new System.Drawing.Size(80, 22);
+            this.btn_PMA_Setting.TabIndex = 15;
+            this.btn_PMA_Setting.Text = "Setting";
+            this.btn_PMA_Setting.UseVisualStyleBackColor = true;
             // 
             // tablepnl_PMB
             // 
@@ -611,6 +872,7 @@
             this.tablepnl_PMB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tablepnl_PMB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tablepnl_PMB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tablepnl_PMB.Controls.Add(this.btn_PMB_Setting, 0, 1);
             this.tablepnl_PMB.Controls.Add(this.lbl_PMB_recipe, 1, 1);
             this.tablepnl_PMB.Controls.Add(this.lbl_PMB_step, 2, 1);
             this.tablepnl_PMB.Controls.Add(this.lbl_PMB_name, 0, 2);
@@ -625,7 +887,7 @@
             this.tablepnl_PMB.Controls.Add(this.lbl_PMB_messagecontent, 0, 5);
             this.tablepnl_PMB.Controls.Add(this.pnl_PMB_progressbar, 1, 6);
             this.tablepnl_PMB.Controls.Add(this.toppnl_PMB, 0, 0);
-            this.tablepnl_PMB.Location = new System.Drawing.Point(671, 224);
+            this.tablepnl_PMB.Location = new System.Drawing.Point(671, 233);
             this.tablepnl_PMB.Margin = new System.Windows.Forms.Padding(0);
             this.tablepnl_PMB.Name = "tablepnl_PMB";
             this.tablepnl_PMB.RowCount = 7;
@@ -638,6 +900,18 @@
             this.tablepnl_PMB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tablepnl_PMB.Size = new System.Drawing.Size(280, 189);
             this.tablepnl_PMB.TabIndex = 45;
+            // 
+            // btn_PMB_Setting
+            // 
+            this.btn_PMB_Setting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_PMB_Setting.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            this.btn_PMB_Setting.Location = new System.Drawing.Point(2, 38);
+            this.btn_PMB_Setting.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_PMB_Setting.Name = "btn_PMB_Setting";
+            this.btn_PMB_Setting.Size = new System.Drawing.Size(80, 22);
+            this.btn_PMB_Setting.TabIndex = 16;
+            this.btn_PMB_Setting.Text = "Setting";
+            this.btn_PMB_Setting.UseVisualStyleBackColor = true;
             // 
             // lbl_PMB_recipe
             // 
@@ -785,20 +1059,23 @@
             // 
             this.tablepnl_PMB.SetColumnSpan(this.pnl_PMB_progressbar, 2);
             this.pnl_PMB_progressbar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_PMB_progressbar.Location = new System.Drawing.Point(87, 165);
+            this.pnl_PMB_progressbar.Location = new System.Drawing.Point(84, 162);
+            this.pnl_PMB_progressbar.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_PMB_progressbar.Name = "pnl_PMB_progressbar";
-            this.pnl_PMB_progressbar.Size = new System.Drawing.Size(189, 20);
+            this.pnl_PMB_progressbar.Size = new System.Drawing.Size(195, 26);
             this.pnl_PMB_progressbar.TabIndex = 13;
             // 
             // toppnl_PMB
             // 
             this.toppnl_PMB.BackColor = System.Drawing.Color.Silver;
             this.tablepnl_PMB.SetColumnSpan(this.toppnl_PMB, 3);
+            this.toppnl_PMB.Controls.Add(this.lbl_PMB_Status);
             this.toppnl_PMB.Controls.Add(this.table_lbl_PMB);
             this.toppnl_PMB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toppnl_PMB.Location = new System.Drawing.Point(4, 4);
+            this.toppnl_PMB.Location = new System.Drawing.Point(1, 1);
+            this.toppnl_PMB.Margin = new System.Windows.Forms.Padding(0);
             this.toppnl_PMB.Name = "toppnl_PMB";
-            this.toppnl_PMB.Size = new System.Drawing.Size(272, 29);
+            this.toppnl_PMB.Size = new System.Drawing.Size(278, 35);
             this.toppnl_PMB.TabIndex = 14;
             // 
             // table_lbl_PMB
@@ -807,7 +1084,7 @@
             this.table_lbl_PMB.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
             this.table_lbl_PMB.Location = new System.Drawing.Point(0, 0);
             this.table_lbl_PMB.Name = "table_lbl_PMB";
-            this.table_lbl_PMB.Size = new System.Drawing.Size(76, 29);
+            this.table_lbl_PMB.Size = new System.Drawing.Size(76, 35);
             this.table_lbl_PMB.TabIndex = 0;
             this.table_lbl_PMB.Text = "PM B";
             this.table_lbl_PMB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -819,6 +1096,7 @@
             this.tablepnl_PMC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tablepnl_PMC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tablepnl_PMC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tablepnl_PMC.Controls.Add(this.btn_PMC_Setting, 0, 1);
             this.tablepnl_PMC.Controls.Add(this.lbl_PMC_recipe, 1, 1);
             this.tablepnl_PMC.Controls.Add(this.lbl_PMC_step, 2, 1);
             this.tablepnl_PMC.Controls.Add(this.lbl_PMC_name, 0, 2);
@@ -833,7 +1111,7 @@
             this.tablepnl_PMC.Controls.Add(this.lbl_PMC_messagecontent, 0, 5);
             this.tablepnl_PMC.Controls.Add(this.pnl_PMC_progressbar, 1, 6);
             this.tablepnl_PMC.Controls.Add(this.toppnl_PMC, 0, 0);
-            this.tablepnl_PMC.Location = new System.Drawing.Point(671, 430);
+            this.tablepnl_PMC.Location = new System.Drawing.Point(671, 439);
             this.tablepnl_PMC.Margin = new System.Windows.Forms.Padding(0);
             this.tablepnl_PMC.Name = "tablepnl_PMC";
             this.tablepnl_PMC.RowCount = 7;
@@ -846,6 +1124,18 @@
             this.tablepnl_PMC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tablepnl_PMC.Size = new System.Drawing.Size(280, 187);
             this.tablepnl_PMC.TabIndex = 46;
+            // 
+            // btn_PMC_Setting
+            // 
+            this.btn_PMC_Setting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_PMC_Setting.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            this.btn_PMC_Setting.Location = new System.Drawing.Point(2, 38);
+            this.btn_PMC_Setting.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_PMC_Setting.Name = "btn_PMC_Setting";
+            this.btn_PMC_Setting.Size = new System.Drawing.Size(80, 22);
+            this.btn_PMC_Setting.TabIndex = 16;
+            this.btn_PMC_Setting.Text = "Setting";
+            this.btn_PMC_Setting.UseVisualStyleBackColor = true;
             // 
             // lbl_PMC_recipe
             // 
@@ -993,20 +1283,23 @@
             // 
             this.tablepnl_PMC.SetColumnSpan(this.pnl_PMC_progressbar, 2);
             this.pnl_PMC_progressbar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_PMC_progressbar.Location = new System.Drawing.Point(87, 165);
+            this.pnl_PMC_progressbar.Location = new System.Drawing.Point(84, 162);
+            this.pnl_PMC_progressbar.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_PMC_progressbar.Name = "pnl_PMC_progressbar";
-            this.pnl_PMC_progressbar.Size = new System.Drawing.Size(189, 18);
+            this.pnl_PMC_progressbar.Size = new System.Drawing.Size(195, 24);
             this.pnl_PMC_progressbar.TabIndex = 13;
             // 
             // toppnl_PMC
             // 
             this.toppnl_PMC.BackColor = System.Drawing.Color.Silver;
             this.tablepnl_PMC.SetColumnSpan(this.toppnl_PMC, 3);
+            this.toppnl_PMC.Controls.Add(this.lbl_PMC_Status);
             this.toppnl_PMC.Controls.Add(this.table_lbl_PMC);
             this.toppnl_PMC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toppnl_PMC.Location = new System.Drawing.Point(4, 4);
+            this.toppnl_PMC.Location = new System.Drawing.Point(1, 1);
+            this.toppnl_PMC.Margin = new System.Windows.Forms.Padding(0);
             this.toppnl_PMC.Name = "toppnl_PMC";
-            this.toppnl_PMC.Size = new System.Drawing.Size(272, 29);
+            this.toppnl_PMC.Size = new System.Drawing.Size(278, 35);
             this.toppnl_PMC.TabIndex = 14;
             // 
             // table_lbl_PMC
@@ -1015,7 +1308,7 @@
             this.table_lbl_PMC.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
             this.table_lbl_PMC.Location = new System.Drawing.Point(0, 0);
             this.table_lbl_PMC.Name = "table_lbl_PMC";
-            this.table_lbl_PMC.Size = new System.Drawing.Size(76, 29);
+            this.table_lbl_PMC.Size = new System.Drawing.Size(76, 35);
             this.table_lbl_PMC.TabIndex = 0;
             this.table_lbl_PMC.Text = "PM C";
             this.table_lbl_PMC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1053,6 +1346,48 @@
             this.waferControl1.State = SCT_Form.WaferControl.WaferState.Empty;
             this.waferControl1.TabIndex = 1;
             // 
+            // lbl_PMA_Status
+            // 
+            this.lbl_PMA_Status.BackColor = System.Drawing.Color.Silver;
+            this.lbl_PMA_Status.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbl_PMA_Status.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbl_PMA_Status.ForeColor = System.Drawing.Color.Silver;
+            this.lbl_PMA_Status.Location = new System.Drawing.Point(227, 0);
+            this.lbl_PMA_Status.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_PMA_Status.Name = "lbl_PMA_Status";
+            this.lbl_PMA_Status.Size = new System.Drawing.Size(51, 35);
+            this.lbl_PMA_Status.TabIndex = 47;
+            this.lbl_PMA_Status.Text = "●";
+            this.lbl_PMA_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_PMB_Status
+            // 
+            this.lbl_PMB_Status.BackColor = System.Drawing.Color.Silver;
+            this.lbl_PMB_Status.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbl_PMB_Status.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbl_PMB_Status.ForeColor = System.Drawing.Color.Silver;
+            this.lbl_PMB_Status.Location = new System.Drawing.Point(227, 0);
+            this.lbl_PMB_Status.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_PMB_Status.Name = "lbl_PMB_Status";
+            this.lbl_PMB_Status.Size = new System.Drawing.Size(51, 35);
+            this.lbl_PMB_Status.TabIndex = 48;
+            this.lbl_PMB_Status.Text = "●";
+            this.lbl_PMB_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_PMC_Status
+            // 
+            this.lbl_PMC_Status.BackColor = System.Drawing.Color.Silver;
+            this.lbl_PMC_Status.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbl_PMC_Status.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbl_PMC_Status.ForeColor = System.Drawing.Color.Silver;
+            this.lbl_PMC_Status.Location = new System.Drawing.Point(227, 0);
+            this.lbl_PMC_Status.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_PMC_Status.Name = "lbl_PMC_Status";
+            this.lbl_PMC_Status.Size = new System.Drawing.Size(51, 35);
+            this.lbl_PMC_Status.TabIndex = 48;
+            this.lbl_PMC_Status.Text = "●";
+            this.lbl_PMC_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CurrentStateGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1074,6 +1409,10 @@
             this.pnl_FOUP_A.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.pnl_FOUPB_Manual.ResumeLayout(false);
+            this.pnl_FOUPB.ResumeLayout(false);
+            this.pnl_FOUPA.ResumeLayout(false);
+            this.pnl_FOUPA_Manual.ResumeLayout(false);
             this.tablepnl_PMA.ResumeLayout(false);
             this.toppnl_PMA.ResumeLayout(false);
             this.tablepnl_PMB.ResumeLayout(false);
@@ -1110,7 +1449,6 @@
         internal System.Windows.Forms.Panel pnl_FOUP_B_5;
         internal System.Windows.Forms.Panel pnl_FOUP_B_4;
         internal System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        internal System.Windows.Forms.Label lbl_FOUP_A;
         internal System.Windows.Forms.Label lbl_FOUP_B;
         internal System.Windows.Forms.TableLayoutPanel tablepnl_PMA;
         internal System.Windows.Forms.Label table_lbl_PMA;
@@ -1160,5 +1498,28 @@
         internal System.Windows.Forms.Panel pnl_PMC_progressbar;
         internal System.Windows.Forms.Panel toppnl_PMC;
         internal System.Windows.Forms.Label table_lbl_PMC;
+        internal System.Windows.Forms.Label lbl_FOUP_A;
+        private System.Windows.Forms.TableLayoutPanel pnl_FOUPA;
+        private System.Windows.Forms.Label lbl_FOUPA_LotID;
+        private System.Windows.Forms.Label lbl_FOUPA_LockStatus;
+        private System.Windows.Forms.TableLayoutPanel pnl_FOUPB;
+        private System.Windows.Forms.Label lbl_FOUPB_LotID;
+        private System.Windows.Forms.Label label4lbl_FOUPB_LockStatus;
+        private System.Windows.Forms.Label lbl_FOUPA_cuurentLOTID;
+        private System.Windows.Forms.Label lbl_FOUPB_cuurentLockStatus;
+        private System.Windows.Forms.Label label1lbl_FOUPB_cuurentLOTID;
+        private System.Windows.Forms.Label lbl_FOUPA_cuurentLockStatus;
+        private System.Windows.Forms.TableLayoutPanel pnl_FOUPA_Manual;
+        private System.Windows.Forms.Button btn_FOUPA_Empty;
+        private System.Windows.Forms.Button btn_FOUPA_Full;
+        private System.Windows.Forms.TableLayoutPanel pnl_FOUPB_Manual;
+        private System.Windows.Forms.Button btn_FOUPB_Empty;
+        private System.Windows.Forms.Button btn_FOUPB_Full;
+        private System.Windows.Forms.Button btn_PMA_Setting;
+        private System.Windows.Forms.Button btn_PMB_Setting;
+        private System.Windows.Forms.Button btn_PMC_Setting;
+        internal System.Windows.Forms.Label lbl_PMA_Status;
+        internal System.Windows.Forms.Label lbl_PMB_Status;
+        internal System.Windows.Forms.Label lbl_PMC_Status;
     }
 }

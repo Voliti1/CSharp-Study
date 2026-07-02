@@ -1,5 +1,6 @@
 ﻿using IEG3268_Dll;
 using log4net;
+using log4net.Repository.Hierarchy;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,10 +34,17 @@ namespace SCT_Form
 
         internal string currentUbarState = "Operate";
 
-        private CurrentStateGUI currentUI;
-        private MaintGUI maintui;
-        private Setting settingUI;
+        private const long DefaultRobotAcceleration = 1000000;
+        private const long DefaultRobotDeceleration = 1000000;
+        private const long DefaultRobotMaxVelocity = 100000000;
+        private const long DefaultRobotVelocity = 1000000;
 
+        private CurrentStateGUI currentGUI;
+        private MaintGUI maintGUI;
+        private LogGUI logGUI;
+        private RecipeGUI recipeGUI;
+        private SettingGUI settingGUI;
+        
         public MainGUI()
         {
             InitializeComponent();
@@ -61,14 +69,16 @@ namespace SCT_Form
         //LogView.Columns.Add("레벨", 70, HorizontalAlignment.Center);
         //LogView.Columns.Add("메시지", 400, HorizontalAlignment.Left);
 
+            currentGUI = new CurrentStateGUI(this);
+            maintGUI = new MaintGUI(this);
+            logGUI = new LogGUI(this);
+            recipeGUI = new RecipeGUI(this);
+            settingGUI = new SettingGUI(this);
+
             SystemConnect();
             servoMotorON();
             isServoMotorOn = true;
             setBasicPoint();
-
-            currentUI = new CurrentStateGUI(this);
-            maintui = new MaintGUI(this);
-            settingUI = new Setting(this);
 
             Mainpnl_CurrentStateGUI();
 
@@ -162,7 +172,6 @@ namespace SCT_Form
                     isChamALampOn = false; isChamBLampOn = false; isChamCLampOn = false;
                     isChamADoorOpen = false; isChamBDoorOpen = false; isChamCDoorOpen = false;
 
-                    // 연결 시 AUTO 모드 설정
                     currentUbarState = "Operate";
 
                     // 상단버튼 활성화
@@ -295,7 +304,7 @@ namespace SCT_Form
         // --- 상단 모드 변경 조작 ---
         private void btn_Operate_Click(object sender, EventArgs e)
         {
-            if (currentUbarState == "Operate") return; // 중복 제어 차단
+            if (currentUbarState == "Operate") return;
 
             currentUbarState = "Operate";
 
@@ -310,7 +319,7 @@ namespace SCT_Form
 
         private void btn_maint_Click(object sender, EventArgs e)
         {
-            if (currentUbarState == "Maint") return; // 중복 제어 차단
+            if (currentUbarState == "Maint") return;
 
             currentUbarState = "Maint";
 
@@ -322,7 +331,49 @@ namespace SCT_Form
 
             EtherCAT_M.Digital_Output(1, true);
         }
+        private void btn_Recipe_Click(object sender, EventArgs e)
+        {
+            if (currentUbarState == "Recipe") return;
 
+            currentUbarState = "Recipe";
+
+            UpdateModeButtonStyles();
+
+            ForceStopAllChambers();
+
+            Mainpnl_RecipeGUI();
+
+            EtherCAT_M.Digital_Output(1, true);
+        }
+
+        private void btn_Log_Click(object sender, EventArgs e)
+        {
+            if (currentUbarState == "Log") return;
+
+            currentUbarState = "Log";
+
+            UpdateModeButtonStyles();
+
+            ForceStopAllChambers();
+
+            Mainpnl_LogGUI();
+
+            EtherCAT_M.Digital_Output(1, true);
+        }
+        private void btn_Setting_Click(object sender, EventArgs e)
+        {
+            if (currentUbarState == "Setting") return;
+
+            currentUbarState = "Setting";
+
+            UpdateModeButtonStyles();
+
+            ForceStopAllChambers();
+
+            Mainpnl_SettingGUI();
+
+            EtherCAT_M.Digital_Output(1, true);
+        }
         private void ForceStopAllChambers()
         {
             WriteSystemLog("INFO", "모드 변경에 따른 전 공정 인터록(Force Stop) 가동");
@@ -345,7 +396,10 @@ namespace SCT_Form
             // 화면 렌더링 영역은 부하 조절 및 가독성을 위해 로그 생략
             Button btn = (Button)sender;
             bool isActive = (currentUbarState == "Operate" && btn == btn_Operate) ||
-                            (currentUbarState == "Maint" && btn == btn_Maint);
+                            (currentUbarState == "Maint" && btn == btn_Maint) ||
+                            (currentUbarState == "Recipe" && btn == btn_Recipe) ||
+                            (currentUbarState == "Log" && btn == btn_Log) ||
+                            (currentUbarState == "Setting" && btn == btn_Setting);
 
             Color highlight = isActive ? Color.Gray : Color.White;
             Color shadow = isActive ? Color.White : Color.Gray;
@@ -360,33 +414,29 @@ namespace SCT_Form
 
         private void UpdateModeButtonStyles()
         {
-            bool isManual = (currentUbarState == "Maint");
-
-            btn_Operate.BackColor = !isManual ? Color.SkyBlue : Color.FromArgb(60, 60, 60);
-            btn_Operate.ForeColor = !isManual ? Color.White : Color.DimGray;
-            btn_Operate.Invalidate();
-
-            btn_Maint.BackColor = isManual ? Color.SkyBlue : Color.FromArgb(60, 60, 60);
-            btn_Maint.ForeColor = isManual ? Color.White : Color.DimGray;
-            btn_Maint.Invalidate();
+            ApplyModeButtonStyle(btn_Operate, "Operate");
+            ApplyModeButtonStyle(btn_Maint, "Maint");
+            ApplyModeButtonStyle(btn_Recipe, "Recipe");
+            ApplyModeButtonStyle(btn_Log, "Log");
+            ApplyModeButtonStyle(btn_Setting, "Setting");
         }
 
-        private void btnErrorTest_Click(object sender, EventArgs e)
+        private void ApplyModeButtonStyle(Button button, string modeName)
         {
-            EtherCAT_M.Digital_Output(1, false);
-            EtherCAT_M.Digital_Output(0, true);
-            WriteSystemLog("ERROR", "설비 알람 발생: 하부 배기 Fan RPM 저하 (Abnormal Stop 조치 요망)");
-        }
+            bool isActive = currentUbarState == modeName;
 
-        private void btnWarnTest_Click(object sender, EventArgs e)
-        {
-            EtherCAT_M.Digital_Output(1, false);
-            EtherCAT_M.Digital_Output(0, true);
-            WriteSystemLog("WARN", "인터록 경고: Chamber A 도어 Open 상태에서 가스 공급 명령 차단");
+            button.UseVisualStyleBackColor = false;
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = isActive ? 2 : 1;
+            button.FlatAppearance.BorderColor = isActive ? Color.White : Color.Black;
+            button.BackColor = isActive ? Color.SkyBlue : Color.FromArgb(60, 60, 60);
+            button.ForeColor = isActive ? Color.White : Color.DimGray;
+            button.Invalidate();
         }
 
         internal void servoMotorON()
         {
+            ApplySettingRobotAxisConfig();
             EtherCAT_M.Axis1_ON();
             EtherCAT_M.Axis2_ON();
         }
@@ -402,38 +452,71 @@ namespace SCT_Form
             EtherCAT_M.Axis2_LR_Homming(); //좌우 원점복귀
         }
 
-        private void btn_Setting_Click(object sender, EventArgs e)
+        internal void SetRobotAxisConfig(long acceleration, long deceleration, long maxVelocity, long velocity)
         {
-            Setting setting = new Setting(this);
-            setting.Show();
+            if (!isConnect || EtherCAT_M == null) return;
+
+            EtherCAT_M.Axis1_UD_Config_Update(acceleration, deceleration, maxVelocity, velocity);
+            EtherCAT_M.Axis2_LR_Config_Update(acceleration, deceleration, maxVelocity, velocity);
         }
 
+        private void ApplySettingRobotAxisConfig()
+        {
+            if (settingGUI != null)
+            {
+                settingGUI.ApplyRobotAxisConfig();
+                return;
+            }
+
+            SetRobotAxisConfig(DefaultRobotAcceleration, DefaultRobotDeceleration, DefaultRobotMaxVelocity, DefaultRobotVelocity);
+        }
+        
         private void Mainpnl_CurrentStateGUI() {
             Mainpnl.Controls.Clear();
-            currentUI.Dock = DockStyle.Fill;
-            Mainpnl.Controls.Add(currentUI);
+            currentGUI.Dock = DockStyle.Fill;
+            Mainpnl.Controls.Add(currentGUI);
         }
 
         private void Mainpnl_MaintGUI()
         {
             Mainpnl.Controls.Clear();
-            maintui.Dock = DockStyle.Fill;
-            Mainpnl.Controls.Add(maintui);
+            maintGUI.Dock = DockStyle.Fill;
+            Mainpnl.Controls.Add(maintGUI);
+        }
+
+        private void Mainpnl_RecipeGUI()
+        {
+            Mainpnl.Controls.Clear();
+            recipeGUI.ShowDefaultPmA();
+            recipeGUI.Dock = DockStyle.Fill;
+            Mainpnl.Controls.Add(recipeGUI);
+        }
+        private void Mainpnl_LogGUI()
+        {
+            Mainpnl.Controls.Clear();
+            logGUI.Dock = DockStyle.Fill;
+            Mainpnl.Controls.Add(logGUI);
+        }
+
+        private void Mainpnl_SettingGUI()
+        {
+            Mainpnl.Controls.Clear();
+            settingGUI.Dock = DockStyle.Fill;
+            Mainpnl.Controls.Add(settingGUI);
         }
 
         internal void timer1_Tick(object sender, EventArgs e)
         {
             if (!isConnect || EtherCAT_M == null) return;
-            if (isAxisMoving) return;
 
             try
             {
                 string currentUDPos = EtherCAT_M.Axis1_is_PosData();
                 string currentLRPos = EtherCAT_M.Axis2_is_PosData();
 
-                if (maintui != null)
+                if (maintGUI != null)
                 {
-                    maintui.UpdateAxisPosition(currentUDPos, currentLRPos);
+                    maintGUI.SetCurrentPositionLabel(currentUDPos, currentLRPos);
                 }
             }
             catch (Exception ex)

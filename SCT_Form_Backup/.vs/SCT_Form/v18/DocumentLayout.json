@@ -1,14 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\CSharp-Study\\SCT_Form\\",
+  "WorkspaceRootPath": "D:\\Dev\\CSharp-Study\\SCT_Form\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|d:\\dev\\csharp-study\\sct_form\\settinggui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:settinggui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\user\\Desktop\\CSharp-Study\\SCT_Form\\maingui.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:maingui.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|d:\\dev\\csharp-study\\sct_form\\maintgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:maintgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|d:\\dev\\csharp-study\\sct_form\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|d:\\dev\\csharp-study\\sct_form\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,29 +29,59 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainGUI.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CSharp-Study\\SCT_Form\\MainGUI.Designer.cs",
-              "RelativeDocumentMoniker": "MainGUI.Designer.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CSharp-Study\\SCT_Form\\MainGUI.Designer.cs",
-              "RelativeToolTip": "MainGUI.Designer.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAApwJ4AAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-01T04:33:55.613Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SettingGUI.cs",
+              "DocumentMoniker": "D:\\Dev\\CSharp-Study\\SCT_Form\\SettingGUI.cs",
+              "RelativeDocumentMoniker": "SettingGUI.cs",
+              "ToolTip": "D:\\Dev\\CSharp-Study\\SCT_Form\\SettingGUI.cs",
+              "RelativeToolTip": "SettingGUI.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T14:22:08.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MaintGUI.cs",
+              "DocumentMoniker": "D:\\Dev\\CSharp-Study\\SCT_Form\\MaintGUI.cs",
+              "RelativeDocumentMoniker": "MaintGUI.cs",
+              "ToolTip": "D:\\Dev\\CSharp-Study\\SCT_Form\\MaintGUI.cs",
+              "RelativeToolTip": "MaintGUI.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAtwBgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T13:52:51.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainGUI.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CSharp-Study\\SCT_Form\\MainGUI.cs",
+              "DocumentMoniker": "D:\\Dev\\CSharp-Study\\SCT_Form\\MainGUI.cs",
               "RelativeDocumentMoniker": "MainGUI.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CSharp-Study\\SCT_Form\\MainGUI.cs [\uB514\uC790\uC778]",
+              "ToolTip": "D:\\Dev\\CSharp-Study\\SCT_Form\\MainGUI.cs [\uB514\uC790\uC778]",
               "RelativeToolTip": "MainGUI.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-01T04:33:57.9Z",
               "EditorCaption": " [\uB514\uC790\uC778]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainGUI.cs",
+              "DocumentMoniker": "D:\\Dev\\CSharp-Study\\SCT_Form\\MainGUI.cs",
+              "RelativeDocumentMoniker": "MainGUI.cs",
+              "ToolTip": "D:\\Dev\\CSharp-Study\\SCT_Form\\MainGUI.cs",
+              "RelativeToolTip": "MainGUI.cs",
+              "ViewState": "AgIAAFUBAAAAAAAAAAD4v5sBAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T13:56:12.247Z",
+              "EditorCaption": ""
             }
           ]
         }

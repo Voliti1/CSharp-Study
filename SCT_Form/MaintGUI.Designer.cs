@@ -108,6 +108,10 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_moveBack = new System.Windows.Forms.Button();
             this.btn_moveFront = new System.Windows.Forms.Button();
+            this.test = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnl_ProcessManualControl.SuspendLayout();
             this.grpbox_Cham_A_Manual.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -140,6 +144,8 @@
             this.pnl_AxisStatus.SuspendLayout();
             this.grpbox_RobotSylinder.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.test.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_ProcessManualControl
@@ -813,7 +819,7 @@
             this.pnl_TargetPosition.Location = new System.Drawing.Point(89, 35);
             this.pnl_TargetPosition.Margin = new System.Windows.Forms.Padding(0, 35, 0, 35);
             this.pnl_TargetPosition.Maximum = new decimal(new int[] {
-            50000,
+            3500000,
             0,
             0,
             0});
@@ -1131,10 +1137,59 @@
             this.btn_moveFront.UseVisualStyleBackColor = true;
             this.btn_moveFront.Click += new System.EventHandler(this.btn_moveFront_Click);
             // 
+            // test
+            // 
+            this.test.Controls.Add(this.tableLayoutPanel8);
+            this.test.Location = new System.Drawing.Point(259, 94);
+            this.test.Name = "test";
+            this.test.Size = new System.Drawing.Size(200, 100);
+            this.test.TabIndex = 55;
+            this.test.TabStop = false;
+            this.test.Text = "test";
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 17);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(194, 80);
+            this.tableLayoutPanel8.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(100, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 80);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "label2";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 80);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MaintGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.test);
             this.Controls.Add(this.grpbox_RobotSylinder);
             this.Controls.Add(this.grpbox_currentPos);
             this.Controls.Add(this.groupBox1);
@@ -1173,6 +1228,9 @@
             this.pnl_AxisStatus.ResumeLayout(false);
             this.grpbox_RobotSylinder.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
+            this.test.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1259,5 +1317,9 @@
         private System.Windows.Forms.Button btn_moveFront;
         private System.Windows.Forms.Button btn_moveBack;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.GroupBox test;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

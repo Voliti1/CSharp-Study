@@ -41,18 +41,33 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnl_Top = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_PW = new System.Windows.Forms.Label();
-            this.tBox_PW = new System.Windows.Forms.TextBox();
-            this.tBox_ID = new System.Windows.Forms.TextBox();
-            this.lbl_ID = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_Log = new System.Windows.Forms.Button();
+            this.btn_Recipe = new System.Windows.Forms.Button();
+            this.lbl_ID = new System.Windows.Forms.Label();
+            this.tBox_ID = new System.Windows.Forms.TextBox();
+            this.tBox_PW = new System.Windows.Forms.TextBox();
+            this.lbl_PW = new System.Windows.Forms.Label();
+            this.pnl_LogIn = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_SignIn = new System.Windows.Forms.Button();
             lbl1 = new System.Windows.Forms.Label();
             this.pnl_Top.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.pnl_LogIn.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // lbl1
+            // 
+            lbl1.AutoSize = true;
+            lbl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            lbl1.Location = new System.Drawing.Point(753, 0);
+            lbl1.Name = "lbl1";
+            lbl1.Size = new System.Drawing.Size(244, 50);
+            lbl1.TabIndex = 55;
+            lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_Connection
             // 
@@ -108,7 +123,7 @@
             this.btn_Operate.Location = new System.Drawing.Point(1, 1);
             this.btn_Operate.Margin = new System.Windows.Forms.Padding(1);
             this.btn_Operate.Name = "btn_Operate";
-            this.btn_Operate.Size = new System.Drawing.Size(107, 48);
+            this.btn_Operate.Size = new System.Drawing.Size(98, 48);
             this.btn_Operate.TabIndex = 37;
             this.btn_Operate.Text = "Operate";
             this.btn_Operate.UseVisualStyleBackColor = false;
@@ -121,10 +136,10 @@
             this.btn_Maint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Maint.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold);
             this.btn_Maint.ForeColor = System.Drawing.Color.Silver;
-            this.btn_Maint.Location = new System.Drawing.Point(110, 1);
+            this.btn_Maint.Location = new System.Drawing.Point(101, 1);
             this.btn_Maint.Margin = new System.Windows.Forms.Padding(1);
             this.btn_Maint.Name = "btn_Maint";
-            this.btn_Maint.Size = new System.Drawing.Size(107, 48);
+            this.btn_Maint.Size = new System.Drawing.Size(98, 48);
             this.btn_Maint.TabIndex = 38;
             this.btn_Maint.Text = "MAINT";
             this.btn_Maint.UseVisualStyleBackColor = true;
@@ -136,10 +151,11 @@
             this.btn_Setting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Setting.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Setting.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
-            this.btn_Setting.ForeColor = System.Drawing.Color.Black;
-            this.btn_Setting.Location = new System.Drawing.Point(221, 3);
+            this.btn_Setting.ForeColor = System.Drawing.Color.Silver;
+            this.btn_Setting.Location = new System.Drawing.Point(401, 1);
+            this.btn_Setting.Margin = new System.Windows.Forms.Padding(1);
             this.btn_Setting.Name = "btn_Setting";
-            this.btn_Setting.Size = new System.Drawing.Size(103, 44);
+            this.btn_Setting.Size = new System.Drawing.Size(98, 48);
             this.btn_Setting.TabIndex = 44;
             this.btn_Setting.Text = "SETTING";
             this.btn_Setting.UseVisualStyleBackColor = true;
@@ -160,12 +176,12 @@
             // pnl_Top
             // 
             this.pnl_Top.ColumnCount = 4;
+            this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.5F));
+            this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.5F));
             this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.pnl_Top.Controls.Add(this.tableLayoutPanel1, 1, 0);
             this.pnl_Top.Controls.Add(this.tableLayoutPanel8, 2, 0);
-            this.pnl_Top.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.pnl_Top.Controls.Add(lbl1, 3, 0);
             this.pnl_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Top.Location = new System.Drawing.Point(0, 0);
@@ -193,73 +209,21 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(244, 44);
             this.tableLayoutPanel8.TabIndex = 37;
             // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Controls.Add(this.lbl_PW, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.tBox_PW, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.tBox_ID, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.lbl_ID, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(253, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(244, 44);
-            this.tableLayoutPanel3.TabIndex = 37;
-            // 
-            // lbl_PW
-            // 
-            this.lbl_PW.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_PW.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbl_PW.Location = new System.Drawing.Point(125, 0);
-            this.lbl_PW.Name = "lbl_PW";
-            this.lbl_PW.Size = new System.Drawing.Size(116, 24);
-            this.lbl_PW.TabIndex = 40;
-            this.lbl_PW.Text = "PW";
-            this.lbl_PW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tBox_PW
-            // 
-            this.tBox_PW.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tBox_PW.Location = new System.Drawing.Point(125, 27);
-            this.tBox_PW.Name = "tBox_PW";
-            this.tBox_PW.Size = new System.Drawing.Size(116, 21);
-            this.tBox_PW.TabIndex = 38;
-            // 
-            // tBox_ID
-            // 
-            this.tBox_ID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tBox_ID.Location = new System.Drawing.Point(3, 27);
-            this.tBox_ID.Name = "tBox_ID";
-            this.tBox_ID.Size = new System.Drawing.Size(116, 21);
-            this.tBox_ID.TabIndex = 37;
-            // 
-            // lbl_ID
-            // 
-            this.lbl_ID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_ID.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbl_ID.Location = new System.Drawing.Point(3, 0);
-            this.lbl_ID.Name = "lbl_ID";
-            this.lbl_ID.Size = new System.Drawing.Size(116, 24);
-            this.lbl_ID.TabIndex = 39;
-            this.lbl_ID.Text = "ID";
-            this.lbl_ID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 4;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.90909F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.90909F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.90909F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.27273F));
+            this.tableLayoutPanel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.tableLayoutPanel5.ColumnCount = 6;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.btn_Log, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btn_Recipe, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.btn_Operate, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.btn_Maint, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.btn_Setting, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btn_Setting, 4, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 800);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -268,15 +232,121 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1000, 50);
             this.tableLayoutPanel5.TabIndex = 38;
             // 
-            // lbl1
+            // btn_Log
             // 
-            lbl1.AutoSize = true;
-            lbl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            lbl1.Location = new System.Drawing.Point(753, 0);
-            lbl1.Name = "lbl1";
-            lbl1.Size = new System.Drawing.Size(244, 50);
-            lbl1.TabIndex = 55;
-            lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Log.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Log.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Log.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
+            this.btn_Log.ForeColor = System.Drawing.Color.Silver;
+            this.btn_Log.Location = new System.Drawing.Point(301, 1);
+            this.btn_Log.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Log.Name = "btn_Log";
+            this.btn_Log.Size = new System.Drawing.Size(98, 48);
+            this.btn_Log.TabIndex = 46;
+            this.btn_Log.Text = "LOG";
+            this.btn_Log.UseVisualStyleBackColor = true;
+            this.btn_Log.Click += new System.EventHandler(this.btn_Log_Click);
+            // 
+            // btn_Recipe
+            // 
+            this.btn_Recipe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Recipe.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Recipe.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
+            this.btn_Recipe.ForeColor = System.Drawing.Color.Silver;
+            this.btn_Recipe.Location = new System.Drawing.Point(201, 1);
+            this.btn_Recipe.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_Recipe.Name = "btn_Recipe";
+            this.btn_Recipe.Size = new System.Drawing.Size(98, 48);
+            this.btn_Recipe.TabIndex = 45;
+            this.btn_Recipe.Text = "RECIPE";
+            this.btn_Recipe.UseVisualStyleBackColor = true;
+            this.btn_Recipe.Click += new System.EventHandler(this.btn_Recipe_Click);
+            // 
+            // lbl_ID
+            // 
+            this.lbl_ID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_ID.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl_ID.Location = new System.Drawing.Point(3, 0);
+            this.lbl_ID.Name = "lbl_ID";
+            this.lbl_ID.Size = new System.Drawing.Size(89, 20);
+            this.lbl_ID.TabIndex = 39;
+            this.lbl_ID.Text = "ID";
+            this.lbl_ID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tBox_ID
+            // 
+            this.tBox_ID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tBox_ID.Location = new System.Drawing.Point(3, 23);
+            this.tBox_ID.Name = "tBox_ID";
+            this.tBox_ID.Size = new System.Drawing.Size(89, 21);
+            this.tBox_ID.TabIndex = 37;
+            // 
+            // tBox_PW
+            // 
+            this.tBox_PW.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tBox_PW.Location = new System.Drawing.Point(98, 23);
+            this.tBox_PW.Name = "tBox_PW";
+            this.tBox_PW.Size = new System.Drawing.Size(89, 21);
+            this.tBox_PW.TabIndex = 38;
+            // 
+            // lbl_PW
+            // 
+            this.lbl_PW.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_PW.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl_PW.Location = new System.Drawing.Point(98, 0);
+            this.lbl_PW.Name = "lbl_PW";
+            this.lbl_PW.Size = new System.Drawing.Size(89, 20);
+            this.lbl_PW.TabIndex = 40;
+            this.lbl_PW.Text = "PW";
+            this.lbl_PW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnl_LogIn
+            // 
+            this.pnl_LogIn.ColumnCount = 2;
+            this.pnl_LogIn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.pnl_LogIn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.pnl_LogIn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.pnl_LogIn.Controls.Add(this.lbl_PW, 1, 0);
+            this.pnl_LogIn.Controls.Add(this.tBox_PW, 1, 1);
+            this.pnl_LogIn.Controls.Add(this.tBox_ID, 0, 1);
+            this.pnl_LogIn.Controls.Add(this.lbl_ID, 0, 0);
+            this.pnl_LogIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_LogIn.Location = new System.Drawing.Point(0, 0);
+            this.pnl_LogIn.Margin = new System.Windows.Forms.Padding(0);
+            this.pnl_LogIn.Name = "pnl_LogIn";
+            this.pnl_LogIn.RowCount = 2;
+            this.pnl_LogIn.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.93877F));
+            this.pnl_LogIn.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.06123F));
+            this.pnl_LogIn.Size = new System.Drawing.Size(190, 44);
+            this.pnl_LogIn.TabIndex = 37;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.54515F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.45485F));
+            this.tableLayoutPanel1.Controls.Add(this.btn_SignIn, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pnl_LogIn, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(198, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(299, 44);
+            this.tableLayoutPanel1.TabIndex = 38;
+            // 
+            // btn_SignIn
+            // 
+            this.btn_SignIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_SignIn.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold);
+            this.btn_SignIn.Location = new System.Drawing.Point(190, 0);
+            this.btn_SignIn.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_SignIn.Name = "btn_SignIn";
+            this.btn_SignIn.Size = new System.Drawing.Size(109, 44);
+            this.btn_SignIn.TabIndex = 2;
+            this.btn_SignIn.Text = "Sign In";
+            this.btn_SignIn.UseVisualStyleBackColor = true;
             // 
             // MainGUI
             // 
@@ -293,9 +363,10 @@
             this.pnl_Top.ResumeLayout(false);
             this.pnl_Top.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
+            this.pnl_LogIn.ResumeLayout(false);
+            this.pnl_LogIn.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -312,13 +383,17 @@
         internal System.Windows.Forms.Panel Mainpnl;
         internal System.Windows.Forms.Timer timer1;
         internal System.Windows.Forms.TableLayoutPanel pnl_Top;
-        internal System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        internal System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        internal System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        internal System.Windows.Forms.Button btn_Log;
+        internal System.Windows.Forms.Button btn_Recipe;
+        internal System.Windows.Forms.TableLayoutPanel pnl_LogIn;
         internal System.Windows.Forms.Label lbl_PW;
         internal System.Windows.Forms.TextBox tBox_PW;
         internal System.Windows.Forms.TextBox tBox_ID;
         internal System.Windows.Forms.Label lbl_ID;
-        internal System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        internal System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btn_SignIn;
     }
 }
 

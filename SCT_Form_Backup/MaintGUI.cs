@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,9 @@ namespace SCT_Form
     {
         // ⭐ 부모인 MainGUI의 자원(EtherCAT, 로그, 패널색상)을 쓰기 위한 참조 변수
         private MainGUI main;
-
+        private const int RobotCylinderFrontSensorInput = 13;
+        private const int RobotCylinderBackSensorInput = 12;
+        
         // 기본 생성자 (디자이너 뷰 호환용)
         public MaintGUI()
         {
@@ -27,23 +30,12 @@ namespace SCT_Form
             InitializeComponent();
             this.main = mainGUI;
         }
-        public void UpdateAxisPosition(string udPos, string lrPos)
-        {
-            if (!string.IsNullOrEmpty(udPos))
-                lbl_UDcurrentPos.Text = udPos;
-
-            if (!string.IsNullOrEmpty(lrPos))
-                lbl_LRcurrentPos.Text = lrPos;
-        }
 
         // --- Chamber A 제어 영역 ---
         private void btn_Cham_A_Door_OPEN_Click(object sender, EventArgs e)
         {
             main.WriteSystemLog("INFO", "수동 제어: Chamber A 도어 OPEN 명령 요청");
 
-            // main.isChamALampOn 처럼 부모의 플래그 변수 활용
-            // 만약 MainGUI에서 해당 변수들이 private이라면 변수 앞에 public을 붙여주거나 main을 통과해야 합니다.
-            // 여기서는 MainGUI 구조에 맞춰 직접 제어하도록 풀어드렸습니다.
             main.EtherCAT_M.Digital_Output(5, true);
             main.EtherCAT_M.Digital_Output(4, false);
 
@@ -57,6 +49,7 @@ namespace SCT_Form
             main.EtherCAT_M.Digital_Output(5, false);
             main.EtherCAT_M.Digital_Output(4, true);
 
+            pnl_Cham_A_Door.BackColor = Color.Red;
             main.WriteSystemLog("INFO", "Chamber A 도어 CLOSE 완료");
         }
 
@@ -205,14 +198,14 @@ namespace SCT_Form
 
         private void btn_MoveUp_Click(object sender, EventArgs e)
         {
-            if (main.EtherCAT_M.Digital_Input(13))
+            if (IsRobotCylinderForward())
             {
                 MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
                 return;
             }
 
-            long currentUDPos = long.Parse(lbl_UDcurrentPos.Text);
-            long pos = currentUDPos + (long)nUpDown_MovementDistance.Value;
+            Int64 currentUDPos = GetCurrentPosition(lbl_UDcurrentPos, "UD");
+            Int64 pos = currentUDPos + Convert.ToInt64(nUpDown_MovementDistance.Value);
 
             main.EtherCAT_M.Axis1_UD_POS_Update(pos);
             main.EtherCAT_M.Axis1_UD_Move_Send();
@@ -220,14 +213,14 @@ namespace SCT_Form
 
         private void btn_MoveDown_Click(object sender, EventArgs e)
         {
-            if (main.EtherCAT_M.Digital_Input(13))
+            if (IsRobotCylinderForward())
             {
                 MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
                 return;
             }
 
-            long currentUDPos = long.Parse(lbl_UDcurrentPos.Text);
-            long pos = currentUDPos - (long)nUpDown_MovementDistance.Value;
+            Int64 currentUDPos = GetCurrentPosition(lbl_UDcurrentPos, "UD");
+            Int64 pos = currentUDPos - Convert.ToInt64(nUpDown_MovementDistance.Value);
 
             main.EtherCAT_M.Axis1_UD_POS_Update(pos);
             main.EtherCAT_M.Axis1_UD_Move_Send();
@@ -235,38 +228,54 @@ namespace SCT_Form
 
         private void btn_MoveLeft_Click(object sender, EventArgs e)
         {
-            if (!main.EtherCAT_M.Digital_Input(13) && Int64.Parse(nUpDown_MovementDistance.Text) >= 0)
+            if (IsRobotCylinderForward())
             {
-                main.EtherCAT_M.Axis2_LR_POS_Update((Int64)nUpDown_MovementDistance.Value);
-                main.EtherCAT_M.Axis2_LR_Move_Send();
+                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
+                return;
             }
-            else
-            {
-                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있거나 값이 0미만입니다.");
-            }
+
+            Int64 currentLRPos = GetCurrentPosition(lbl_LRcurrentPos, "LR");
+            Int64 pos = currentLRPos + Convert.ToInt64(nUpDown_MovementDistance.Value);
+
+            main.EtherCAT_M.Axis2_LR_POS_Update(pos);
+            main.EtherCAT_M.Axis2_LR_Move_Send();
         }
 
         private void btn_MoveRight_Click(object sender, EventArgs e)
         {
-            if (!main.EtherCAT_M.Digital_Input(13) && Int64.Parse(nUpDown_MovementDistance.Text) >= 0)
+            if (IsRobotCylinderForward())
             {
-                main.EtherCAT_M.Axis2_LR_POS_Update((Int64)nUpDown_MovementDistance.Value);
-                main.EtherCAT_M.Axis2_LR_Move_Send();
+                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
+                return;
             }
-            else
-            {
-                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있거나 값이 0미만입니다.");
-            }
+
+            Int64 currentLRPos = GetCurrentPosition(lbl_LRcurrentPos, "LR");
+            Int64 pos = currentLRPos - Convert.ToInt64(nUpDown_MovementDistance.Value);
+
+            main.EtherCAT_M.Axis2_LR_POS_Update(pos);
+            main.EtherCAT_M.Axis2_LR_Move_Send();
         }
 
         private void btn_UDMove_Click(object sender, EventArgs e)
         {
+            if (IsRobotCylinderForward())
+            {
+                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
+                return;
+            }
+
             main.EtherCAT_M.Axis1_UD_POS_Update((Int64)pnl_TargetPosition.Value);
             main.EtherCAT_M.Axis1_UD_Move_Send();
         }
 
         private void btn_LRMove_Click(object sender, EventArgs e)
         {
+            if (IsRobotCylinderForward())
+            {
+                MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
+                return;
+            }
+
             main.EtherCAT_M.Axis2_LR_POS_Update((Int64)pnl_TargetPosition.Value);
             main.EtherCAT_M.Axis2_LR_Move_Send();
         }
@@ -301,6 +310,37 @@ namespace SCT_Form
         {
             main.EtherCAT_M.Digital_Output(12, false);
             main.EtherCAT_M.Digital_Output(13, true);
+        }
+
+        public void SetCurrentPositionLabel(string currentUDPos, string currentLRPos)
+        {
+            lbl_UDcurrentPos.Text = currentUDPos;
+            lbl_LRcurrentPos.Text = currentLRPos;
+
+            bool isFront = main.EtherCAT_M.Digital_Input(RobotCylinderFrontSensorInput);
+            bool isBack = main.EtherCAT_M.Digital_Input(RobotCylinderBackSensorInput);
+
+            label1.Text = isFront.ToString();
+            label2.Text = isBack.ToString();
+        }
+
+        private long GetCurrentPosition(Label currentPositionLabel, string axisName)
+        {
+            if (long.TryParse(currentPositionLabel.Text, NumberStyles.Integer | NumberStyles.AllowThousands, CultureInfo.CurrentCulture, out long currentPosition))
+            {
+                return currentPosition;
+            }
+
+            main?.WriteSystemLog("WARN", $"{axisName} current position parse failed. Value: {currentPositionLabel.Text}");
+            return 0;
+        }
+
+        private bool IsRobotCylinderForward()
+        {
+            bool isFront = main.EtherCAT_M.Digital_Input(RobotCylinderFrontSensorInput);
+            bool isBack = main.EtherCAT_M.Digital_Input(RobotCylinderBackSensorInput);
+
+            return isFront && !isBack;
         }
     }
 }

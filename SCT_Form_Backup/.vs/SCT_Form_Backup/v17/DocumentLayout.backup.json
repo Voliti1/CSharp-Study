@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBC62349-7038-452C-8E71-94EDA9556938}|SCT_Form_Backup.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form_backup\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BBC62349-7038-452C-8E71-94EDA9556938}|SCT_Form_Backup.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{BBC62349-7038-452C-8E71-94EDA9556938}|SCT_Form_Backup.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form_backup\\log4net.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{BBC62349-7038-452C-8E71-94EDA9556938}|SCT_Form_Backup.csproj|solutionrelative:log4net.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC62349-7038-452C-8E71-94EDA9556938}|SCT_Form_Backup.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC62349-7038-452C-8E71-94EDA9556938}|SCT_Form_Backup.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBC62349-7038-452C-8E71-94EDA9556938}|SCT_Form_Backup.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC62349-7038-452C-8E71-94EDA9556938}|SCT_Form_Backup.csproj|solutionrelative:maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC62349-7038-452C-8E71-94EDA9556938}|SCT_Form_Backup.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC62349-7038-452C-8E71-94EDA9556938}|SCT_Form_Backup.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +30,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAG4BAAAAAAAAAAAuwIgBAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-17T05:35:41.655Z",
+              "DocumentIndex": 0,
+              "Title": "log4net.config",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\log4net.config",
+              "RelativeDocumentMoniker": "log4net.config",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\log4net.config",
+              "RelativeToolTip": "log4net.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-07-02T09:49:05.845Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\Form1.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "Form1.cs [\uB514\uC790\uC778]",
+              "DocumentIndex": 1,
+              "Title": "MainGUI.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\MainGUI.cs",
+              "RelativeDocumentMoniker": "MainGUI.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\MainGUI.cs",
+              "RelativeToolTip": "MainGUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-17T04:43:48.173Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "WhenOpened": "2026-07-02T09:48:59.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form_Backup\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-02T09:46:23.526Z"
             }
           ]
         }
