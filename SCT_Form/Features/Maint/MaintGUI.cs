@@ -31,9 +31,15 @@ namespace SCT_Form
             this.main = mainGUI;
         }
 
+        private bool CanOperateEquipment()
+        {
+            return main == null || main.EnsureEquipmentOperationAllowed();
+        }
+
         // --- Chamber A 제어 영역 ---
         private void btn_Cham_A_Door_OPEN_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber A 도어 OPEN 명령 요청");
 
             main.EtherCAT_M.Digital_Output(5, true);
@@ -44,6 +50,7 @@ namespace SCT_Form
 
         private void btn_Cham_A_Door_CLOSE_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber A 도어 CLOSE 명령 요청");
 
             main.EtherCAT_M.Digital_Output(5, false);
@@ -55,6 +62,7 @@ namespace SCT_Form
 
         private void btn_Cham_A_Lamp_ON_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber A 램프 ON 명령 요청");
 
             main.EtherCAT_M.Digital_Output(3, true);
@@ -68,6 +76,7 @@ namespace SCT_Form
 
         private void btn_Cham_A_Lamp_OFF_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber A 램프 OFF 명령 요청");
 
             main.EtherCAT_M.Digital_Output(3, false);
@@ -82,6 +91,7 @@ namespace SCT_Form
         // --- Chamber B 제어 영역 ---
         private void btn_Cham_B_Door_OPEN_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber B 도어 OPEN 명령 요청");
 
             main.EtherCAT_M.Digital_Output(8, true);
@@ -93,6 +103,7 @@ namespace SCT_Form
 
         private void btn_Cham_B_Door_CLOSE_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber B 도어 CLOSE 명령 요청");
 
             main.EtherCAT_M.Digital_Output(8, false);
@@ -104,6 +115,7 @@ namespace SCT_Form
 
         private void btn_Cham_B_Lamp_ON_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber B 램프 ON 명령 요청");
 
             main.EtherCAT_M.Digital_Output(6, true);
@@ -117,6 +129,7 @@ namespace SCT_Form
 
         private void btn_Cham_B_Lamp_OFF_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber B 램프 OFF 명령 요청");
 
             main.EtherCAT_M.Digital_Output(6, false);
@@ -131,6 +144,7 @@ namespace SCT_Form
         // --- Chamber C 제어 영역 ---
         private void btn_Cham_C_Door_OPEN_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber C 도어 OPEN 명령 요청");
 
             main.EtherCAT_M.Digital_Output(11, true);
@@ -141,6 +155,7 @@ namespace SCT_Form
 
         private void btn_Cham_C_Door_CLOSE_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber C 도어 CLOSE 명령 요청");
 
             main.EtherCAT_M.Digital_Output(11, false);
@@ -151,6 +166,7 @@ namespace SCT_Form
 
         private void btn_Cham_C_Lamp_ON_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber C 램프 ON 명령 요청");
 
             main.EtherCAT_M.Digital_Output(9, true);
@@ -164,6 +180,7 @@ namespace SCT_Form
 
         private void btn_Cham_C_Lamp_OFF_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.WriteSystemLog("INFO", "수동 제어: Chamber C 램프 OFF 명령 요청");
 
             main.EtherCAT_M.Digital_Output(9, false);
@@ -178,26 +195,31 @@ namespace SCT_Form
 
         private void btn_ServoON_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.servoMotorON();
         }
 
         private void btn_ServoOFF_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.servoMotorOFF();
         }
 
         private void btn_UDBasic_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.EtherCAT_M.Axis1_UD_Homming();
         }
 
         private void btn_LRBasic_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.EtherCAT_M.Axis2_LR_Homming();
         }
 
         private void btn_MoveUp_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             if (IsRobotCylinderForward())
             {
                 MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
@@ -213,6 +235,7 @@ namespace SCT_Form
 
         private void btn_MoveDown_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             if (IsRobotCylinderForward())
             {
                 MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
@@ -228,6 +251,7 @@ namespace SCT_Form
 
         private void btn_MoveLeft_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             if (IsRobotCylinderForward())
             {
                 MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
@@ -243,6 +267,7 @@ namespace SCT_Form
 
         private void btn_MoveRight_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             if (IsRobotCylinderForward())
             {
                 MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
@@ -258,6 +283,7 @@ namespace SCT_Form
 
         private void btn_UDMove_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             if (IsRobotCylinderForward())
             {
                 MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
@@ -270,6 +296,7 @@ namespace SCT_Form
 
         private void btn_LRMove_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             if (IsRobotCylinderForward())
             {
                 MessageBox.Show("웨이퍼 이송 실린더가 전진되어 있어 이동할 수 없습니다.");
@@ -282,32 +309,38 @@ namespace SCT_Form
 
         private void btn_InOn_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.EtherCAT_M.Digital_Output(14, true);
         }
 
         private void btn_InOFF_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.EtherCAT_M.Digital_Output(14, false);
         }
 
         private void btn_ExON_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.EtherCAT_M.Digital_Output(15, true);
         }
 
         private void btn_ExOFF_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.EtherCAT_M.Digital_Output(15, false);
         }
 
         private void btn_moveFront_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.EtherCAT_M.Digital_Output(13, false);
             main.EtherCAT_M.Digital_Output(12, true);
         }
 
         private void btn_moveBack_Click(object sender, EventArgs e)
         {
+            if (!CanOperateEquipment()) return;
             main.EtherCAT_M.Digital_Output(12, false);
             main.EtherCAT_M.Digital_Output(13, true);
         }

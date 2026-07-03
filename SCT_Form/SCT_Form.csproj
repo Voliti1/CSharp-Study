@@ -55,76 +55,117 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChamberRecipeSelection.cs" />
-    <Compile Include="ChamberRecipeSetting.cs">
+    <Compile Include="Core\AppDataPaths.cs" />
+    <Compile Include="Core\AccountService.cs" />
+    <Compile Include="Features\Recipe\ChamberRecipeSelection.cs" />
+    <Compile Include="Features\Recipe\ChamberRecipeSetting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChamberRecipeSetting.Designer.cs">
+    <Compile Include="Features\Recipe\ChamberRecipeSetting.Designer.cs">
       <DependentUpon>ChamberRecipeSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="CurrentStateGUI.cs">
+    <Compile Include="Features\Operation\CurrentStateGUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CurrentStateGUI.Designer.cs">
+    <Compile Include="Features\Operation\CurrentStateGUI.Designer.cs">
       <DependentUpon>CurrentStateGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainGUI.Designer.cs">
-      <DependentUpon>MainGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="ProcessRecipe.cs">
+    <Compile Include="Auth\IDSearch.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProcessRecipe.Designer.cs">
+    <Compile Include="Auth\IDSearch.Designer.cs">
+      <DependentUpon>IDSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Auth\LogInGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Auth\LogInGUI.Designer.cs">
+      <DependentUpon>LogInGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\MainGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\MainGUI.Designer.cs">
+      <DependentUpon>MainGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Program.cs" />
+    <Compile Include="Features\Recipe\ProcessRecipe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Recipe\ProcessRecipe.Designer.cs">
       <DependentUpon>ProcessRecipe.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MaintGUI.cs">
+    <Compile Include="Features\Maint\MaintGUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MaintGUI.Designer.cs">
+    <Compile Include="Features\Maint\MaintGUI.Designer.cs">
       <DependentUpon>MaintGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogGUI.cs">
+    <Compile Include="Features\Log\LogGUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LogGUI.Designer.cs">
+    <Compile Include="Features\Log\LogGUI.Designer.cs">
       <DependentUpon>LogGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecipeGUI.cs">
+    <Compile Include="Auth\PWSearch.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RecipeGUI.Designer.cs">
+    <Compile Include="Auth\PWSearch.Designer.cs">
+      <DependentUpon>PWSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Recipe\RecipeGUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Recipe\RecipeGUI.Designer.cs">
       <DependentUpon>RecipeGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingGUI.cs">
+    <Compile Include="Features\Setting\SettingGUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingGUI.Designer.cs">
+    <Compile Include="Features\Setting\SettingGUI.Designer.cs">
       <DependentUpon>SettingGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="WaferControl.cs">
+    <Compile Include="Auth\SignUp.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WaferControl.Designer.cs">
+    <Compile Include="Auth\SignUp.Designer.cs">
+      <DependentUpon>SignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Auth\LoginState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Auth\LoginState.Designer.cs">
+      <DependentUpon>LoginState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Operation\WaferControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Operation\WaferControl.Designer.cs">
       <DependentUpon>WaferControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CurrentStateGUI.resx">
-      <DependentUpon>CurrentStateGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ChamberRecipeSetting.resx">
+    <EmbeddedResource Include="Features\Recipe\ChamberRecipeSetting.resx">
       <DependentUpon>ChamberRecipeSetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogGUI.resx">
+    <EmbeddedResource Include="Features\Operation\CurrentStateGUI.resx">
+      <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Auth\IDSearch.resx">
+      <DependentUpon>IDSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Auth\LogInGUI.resx">
+      <DependentUpon>LogInGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Log\LogGUI.resx">
       <DependentUpon>LogGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainGUI.resx">
+    <EmbeddedResource Include="Auth\LoginState.resx">
+      <DependentUpon>LoginState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\MainGUI.resx">
       <DependentUpon>MainGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MaintGUI.resx">
+    <EmbeddedResource Include="Features\Maint\MaintGUI.resx">
       <DependentUpon>MaintGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -132,20 +173,26 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProcessRecipe.resx">
+    <EmbeddedResource Include="Features\Recipe\ProcessRecipe.resx">
       <DependentUpon>ProcessRecipe.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RecipeGUI.resx">
+    <EmbeddedResource Include="Auth\PWSearch.resx">
+      <DependentUpon>PWSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Recipe\RecipeGUI.resx">
       <DependentUpon>RecipeGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingGUI.resx">
+    <EmbeddedResource Include="Features\Setting\SettingGUI.resx">
       <DependentUpon>SettingGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WaferControl.resx">
+    <EmbeddedResource Include="Auth\SignUp.resx">
+      <DependentUpon>SignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Operation\WaferControl.resx">
       <DependentUpon>WaferControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

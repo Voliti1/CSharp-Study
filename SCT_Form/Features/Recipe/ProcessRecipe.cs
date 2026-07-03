@@ -693,7 +693,7 @@ namespace SCT_Form
 
         private string GetDefaultRecipeRootPath()
         {
-            return Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..", "Recipe"));
+            return AppDataPaths.RecipeRootPath;
         }
 
         private string NormalizeModule(string module)

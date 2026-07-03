@@ -12,6 +12,7 @@ namespace SCT_Form
         [STAThread]
         static void Main()
         {
+            AppDataPaths.EnsureBaseFolders();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainGUI());

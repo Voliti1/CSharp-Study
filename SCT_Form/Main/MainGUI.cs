@@ -44,6 +44,11 @@ namespace SCT_Form
         private LogGUI logGUI;
         private RecipeGUI recipeGUI;
         private SettingGUI settingGUI;
+        private LoginState loginStateGUI;
+        private AccountInfo currentAccount;
+        private readonly List<SystemLogEntry> systemLogs = new List<SystemLogEntry>();
+        private long nextLogId;
+        private const int MaxSystemLogCount = 5000;
         
         public MainGUI()
         {
@@ -75,12 +80,15 @@ namespace SCT_Form
             recipeGUI = new RecipeGUI(this);
             settingGUI = new SettingGUI(this);
 
+            InitializeLoginEntryPoints();
+
             SystemConnect();
             servoMotorON();
             isServoMotorOn = true;
             setBasicPoint();
 
             Mainpnl_CurrentStateGUI();
+            UpdateDateTimeLabels();
 
             timer1.Interval = 200;
             timer1.Start();
@@ -88,68 +96,206 @@ namespace SCT_Form
             WriteSystemLog("INFO", "시스템 초기화 완료 (초기 모드: AUTO)");
         }
 
-        // 파일 로그(log4net) 저장과 하단 lbl_SystemLog 라벨 업데이트를 동시에 수행하는 전용 메서드
+        private void InitializeLoginEntryPoints()
+        {
+            tBox_ID.ReadOnly = true;
+            tBox_PW.ReadOnly = true;
+            tBox_ID.BackColor = Color.White;
+            tBox_PW.BackColor = Color.White;
+            tBox_PW.UseSystemPasswordChar = true;
+            tBox_ID.Cursor = Cursors.Hand;
+            tBox_PW.Cursor = Cursors.Hand;
+            tBox_ID.Click += LoginTextBox_Click;
+            tBox_PW.Click += LoginTextBox_Click;
+            UpdateLoginDisplay();
+        }
+
+        private void LoginTextBox_Click(object sender, EventArgs e)
+        {
+            ShowLoginDialog();
+        }
+
+        private void ShowLoginDialog()
+        {
+            using (LogInGUI loginGUI = new LogInGUI())
+            {
+                if (loginGUI.ShowDialog(this) != DialogResult.OK) return;
+
+                currentAccount = loginGUI.LoggedInAccount;
+                ShowLoginStatePanel();
+                WriteSystemLog("User", "INFO", "로그인: " + currentAccount.UserId);
+                MessageBox.Show("로그인되었습니다.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void UpdateLoginDisplay()
+        {
+            if (currentAccount == null)
+            {
+                tBox_ID.Text = string.Empty;
+                tBox_PW.Text = string.Empty;
+                return;
+            }
+
+            tBox_ID.Text = currentAccount.UserId;
+            tBox_PW.Text = "********";
+        }
+
+        private void ShowLoginInputPanel()
+        {
+            pnl_LoginChange.Controls.Clear();
+            pnl_LogIn.Controls.Clear();
+            pnl_LogIn.Controls.Add(lbl_ID, 0, 0);
+            pnl_LogIn.Controls.Add(lbl_PW, 1, 0);
+            pnl_LogIn.Controls.Add(tBox_ID, 0, 1);
+            pnl_LogIn.Controls.Add(tBox_PW, 1, 1);
+            pnl_LoginChange.Controls.Add(pnl_LogIn);
+            UpdateLoginDisplay();
+        }
+
+        private void ShowLoginStatePanel()
+        {
+            pnl_LoginChange.Controls.Clear();
+            loginStateGUI = new LoginState(currentAccount);
+            loginStateGUI.Dock = DockStyle.Fill;
+            loginStateGUI.LogoutRequested += LoginStateGUI_LogoutRequested;
+            pnl_LoginChange.Controls.Add(loginStateGUI);
+        }
+
+        private void LoginStateGUI_LogoutRequested(object sender, EventArgs e)
+        {
+            string logoutUserId = currentAccount == null ? string.Empty : currentAccount.UserId;
+            currentAccount = null;
+            loginStateGUI = null;
+            ShowLoginInputPanel();
+            WriteSystemLog("User", "INFO", "로그아웃: " + logoutUserId);
+            MessageBox.Show("로그아웃되었습니다.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        internal bool IsLoggedIn
+        {
+            get { return currentAccount != null; }
+        }
+
+        internal bool IsAdminLoggedIn
+        {
+            get { return AccountService.IsAdmin(currentAccount); }
+        }
+
+        internal bool EnsureEquipmentOperationAllowed()
+        {
+            if (IsLoggedIn) return true;
+
+            MessageBox.Show("장비 동작을 하려면 로그인해주세요", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
+        }
+
+        internal bool EnsureAdminSettingAllowed()
+        {
+            if (IsAdminLoggedIn) return true;
+
+            MessageBox.Show("설정을 하려면 관리자 계정으로 로그인해주세요", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
+        }
+
+        internal List<SystemLogEntry> GetSystemLogSnapshot()
+        {
+            lock (systemLogs)
+            {
+                return systemLogs.Select(item => item.Clone()).ToList();
+            }
+        }
+
+        internal void DeleteSystemLogs(IEnumerable<long> logIds)
+        {
+            HashSet<long> targetIds = new HashSet<long>(logIds);
+            if (targetIds.Count == 0) return;
+
+            lock (systemLogs)
+            {
+                systemLogs.RemoveAll(item => targetIds.Contains(item.Id));
+            }
+
+            if (logGUI != null && !logGUI.IsDisposed)
+            {
+                logGUI.RefreshLogs(true);
+            }
+        }
+
+        // 파일 로그(log4net) 저장과 화면 로그 목록 갱신을 동시에 수행하는 전용 메서드
         public void WriteSystemLog(string level, string message)
         {
-            //// 크로스 스레드 발생 시 UI 스레드로 안전하게 위임
-            //if (LogView.InvokeRequired)
-            //{
-            //    LogView.Invoke(new Action(() => WriteSystemLog(level, message)));
-            //    return;
-            //}
+            WriteSystemLog(ResolveLogCategory(level, message), level, message);
+        }
 
-            //// 1. log4net 파일 저장
-            //switch (level.ToUpper())
-            //{
-            //    case "INFO": log.Info(message); break;
-            //    case "WARN": log.Warn(message); break;
-            //    case "ERROR": log.Error(message); break;
-            //    default: log.Info(message); break;
-            //}
+        public void WriteSystemLog(string category, string level, string message)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(() => WriteSystemLog(category, level, message)));
+                return;
+            }
 
-            //string logTime = DateTime.Now.ToString("HH:mm:ss");
-            //string upperLevel = level.ToUpper();
+            string upperLevel = string.IsNullOrWhiteSpace(level) ? "INFO" : level.Trim().ToUpper();
+            string logMessage = message ?? string.Empty;
+            string logCategory = string.IsNullOrWhiteSpace(category) ? ResolveLogCategory(upperLevel, logMessage) : category.Trim();
 
-            //// 2. ListView 행(Row) 객체 생성 및 데이터 삽입
-            //ListViewItem item = new ListViewItem(logTime);
-            //item.SubItems.Add(upperLevel);
-            //item.SubItems.Add(message);
+            switch (upperLevel)
+            {
+                case "WARN":
+                    log.Warn(logMessage);
+                    break;
+                case "ERROR":
+                    log.Error(logMessage);
+                    break;
+                case "FATAL":
+                    log.Fatal(logMessage);
+                    break;
+                default:
+                    log.Info(logMessage);
+                    break;
+            }
 
-            //// 3. SEMI 표준 적용: 중요도에 따라 한 줄 전체 배경색/글자색 반전
-            //switch (upperLevel)
-            //{
-            //    case "INFO":
-            //        item.BackColor = Color.White;
-            //        item.ForeColor = Color.Black;
-            //        break;
+            SystemLogEntry entry = new SystemLogEntry
+            {
+                Id = ++nextLogId,
+                Time = DateTime.Now,
+                Category = logCategory,
+                Level = upperLevel,
+                Message = logMessage
+            };
 
-            //    case "WARN":
-            //        item.BackColor = Color.Orange;
-            //        item.ForeColor = Color.Black;
-            //        break;
+            lock (systemLogs)
+            {
+                systemLogs.Add(entry);
+                if (systemLogs.Count > MaxSystemLogCount)
+                {
+                    systemLogs.RemoveRange(0, systemLogs.Count - MaxSystemLogCount);
+                }
+            }
 
-            //    case "ERROR":
-            //    case "FATAL":
-            //        item.BackColor = Color.Red;
-            //        item.ForeColor = Color.White;
-            //        break;
+            if (logGUI != null && !logGUI.IsDisposed)
+            {
+                logGUI.RefreshLogs(false);
+            }
+        }
 
-            //    default:
-            //        item.BackColor = Color.White;
-            //        item.ForeColor = Color.Black;
-            //        break;
-            //}
+        private string ResolveLogCategory(string level, string message)
+        {
+            string upperLevel = string.IsNullOrWhiteSpace(level) ? "INFO" : level.Trim().ToUpper();
+            string text = message ?? string.Empty;
 
-            //// 4. 메모리 관리 (최대 500개 유지)
-            //if (LogView.Items.Count >= 500)
-            //{
-            //    LogView.Items.RemoveAt(0);
-            //}
-
-            //// 5. 리스트뷰에 아이템 최종 추가 및 강제 화면 새로고침(Invalidate) 후 스크롤 다운
-            //LogView.Items.Add(item);
-            //LogView.Invalidate(); // 변경 사항을 화면에 즉시 다시 그리도록 명령
-            //item.EnsureVisible();
+            if (upperLevel == "WARN" || upperLevel == "ERROR" || upperLevel == "FATAL") return "Alarm";
+            if (text.Contains("로그인") || text.Contains("로그아웃") || text.Contains("계정")) return "User";
+            if (text.IndexOf("Recipe", StringComparison.OrdinalIgnoreCase) >= 0 || text.Contains("레시피")) return "Recipe";
+            if (text.Contains("모드")) return "Mode";
+            if (text.IndexOf("Setting", StringComparison.OrdinalIgnoreCase) >= 0 || text.Contains("설정")) return "System Setting";
+            if (text.Contains("수동 제어")) return "Manual Control";
+            if (text.IndexOf("Alarm", StringComparison.OrdinalIgnoreCase) >= 0 || text.Contains("알람")) return "Alarm";
+            if (text.IndexOf("EtherCAT", StringComparison.OrdinalIgnoreCase) >= 0 || text.Contains("통신") || text.Contains("연결")) return "Communication";
+            if (text.IndexOf("Export", StringComparison.OrdinalIgnoreCase) >= 0 || text.Contains("내보내기")) return "Data Export";
+            if (text.Contains("초기화") || text.Contains("종료") || text.IndexOf("Application", StringComparison.OrdinalIgnoreCase) >= 0) return "System";
+            return "Equipment Operation";
         }
         private void SystemConnect()
         {
@@ -207,6 +353,7 @@ namespace SCT_Form
         }
         private void Reconnect_Click(object sender, EventArgs e)
         {
+            if (!EnsureEquipmentOperationAllowed()) return;
             if (isConnect) return;
             SystemConnect();
             servoMotorON();
@@ -214,30 +361,35 @@ namespace SCT_Form
         // --- 타워 램프 제어 영역 ---
         private void RedLightOn_Click(object sender, EventArgs e)
         {
+            if (!EnsureEquipmentOperationAllowed()) return;
             EtherCAT_M.Digital_Output(0, true);
             WriteSystemLog("INFO", "수동 제어: 타워램프 적색등(Red) ON");
         }
 
         private void RedLightOff_Click(object sender, EventArgs e)
         {
+            if (!EnsureEquipmentOperationAllowed()) return;
             EtherCAT_M.Digital_Output(0, false);
             WriteSystemLog("INFO", "수동 제어: 타워램프 적색등(Red) OFF");
         }
 
         private void YellowLightOn_Click(object sender, EventArgs e)
         {
+            if (!EnsureEquipmentOperationAllowed()) return;
             EtherCAT_M.Digital_Output(1, true);
             WriteSystemLog("INFO", "수동 제어: 타워램프 황색등(Yellow) ON");
         }
 
         private void YellowLightOff_Click(object sender, EventArgs e)
         {
+            if (!EnsureEquipmentOperationAllowed()) return;
             EtherCAT_M.Digital_Output(1, false);
             WriteSystemLog("INFO", "수동 제어: 타워램프 황색등(Yellow) OFF");
         }
 
         private void GreenLightOn_Click(object sender, EventArgs e)
         {
+            if (!EnsureEquipmentOperationAllowed()) return;
             EtherCAT_M.Digital_Output(2, true);
             isGreenLightOn = true;
             WriteSystemLog("INFO", "수동 제어: 타워램프 녹색등(Green) ON");
@@ -245,6 +397,7 @@ namespace SCT_Form
 
         private void GreenLightOff_Click(object sender, EventArgs e)
         {
+            if (!EnsureEquipmentOperationAllowed()) return;
             EtherCAT_M.Digital_Output(2, false);
             isGreenLightOn = false;
             WriteSystemLog("INFO", "수동 제어: 타워램프 녹색등(Green) OFF");
@@ -252,6 +405,7 @@ namespace SCT_Form
 
         private void AllLightOn_Click(object sender, EventArgs e)
         {
+            if (!EnsureEquipmentOperationAllowed()) return;
             EtherCAT_M.Digital_Output(0, true);
             EtherCAT_M.Digital_Output(1, true);
             EtherCAT_M.Digital_Output(2, true);
@@ -260,6 +414,7 @@ namespace SCT_Form
 
         private void AllLightOff_Click(object sender, EventArgs e)
         {
+            if (!EnsureEquipmentOperationAllowed()) return;
             EtherCAT_M.Digital_Output(0, false);
             EtherCAT_M.Digital_Output(1, false);
             EtherCAT_M.Digital_Output(2, false);
@@ -317,8 +472,14 @@ namespace SCT_Form
             EtherCAT_M.Digital_Output(1, true);
         }
 
+        private void btn_Home_Click(object sender, EventArgs e)
+        {
+            btn_Operate_Click(sender, e);
+        }
+
         private void btn_maint_Click(object sender, EventArgs e)
         {
+            if (!EnsureEquipmentOperationAllowed()) return;
             if (currentUbarState == "Maint") return;
 
             currentUbarState = "Maint";
@@ -333,6 +494,7 @@ namespace SCT_Form
         }
         private void btn_Recipe_Click(object sender, EventArgs e)
         {
+            if (!EnsureAdminSettingAllowed()) return;
             if (currentUbarState == "Recipe") return;
 
             currentUbarState = "Recipe";
@@ -362,6 +524,7 @@ namespace SCT_Form
         }
         private void btn_Setting_Click(object sender, EventArgs e)
         {
+            if (!EnsureAdminSettingAllowed()) return;
             if (currentUbarState == "Setting") return;
 
             currentUbarState = "Setting";
@@ -505,8 +668,21 @@ namespace SCT_Form
             Mainpnl.Controls.Add(settingGUI);
         }
 
+        private void UpdateDateTimeLabels()
+        {
+            DateTime now = DateTime.Now;
+            lbl_Date.Text = now.ToString("yyyy-MM-dd");
+            lbl_Time.Text = now.ToString("HH:mm:ss");
+        }
+
         internal void timer1_Tick(object sender, EventArgs e)
         {
+            UpdateDateTimeLabels();
+            if (logGUI != null && !logGUI.IsDisposed)
+            {
+                logGUI.RefreshLogs(false);
+            }
+
             if (!isConnect || EtherCAT_M == null) return;
 
             try
@@ -522,7 +698,9 @@ namespace SCT_Form
             catch (Exception ex)
             {
                 log.Error("UI 모니터링 타이머 처리 중 예외 발생: ", ex);
+                WriteSystemLog("ERROR", $"UI 모니터링 타이머 처리 중 예외 발생: {ex.Message}");
             }
         }
+
     }
 }

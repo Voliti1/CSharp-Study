@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\recipegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\loggui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:loggui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\loggui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:loggui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\recipegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:recipegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\processrecipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:processrecipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\recipegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:recipegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\chamberrecipesetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:chamberrecipesetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,50 +35,51 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "RecipeGUI.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\RecipeGUI.cs",
-              "RelativeDocumentMoniker": "RecipeGUI.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\RecipeGUI.cs",
-              "RelativeToolTip": "RecipeGUI.cs",
-              "ViewState": "AgIAAFQCAAAAAAAAAAArwIUCAAAAAAAAAAAAAA==",
+              "Title": "MainGUI.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\MainGUI.cs",
+              "RelativeDocumentMoniker": "MainGUI.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\MainGUI.cs",
+              "RelativeToolTip": "MainGUI.cs",
+              "ViewState": "AgIAALwAAAAAAAAAAAAswMQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-02T13:51:50.368Z",
+              "WhenOpened": "2026-07-03T11:05:02.574Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ChamberRecipeSetting.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\ChamberRecipeSetting.cs",
-              "RelativeDocumentMoniker": "ChamberRecipeSetting.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\ChamberRecipeSetting.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "ChamberRecipeSetting.cs [\uB514\uC790\uC778]",
+              "DocumentIndex": 1,
+              "Title": "LogGUI.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\LogGUI.cs",
+              "RelativeDocumentMoniker": "LogGUI.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\LogGUI.cs",
+              "RelativeToolTip": "LogGUI.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAmwCQAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-02T13:43:41.569Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
+              "WhenOpened": "2026-07-03T10:57:26.903Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LogGUI.cs [\uB514\uC790\uC778]",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\LogGUI.cs",
+              "RelativeDocumentMoniker": "LogGUI.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\LogGUI.cs [\uB514\uC790\uC778]",
+              "RelativeToolTip": "LogGUI.cs [\uB514\uC790\uC778]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T10:26:32.051Z",
+              "EditorCaption": " [\uB514\uC790\uC778]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "RecipeGUI.cs [\uB514\uC790\uC778]",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\RecipeGUI.cs",
               "RelativeDocumentMoniker": "RecipeGUI.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\RecipeGUI.cs [\uB514\uC790\uC778]",
               "RelativeToolTip": "RecipeGUI.cs [\uB514\uC790\uC778]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-02T13:00:43.349Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProcessRecipe.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\ProcessRecipe.cs",
-              "RelativeDocumentMoniker": "ProcessRecipe.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\ProcessRecipe.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "ProcessRecipe.cs [\uB514\uC790\uC778]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-02T12:56:02.873Z",
+              "WhenOpened": "2026-07-03T10:25:59.533Z",
               "EditorCaption": " [\uB514\uC790\uC778]"
             }
           ]
