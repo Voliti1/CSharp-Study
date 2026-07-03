@@ -59,3 +59,9 @@ C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\CodexCheck\IEG3268_Dll.dll
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\CodexCheck\log4net.dll
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\CodexCheck\log4net.pdb
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\CodexCheck\log4net.xml
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.exe.config
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.LogInGUI.resources
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.SignUp.resources
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.IDSearch.resources
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.PWSearch.resources
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.LoginState.resources

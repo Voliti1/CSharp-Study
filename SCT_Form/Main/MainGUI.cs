@@ -297,6 +297,7 @@ namespace SCT_Form
             if (text.Contains("초기화") || text.Contains("종료") || text.IndexOf("Application", StringComparison.OrdinalIgnoreCase) >= 0) return "System";
             return "Equipment Operation";
         }
+
         private void SystemConnect()
         {
             WriteSystemLog("INFO", "EtherCAT 마스터 연결 시도 중...");
