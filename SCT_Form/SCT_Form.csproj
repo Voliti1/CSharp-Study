@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Core\AppDataPaths.cs" />
     <Compile Include="Core\AccountService.cs" />
+    <Compile Include="Core\EquipmentSettings.cs" />
     <Compile Include="Features\Recipe\ChamberRecipeSelection.cs" />
     <Compile Include="Features\Recipe\ChamberRecipeSetting.cs">
       <SubType>Form</SubType>

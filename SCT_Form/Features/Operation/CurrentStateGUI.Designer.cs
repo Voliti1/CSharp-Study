@@ -30,10 +30,13 @@
         {
             this.pnl_PMC = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMC = new System.Windows.Forms.Label();
+            this.waferControl3 = new SCT_Form.WaferControl();
             this.pnl_PMA = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMA = new System.Windows.Forms.Label();
+            this.waferControl2 = new SCT_Form.WaferControl();
             this.pnl_PMB = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMB = new System.Windows.Forms.Label();
+            this.waferControl1 = new SCT_Form.WaferControl();
             this.pnl_Robot = new System.Windows.Forms.Panel();
             this.lbl_Robot = new System.Windows.Forms.Label();
             this.pnl_FOUP_A = new System.Windows.Forms.TableLayoutPanel();
@@ -129,9 +132,12 @@
             this.lbl_RecipeSelect = new System.Windows.Forms.Label();
             this.cbox_ProcessRecipe = new System.Windows.Forms.ComboBox();
             this.btn_Start = new System.Windows.Forms.Button();
-            this.waferControl3 = new SCT_Form.WaferControl();
-            this.waferControl2 = new SCT_Form.WaferControl();
-            this.waferControl1 = new SCT_Form.WaferControl();
+            this.pnl_PMB_Top = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_PMB_DoorStatus = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_PMA_DoorStatus = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_PMC_DoorStatus = new System.Windows.Forms.Label();
             this.pnl_PMC.SuspendLayout();
             this.pnl_PMA.SuspendLayout();
             this.pnl_PMB.SuspendLayout();
@@ -151,6 +157,9 @@
             this.toppnl_PMC.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.pnl_RecipeSelect.SuspendLayout();
+            this.pnl_PMB_Top.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_PMC
@@ -180,6 +189,17 @@
             this.lbl_PMC.Text = "PM C";
             this.lbl_PMC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // waferControl3
+            // 
+            this.waferControl3.BackColor = System.Drawing.Color.Transparent;
+            this.waferControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.waferControl3.Location = new System.Drawing.Point(21, 72);
+            this.waferControl3.Margin = new System.Windows.Forms.Padding(20);
+            this.waferControl3.Name = "waferControl3";
+            this.waferControl3.Size = new System.Drawing.Size(140, 140);
+            this.waferControl3.State = SCT_Form.WaferControl.WaferState.Empty;
+            this.waferControl3.TabIndex = 1;
+            // 
             // pnl_PMA
             // 
             this.pnl_PMA.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -208,6 +228,17 @@
             this.lbl_PMA.Text = "PM A";
             this.lbl_PMA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // waferControl2
+            // 
+            this.waferControl2.BackColor = System.Drawing.Color.Transparent;
+            this.waferControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.waferControl2.Location = new System.Drawing.Point(21, 72);
+            this.waferControl2.Margin = new System.Windows.Forms.Padding(20);
+            this.waferControl2.Name = "waferControl2";
+            this.waferControl2.Size = new System.Drawing.Size(140, 140);
+            this.waferControl2.State = SCT_Form.WaferControl.WaferState.Empty;
+            this.waferControl2.TabIndex = 1;
+            // 
             // pnl_PMB
             // 
             this.pnl_PMB.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -235,6 +266,17 @@
             this.lbl_PMB.TabIndex = 0;
             this.lbl_PMB.Text = "PM B";
             this.lbl_PMB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // waferControl1
+            // 
+            this.waferControl1.BackColor = System.Drawing.Color.Transparent;
+            this.waferControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.waferControl1.Location = new System.Drawing.Point(21, 72);
+            this.waferControl1.Margin = new System.Windows.Forms.Padding(20);
+            this.waferControl1.Name = "waferControl1";
+            this.waferControl1.Size = new System.Drawing.Size(140, 140);
+            this.waferControl1.State = SCT_Form.WaferControl.WaferState.Empty;
+            this.waferControl1.TabIndex = 1;
             // 
             // pnl_Robot
             // 
@@ -843,8 +885,7 @@
             // 
             this.toppnl_PMA.BackColor = System.Drawing.Color.Silver;
             this.tablepnl_PMA.SetColumnSpan(this.toppnl_PMA, 3);
-            this.toppnl_PMA.Controls.Add(this.lbl_PMA_Status);
-            this.toppnl_PMA.Controls.Add(this.table_lbl_PMA);
+            this.toppnl_PMA.Controls.Add(this.tableLayoutPanel4);
             this.toppnl_PMA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toppnl_PMA.Location = new System.Drawing.Point(1, 1);
             this.toppnl_PMA.Margin = new System.Windows.Forms.Padding(0);
@@ -855,24 +896,24 @@
             // lbl_PMA_Status
             // 
             this.lbl_PMA_Status.BackColor = System.Drawing.Color.Silver;
-            this.lbl_PMA_Status.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbl_PMA_Status.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_PMA_Status.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl_PMA_Status.ForeColor = System.Drawing.Color.Silver;
-            this.lbl_PMA_Status.Location = new System.Drawing.Point(227, 0);
+            this.lbl_PMA_Status.Location = new System.Drawing.Point(221, 1);
             this.lbl_PMA_Status.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_PMA_Status.Name = "lbl_PMA_Status";
-            this.lbl_PMA_Status.Size = new System.Drawing.Size(51, 35);
+            this.lbl_PMA_Status.Size = new System.Drawing.Size(56, 33);
             this.lbl_PMA_Status.TabIndex = 47;
             this.lbl_PMA_Status.Text = "●";
             this.lbl_PMA_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // table_lbl_PMA
             // 
-            this.table_lbl_PMA.Dock = System.Windows.Forms.DockStyle.Left;
+            this.table_lbl_PMA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table_lbl_PMA.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
-            this.table_lbl_PMA.Location = new System.Drawing.Point(0, 0);
+            this.table_lbl_PMA.Location = new System.Drawing.Point(4, 1);
             this.table_lbl_PMA.Name = "table_lbl_PMA";
-            this.table_lbl_PMA.Size = new System.Drawing.Size(76, 35);
+            this.table_lbl_PMA.Size = new System.Drawing.Size(75, 33);
             this.table_lbl_PMA.TabIndex = 0;
             this.table_lbl_PMA.Text = "PM A";
             this.table_lbl_PMA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1093,8 +1134,7 @@
             // 
             this.toppnl_PMB.BackColor = System.Drawing.Color.Silver;
             this.tablepnl_PMB.SetColumnSpan(this.toppnl_PMB, 3);
-            this.toppnl_PMB.Controls.Add(this.lbl_PMB_Status);
-            this.toppnl_PMB.Controls.Add(this.table_lbl_PMB);
+            this.toppnl_PMB.Controls.Add(this.pnl_PMB_Top);
             this.toppnl_PMB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toppnl_PMB.Location = new System.Drawing.Point(1, 1);
             this.toppnl_PMB.Margin = new System.Windows.Forms.Padding(0);
@@ -1105,24 +1145,24 @@
             // lbl_PMB_Status
             // 
             this.lbl_PMB_Status.BackColor = System.Drawing.Color.Silver;
-            this.lbl_PMB_Status.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbl_PMB_Status.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_PMB_Status.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl_PMB_Status.ForeColor = System.Drawing.Color.Silver;
-            this.lbl_PMB_Status.Location = new System.Drawing.Point(227, 0);
+            this.lbl_PMB_Status.Location = new System.Drawing.Point(221, 1);
             this.lbl_PMB_Status.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_PMB_Status.Name = "lbl_PMB_Status";
-            this.lbl_PMB_Status.Size = new System.Drawing.Size(51, 35);
+            this.lbl_PMB_Status.Size = new System.Drawing.Size(56, 33);
             this.lbl_PMB_Status.TabIndex = 48;
             this.lbl_PMB_Status.Text = "●";
             this.lbl_PMB_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // table_lbl_PMB
             // 
-            this.table_lbl_PMB.Dock = System.Windows.Forms.DockStyle.Left;
+            this.table_lbl_PMB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table_lbl_PMB.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
-            this.table_lbl_PMB.Location = new System.Drawing.Point(0, 0);
+            this.table_lbl_PMB.Location = new System.Drawing.Point(4, 1);
             this.table_lbl_PMB.Name = "table_lbl_PMB";
-            this.table_lbl_PMB.Size = new System.Drawing.Size(76, 35);
+            this.table_lbl_PMB.Size = new System.Drawing.Size(75, 33);
             this.table_lbl_PMB.TabIndex = 0;
             this.table_lbl_PMB.Text = "PM B";
             this.table_lbl_PMB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1331,8 +1371,7 @@
             // 
             this.toppnl_PMC.BackColor = System.Drawing.Color.Silver;
             this.tablepnl_PMC.SetColumnSpan(this.toppnl_PMC, 3);
-            this.toppnl_PMC.Controls.Add(this.lbl_PMC_Status);
-            this.toppnl_PMC.Controls.Add(this.table_lbl_PMC);
+            this.toppnl_PMC.Controls.Add(this.tableLayoutPanel5);
             this.toppnl_PMC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toppnl_PMC.Location = new System.Drawing.Point(1, 1);
             this.toppnl_PMC.Margin = new System.Windows.Forms.Padding(0);
@@ -1343,24 +1382,24 @@
             // lbl_PMC_Status
             // 
             this.lbl_PMC_Status.BackColor = System.Drawing.Color.Silver;
-            this.lbl_PMC_Status.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbl_PMC_Status.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_PMC_Status.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl_PMC_Status.ForeColor = System.Drawing.Color.Silver;
-            this.lbl_PMC_Status.Location = new System.Drawing.Point(227, 0);
+            this.lbl_PMC_Status.Location = new System.Drawing.Point(221, 1);
             this.lbl_PMC_Status.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_PMC_Status.Name = "lbl_PMC_Status";
-            this.lbl_PMC_Status.Size = new System.Drawing.Size(51, 35);
+            this.lbl_PMC_Status.Size = new System.Drawing.Size(56, 33);
             this.lbl_PMC_Status.TabIndex = 48;
             this.lbl_PMC_Status.Text = "●";
             this.lbl_PMC_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // table_lbl_PMC
             // 
-            this.table_lbl_PMC.Dock = System.Windows.Forms.DockStyle.Left;
+            this.table_lbl_PMC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table_lbl_PMC.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
-            this.table_lbl_PMC.Location = new System.Drawing.Point(0, 0);
+            this.table_lbl_PMC.Location = new System.Drawing.Point(4, 1);
             this.table_lbl_PMC.Name = "table_lbl_PMC";
-            this.table_lbl_PMC.Size = new System.Drawing.Size(76, 35);
+            this.table_lbl_PMC.Size = new System.Drawing.Size(75, 33);
             this.table_lbl_PMC.TabIndex = 0;
             this.table_lbl_PMC.Text = "PM C";
             this.table_lbl_PMC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1469,38 +1508,95 @@
             this.btn_Start.UseVisualStyleBackColor = true;
             this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
             // 
-            // waferControl3
+            // pnl_PMB_Top
             // 
-            this.waferControl3.BackColor = System.Drawing.Color.Transparent;
-            this.waferControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.waferControl3.Location = new System.Drawing.Point(21, 72);
-            this.waferControl3.Margin = new System.Windows.Forms.Padding(20);
-            this.waferControl3.Name = "waferControl3";
-            this.waferControl3.Size = new System.Drawing.Size(140, 140);
-            this.waferControl3.State = SCT_Form.WaferControl.WaferState.Empty;
-            this.waferControl3.TabIndex = 1;
+            this.pnl_PMB_Top.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.pnl_PMB_Top.ColumnCount = 3;
+            this.pnl_PMB_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.60289F));
+            this.pnl_PMB_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.8195F));
+            this.pnl_PMB_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.pnl_PMB_Top.Controls.Add(this.lbl_PMB_DoorStatus, 1, 0);
+            this.pnl_PMB_Top.Controls.Add(this.table_lbl_PMB, 0, 0);
+            this.pnl_PMB_Top.Controls.Add(this.lbl_PMB_Status, 2, 0);
+            this.pnl_PMB_Top.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_PMB_Top.Location = new System.Drawing.Point(0, 0);
+            this.pnl_PMB_Top.Name = "pnl_PMB_Top";
+            this.pnl_PMB_Top.RowCount = 1;
+            this.pnl_PMB_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnl_PMB_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnl_PMB_Top.Size = new System.Drawing.Size(278, 35);
+            this.pnl_PMB_Top.TabIndex = 49;
             // 
-            // waferControl2
+            // lbl_PMB_DoorStatus
             // 
-            this.waferControl2.BackColor = System.Drawing.Color.Transparent;
-            this.waferControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.waferControl2.Location = new System.Drawing.Point(21, 72);
-            this.waferControl2.Margin = new System.Windows.Forms.Padding(20);
-            this.waferControl2.Name = "waferControl2";
-            this.waferControl2.Size = new System.Drawing.Size(140, 140);
-            this.waferControl2.State = SCT_Form.WaferControl.WaferState.Empty;
-            this.waferControl2.TabIndex = 1;
+            this.lbl_PMB_DoorStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_PMB_DoorStatus.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
+            this.lbl_PMB_DoorStatus.Location = new System.Drawing.Point(86, 1);
+            this.lbl_PMB_DoorStatus.Name = "lbl_PMB_DoorStatus";
+            this.lbl_PMB_DoorStatus.Size = new System.Drawing.Size(131, 33);
+            this.lbl_PMB_DoorStatus.TabIndex = 49;
+            this.lbl_PMB_DoorStatus.Text = "Door Close";
+            this.lbl_PMB_DoorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // waferControl1
+            // tableLayoutPanel4
             // 
-            this.waferControl1.BackColor = System.Drawing.Color.Transparent;
-            this.waferControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.waferControl1.Location = new System.Drawing.Point(21, 72);
-            this.waferControl1.Margin = new System.Windows.Forms.Padding(20);
-            this.waferControl1.Name = "waferControl1";
-            this.waferControl1.Size = new System.Drawing.Size(140, 140);
-            this.waferControl1.State = SCT_Form.WaferControl.WaferState.Empty;
-            this.waferControl1.TabIndex = 1;
+            this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.60289F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.8195F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.lbl_PMA_Status, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lbl_PMA_DoorStatus, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.table_lbl_PMA, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(278, 35);
+            this.tableLayoutPanel4.TabIndex = 50;
+            // 
+            // lbl_PMA_DoorStatus
+            // 
+            this.lbl_PMA_DoorStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_PMA_DoorStatus.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
+            this.lbl_PMA_DoorStatus.Location = new System.Drawing.Point(86, 1);
+            this.lbl_PMA_DoorStatus.Name = "lbl_PMA_DoorStatus";
+            this.lbl_PMA_DoorStatus.Size = new System.Drawing.Size(131, 33);
+            this.lbl_PMA_DoorStatus.TabIndex = 49;
+            this.lbl_PMA_DoorStatus.Text = "Door Close";
+            this.lbl_PMA_DoorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.60289F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.8195F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel5.Controls.Add(this.lbl_PMC_Status, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lbl_PMC_DoorStatus, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.table_lbl_PMC, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(278, 35);
+            this.tableLayoutPanel5.TabIndex = 50;
+            // 
+            // lbl_PMC_DoorStatus
+            // 
+            this.lbl_PMC_DoorStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_PMC_DoorStatus.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
+            this.lbl_PMC_DoorStatus.Location = new System.Drawing.Point(86, 1);
+            this.lbl_PMC_DoorStatus.Name = "lbl_PMC_DoorStatus";
+            this.lbl_PMC_DoorStatus.Size = new System.Drawing.Size(131, 33);
+            this.lbl_PMC_DoorStatus.TabIndex = 49;
+            this.lbl_PMC_DoorStatus.Text = "Door Close";
+            this.lbl_PMC_DoorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CurrentStateGUI
             // 
@@ -1536,6 +1632,9 @@
             this.toppnl_PMC.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.pnl_RecipeSelect.ResumeLayout(false);
+            this.pnl_PMB_Top.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1646,5 +1745,11 @@
         private System.Windows.Forms.Button btn_Pause;
         private System.Windows.Forms.ComboBox cbox_ProcessRecipe;
         private System.Windows.Forms.Button btn_Start;
+        private System.Windows.Forms.TableLayoutPanel pnl_PMB_Top;
+        internal System.Windows.Forms.Label lbl_PMB_DoorStatus;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        internal System.Windows.Forms.Label lbl_PMA_DoorStatus;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        internal System.Windows.Forms.Label lbl_PMC_DoorStatus;
     }
 }

@@ -12,12 +12,22 @@ namespace SCT_Form
 
         public static string RecipeRootPath
         {
+            get { return EquipmentSettingsService.Current.DefaultRecipeSavePath; }
+        }
+
+        public static string DefaultRecipeRootPath
+        {
             get { return Path.Combine(RootPath, "Recipe"); }
         }
 
         public static string AccountFilePath
         {
             get { return Path.Combine(RootPath, "Account.json"); }
+        }
+
+        public static string SettingsFilePath
+        {
+            get { return Path.Combine(RootPath, "Settings.json"); }
         }
 
         public static string LogFolderPath

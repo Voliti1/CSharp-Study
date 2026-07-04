@@ -41,9 +41,43 @@ namespace SCT_Form
             InitializeProgressBar(pnl_PMA_progressbar);
             InitializeProgressBar(pnl_PMB_progressbar);
             InitializeProgressBar(pnl_PMC_progressbar);
+            RefreshDoorStatusLabels();
 
             chamberProcessTimer.Interval = 1000;
             chamberProcessTimer.Tick += chamberProcessTimer_Tick;
+        }
+
+        internal void RefreshDoorStatusLabels()
+        {
+            if (main == null) return;
+
+            SetDoorStatusLabel(lbl_PMA_DoorStatus, main.isChamADoorOpen);
+            SetDoorStatusLabel(lbl_PMB_DoorStatus, main.isChamBDoorOpen);
+            SetDoorStatusLabel(lbl_PMC_DoorStatus, main.isChamCDoorOpen);
+        }
+
+        internal void SetDoorStatus(string pmName, bool isOpen)
+        {
+            if (pmName == "PM A")
+            {
+                SetDoorStatusLabel(lbl_PMA_DoorStatus, isOpen);
+            }
+            else if (pmName == "PM B")
+            {
+                SetDoorStatusLabel(lbl_PMB_DoorStatus, isOpen);
+            }
+            else if (pmName == "PM C")
+            {
+                SetDoorStatusLabel(lbl_PMC_DoorStatus, isOpen);
+            }
+        }
+
+        private void SetDoorStatusLabel(Label label, bool isOpen)
+        {
+            if (label == null) return;
+
+            label.Text = isOpen ? "Door Open" : "Door Close";
+            label.ForeColor = isOpen ? Color.Goldenrod : Color.DimGray;
         }
 
         private void InitializeProcessRecipeSelector()
@@ -524,7 +558,10 @@ namespace SCT_Form
             if (sourceLabel == null || targetLabel == null) return;
 
             targetLabel.Text = sourceLabel.Text;
-            targetLabel.ForeColor = sourceLabel.ForeColor;
+            if (main == null || !main.TrySyncPmStatusLabel(targetLabel, sourceLabel.ForeColor))
+            {
+                targetLabel.ForeColor = sourceLabel.ForeColor;
+            }
         }
 
         private StepProgress GetStepProgress(ChamberProcessState state)

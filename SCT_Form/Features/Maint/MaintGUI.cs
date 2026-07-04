@@ -44,6 +44,8 @@ namespace SCT_Form
 
             main.EtherCAT_M.Digital_Output(5, true);
             main.EtherCAT_M.Digital_Output(4, false);
+            pnl_Cham_A_Door.BackColor = Color.Red;
+            main.SetChamberDoorStatus("PM A", true);
 
             main.WriteSystemLog("INFO", "Chamber A 도어 OPEN 완료");
         }
@@ -56,7 +58,8 @@ namespace SCT_Form
             main.EtherCAT_M.Digital_Output(5, false);
             main.EtherCAT_M.Digital_Output(4, true);
 
-            pnl_Cham_A_Door.BackColor = Color.Red;
+            pnl_Cham_A_Door.BackColor = Color.LightGray;
+            main.SetChamberDoorStatus("PM A", false);
             main.WriteSystemLog("INFO", "Chamber A 도어 CLOSE 완료");
         }
 
@@ -98,6 +101,7 @@ namespace SCT_Form
             main.EtherCAT_M.Digital_Output(7, false);
 
             pnl_Cham_B_Door.BackColor = Color.Red;
+            main.SetChamberDoorStatus("PM B", true);
             main.WriteSystemLog("INFO", "Chamber B 도어 OPEN 완료");
         }
 
@@ -110,6 +114,7 @@ namespace SCT_Form
             main.EtherCAT_M.Digital_Output(7, true);
 
             pnl_Cham_B_Door.BackColor = Color.LightGray;
+            main.SetChamberDoorStatus("PM B", false);
             main.WriteSystemLog("INFO", "Chamber B 도어 CLOSE 완료");
         }
 
@@ -150,6 +155,7 @@ namespace SCT_Form
             main.EtherCAT_M.Digital_Output(11, true);
             main.EtherCAT_M.Digital_Output(10, false);
             pnl_Cham_C_Door.BackColor = Color.Red;
+            main.SetChamberDoorStatus("PM C", true);
             main.WriteSystemLog("INFO", "Chamber C 도어 OPEN 완료");
         }
 
@@ -161,6 +167,7 @@ namespace SCT_Form
             main.EtherCAT_M.Digital_Output(11, false);
             main.EtherCAT_M.Digital_Output(10, true);
             pnl_Cham_C_Door.BackColor = Color.LightGray;
+            main.SetChamberDoorStatus("PM C", false);
             main.WriteSystemLog("INFO", "Chamber C 도어 CLOSE 완료");
         }
 

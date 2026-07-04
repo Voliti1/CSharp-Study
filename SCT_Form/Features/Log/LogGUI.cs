@@ -16,8 +16,12 @@ namespace SCT_Form
         private readonly List<LogFilter> activeFilters = new List<LogFilter>();
         private readonly List<SystemLogEntry> currentDisplayLogs = new List<SystemLogEntry>();
         private MainGUI main;
+        private ComboBox cbox_FilterValue1;
+        private ComboBox cbox_FilterValue2;
+        private ComboBox cbox_FilterValue3;
         private bool showFullLog;
         private bool selectMode;
+        private bool sortAscending;
 
         public LogGUI()
         {
@@ -46,9 +50,17 @@ namespace SCT_Form
             LogView.Columns.Add("Message", 520, HorizontalAlignment.Left);
             LogView.ItemSelectionChanged += LogView_ItemSelectionChanged;
 
+            InitializeLogDetailView();
+
             InitializeColumnComboBox(cbox_Column1, "Level");
             InitializeColumnComboBox(cbox_Column2, "Category");
             InitializeColumnComboBox(cbox_Column3, "Message");
+            cbox_FilterValue1 = CreateFilterValueComboBox(cbox_Column1, txtbox_1);
+            cbox_FilterValue2 = CreateFilterValueComboBox(cbox_Column2, txtbox_2);
+            cbox_FilterValue3 = CreateFilterValueComboBox(cbox_Column3, txtbox_3);
+            UpdateFilterValueControl(cbox_Column1, txtbox_1);
+            UpdateFilterValueControl(cbox_Column2, txtbox_2);
+            UpdateFilterValueControl(cbox_Column3, txtbox_3);
 
             btn_Alarm.Click += btn_Alarm_Click;
             btn_FullLog.Click += btn_FullLog_Click;
@@ -57,6 +69,19 @@ namespace SCT_Form
 
             ApplyLogMode(false);
             ApplySelectMode(false);
+            ApplySortDirection(false);
+        }
+
+        private void InitializeLogDetailView()
+        {
+            LogDetailView.View = View.Details;
+            LogDetailView.FullRowSelect = true;
+            LogDetailView.GridLines = true;
+            LogDetailView.HideSelection = false;
+            LogDetailView.MultiSelect = false;
+            LogDetailView.Columns.Clear();
+            LogDetailView.Columns.Add("Field", 120, HorizontalAlignment.Center);
+            LogDetailView.Columns.Add("Value", 900, HorizontalAlignment.Left);
         }
 
         private void InitializeColumnComboBox(ComboBox comboBox, string selectedColumn)
@@ -70,16 +95,126 @@ namespace SCT_Form
             comboBox.SelectedItem = selectedColumn;
         }
 
+        private ComboBox CreateFilterValueComboBox(ComboBox columnComboBox, TextBox textBox)
+        {
+            ComboBox valueComboBox = new ComboBox();
+            valueComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            valueComboBox.Dock = DockStyle.Fill;
+            valueComboBox.Margin = textBox.Margin;
+            valueComboBox.Visible = false;
+            valueComboBox.DropDown += FilterValueComboBox_DropDown;
+
+            pnl_Filter.Controls.Add(
+                valueComboBox,
+                pnl_Filter.GetColumn(textBox),
+                pnl_Filter.GetRow(textBox));
+
+            columnComboBox.SelectedIndexChanged += FilterColumnComboBox_SelectedIndexChanged;
+            return valueComboBox;
+        }
+
+        private void FilterColumnComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox columnComboBox = sender as ComboBox;
+            if (columnComboBox == cbox_Column1) UpdateFilterValueControl(cbox_Column1, txtbox_1);
+            if (columnComboBox == cbox_Column2) UpdateFilterValueControl(cbox_Column2, txtbox_2);
+            if (columnComboBox == cbox_Column3) UpdateFilterValueControl(cbox_Column3, txtbox_3);
+        }
+
+        private void FilterValueComboBox_DropDown(object sender, EventArgs e)
+        {
+            if (sender == cbox_FilterValue1) PopulateFilterValueComboBox(cbox_Column1, cbox_FilterValue1);
+            if (sender == cbox_FilterValue2) PopulateFilterValueComboBox(cbox_Column2, cbox_FilterValue2);
+            if (sender == cbox_FilterValue3) PopulateFilterValueComboBox(cbox_Column3, cbox_FilterValue3);
+        }
+
+        private void UpdateFilterValueControl(ComboBox columnComboBox, TextBox textBox)
+        {
+            ComboBox valueComboBox = GetFilterValueComboBox(columnComboBox);
+            if (valueComboBox == null) return;
+
+            string columnName = Convert.ToString(columnComboBox.SelectedItem);
+            bool useComboBox = columnName == "Category" || columnName == "Level";
+
+            textBox.Visible = !useComboBox;
+            valueComboBox.Visible = useComboBox;
+
+            if (useComboBox)
+            {
+                textBox.Clear();
+                PopulateFilterValueComboBox(columnComboBox, valueComboBox);
+                valueComboBox.BringToFront();
+            }
+            else
+            {
+                valueComboBox.SelectedIndex = -1;
+                textBox.BringToFront();
+            }
+        }
+
+        private ComboBox GetFilterValueComboBox(ComboBox columnComboBox)
+        {
+            if (columnComboBox == cbox_Column1) return cbox_FilterValue1;
+            if (columnComboBox == cbox_Column2) return cbox_FilterValue2;
+            if (columnComboBox == cbox_Column3) return cbox_FilterValue3;
+            return null;
+        }
+
+        private void PopulateFilterValueComboBox(ComboBox columnComboBox, ComboBox valueComboBox)
+        {
+            string selectedValue = Convert.ToString(valueComboBox.SelectedItem);
+            string columnName = Convert.ToString(columnComboBox.SelectedItem);
+
+            valueComboBox.BeginUpdate();
+            valueComboBox.Items.Clear();
+
+            if (columnName == "Level")
+            {
+                valueComboBox.Items.AddRange(new object[] { "DEBUG", "INFO", "WARN", "ERROR", "FATAL" });
+            }
+            else if (columnName == "Category")
+            {
+                foreach (string category in GetCategoryFilterValues())
+                {
+                    valueComboBox.Items.Add(category);
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(selectedValue) && valueComboBox.Items.Contains(selectedValue))
+            {
+                valueComboBox.SelectedItem = selectedValue;
+            }
+
+            valueComboBox.EndUpdate();
+        }
+
+        private List<string> GetCategoryFilterValues()
+        {
+            IEnumerable<SystemLogEntry> logs = main == null
+                ? currentDisplayLogs
+                : main.GetSystemLogSnapshot();
+
+            return logs
+                .Select(item => item.Category)
+                .Where(item => !string.IsNullOrWhiteSpace(item))
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .OrderBy(item => item)
+                .ToList();
+        }
+
         internal void RefreshLogs(bool forceRefresh)
         {
             if (main == null) return;
 
             HashSet<long> selectedIds = GetSelectedLogIds();
-            List<SystemLogEntry> displayLogs = main.GetSystemLogSnapshot()
+            IEnumerable<SystemLogEntry> logQuery = main.GetSystemLogSnapshot()
+                .Where(item => main.ShowDebugLog || item.Level != "DEBUG")
                 .Where(item => showFullLog || IsAlarmLog(item))
-                .Where(MatchesFilters)
-                .OrderByDescending(item => item.Time)
-                .ToList();
+                .Where(MatchesFilters);
+
+            List<SystemLogEntry> displayLogs = sortAscending
+                ? logQuery.OrderBy(item => item.Time).Take(main.MaxDisplayLogCount).ToList()
+                : logQuery.OrderByDescending(item => item.Time).Take(main.MaxDisplayLogCount).ToList();
 
             if (!forceRefresh && IsSameDisplay(displayLogs)) return;
 
@@ -91,10 +226,12 @@ namespace SCT_Form
             foreach (SystemLogEntry logEntry in currentDisplayLogs)
             {
                 ListViewItem item = CreateLogViewItem(logEntry);
-                item.Selected = selectMode && selectedIds.Contains(logEntry.Id);
+                item.Selected = selectedIds.Contains(logEntry.Id);
                 LogView.Items.Add(item);
             }
             LogView.EndUpdate();
+
+            UpdateSelectedLogDetail();
         }
 
         private bool IsSameDisplay(List<SystemLogEntry> displayLogs)
@@ -187,7 +324,7 @@ namespace SCT_Form
 
         private void AddFilter(ComboBox comboBox, TextBox textBox)
         {
-            string value = (textBox.Text ?? string.Empty).Trim();
+            string value = GetFilterValue(comboBox, textBox);
             if (string.IsNullOrWhiteSpace(value)) return;
 
             activeFilters.Add(new LogFilter
@@ -197,16 +334,40 @@ namespace SCT_Form
             });
         }
 
+        private string GetFilterValue(ComboBox columnComboBox, TextBox textBox)
+        {
+            string columnName = Convert.ToString(columnComboBox.SelectedItem);
+            if (columnName == "Category" || columnName == "Level")
+            {
+                ComboBox valueComboBox = GetFilterValueComboBox(columnComboBox);
+                return Convert.ToString(valueComboBox == null ? null : valueComboBox.SelectedItem).Trim();
+            }
+
+            return (textBox.Text ?? string.Empty).Trim();
+        }
+
         private void btn_ClearFilter_Click(object sender, EventArgs e)
         {
             txtbox_1.Clear();
             txtbox_2.Clear();
             txtbox_3.Clear();
+            ClearFilterComboBox(cbox_FilterValue1);
+            ClearFilterComboBox(cbox_FilterValue2);
+            ClearFilterComboBox(cbox_FilterValue3);
             cbox_Column1.SelectedItem = "Level";
             cbox_Column2.SelectedItem = "Category";
             cbox_Column3.SelectedItem = "Message";
+            UpdateFilterValueControl(cbox_Column1, txtbox_1);
+            UpdateFilterValueControl(cbox_Column2, txtbox_2);
+            UpdateFilterValueControl(cbox_Column3, txtbox_3);
             activeFilters.Clear();
             RefreshLogs(true);
+        }
+
+        private void ClearFilterComboBox(ComboBox comboBox)
+        {
+            if (comboBox == null) return;
+            comboBox.SelectedIndex = -1;
         }
 
         private void btn_Export_Click(object sender, EventArgs e)
@@ -359,8 +520,61 @@ namespace SCT_Form
 
         private void LogView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            if (selectMode) return;
-            if (e.IsSelected) e.Item.Selected = false;
+            if (e.IsSelected)
+            {
+                ShowLogDetailByItem(e.Item);
+                return;
+            }
+
+            if (LogView.SelectedItems.Count == 0)
+            {
+                ClearLogDetailView();
+            }
+        }
+
+        private void UpdateSelectedLogDetail()
+        {
+            if (LogView.SelectedItems.Count == 0)
+            {
+                ClearLogDetailView();
+                return;
+            }
+
+            ShowLogDetailByItem(LogView.SelectedItems[LogView.SelectedItems.Count - 1]);
+        }
+
+        private void ShowLogDetailByItem(ListViewItem item)
+        {
+            if (item == null || !(item.Tag is long)) return;
+
+            long logId = (long)item.Tag;
+            SystemLogEntry logEntry = currentDisplayLogs.FirstOrDefault(entry => entry.Id == logId);
+            if (logEntry == null) return;
+
+            ShowLogDetail(logEntry);
+        }
+
+        private void ShowLogDetail(SystemLogEntry logEntry)
+        {
+            LogDetailView.BeginUpdate();
+            LogDetailView.Items.Clear();
+            AddLogDetailRow("Time", logEntry.Time.ToString("yyyy-MM-dd HH:mm:ss"));
+            AddLogDetailRow("Category", logEntry.Category);
+            AddLogDetailRow("Level", logEntry.Level);
+            AddLogDetailRow("Message", logEntry.Message);
+            LogDetailView.EndUpdate();
+        }
+
+        private void AddLogDetailRow(string fieldName, string value)
+        {
+            ListViewItem item = new ListViewItem(fieldName);
+            item.SubItems.Add(value ?? string.Empty);
+            LogDetailView.Items.Add(item);
+        }
+
+        private void ClearLogDetailView()
+        {
+            LogDetailView.Items.Clear();
         }
 
         private HashSet<long> GetSelectedLogIds()
@@ -380,6 +594,7 @@ namespace SCT_Form
         private void btn_RandomAlarm_Click(object sender, EventArgs e)
         {
             string[] levels = { "WARN", "ERROR" };
+            string[] pmNames = { "PM A", "PM B", "PM C" };
             string[] messages =
             {
                 "Random alarm: Chamber pressure warning",
@@ -390,14 +605,29 @@ namespace SCT_Form
             };
 
             string level = levels[Random.Next(levels.Length)];
+            string pmName = pmNames[Random.Next(pmNames.Length)];
             string message = messages[Random.Next(messages.Length)];
-            main?.WriteSystemLog("Alarm", level, message);
+            main?.RaisePmAlarm(pmName, level, message);
         }
 
         private class LogFilter
         {
             public string ColumnName { get; set; }
             public string Value { get; set; }
+        }
+
+        private void btn_Asc_Click(object sender, EventArgs e)
+        {
+            ApplySortDirection(!sortAscending);
+            RefreshLogs(true);
+        }
+
+        private void ApplySortDirection(bool ascending)
+        {
+            sortAscending = ascending;
+            btn_Asc.Text = sortAscending ? "ASC" : "DESC";
+            btn_Asc.BackColor = sortAscending ? Color.SkyBlue : SystemColors.Control;
+            btn_Asc.ForeColor = sortAscending ? Color.White : Color.Black;
         }
     }
 
