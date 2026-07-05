@@ -40,6 +40,9 @@ namespace SCT_Form
         private const long DefaultRobotDeceleration = 1000000;
         private const long DefaultRobotMaxVelocity = 100000000;
         private const long DefaultRobotVelocity = 1000000;
+        private const int Axis1TargetPositionWriteOffset = 3;
+        private const int Axis2TargetPositionWriteOffset = 26;
+        private const int AxisTargetPositionByteCount = 4;
 
         private CurrentStateGUI currentGUI;
         private MaintGUI maintGUI;
@@ -91,6 +94,7 @@ namespace SCT_Form
             settingGUI = new SettingGUI(this);
 
             InitializeLoginEntryPoints();
+            ApplyTemporaryTestLogin();
 
             SystemConnect();
             servoMotorON();
@@ -118,6 +122,21 @@ namespace SCT_Form
             tBox_ID.Click += LoginTextBox_Click;
             tBox_PW.Click += LoginTextBox_Click;
             UpdateLoginDisplay();
+        }
+
+        private void ApplyTemporaryTestLogin()
+        {
+            currentAccount = new AccountInfo
+            {
+                UserId = "voliti",
+                Password = "1",
+                UserLevel = AccountService.AdminLevel,
+                UserName = "voliti",
+                CreatedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            };
+
+            ShowLoginStatePanel();
+            WriteSystemLog("User", "INFO", "임시 자동 로그인: " + currentAccount.UserId);
         }
 
         private void LoginTextBox_Click(object sender, EventArgs e)
@@ -300,13 +319,13 @@ namespace SCT_Form
         internal bool IsChamberDoorOpen(string module)
         {
             EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
-            return EtherCAT_M.Digital_Input(profile.DoorDownSensor) && !EtherCAT_M.Digital_Input(profile.DoorUpSensor);
+            return EtherCAT_M.Digital_Input(profile.DoorUpSensor) && !EtherCAT_M.Digital_Input(profile.DoorDownSensor);
         }
 
         internal bool IsChamberDoorClosed(string module)
         {
             EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
-            return EtherCAT_M.Digital_Input(profile.DoorUpSensor) && !EtherCAT_M.Digital_Input(profile.DoorDownSensor);
+            return !EtherCAT_M.Digital_Input(profile.DoorUpSensor) && EtherCAT_M.Digital_Input(profile.DoorDownSensor);
         }
 
         internal bool IsRobotFacingModule(string module)
@@ -851,6 +870,9 @@ namespace SCT_Form
             WriteSystemLog("INFO", "Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동");
             try
             {
+                EtherCAT_M.Digital_Output(12, false);
+                EtherCAT_M.Digital_Output(13, true);
+
                 // 타워등, 챔버등, 실린더 오프 가동
                 EtherCAT_M.Digital_Output(0, false);
                 EtherCAT_M.Digital_Output(1, false);
@@ -865,6 +887,7 @@ namespace SCT_Form
                 EtherCAT_M.Digital_Output(7, true);
                 EtherCAT_M.Digital_Output(11, false);
                 EtherCAT_M.Digital_Output(10, true);
+
                 WriteSystemLog("INFO", "안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료");
 
                 setBasicPoint();
@@ -1085,8 +1108,105 @@ namespace SCT_Form
         }
         internal void setBasicPoint()
         {
-            EtherCAT_M.Axis1_UD_Homming(); //상하 원점복귀
-            EtherCAT_M.Axis2_LR_Homming(); //좌우 원점복귀
+            HomeAxis1UD(); //상하 원점복귀
+            HomeAxis2LR(); //좌우 원점복귀
+        }
+
+        internal void HomeAxis1UD()
+        {
+            ClearAxisTargetPosition(Axis1TargetPositionWriteOffset);
+            EtherCAT_M.Axis1_UD_Homming();
+        }
+
+        internal void HomeAxis2LR()
+        {
+            ClearAxisTargetPosition(Axis2TargetPositionWriteOffset);
+            EtherCAT_M.Axis2_LR_Homming();
+        }
+
+        internal void MoveAxis1UDTo(long targetPosition)
+        {
+            string currentPos = EtherCAT_M?.Axis1_is_PosData() ?? "N/A";
+            bool wasMoving = IsAxis1Moving();
+            WriteSystemLog("DEBUG", $"UD move requested. Target={targetPosition}, CurrentReadback={currentPos}, WasMoving={wasMoving}, WriteData[0-6] before={DumpWriteDataBytes(0, 7)}");
+
+            // Axis1_UD_Move_Send()는 매번 컨트롤워드를 63(New-Setpoint=1, Change-Set-Immediately=1)으로
+            // 남겨둔 채 끝난다. 다음 이동 시 POS_Update가 이 "켜진 채로 남은" 컨트롤워드 상태에서
+            // 새 좌표를 먼저 전송해버리면, 드라이브가 이를 진행 중이던 이동에 대한 즉시 갱신으로 해석해
+            // 새 rising-edge 없이 이전 상태를 기준으로 새 좌표를 반영하려는 것으로 추정된다.
+            // POS_Update 이전에 컨트롤워드를 15(New-Setpoint=0, Change-Set-Immediately=0)로 먼저
+            // 내려서 전송(settle)해, 다음 Move_Send()의 15->47->63이 확실한 새 rising-edge가 되도록 한다.
+            SettleAxisControlword(0);
+
+            ClearAxisTargetPosition(Axis1TargetPositionWriteOffset);
+            EtherCAT_M.Axis1_UD_POS_Update(targetPosition);
+            EtherCAT_M.Axis1_UD_Move_Send();
+
+            WriteSystemLog("DEBUG", $"UD move sent. Target={targetPosition}, WriteData[0-6] after={DumpWriteDataBytes(0, 7)}");
+        }
+
+        internal void MoveAxis2LRTo(long targetPosition)
+        {
+            string currentPos = EtherCAT_M?.Axis2_is_PosData() ?? "N/A";
+            bool wasMoving = IsAxis2Moving();
+            WriteSystemLog("DEBUG", $"LR move requested. Target={targetPosition}, CurrentReadback={currentPos}, WasMoving={wasMoving}, WriteData[23-29] before={DumpWriteDataBytes(23, 7)}");
+
+            SettleAxisControlword(23);
+
+            ClearAxisTargetPosition(Axis2TargetPositionWriteOffset);
+            EtherCAT_M.Axis2_LR_POS_Update(targetPosition);
+            EtherCAT_M.Axis2_LR_Move_Send();
+
+            WriteSystemLog("DEBUG", $"LR move sent. Target={targetPosition}, WriteData[23-29] after={DumpWriteDataBytes(23, 7)}");
+        }
+
+        internal bool IsAxis1TargetReached()
+        {
+            return EtherCAT_M != null && EtherCAT_M.Axis1_Status("PP_D");
+        }
+
+        internal bool IsAxis2TargetReached()
+        {
+            return EtherCAT_M != null && EtherCAT_M.Axis2_Status("PP_D");
+        }
+
+        // 컨트롤워드를 15(Switch On|Enable Voltage|Quick Stop|Enable Operation, New-Setpoint/Change-Immediately=0)로
+        // 내려 전송한다. IEG3268_Dll이 컨트롤워드만 단독으로 전송하는 public API를 제공하지 않으므로,
+        // Digital_Output(기존 값 그대로 재기록)을 이용해 WriteData 전체를 flush시킨다.
+        private void SettleAxisControlword(int controlWordOffset)
+        {
+            byte[] writeData = EtherCAT_M?.WriteData;
+            if (writeData == null || writeData.Length <= controlWordOffset) return;
+
+            writeData[controlWordOffset] = 15;
+            EtherCAT_M.Digital_Output(0, EtherCAT_M.Digital_Out_Value[0]);
+        }
+
+        // 진단용: 이전 이동이 완료(Target Reached)됐는지 여부. 현재는 이동을 막지 않고 로그에만 남긴다.
+        private bool IsAxis1Moving()
+        {
+            return EtherCAT_M != null && EtherCAT_M.Axis1_Status("PP_M") && !EtherCAT_M.Axis1_Status("PP_D");
+        }
+
+        private bool IsAxis2Moving()
+        {
+            return EtherCAT_M != null && EtherCAT_M.Axis2_Status("PP_M") && !EtherCAT_M.Axis2_Status("PP_D");
+        }
+
+        private string DumpWriteDataBytes(int start, int count)
+        {
+            byte[] writeData = EtherCAT_M?.WriteData;
+            if (writeData == null || writeData.Length < start + count) return "N/A";
+
+            return string.Join(" ", writeData.Skip(start).Take(count).Select(b => b.ToString("X2")));
+        }
+
+        private void ClearAxisTargetPosition(int startIndex)
+        {
+            byte[] writeData = EtherCAT_M?.WriteData;
+            if (writeData == null || writeData.Length < startIndex + AxisTargetPositionByteCount) return;
+
+            Array.Clear(writeData, startIndex, AxisTargetPositionByteCount);
         }
 
         internal void SetRobotAxisConfig(long acceleration, long deceleration, long maxVelocity, long velocity)

@@ -85,7 +85,9 @@
             this.lbl_PMA_messagecontent = new System.Windows.Forms.Label();
             this.pnl_PMA_progressbar = new System.Windows.Forms.Panel();
             this.toppnl_PMA = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMA_Status = new System.Windows.Forms.Label();
+            this.lbl_PMA_DoorStatus = new System.Windows.Forms.Label();
             this.table_lbl_PMA = new System.Windows.Forms.Label();
             this.btn_PMA_Setting = new System.Windows.Forms.Button();
             this.tablepnl_PMB = new System.Windows.Forms.TableLayoutPanel();
@@ -104,8 +106,10 @@
             this.lbl_PMB_messagecontent = new System.Windows.Forms.Label();
             this.pnl_PMB_progressbar = new System.Windows.Forms.Panel();
             this.toppnl_PMB = new System.Windows.Forms.Panel();
-            this.lbl_PMB_Status = new System.Windows.Forms.Label();
+            this.pnl_PMB_Top = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_PMB_DoorStatus = new System.Windows.Forms.Label();
             this.table_lbl_PMB = new System.Windows.Forms.Label();
+            this.lbl_PMB_Status = new System.Windows.Forms.Label();
             this.tablepnl_PMC = new System.Windows.Forms.TableLayoutPanel();
             this.btn_PMC_Setting = new System.Windows.Forms.Button();
             this.lbl_PMC_recipe = new System.Windows.Forms.Label();
@@ -122,9 +126,11 @@
             this.lbl_PMC_messagecontent = new System.Windows.Forms.Label();
             this.pnl_PMC_progressbar = new System.Windows.Forms.Panel();
             this.toppnl_PMC = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMC_Status = new System.Windows.Forms.Label();
+            this.lbl_PMC_DoorStatus = new System.Windows.Forms.Label();
             this.table_lbl_PMC = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.pnl_ProcessButton = new System.Windows.Forms.TableLayoutPanel();
             this.btn_Abort = new System.Windows.Forms.Button();
             this.btn_Continue = new System.Windows.Forms.Button();
             this.btn_Pause = new System.Windows.Forms.Button();
@@ -132,12 +138,6 @@
             this.lbl_RecipeSelect = new System.Windows.Forms.Label();
             this.cbox_ProcessRecipe = new System.Windows.Forms.ComboBox();
             this.btn_Start = new System.Windows.Forms.Button();
-            this.pnl_PMB_Top = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_PMB_DoorStatus = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_PMA_DoorStatus = new System.Windows.Forms.Label();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_PMC_DoorStatus = new System.Windows.Forms.Label();
             this.pnl_PMC.SuspendLayout();
             this.pnl_PMA.SuspendLayout();
             this.pnl_PMB.SuspendLayout();
@@ -151,15 +151,15 @@
             this.pnl_FOUPA_Manual.SuspendLayout();
             this.tablepnl_PMA.SuspendLayout();
             this.toppnl_PMA.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.tablepnl_PMB.SuspendLayout();
             this.toppnl_PMB.SuspendLayout();
+            this.pnl_PMB_Top.SuspendLayout();
             this.tablepnl_PMC.SuspendLayout();
             this.toppnl_PMC.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.pnl_RecipeSelect.SuspendLayout();
-            this.pnl_PMB_Top.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.pnl_ProcessButton.SuspendLayout();
+            this.pnl_RecipeSelect.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_PMC
@@ -893,6 +893,25 @@
             this.toppnl_PMA.Size = new System.Drawing.Size(278, 35);
             this.toppnl_PMA.TabIndex = 14;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.60289F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.8195F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.lbl_PMA_Status, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lbl_PMA_DoorStatus, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.table_lbl_PMA, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(278, 35);
+            this.tableLayoutPanel4.TabIndex = 50;
+            // 
             // lbl_PMA_Status
             // 
             this.lbl_PMA_Status.BackColor = System.Drawing.Color.Silver;
@@ -906,6 +925,17 @@
             this.lbl_PMA_Status.TabIndex = 47;
             this.lbl_PMA_Status.Text = "●";
             this.lbl_PMA_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_PMA_DoorStatus
+            // 
+            this.lbl_PMA_DoorStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_PMA_DoorStatus.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
+            this.lbl_PMA_DoorStatus.Location = new System.Drawing.Point(86, 1);
+            this.lbl_PMA_DoorStatus.Name = "lbl_PMA_DoorStatus";
+            this.lbl_PMA_DoorStatus.Size = new System.Drawing.Size(131, 33);
+            this.lbl_PMA_DoorStatus.TabIndex = 49;
+            this.lbl_PMA_DoorStatus.Text = "Door Close";
+            this.lbl_PMA_DoorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // table_lbl_PMA
             // 
@@ -1142,6 +1172,47 @@
             this.toppnl_PMB.Size = new System.Drawing.Size(278, 35);
             this.toppnl_PMB.TabIndex = 14;
             // 
+            // pnl_PMB_Top
+            // 
+            this.pnl_PMB_Top.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.pnl_PMB_Top.ColumnCount = 3;
+            this.pnl_PMB_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.60289F));
+            this.pnl_PMB_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.8195F));
+            this.pnl_PMB_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.pnl_PMB_Top.Controls.Add(this.lbl_PMB_DoorStatus, 1, 0);
+            this.pnl_PMB_Top.Controls.Add(this.table_lbl_PMB, 0, 0);
+            this.pnl_PMB_Top.Controls.Add(this.lbl_PMB_Status, 2, 0);
+            this.pnl_PMB_Top.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_PMB_Top.Location = new System.Drawing.Point(0, 0);
+            this.pnl_PMB_Top.Name = "pnl_PMB_Top";
+            this.pnl_PMB_Top.RowCount = 1;
+            this.pnl_PMB_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnl_PMB_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.pnl_PMB_Top.Size = new System.Drawing.Size(278, 35);
+            this.pnl_PMB_Top.TabIndex = 49;
+            // 
+            // lbl_PMB_DoorStatus
+            // 
+            this.lbl_PMB_DoorStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_PMB_DoorStatus.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
+            this.lbl_PMB_DoorStatus.Location = new System.Drawing.Point(86, 1);
+            this.lbl_PMB_DoorStatus.Name = "lbl_PMB_DoorStatus";
+            this.lbl_PMB_DoorStatus.Size = new System.Drawing.Size(131, 33);
+            this.lbl_PMB_DoorStatus.TabIndex = 49;
+            this.lbl_PMB_DoorStatus.Text = "Door Close";
+            this.lbl_PMB_DoorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // table_lbl_PMB
+            // 
+            this.table_lbl_PMB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.table_lbl_PMB.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
+            this.table_lbl_PMB.Location = new System.Drawing.Point(4, 1);
+            this.table_lbl_PMB.Name = "table_lbl_PMB";
+            this.table_lbl_PMB.Size = new System.Drawing.Size(75, 33);
+            this.table_lbl_PMB.TabIndex = 0;
+            this.table_lbl_PMB.Text = "PM B";
+            this.table_lbl_PMB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lbl_PMB_Status
             // 
             this.lbl_PMB_Status.BackColor = System.Drawing.Color.Silver;
@@ -1155,17 +1226,6 @@
             this.lbl_PMB_Status.TabIndex = 48;
             this.lbl_PMB_Status.Text = "●";
             this.lbl_PMB_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // table_lbl_PMB
-            // 
-            this.table_lbl_PMB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.table_lbl_PMB.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
-            this.table_lbl_PMB.Location = new System.Drawing.Point(4, 1);
-            this.table_lbl_PMB.Name = "table_lbl_PMB";
-            this.table_lbl_PMB.Size = new System.Drawing.Size(75, 33);
-            this.table_lbl_PMB.TabIndex = 0;
-            this.table_lbl_PMB.Text = "PM B";
-            this.table_lbl_PMB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tablepnl_PMC
             // 
@@ -1379,6 +1439,25 @@
             this.toppnl_PMC.Size = new System.Drawing.Size(278, 35);
             this.toppnl_PMC.TabIndex = 14;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.60289F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.8195F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel5.Controls.Add(this.lbl_PMC_Status, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lbl_PMC_DoorStatus, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.table_lbl_PMC, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(278, 35);
+            this.tableLayoutPanel5.TabIndex = 50;
+            // 
             // lbl_PMC_Status
             // 
             this.lbl_PMC_Status.BackColor = System.Drawing.Color.Silver;
@@ -1393,6 +1472,17 @@
             this.lbl_PMC_Status.Text = "●";
             this.lbl_PMC_Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lbl_PMC_DoorStatus
+            // 
+            this.lbl_PMC_DoorStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_PMC_DoorStatus.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
+            this.lbl_PMC_DoorStatus.Location = new System.Drawing.Point(86, 1);
+            this.lbl_PMC_DoorStatus.Name = "lbl_PMC_DoorStatus";
+            this.lbl_PMC_DoorStatus.Size = new System.Drawing.Size(131, 33);
+            this.lbl_PMC_DoorStatus.TabIndex = 49;
+            this.lbl_PMC_DoorStatus.Text = "Door Close";
+            this.lbl_PMC_DoorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // table_lbl_PMC
             // 
             this.table_lbl_PMC.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1404,25 +1494,25 @@
             this.table_lbl_PMC.Text = "PM C";
             this.table_lbl_PMC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel3
+            // pnl_ProcessButton
             // 
-            this.tableLayoutPanel3.ColumnCount = 5;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.btn_Abort, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btn_Continue, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btn_Pause, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.pnl_RecipeSelect, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btn_Start, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(17, 643);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(608, 90);
-            this.tableLayoutPanel3.TabIndex = 47;
+            this.pnl_ProcessButton.ColumnCount = 5;
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.pnl_ProcessButton.Controls.Add(this.btn_Abort, 4, 0);
+            this.pnl_ProcessButton.Controls.Add(this.btn_Continue, 3, 0);
+            this.pnl_ProcessButton.Controls.Add(this.btn_Pause, 2, 0);
+            this.pnl_ProcessButton.Controls.Add(this.pnl_RecipeSelect, 0, 0);
+            this.pnl_ProcessButton.Controls.Add(this.btn_Start, 1, 0);
+            this.pnl_ProcessButton.Location = new System.Drawing.Point(17, 643);
+            this.pnl_ProcessButton.Name = "pnl_ProcessButton";
+            this.pnl_ProcessButton.RowCount = 1;
+            this.pnl_ProcessButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnl_ProcessButton.Size = new System.Drawing.Size(608, 90);
+            this.pnl_ProcessButton.TabIndex = 47;
             // 
             // btn_Abort
             // 
@@ -1508,101 +1598,11 @@
             this.btn_Start.UseVisualStyleBackColor = true;
             this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
             // 
-            // pnl_PMB_Top
-            // 
-            this.pnl_PMB_Top.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.pnl_PMB_Top.ColumnCount = 3;
-            this.pnl_PMB_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.60289F));
-            this.pnl_PMB_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.8195F));
-            this.pnl_PMB_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.pnl_PMB_Top.Controls.Add(this.lbl_PMB_DoorStatus, 1, 0);
-            this.pnl_PMB_Top.Controls.Add(this.table_lbl_PMB, 0, 0);
-            this.pnl_PMB_Top.Controls.Add(this.lbl_PMB_Status, 2, 0);
-            this.pnl_PMB_Top.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_PMB_Top.Location = new System.Drawing.Point(0, 0);
-            this.pnl_PMB_Top.Name = "pnl_PMB_Top";
-            this.pnl_PMB_Top.RowCount = 1;
-            this.pnl_PMB_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnl_PMB_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.pnl_PMB_Top.Size = new System.Drawing.Size(278, 35);
-            this.pnl_PMB_Top.TabIndex = 49;
-            // 
-            // lbl_PMB_DoorStatus
-            // 
-            this.lbl_PMB_DoorStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_PMB_DoorStatus.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
-            this.lbl_PMB_DoorStatus.Location = new System.Drawing.Point(86, 1);
-            this.lbl_PMB_DoorStatus.Name = "lbl_PMB_DoorStatus";
-            this.lbl_PMB_DoorStatus.Size = new System.Drawing.Size(131, 33);
-            this.lbl_PMB_DoorStatus.TabIndex = 49;
-            this.lbl_PMB_DoorStatus.Text = "Door Close";
-            this.lbl_PMB_DoorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.60289F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.8195F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.Controls.Add(this.lbl_PMA_Status, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.lbl_PMA_DoorStatus, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.table_lbl_PMA, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(278, 35);
-            this.tableLayoutPanel4.TabIndex = 50;
-            // 
-            // lbl_PMA_DoorStatus
-            // 
-            this.lbl_PMA_DoorStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_PMA_DoorStatus.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
-            this.lbl_PMA_DoorStatus.Location = new System.Drawing.Point(86, 1);
-            this.lbl_PMA_DoorStatus.Name = "lbl_PMA_DoorStatus";
-            this.lbl_PMA_DoorStatus.Size = new System.Drawing.Size(131, 33);
-            this.lbl_PMA_DoorStatus.TabIndex = 49;
-            this.lbl_PMA_DoorStatus.Text = "Door Close";
-            this.lbl_PMA_DoorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.60289F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.8195F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.lbl_PMC_Status, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.lbl_PMC_DoorStatus, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.table_lbl_PMC, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(278, 35);
-            this.tableLayoutPanel5.TabIndex = 50;
-            // 
-            // lbl_PMC_DoorStatus
-            // 
-            this.lbl_PMC_DoorStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_PMC_DoorStatus.Font = new System.Drawing.Font("맑은 고딕", 13F, System.Drawing.FontStyle.Bold);
-            this.lbl_PMC_DoorStatus.Location = new System.Drawing.Point(86, 1);
-            this.lbl_PMC_DoorStatus.Name = "lbl_PMC_DoorStatus";
-            this.lbl_PMC_DoorStatus.Size = new System.Drawing.Size(131, 33);
-            this.lbl_PMC_DoorStatus.TabIndex = 49;
-            this.lbl_PMC_DoorStatus.Text = "Door Close";
-            this.lbl_PMC_DoorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // CurrentStateGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel3);
+            this.Controls.Add(this.pnl_ProcessButton);
             this.Controls.Add(this.tablepnl_PMC);
             this.Controls.Add(this.tablepnl_PMB);
             this.Controls.Add(this.tablepnl_PMA);
@@ -1626,15 +1626,15 @@
             this.pnl_FOUPA_Manual.ResumeLayout(false);
             this.tablepnl_PMA.ResumeLayout(false);
             this.toppnl_PMA.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.tablepnl_PMB.ResumeLayout(false);
             this.toppnl_PMB.ResumeLayout(false);
+            this.pnl_PMB_Top.ResumeLayout(false);
             this.tablepnl_PMC.ResumeLayout(false);
             this.toppnl_PMC.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.pnl_RecipeSelect.ResumeLayout(false);
-            this.pnl_PMB_Top.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
+            this.pnl_ProcessButton.ResumeLayout(false);
+            this.pnl_RecipeSelect.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1737,7 +1737,7 @@
         internal System.Windows.Forms.Label lbl_PMA_Status;
         internal System.Windows.Forms.Label lbl_PMB_Status;
         internal System.Windows.Forms.Label lbl_PMC_Status;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel pnl_ProcessButton;
         private System.Windows.Forms.TableLayoutPanel pnl_RecipeSelect;
         private System.Windows.Forms.Label lbl_RecipeSelect;
         private System.Windows.Forms.Button btn_Abort;
