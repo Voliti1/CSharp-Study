@@ -72,6 +72,7 @@
       <DependentUpon>CurrentStateGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\Operation\WaferAutoSequencer.cs" />
+    <Compile Include="Features\Operation\AutoSequenceBuilder.cs" />
     <Compile Include="Auth\IDSearch.cs">
       <SubType>UserControl</SubType>
     </Compile>
