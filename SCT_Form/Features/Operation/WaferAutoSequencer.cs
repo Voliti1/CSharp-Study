@@ -58,32 +58,44 @@ namespace SCT_Form
 
             AutoStep step = steps[currentIndex];
 
-            if (step.Kind == AutoStepKind.WaitElapsed)
+            switch (step.Kind)
             {
-                step.ElapsedSeconds++;
-                if (step.ElapsedSeconds >= step.TotalSeconds)
-                {
-                    AdvanceToNextExecutableStep();
-                }
+                case AutoStepKind.WaitElapsed:
+                    step.ElapsedSeconds++;
+                    if (step.ElapsedSeconds >= step.TotalSeconds)
+                    {
+                        AdvanceToNextExecutableStep();
+                    }
+                    return;
 
-                return;
-            }
+                case AutoStepKind.WaitSensor:
+                    if (step.IsSatisfied == null)
+                    {
+                        throw new InvalidOperationException("AutoStep '" + step.Description + "' is a WaitSensor step but has no IsSatisfied delegate.");
+                    }
 
-            if (step.IsSatisfied())
-            {
-                AdvanceToNextExecutableStep();
-                return;
-            }
+                    if (step.IsSatisfied())
+                    {
+                        AdvanceToNextExecutableStep();
+                        return;
+                    }
 
-            sensorWaitElapsedSeconds++;
-            if (sensorWaitElapsedSeconds >= step.TimeoutSeconds)
-            {
-                Abort(step.Description + " 단계에서 센서 응답이 " + step.TimeoutSeconds + "초 내에 확인되지 않았습니다.");
+                    sensorWaitElapsedSeconds++;
+                    if (sensorWaitElapsedSeconds >= step.TimeoutSeconds)
+                    {
+                        Abort(step.Description + " 단계에서 센서 응답이 " + step.TimeoutSeconds + "초 내에 확인되지 않았습니다.");
+                    }
+                    return;
+
+                default:
+                    throw new InvalidOperationException("Tick() reached an Action step (" + step.Description + "); Action steps should never be the current step.");
             }
         }
 
         internal void Abort(string reason)
         {
+            if (!IsRunning) return;
+
             IsRunning = false;
             IsAborted = true;
             Aborted?.Invoke(reason);
