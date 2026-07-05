@@ -83,6 +83,7 @@
     <Compile Include="Auth\LogInGUI.Designer.cs">
       <DependentUpon>LogInGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\EquipmentLayout.cs" />
     <Compile Include="Main\MainGUI.cs">
       <SubType>Form</SubType>
     </Compile>

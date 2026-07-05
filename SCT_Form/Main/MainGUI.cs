@@ -244,6 +244,79 @@ namespace SCT_Form
             }
         }
 
+        private const long RobotFacingToleranceCounts = 500;
+
+        internal void OpenChamberDoor(string module)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            EtherCAT_M.Digital_Output(profile.DoorOpenOutput, true);
+            EtherCAT_M.Digital_Output(profile.DoorCloseOutput, false);
+            SetChamberDoorStatus(EquipmentLayout.NormalizeModule(module), true);
+        }
+
+        internal void CloseChamberDoor(string module)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            EtherCAT_M.Digital_Output(profile.DoorOpenOutput, false);
+            EtherCAT_M.Digital_Output(profile.DoorCloseOutput, true);
+            SetChamberDoorStatus(EquipmentLayout.NormalizeModule(module), false);
+        }
+
+        internal void SetChamberLamp(string module, bool on)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            EtherCAT_M.Digital_Output(profile.LampOutput, on);
+            EtherCAT_M.Digital_Output(1, !on);
+            EtherCAT_M.Digital_Output(2, on);
+        }
+
+        internal void MoveCylinderFront()
+        {
+            EtherCAT_M.Digital_Output(13, false);
+            EtherCAT_M.Digital_Output(12, true);
+        }
+
+        internal void MoveCylinderBack()
+        {
+            EtherCAT_M.Digital_Output(12, false);
+            EtherCAT_M.Digital_Output(13, true);
+        }
+
+        internal void SetWaferSuction(bool on)
+        {
+            EtherCAT_M.Digital_Output(14, on);
+        }
+
+        internal bool IsCylinderForward()
+        {
+            return EtherCAT_M.Digital_Input(13) && !EtherCAT_M.Digital_Input(12);
+        }
+
+        internal bool IsCylinderBack()
+        {
+            return EtherCAT_M.Digital_Input(12) && !EtherCAT_M.Digital_Input(13);
+        }
+
+        internal bool IsChamberDoorOpen(string module)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            return EtherCAT_M.Digital_Input(profile.DoorDownSensor) && !EtherCAT_M.Digital_Input(profile.DoorUpSensor);
+        }
+
+        internal bool IsChamberDoorClosed(string module)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            return EtherCAT_M.Digital_Input(profile.DoorUpSensor) && !EtherCAT_M.Digital_Input(profile.DoorDownSensor);
+        }
+
+        internal bool IsRobotFacingModule(string module)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            long current;
+            if (!long.TryParse(EtherCAT_M.Axis2_is_PosData(), out current)) return false;
+            return Math.Abs(current - profile.LR) <= RobotFacingToleranceCounts;
+        }
+
         internal List<SystemLogEntry> GetSystemLogSnapshot()
         {
             lock (systemLogs)
