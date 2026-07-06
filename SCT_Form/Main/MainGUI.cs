@@ -565,24 +565,54 @@ namespace SCT_Form
             }
         }
 
-        // 로그 파일은 UTF-8로 기록되지만(App.config appender encoding), 과거 빌드가
-        // ANSI(CP949)로 남긴 파일이 섞여 있을 수 있어 UTF-8 해석에 실패하면 CP949로 재해석한다.
-        private static string[] ReadLogFileLines(string filePath)
+        // 로그 파일은 UTF-8로 기록되지만(App.config appender encoding), 과거 빌드(ANSI/CP949)가
+        // 기록한 줄이 한 파일 안에 섞여 있을 수 있다. 줄 단위로 UTF-8 해석을 시도하고
+        // 실패한 줄만 CP949로 재해석해서, 혼합 인코딩 파일도 전부 정상 표시되게 한다.
+        private static List<string> ReadLogFileLines(string filePath)
         {
             byte[] bytes = File.ReadAllBytes(filePath);
+            UTF8Encoding utf8Strict = new UTF8Encoding(false, true);
+            Encoding cp949 = Encoding.GetEncoding(949);
+            List<string> lines = new List<string>();
 
-            string text;
-            try
+            int lineStart = 0;
+            for (int i = 0; i <= bytes.Length; i++)
             {
-                text = new UTF8Encoding(false, true).GetString(bytes);
-                if (text.Length > 0 && text[0] == '﻿') text = text.Substring(1); // BOM 제거
-            }
-            catch (DecoderFallbackException)
-            {
-                text = Encoding.GetEncoding(949).GetString(bytes);
+                if (i != bytes.Length && bytes[i] != (byte)'\n') continue;
+
+                int lineLength = i - lineStart;
+                if (lineLength > 0 && bytes[lineStart + lineLength - 1] == (byte)'\r') lineLength--;
+
+                if (lineLength > 0)
+                {
+                    // UTF-8 BOM(EF BB BF) 제거
+                    if (lineLength >= 3 && bytes[lineStart] == 0xEF && bytes[lineStart + 1] == 0xBB && bytes[lineStart + 2] == 0xBF)
+                    {
+                        lineStart += 3;
+                        lineLength -= 3;
+                    }
+
+                    string line;
+                    try
+                    {
+                        line = utf8Strict.GetString(bytes, lineStart, lineLength);
+                    }
+                    catch (DecoderFallbackException)
+                    {
+                        line = cp949.GetString(bytes, lineStart, lineLength);
+                    }
+
+                    lines.Add(line);
+                }
+                else
+                {
+                    lines.Add(string.Empty);
+                }
+
+                lineStart = i + 1;
             }
 
-            return text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+            return lines;
         }
 
         private void CleanupExpiredLogFiles()
