@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,10 +26,19 @@ namespace SCT_Form
         private ProcessRecipeData currentProcessRecipe;
         private bool isProcessRecipeRunning;
         private bool isProcessRecipePaused;
+        private bool isUserAbortRecoveryRunning;
         private ChamberProcessState pmaProcessState;
         private ChamberProcessState pmbProcessState;
         private ChamberProcessState pmcProcessState;
         private readonly WaferAutoSequencer waferSequencer = new WaferAutoSequencer();
+        private bool robotHasWafer;
+        private bool robotCylinderForward;
+        private bool robotCylinderBack;
+        private long? currentRobotLRPosition;
+        private string currentRobotFacingName = "FOUP A";
+        private long currentRobotFacingDiff;
+        private const long RobotFacingDisplayToleranceCounts = 5000;
+        private RobotMapPanel robotPanel;
 
         public CurrentStateGUI(MainGUI mainGUI)
         {
@@ -43,6 +53,7 @@ namespace SCT_Form
             InitializeProgressBar(pnl_PMC_progressbar);
             RefreshDoorStatusLabels();
             ResetAutoWaferDisplay();
+            InitializeRobotPositionMap();
 
             chamberProcessTimer.Interval = 1000;
             chamberProcessTimer.Tick += chamberProcessTimer_Tick;
@@ -50,8 +61,229 @@ namespace SCT_Form
             waferSequencer.Aborted += reason =>
             {
                 main.WriteSystemLog("WARN", "자동공정 Abort: " + reason);
+                if (!isUserAbortRecoveryRunning)
+                {
+                    main.SafeAbortAndHome();
+                }
                 MessageBox.Show(reason, "Process Aborted", MessageBoxButtons.OK, MessageBoxIcon.Error);
             };
+        }
+
+        // 디자이너의 빈 pnl_Robot 자리에 더블버퍼링 되는 RobotMapPanel을 얹어
+        // 로봇 상태(방향/전진·후진/웨이퍼 보유)를 그린다.
+        private void InitializeRobotPositionMap()
+        {
+            if (robotPanel != null) return;
+
+            robotPanel = new RobotMapPanel();
+            robotPanel.Location = pnl_Robot.Location;
+            robotPanel.Size = pnl_Robot.Size;
+            robotPanel.Anchor = pnl_Robot.Anchor;
+            robotPanel.Margin = pnl_Robot.Margin;
+            robotPanel.BackColor = Color.White;
+            robotPanel.BorderStyle = BorderStyle.FixedSingle;
+            robotPanel.Paint += robotPanel_Paint;
+
+            Controls.Remove(pnl_Robot);
+            Controls.Add(robotPanel);
+            robotPanel.BringToFront();
+        }
+
+        internal void SetRobotWaferState(bool hasWafer)
+        {
+            robotHasWafer = hasWafer;
+            if (robotPanel != null) robotPanel.Invalidate();
+        }
+
+        internal void SetRobotCylinderState(bool isForward, bool isBack)
+        {
+            robotCylinderForward = isForward;
+            robotCylinderBack = isBack;
+            if (robotPanel != null) robotPanel.Invalidate();
+        }
+
+        internal void UpdateRobotPosition(string currentLRPos)
+        {
+            long parsed;
+            if (!long.TryParse(currentLRPos, out parsed))
+            {
+                currentRobotLRPosition = null;
+                currentRobotFacingName = "FOUP A";
+                currentRobotFacingDiff = 0;
+                if (robotPanel != null) robotPanel.Invalidate();
+                return;
+            }
+
+            currentRobotLRPosition = parsed;
+            RobotTarget nearest = GetNearestRobotTarget(parsed);
+            currentRobotFacingName = nearest == null ? "UNKNOWN" : nearest.Name;
+            currentRobotFacingDiff = nearest == null ? 0 : Math.Abs(parsed - nearest.LR);
+            if (robotPanel != null) robotPanel.Invalidate();
+        }
+
+        private RobotTarget GetNearestRobotTarget(long lrPosition)
+        {
+            RobotTarget nearest = null;
+            long nearestDiff = long.MaxValue;
+
+            foreach (RobotTarget target in GetRobotTargets())
+            {
+                long diff = Math.Abs(lrPosition - target.LR);
+                if (diff >= nearestDiff) continue;
+
+                nearest = target;
+                nearestDiff = diff;
+            }
+
+            return nearest;
+        }
+
+        private RobotTarget GetRobotTarget(string targetName)
+        {
+            foreach (RobotTarget target in GetRobotTargets())
+            {
+                if (string.Equals(target.Name, targetName, StringComparison.OrdinalIgnoreCase)) return target;
+            }
+
+            return null;
+        }
+
+        private List<RobotTarget> GetRobotTargets()
+        {
+            return new List<RobotTarget>
+            {
+                new RobotTarget("PM A", EquipmentLayout.GetModule("PM A").LR, new PointF(0.00F, 0.50F)),
+                new RobotTarget("PM B", EquipmentLayout.GetModule("PM B").LR, new PointF(0.50F, 0.00F)),
+                new RobotTarget("PM C", EquipmentLayout.GetModule("PM C").LR, new PointF(1.00F, 0.50F)),
+                new RobotTarget("FOUP A", EquipmentLayout.GetFoup("FOUP A").LR, new PointF(0.20F, 1.00F)),
+                new RobotTarget("FOUP B", EquipmentLayout.GetFoup("FOUP B").LR, new PointF(0.80F, 1.00F))
+            };
+        }
+
+        private void robotPanel_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+
+            Rectangle bounds = robotPanel.ClientRectangle;
+            Rectangle inner = bounds;
+            inner.Inflate(-8, -8);
+            PointF robotCenter = new PointF(inner.Left + inner.Width / 2F, inner.Top + inner.Height / 2F + 6F);
+            RobotTarget nearest = currentRobotLRPosition.HasValue ? GetNearestRobotTarget(currentRobotLRPosition.Value) : GetRobotTarget("FOUP A");
+            bool isFacingTarget = nearest != null && currentRobotFacingDiff <= RobotFacingDisplayToleranceCounts;
+            float rotationDegrees = 0F;
+
+            if (nearest != null)
+            {
+                PointF targetPoint = ToRobotMapPoint(inner, nearest.MapPoint);
+                float dx = targetPoint.X - robotCenter.X;
+                float dy = targetPoint.Y - robotCenter.Y;
+                rotationDegrees = (float)(Math.Atan2(dx, -dy) * 180.0 / Math.PI);
+            }
+
+            DrawPhotoStyleRobot(g, robotCenter, rotationDegrees, isFacingTarget);
+            DrawRobotStatusOverlay(g, bounds, nearest, isFacingTarget);
+        }
+
+        private void DrawRobotStatusOverlay(Graphics g, Rectangle bounds, RobotTarget nearest, bool isFacingTarget)
+        {
+            string facingText = "방향: " + (isFacingTarget && nearest != null ? nearest.Name : "이동 중");
+            string cylinderText;
+            Color cylinderColor;
+            if (robotCylinderForward && !robotCylinderBack)
+            {
+                cylinderText = "실린더: 전진";
+                cylinderColor = Color.Firebrick;
+            }
+            else if (!robotCylinderForward && robotCylinderBack)
+            {
+                cylinderText = "실린더: 후진";
+                cylinderColor = Color.FromArgb(45, 55, 72);
+            }
+            else
+            {
+                cylinderText = "실린더: 확인 필요";
+                cylinderColor = Color.DarkOrange;
+            }
+            string waferText = robotHasWafer ? "웨이퍼 보유" : "웨이퍼 없음";
+
+            using (Font font = new Font("맑은 고딕", 8F, FontStyle.Bold))
+            using (Brush facingBrush = new SolidBrush(isFacingTarget ? Color.SeaGreen : Color.DarkOrange))
+            using (Brush cylinderBrush = new SolidBrush(cylinderColor))
+            using (Brush waferBrush = new SolidBrush(robotHasWafer ? Color.Goldenrod : Color.Gray))
+            {
+                g.DrawString(facingText, font, facingBrush, 5F, 4F);
+                g.DrawString(cylinderText, font, cylinderBrush, 5F, bounds.Bottom - 34F);
+                g.DrawString(waferText, font, waferBrush, 5F, bounds.Bottom - 18F);
+            }
+        }
+
+        private PointF ToRobotMapPoint(Rectangle bounds, PointF ratioPoint)
+        {
+            return new PointF(
+                bounds.Left + bounds.Width * ratioPoint.X,
+                bounds.Top + bounds.Height * ratioPoint.Y);
+        }
+
+        private void DrawPhotoStyleRobot(Graphics g, PointF center, float rotationDegrees, bool isFacingTarget)
+        {
+            // 실린더 전진 시 그립(엔드이펙터)이 몸체에서 더 멀리 뻗고, 후진 시 몸체 쪽으로 당겨진다.
+            float gripCenterY;
+            if (robotCylinderForward && !robotCylinderBack) gripCenterY = -98F;
+            else if (!robotCylinderForward && robotCylinderBack) gripCenterY = -60F;
+            else gripCenterY = -80F;
+
+            GraphicsState state = g.Save();
+            g.TranslateTransform(center.X, center.Y);
+            g.RotateTransform(rotationDegrees);
+
+            using (Pen outlinePen = new Pen(Color.Black, 4F))
+            using (Pen armPen = new Pen(isFacingTarget ? Color.SeaGreen : Color.DarkOrange, 7F))
+            using (Brush bodyBrush = new SolidBrush(Color.FromArgb(238, 241, 246)))
+            using (Brush bodyShadowBrush = new SolidBrush(Color.FromArgb(206, 214, 224)))
+            using (Brush waferBrush = new SolidBrush(robotHasWafer ? Color.Gold : Color.White))
+            using (GraphicsPath bodyPath = new GraphicsPath())
+            {
+                armPen.StartCap = LineCap.Round;
+                armPen.EndCap = LineCap.Round;
+
+                bodyPath.AddRectangle(new RectangleF(-14F, -34F, 28F, 72F));
+                g.FillPath(bodyBrush, bodyPath);
+                g.FillRectangle(bodyShadowBrush, 3F, -30F, 8F, 64F);
+                g.DrawPath(outlinePen, bodyPath);
+
+                // 몸체 -> 그립을 잇는 암 (전진/후진에 따라 길이 변화)
+                g.DrawLine(armPen, 0F, -30F, 0F, gripCenterY + 22F);
+
+                RectangleF waferGripRect = new RectangleF(-24F, gripCenterY - 24F, 48F, 48F);
+                g.FillEllipse(waferBrush, waferGripRect);
+                g.DrawEllipse(outlinePen, waferGripRect);
+            }
+
+            g.Restore(state);
+        }
+
+        private class RobotTarget
+        {
+            public RobotTarget(string name, long lr, PointF mapPoint)
+            {
+                Name = name;
+                LR = lr;
+                MapPoint = mapPoint;
+            }
+
+            public string Name { get; private set; }
+            public long LR { get; private set; }
+            public PointF MapPoint { get; private set; }
+        }
+
+        private class RobotMapPanel : Panel
+        {
+            public RobotMapPanel()
+            {
+                DoubleBuffered = true;
+                ResizeRedraw = true;
+            }
         }
 
         internal void RefreshDoorStatusLabels()
@@ -1037,6 +1269,7 @@ namespace SCT_Form
 
             chamberProcessTimer.Stop();
             AbortActiveProcesses();
+            isUserAbortRecoveryRunning = true;
 
             if (isProcessRecipeRunning)
             {
@@ -1047,7 +1280,8 @@ namespace SCT_Form
 
             isProcessRecipePaused = false;
             currentProcessRecipe = null;
-            main.setBasicPoint();
+            main.SafeAbortAndHome();
+            isUserAbortRecoveryRunning = false;
         }
 
         private class ProcessRecipeComboItem

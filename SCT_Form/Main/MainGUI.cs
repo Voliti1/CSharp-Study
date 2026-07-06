@@ -35,6 +35,7 @@ namespace SCT_Form
         internal bool isServoMotorOn = false;
         internal bool isAxisMoving = false;
         internal bool isAxisPositionFault = false;
+        internal bool isWaferSuctionOn = false;
 
         internal string currentUbarState = "Operate";
 
@@ -251,7 +252,20 @@ namespace SCT_Form
         private bool EnsureDoorInterlockAllowed()
         {
             if (settings == null || !settings.DoorOpenInterlock) return true;
-            if (!isChamADoorOpen && !isChamBDoorOpen && !isChamCDoorOpen) return true;
+
+            bool isAnyDoorOpen;
+            try
+            {
+                isAnyDoorOpen = IsChamberDoorOpen("PM A") || IsChamberDoorOpen("PM B") || IsChamberDoorOpen("PM C");
+            }
+            catch (Exception ex)
+            {
+                WriteSystemLog("Alarm", "ERROR", "Door Open Interlock: door sensor read failed - " + ex.Message);
+                MessageBox.Show("Chamber Door 센서 상태를 확인할 수 없어 장비 동작이 차단되었습니다.", "Safety Interlock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!isAnyDoorOpen) return true;
 
             MessageBox.Show("Door Open Interlock 상태입니다. Chamber Door를 닫은 후 동작해주세요.", "Safety Interlock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             WriteSystemLog("Alarm", "WARN", "Door Open Interlock: 장비 동작 차단");
@@ -329,12 +343,24 @@ namespace SCT_Form
 
         internal void SetWaferSuction(bool on)
         {
+            isWaferSuctionOn = on;
             EtherCAT_M.Digital_Output(14, on);
+            if (currentGUI != null && !currentGUI.IsDisposed)
+            {
+                currentGUI.SetRobotWaferState(on);
+            }
         }
 
         internal void SetWaferExhaust(bool on)
         {
             EtherCAT_M.Digital_Output(15, on);
+        }
+
+        internal void SetAllChamberLamps(bool on)
+        {
+            EtherCAT_M.Digital_Output(EquipmentLayout.GetModule("PM A").LampOutput, on);
+            EtherCAT_M.Digital_Output(EquipmentLayout.GetModule("PM B").LampOutput, on);
+            EtherCAT_M.Digital_Output(EquipmentLayout.GetModule("PM C").LampOutput, on);
         }
 
         internal bool IsCylinderForward()
@@ -345,6 +371,11 @@ namespace SCT_Form
         internal bool IsCylinderBack()
         {
             return EtherCAT_M.Digital_Input(12) && !EtherCAT_M.Digital_Input(13);
+        }
+
+        internal string GetCylinderSensorSnapshot()
+        {
+            return "BackInput12=" + EtherCAT_M.Digital_Input(12) + ", FrontInput13=" + EtherCAT_M.Digital_Input(13);
         }
 
         internal bool IsChamberDoorOpen(string module)
@@ -899,12 +930,12 @@ namespace SCT_Form
 
             try
             {
-                if (!IsCylinderForward()) return;
+                if (IsCylinderBack()) return;
 
                 e.Cancel = true;
-                WriteSystemLog("WARN", "Application close blocked: robot cylinder is forward");
+                WriteSystemLog("WARN", "Application close blocked: robot cylinder back sensor is not confirmed. " + GetCylinderSensorSnapshot());
                 MessageBox.Show(
-                    "웨이퍼 이송 실린더가 전진되어 있어 프로그램을 종료할 수 없습니다.\r\n실린더를 후진한 뒤 다시 종료해주세요.",
+                    "웨이퍼 이송 실린더 후진 센서가 확인되지 않아 프로그램을 종료할 수 없습니다.\r\n실린더를 후진한 뒤 다시 종료해주세요.",
                     "Close Blocked",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
@@ -1197,6 +1228,42 @@ namespace SCT_Form
             WriteSystemLog("INFO", "Startup recovery: cylinder back confirmed. Homing started.");
             CloseAllChamberDoors();
             setBasicPoint();
+        }
+
+        internal bool SafeAbortAndHome()
+        {
+            try
+            {
+                WriteSystemLog("WARN", "Abort safety recovery started.");
+                SetWaferExhaust(false);
+                SetAllChamberLamps(false);
+                MoveCylinderBack();
+
+                if (!WaitUntilCylinderBack(StartupCylinderBackTimeoutMs))
+                {
+                    WriteSystemLog("ERROR", "Abort safety recovery canceled: cylinder back sensor was not confirmed. " + GetCylinderSensorSnapshot());
+                    MessageBox.Show(
+                        "실린더 후진 센서가 확인되지 않아 Abort 후 원점복귀를 실행하지 않았습니다.\r\n실린더 상태를 확인해주세요.",
+                        "Abort Safety",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return false;
+                }
+
+                setBasicPoint();
+                WriteSystemLog("WARN", "Abort safety recovery completed: cylinder back confirmed and homing started.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                WriteSystemLog("ERROR", "Abort safety recovery failed: " + ex.Message);
+                MessageBox.Show(
+                    "Abort 안전 복구 중 오류가 발생했습니다.\r\n" + ex.Message,
+                    "Abort Safety",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         private void CloseAllChamberDoors()
@@ -1551,6 +1618,9 @@ namespace SCT_Form
                 if (currentGUI != null && !currentGUI.IsDisposed)
                 {
                     currentGUI.RefreshDoorStatusLabels();
+                    currentGUI.UpdateRobotPosition(currentLRPos);
+                    currentGUI.SetRobotWaferState(isWaferSuctionOn);
+                    currentGUI.SetRobotCylinderState(IsCylinderForward(), IsCylinderBack());
                 }
             }
             catch (Exception ex)
