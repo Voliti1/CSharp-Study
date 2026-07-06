@@ -173,7 +173,7 @@
             this.pnl_PMC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnl_PMC.Controls.Add(this.lbl_PMC, 0, 0);
             this.pnl_PMC.Controls.Add(this.waferControl3, 0, 1);
-            this.pnl_PMC.Location = new System.Drawing.Point(423, 188);
+            this.pnl_PMC.Location = new System.Drawing.Point(452, 193);
             this.pnl_PMC.Name = "pnl_PMC";
             this.pnl_PMC.RowCount = 2;
             this.pnl_PMC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -210,7 +210,7 @@
             this.pnl_PMA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnl_PMA.Controls.Add(this.lbl_PMA, 0, 0);
             this.pnl_PMA.Controls.Add(this.waferControl1, 0, 1);
-            this.pnl_PMA.Location = new System.Drawing.Point(79, 188);
+            this.pnl_PMA.Location = new System.Drawing.Point(49, 193);
             this.pnl_PMA.Name = "pnl_PMA";
             this.pnl_PMA.RowCount = 3;
             this.pnl_PMA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -248,7 +248,7 @@
             this.pnl_PMB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnl_PMB.Controls.Add(this.lbl_PMB, 0, 0);
             this.pnl_PMB.Controls.Add(this.waferControl2, 0, 1);
-            this.pnl_PMB.Location = new System.Drawing.Point(245, 27);
+            this.pnl_PMB.Location = new System.Drawing.Point(244, 0);
             this.pnl_PMB.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_PMB.Name = "pnl_PMB";
             this.pnl_PMB.RowCount = 3;
@@ -431,7 +431,7 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.pnl_FOUPA, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.pnl_FOUPA_Manual, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(17, 444);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(16, 463);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -1488,7 +1488,7 @@
             this.pnl_ProcessButton.Controls.Add(this.btn_Pause, 2, 0);
             this.pnl_ProcessButton.Controls.Add(this.pnl_RecipeSelect, 0, 0);
             this.pnl_ProcessButton.Controls.Add(this.btn_Start, 1, 0);
-            this.pnl_ProcessButton.Location = new System.Drawing.Point(17, 643);
+            this.pnl_ProcessButton.Location = new System.Drawing.Point(16, 651);
             this.pnl_ProcessButton.Name = "pnl_ProcessButton";
             this.pnl_ProcessButton.RowCount = 1;
             this.pnl_ProcessButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1594,7 +1594,7 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lbl_FOUPA);
-            this.panel1.Location = new System.Drawing.Point(176, 394);
+            this.panel1.Location = new System.Drawing.Point(187, 418);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(80, 40);
             this.panel1.TabIndex = 50;
@@ -1603,7 +1603,7 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.lbl_FOUPB);
-            this.panel2.Location = new System.Drawing.Point(383, 394);
+            this.panel2.Location = new System.Drawing.Point(357, 418);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(80, 40);
             this.panel2.TabIndex = 51;
@@ -1622,9 +1622,9 @@
             // pnl_Robot
             // 
             this.pnl_Robot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_Robot.Location = new System.Drawing.Point(217, 192);
+            this.pnl_Robot.Location = new System.Drawing.Point(187, 165);
             this.pnl_Robot.Name = "pnl_Robot";
-            this.pnl_Robot.Size = new System.Drawing.Size(200, 200);
+            this.pnl_Robot.Size = new System.Drawing.Size(250, 250);
             this.pnl_Robot.TabIndex = 52;
             // 
             // CurrentStateGUI
@@ -1785,7 +1785,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbl_FOUPB;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnl_Robot;
     }
 }

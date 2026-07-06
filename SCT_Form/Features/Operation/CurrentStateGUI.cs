@@ -148,15 +148,18 @@ namespace SCT_Form
             return null;
         }
 
+        // 각 스테이션을 바라볼 때의 회전 각도(12시=0도, 시계방향 +).
+        // PM A=9시(270도), PM B=12시(0도), PM C=3시(90도),
+        // FOUP A/B는 화면 배치에 맞춰 좌하단/우하단.
         private List<RobotTarget> GetRobotTargets()
         {
             return new List<RobotTarget>
             {
-                new RobotTarget("PM A", EquipmentLayout.GetModule("PM A").LR, new PointF(0.00F, 0.50F)),
-                new RobotTarget("PM B", EquipmentLayout.GetModule("PM B").LR, new PointF(0.50F, 0.00F)),
-                new RobotTarget("PM C", EquipmentLayout.GetModule("PM C").LR, new PointF(1.00F, 0.50F)),
-                new RobotTarget("FOUP A", EquipmentLayout.GetFoup("FOUP A").LR, new PointF(0.20F, 1.00F)),
-                new RobotTarget("FOUP B", EquipmentLayout.GetFoup("FOUP B").LR, new PointF(0.80F, 1.00F))
+                new RobotTarget("PM A", EquipmentLayout.GetModule("PM A").LR, 270F),
+                new RobotTarget("PM B", EquipmentLayout.GetModule("PM B").LR, 0F),
+                new RobotTarget("PM C", EquipmentLayout.GetModule("PM C").LR, 90F),
+                new RobotTarget("FOUP A", EquipmentLayout.GetFoup("FOUP A").LR, 225F),
+                new RobotTarget("FOUP B", EquipmentLayout.GetFoup("FOUP B").LR, 135F)
             };
         }
 
@@ -166,63 +169,12 @@ namespace SCT_Form
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
             Rectangle bounds = robotPanel.ClientRectangle;
-            Rectangle inner = bounds;
-            inner.Inflate(-8, -8);
-            PointF robotCenter = new PointF(inner.Left + inner.Width / 2F, inner.Top + inner.Height / 2F + 6F);
+            PointF robotCenter = new PointF(bounds.Width / 2F, bounds.Height / 2F);
             RobotTarget nearest = currentRobotLRPosition.HasValue ? GetNearestRobotTarget(currentRobotLRPosition.Value) : GetRobotTarget("FOUP A");
             bool isFacingTarget = nearest != null && currentRobotFacingDiff <= RobotFacingDisplayToleranceCounts;
-            float rotationDegrees = 0F;
-
-            if (nearest != null)
-            {
-                PointF targetPoint = ToRobotMapPoint(inner, nearest.MapPoint);
-                float dx = targetPoint.X - robotCenter.X;
-                float dy = targetPoint.Y - robotCenter.Y;
-                rotationDegrees = (float)(Math.Atan2(dx, -dy) * 180.0 / Math.PI);
-            }
+            float rotationDegrees = nearest == null ? 0F : nearest.AngleDegrees;
 
             DrawPhotoStyleRobot(g, robotCenter, rotationDegrees, isFacingTarget);
-            DrawRobotStatusOverlay(g, bounds, nearest, isFacingTarget);
-        }
-
-        private void DrawRobotStatusOverlay(Graphics g, Rectangle bounds, RobotTarget nearest, bool isFacingTarget)
-        {
-            string facingText = "방향: " + (isFacingTarget && nearest != null ? nearest.Name : "이동 중");
-            string cylinderText;
-            Color cylinderColor;
-            if (robotCylinderForward && !robotCylinderBack)
-            {
-                cylinderText = "실린더: 전진";
-                cylinderColor = Color.Firebrick;
-            }
-            else if (!robotCylinderForward && robotCylinderBack)
-            {
-                cylinderText = "실린더: 후진";
-                cylinderColor = Color.FromArgb(45, 55, 72);
-            }
-            else
-            {
-                cylinderText = "실린더: 확인 필요";
-                cylinderColor = Color.DarkOrange;
-            }
-            string waferText = robotHasWafer ? "웨이퍼 보유" : "웨이퍼 없음";
-
-            using (Font font = new Font("맑은 고딕", 8F, FontStyle.Bold))
-            using (Brush facingBrush = new SolidBrush(isFacingTarget ? Color.SeaGreen : Color.DarkOrange))
-            using (Brush cylinderBrush = new SolidBrush(cylinderColor))
-            using (Brush waferBrush = new SolidBrush(robotHasWafer ? Color.Goldenrod : Color.Gray))
-            {
-                g.DrawString(facingText, font, facingBrush, 5F, 4F);
-                g.DrawString(cylinderText, font, cylinderBrush, 5F, bounds.Bottom - 34F);
-                g.DrawString(waferText, font, waferBrush, 5F, bounds.Bottom - 18F);
-            }
-        }
-
-        private PointF ToRobotMapPoint(Rectangle bounds, PointF ratioPoint)
-        {
-            return new PointF(
-                bounds.Left + bounds.Width * ratioPoint.X,
-                bounds.Top + bounds.Height * ratioPoint.Y);
         }
 
         private void DrawPhotoStyleRobot(Graphics g, PointF center, float rotationDegrees, bool isFacingTarget)
@@ -265,16 +217,16 @@ namespace SCT_Form
 
         private class RobotTarget
         {
-            public RobotTarget(string name, long lr, PointF mapPoint)
+            public RobotTarget(string name, long lr, float angleDegrees)
             {
                 Name = name;
                 LR = lr;
-                MapPoint = mapPoint;
+                AngleDegrees = angleDegrees;
             }
 
             public string Name { get; private set; }
             public long LR { get; private set; }
-            public PointF MapPoint { get; private set; }
+            public float AngleDegrees { get; private set; }
         }
 
         private class RobotMapPanel : Panel
