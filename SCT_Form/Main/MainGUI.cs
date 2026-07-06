@@ -549,7 +549,7 @@ namespace SCT_Form
             {
                 try
                 {
-                    foreach (string line in File.ReadLines(filePath))
+                    foreach (string line in ReadLogFileLines(filePath))
                     {
                         SystemLogEntry entry;
                         if (TryParseLogFileLine(line, out entry) && entry.Time >= minimumLogTime)
@@ -563,6 +563,26 @@ namespace SCT_Form
                     // 로그 조회용 파일 로드 실패는 장비 시작을 막지 않는다.
                 }
             }
+        }
+
+        // 로그 파일은 UTF-8로 기록되지만(App.config appender encoding), 과거 빌드가
+        // ANSI(CP949)로 남긴 파일이 섞여 있을 수 있어 UTF-8 해석에 실패하면 CP949로 재해석한다.
+        private static string[] ReadLogFileLines(string filePath)
+        {
+            byte[] bytes = File.ReadAllBytes(filePath);
+
+            string text;
+            try
+            {
+                text = new UTF8Encoding(false, true).GetString(bytes);
+                if (text.Length > 0 && text[0] == '﻿') text = text.Substring(1); // BOM 제거
+            }
+            catch (DecoderFallbackException)
+            {
+                text = Encoding.GetEncoding(949).GetString(bytes);
+            }
+
+            return text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
         }
 
         private void CleanupExpiredLogFiles()
