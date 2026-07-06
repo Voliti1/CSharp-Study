@@ -23,12 +23,12 @@ namespace SCT_Form
         private string selectedPmcRecipePath;
         private string selectedProcessRecipePath;
         private ProcessRecipeData currentProcessRecipe;
-        private int currentProcessStepIndex = -1;
         private bool isProcessRecipeRunning;
         private bool isProcessRecipePaused;
         private ChamberProcessState pmaProcessState;
         private ChamberProcessState pmbProcessState;
         private ChamberProcessState pmcProcessState;
+        private readonly WaferAutoSequencer waferSequencer = new WaferAutoSequencer();
 
         public CurrentStateGUI(MainGUI mainGUI)
         {
@@ -41,9 +41,49 @@ namespace SCT_Form
             InitializeProgressBar(pnl_PMA_progressbar);
             InitializeProgressBar(pnl_PMB_progressbar);
             InitializeProgressBar(pnl_PMC_progressbar);
+            RefreshDoorStatusLabels();
 
             chamberProcessTimer.Interval = 1000;
             chamberProcessTimer.Tick += chamberProcessTimer_Tick;
+
+            waferSequencer.Aborted += reason =>
+            {
+                main.WriteSystemLog("WARN", "자동공정 Abort: " + reason);
+                MessageBox.Show(reason, "Process Aborted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+        }
+
+        internal void RefreshDoorStatusLabels()
+        {
+            if (main == null) return;
+
+            SetDoorStatusLabel(lbl_PMA_DoorStatus, main.isChamADoorOpen);
+            SetDoorStatusLabel(lbl_PMB_DoorStatus, main.isChamBDoorOpen);
+            SetDoorStatusLabel(lbl_PMC_DoorStatus, main.isChamCDoorOpen);
+        }
+
+        internal void SetDoorStatus(string pmName, bool isOpen)
+        {
+            if (pmName == "PM A")
+            {
+                SetDoorStatusLabel(lbl_PMA_DoorStatus, isOpen);
+            }
+            else if (pmName == "PM B")
+            {
+                SetDoorStatusLabel(lbl_PMB_DoorStatus, isOpen);
+            }
+            else if (pmName == "PM C")
+            {
+                SetDoorStatusLabel(lbl_PMC_DoorStatus, isOpen);
+            }
+        }
+
+        private void SetDoorStatusLabel(Label label, bool isOpen)
+        {
+            if (label == null) return;
+
+            label.Text = isOpen ? "Door Open" : "Door Close";
+            label.ForeColor = isOpen ? Color.Goldenrod : Color.DimGray;
         }
 
         private void InitializeProcessRecipeSelector()
@@ -284,96 +324,24 @@ namespace SCT_Form
             return state;
         }
 
-        private ChamberProcessState CreateProcessStateForModule(string module, string ppid, int totalSeconds)
-        {
-            string normalizedModule = NormalizeModule(module);
-
-            if (normalizedModule == "PM A")
-            {
-                return CreateProcessState(
-                    ppid,
-                    totalSeconds,
-                    lbl_PMA_recipename,
-                    lbl_PMA_stepname,
-                    lbl_PMA_recipetime,
-                    lbl_PMA_steptime,
-                    lbl_PMA_stepnum,
-                    lbl_PMA_messagecontent,
-                    pnl_PMA_progressbar,
-                    lbl_PMA_Status,
-                    main.lbl_PMAStatus);
-            }
-
-            if (normalizedModule == "PM B")
-            {
-                return CreateProcessState(
-                    ppid,
-                    totalSeconds,
-                    lbl_PMB_recipename,
-                    lbl_PMB_stepname,
-                    lbl_PMB_recipetime,
-                    lbl_PMB_steptime,
-                    lbl_PMB_stepnum,
-                    lbl_PMB_messagecontent,
-                    pnl_PMB_progressbar,
-                    lbl_PMB_Status,
-                    main.lbl_PMBStatus);
-            }
-
-            if (normalizedModule == "PM C")
-            {
-                return CreateProcessState(
-                    ppid,
-                    totalSeconds,
-                    lbl_PMC_recipename,
-                    lbl_PMC_stepname,
-                    lbl_PMC_recipetime,
-                    lbl_PMC_steptime,
-                    lbl_PMC_stepnum,
-                    lbl_PMC_messagecontent,
-                    pnl_PMC_progressbar,
-                    lbl_PMC_Status,
-                    main.lbl_PMCStatus);
-            }
-
-            return null;
-        }
-
-        private void AssignProcessState(string module, ChamberProcessState state)
-        {
-            string normalizedModule = NormalizeModule(module);
-            if (normalizedModule == "PM A")
-            {
-                pmaProcessState = state;
-            }
-            else if (normalizedModule == "PM B")
-            {
-                pmbProcessState = state;
-            }
-            else if (normalizedModule == "PM C")
-            {
-                pmcProcessState = state;
-            }
-        }
-
-        private ChamberProcessState GetProcessState(string module)
-        {
-            string normalizedModule = NormalizeModule(module);
-            if (normalizedModule == "PM A") return pmaProcessState;
-            if (normalizedModule == "PM B") return pmbProcessState;
-            if (normalizedModule == "PM C") return pmcProcessState;
-            return null;
-        }
-
         private void chamberProcessTimer_Tick(object sender, EventArgs e)
         {
             if (isProcessRecipeRunning)
             {
                 if (isProcessRecipePaused) return;
 
-                if (!AdvanceCurrentProcessRecipeStep())
+                waferSequencer.Tick();
+                UpdateAutoSequenceDisplay();
+
+                if (!waferSequencer.IsRunning)
                 {
+                    isProcessRecipeRunning = false;
                     chamberProcessTimer.Stop();
+
+                    if (!waferSequencer.IsAborted)
+                    {
+                        MessageBox.Show("Process Recipe가 완료되었습니다.", "Process Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
 
                 return;
@@ -387,6 +355,58 @@ namespace SCT_Form
             if (!hasRunningProcess)
             {
                 chamberProcessTimer.Stop();
+            }
+        }
+
+        private Label GetModuleMessageLabel(string module)
+        {
+            string normalized = NormalizeModule(module);
+            if (normalized == "PM B") return lbl_PMB_messagecontent;
+            if (normalized == "PM C") return lbl_PMC_messagecontent;
+            return lbl_PMA_messagecontent;
+        }
+
+        private Label GetModuleStepNumberLabel(string module)
+        {
+            string normalized = NormalizeModule(module);
+            if (normalized == "PM B") return lbl_PMB_stepnum;
+            if (normalized == "PM C") return lbl_PMC_stepnum;
+            return lbl_PMA_stepnum;
+        }
+
+        private Label GetModuleRecipeTimeLabel(string module)
+        {
+            string normalized = NormalizeModule(module);
+            if (normalized == "PM B") return lbl_PMB_recipetime;
+            if (normalized == "PM C") return lbl_PMC_recipetime;
+            return lbl_PMA_recipetime;
+        }
+
+        private Panel GetModuleProgressPanel(string module)
+        {
+            string normalized = NormalizeModule(module);
+            if (normalized == "PM B") return pnl_PMB_progressbar;
+            if (normalized == "PM C") return pnl_PMC_progressbar;
+            return pnl_PMA_progressbar;
+        }
+
+        private void UpdateAutoSequenceDisplay()
+        {
+            string module = waferSequencer.CurrentModule;
+            if (string.IsNullOrEmpty(module)) return;
+
+            Label messageLabel = GetModuleMessageLabel(module);
+            Label stepNumberLabel = GetModuleStepNumberLabel(module);
+            Label recipeTimeLabel = GetModuleRecipeTimeLabel(module);
+            Panel progressPanel = GetModuleProgressPanel(module);
+
+            messageLabel.Text = waferSequencer.CurrentDescription;
+            stepNumberLabel.Text = waferSequencer.CurrentStepIndex + " / " + waferSequencer.TotalStepCount + " step";
+
+            if (waferSequencer.CurrentKind == WaferAutoSequencer.AutoStepKind.WaitElapsed)
+            {
+                recipeTimeLabel.Text = waferSequencer.CurrentElapsedSeconds + " / " + waferSequencer.CurrentTotalSeconds;
+                UpdateProgressBar(progressPanel, GetProgressFillPanel(progressPanel), waferSequencer.CurrentElapsedSeconds, waferSequencer.CurrentTotalSeconds);
             }
         }
 
@@ -404,77 +424,6 @@ namespace SCT_Form
 
             UpdateChamberProcessDisplay(state);
             return !state.IsCompleted;
-        }
-
-        private bool AdvanceCurrentProcessRecipeStep()
-        {
-            ChamberProcessState state = GetCurrentProcessRecipeState();
-            if (state == null)
-            {
-                return StartCurrentProcessRecipeStep();
-            }
-
-            if (AdvanceChamberProcess(state))
-            {
-                return true;
-            }
-
-            currentProcessStepIndex++;
-            return StartCurrentProcessRecipeStep();
-        }
-
-        private bool StartCurrentProcessRecipeStep()
-        {
-            if (currentProcessRecipe == null || currentProcessRecipe.Steps == null ||
-                currentProcessStepIndex < 0 || currentProcessStepIndex >= currentProcessRecipe.Steps.Count)
-            {
-                CompleteProcessRecipeRun();
-                return false;
-            }
-
-            ProcessRecipeStep step = currentProcessRecipe.Steps[currentProcessStepIndex];
-            if (step == null || step.Recipe == null)
-            {
-                currentProcessStepIndex++;
-                return StartCurrentProcessRecipeStep();
-            }
-
-            ChamberRecipeSelection recipe = step.Recipe;
-            ChamberProcessState state = CreateProcessStateForModule(recipe.Module, recipe.RecipePPID, recipe.ProcessTime);
-            if (state == null)
-            {
-                currentProcessStepIndex++;
-                return StartCurrentProcessRecipeStep();
-            }
-
-            state.Module = NormalizeModule(recipe.Module);
-            state.RecipeName = recipe.RecipeName;
-            state.ProcessStepNumber = currentProcessStepIndex + 1;
-            state.ProcessStepTotal = currentProcessRecipe.Steps.Count;
-            AssignProcessState(state.Module, state);
-            UpdateChamberProcessDisplay(state);
-            return true;
-        }
-
-        private void CompleteProcessRecipeRun()
-        {
-            isProcessRecipeRunning = false;
-            isProcessRecipePaused = false;
-            currentProcessRecipe = null;
-            currentProcessStepIndex = -1;
-        }
-
-        private ChamberProcessState GetCurrentProcessRecipeState()
-        {
-            if (currentProcessRecipe == null || currentProcessRecipe.Steps == null ||
-                currentProcessStepIndex < 0 || currentProcessStepIndex >= currentProcessRecipe.Steps.Count)
-            {
-                return null;
-            }
-
-            ProcessRecipeStep step = currentProcessRecipe.Steps[currentProcessStepIndex];
-            if (step == null || step.Recipe == null) return null;
-            return GetProcessState(NormalizeModule(step.Recipe.Module));
         }
 
         private void UpdateChamberProcessDisplay(ChamberProcessState state)
@@ -524,7 +473,10 @@ namespace SCT_Form
             if (sourceLabel == null || targetLabel == null) return;
 
             targetLabel.Text = sourceLabel.Text;
-            targetLabel.ForeColor = sourceLabel.ForeColor;
+            if (main == null || !main.TrySyncPmStatusLabel(targetLabel, sourceLabel.ForeColor))
+            {
+                targetLabel.ForeColor = sourceLabel.ForeColor;
+            }
         }
 
         private StepProgress GetStepProgress(ChamberProcessState state)
@@ -901,15 +853,13 @@ namespace SCT_Form
             ResetAllChamberProcessDisplays();
 
             currentProcessRecipe = recipe;
-            currentProcessStepIndex = 0;
             isProcessRecipeRunning = true;
             isProcessRecipePaused = false;
 
-            if (StartCurrentProcessRecipeStep())
-            {
-                chamberProcessTimer.Start();
-            }
-
+            List<ChamberRecipeSelection> moduleSteps = recipe.Steps.Select(s => s.Recipe).ToList();
+            waferSequencer.Start(AutoSequenceBuilder.Build(main, moduleSteps));
+            UpdateAutoSequenceDisplay();
+            chamberProcessTimer.Start();
         }
 
         private void btn_Pause_Click(object sender, EventArgs e)
@@ -947,7 +897,16 @@ namespace SCT_Form
 
             chamberProcessTimer.Stop();
             AbortActiveProcesses();
-            CompleteProcessRecipeRun();
+
+            if (isProcessRecipeRunning)
+            {
+                waferSequencer.Abort("사용자 Abort 요청");
+                UpdateAutoSequenceDisplay();
+                isProcessRecipeRunning = false;
+            }
+
+            isProcessRecipePaused = false;
+            currentProcessRecipe = null;
         }
 
         private class ProcessRecipeComboItem

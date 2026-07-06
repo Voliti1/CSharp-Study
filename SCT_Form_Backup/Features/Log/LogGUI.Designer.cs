@@ -31,9 +31,11 @@
             this.pnl_LogGUI_Menu = new System.Windows.Forms.TableLayoutPanel();
             this.btn_Alarm = new System.Windows.Forms.Button();
             this.btn_FullLog = new System.Windows.Forms.Button();
+            this.btn_RandomAlarm = new System.Windows.Forms.Button();
             this.pnl_LogGUI = new System.Windows.Forms.TableLayoutPanel();
             this.Log = new System.Windows.Forms.GroupBox();
-            this.LogView = new System.Windows.Forms.ListView();
+            this.btn_Asc = new System.Windows.Forms.Button();
+            this.btn_SelectMode = new System.Windows.Forms.Button();
             this.pnl_Button = new System.Windows.Forms.TableLayoutPanel();
             this.btn_LogDelete = new System.Windows.Forms.Button();
             this.btn_Export = new System.Windows.Forms.Button();
@@ -46,13 +48,15 @@
             this.cbox_Column1 = new System.Windows.Forms.ComboBox();
             this.txtbox_1 = new System.Windows.Forms.TextBox();
             this.btn_Search = new System.Windows.Forms.Button();
-            this.btn_SelectMode = new System.Windows.Forms.Button();
-            this.btn_RandomAlarm = new System.Windows.Forms.Button();
+            this.pnl_Log = new System.Windows.Forms.TableLayoutPanel();
+            this.LogView = new System.Windows.Forms.ListView();
+            this.LogDetailView = new System.Windows.Forms.ListView();
             this.pnl_LogGUI_Menu.SuspendLayout();
             this.pnl_LogGUI.SuspendLayout();
             this.Log.SuspendLayout();
             this.pnl_Button.SuspendLayout();
             this.pnl_Filter.SuspendLayout();
+            this.pnl_Log.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_LogGUI_Menu
@@ -105,6 +109,19 @@
             this.btn_FullLog.Text = "Full Log";
             this.btn_FullLog.UseVisualStyleBackColor = true;
             // 
+            // btn_RandomAlarm
+            // 
+            this.btn_RandomAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_RandomAlarm.Font = new System.Drawing.Font("맑은 고딕", 11F, System.Drawing.FontStyle.Bold);
+            this.btn_RandomAlarm.ForeColor = System.Drawing.Color.Silver;
+            this.btn_RandomAlarm.Location = new System.Drawing.Point(801, 1);
+            this.btn_RandomAlarm.Margin = new System.Windows.Forms.Padding(1);
+            this.btn_RandomAlarm.Name = "btn_RandomAlarm";
+            this.btn_RandomAlarm.Size = new System.Drawing.Size(198, 48);
+            this.btn_RandomAlarm.TabIndex = 39;
+            this.btn_RandomAlarm.Text = "Create Random\r\nAlarm";
+            this.btn_RandomAlarm.UseVisualStyleBackColor = true;
+            // 
             // pnl_LogGUI
             // 
             this.pnl_LogGUI.ColumnCount = 2;
@@ -122,8 +139,9 @@
             // 
             // Log
             // 
+            this.Log.Controls.Add(this.pnl_Log);
+            this.Log.Controls.Add(this.btn_Asc);
             this.Log.Controls.Add(this.btn_SelectMode);
-            this.Log.Controls.Add(this.LogView);
             this.Log.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Log.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
             this.Log.Location = new System.Drawing.Point(3, 3);
@@ -133,18 +151,26 @@
             this.Log.TabStop = false;
             this.Log.Text = "Alarm Log";
             // 
-            // LogView
+            // btn_Asc
             // 
-            this.LogView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LogView.FullRowSelect = true;
-            this.LogView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.LogView.HideSelection = false;
-            this.LogView.Location = new System.Drawing.Point(3, 30);
-            this.LogView.Name = "LogView";
-            this.LogView.Size = new System.Drawing.Size(738, 661);
-            this.LogView.TabIndex = 0;
-            this.LogView.UseCompatibleStateImageBehavior = false;
-            this.LogView.View = System.Windows.Forms.View.Details;
+            this.btn_Asc.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_Asc.Location = new System.Drawing.Point(526, 3);
+            this.btn_Asc.Name = "btn_Asc";
+            this.btn_Asc.Size = new System.Drawing.Size(106, 23);
+            this.btn_Asc.TabIndex = 2;
+            this.btn_Asc.Text = "DESC";
+            this.btn_Asc.UseVisualStyleBackColor = true;
+            this.btn_Asc.Click += new System.EventHandler(this.btn_Asc_Click);
+            // 
+            // btn_SelectMode
+            // 
+            this.btn_SelectMode.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_SelectMode.Location = new System.Drawing.Point(638, 3);
+            this.btn_SelectMode.Name = "btn_SelectMode";
+            this.btn_SelectMode.Size = new System.Drawing.Size(106, 23);
+            this.btn_SelectMode.TabIndex = 1;
+            this.btn_SelectMode.Text = "Select Mode";
+            this.btn_SelectMode.UseVisualStyleBackColor = true;
             // 
             // pnl_Button
             // 
@@ -289,28 +315,46 @@
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click_1);
             // 
-            // btn_SelectMode
+            // pnl_Log
             // 
-            this.btn_SelectMode.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_SelectMode.Location = new System.Drawing.Point(638, 3);
-            this.btn_SelectMode.Name = "btn_SelectMode";
-            this.btn_SelectMode.Size = new System.Drawing.Size(106, 23);
-            this.btn_SelectMode.TabIndex = 1;
-            this.btn_SelectMode.Text = "Select Mode";
-            this.btn_SelectMode.UseVisualStyleBackColor = true;
+            this.pnl_Log.ColumnCount = 1;
+            this.pnl_Log.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnl_Log.Controls.Add(this.LogDetailView, 0, 1);
+            this.pnl_Log.Controls.Add(this.LogView, 0, 0);
+            this.pnl_Log.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_Log.Location = new System.Drawing.Point(3, 30);
+            this.pnl_Log.Name = "pnl_Log";
+            this.pnl_Log.RowCount = 2;
+            this.pnl_Log.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.pnl_Log.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.pnl_Log.Size = new System.Drawing.Size(738, 661);
+            this.pnl_Log.TabIndex = 3;
             // 
-            // btn_RandomAlarm
+            // LogView
             // 
-            this.btn_RandomAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_RandomAlarm.Font = new System.Drawing.Font("맑은 고딕", 11F, System.Drawing.FontStyle.Bold);
-            this.btn_RandomAlarm.ForeColor = System.Drawing.Color.Silver;
-            this.btn_RandomAlarm.Location = new System.Drawing.Point(801, 1);
-            this.btn_RandomAlarm.Margin = new System.Windows.Forms.Padding(1);
-            this.btn_RandomAlarm.Name = "btn_RandomAlarm";
-            this.btn_RandomAlarm.Size = new System.Drawing.Size(198, 48);
-            this.btn_RandomAlarm.TabIndex = 39;
-            this.btn_RandomAlarm.Text = "Create Random\r\nAlarm";
-            this.btn_RandomAlarm.UseVisualStyleBackColor = true;
+            this.LogView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LogView.FullRowSelect = true;
+            this.LogView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.LogView.HideSelection = false;
+            this.LogView.Location = new System.Drawing.Point(3, 3);
+            this.LogView.Name = "LogView";
+            this.LogView.Size = new System.Drawing.Size(732, 456);
+            this.LogView.TabIndex = 1;
+            this.LogView.UseCompatibleStateImageBehavior = false;
+            this.LogView.View = System.Windows.Forms.View.Details;
+            // 
+            // LogDetailView
+            // 
+            this.LogDetailView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LogDetailView.FullRowSelect = true;
+            this.LogDetailView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.LogDetailView.HideSelection = false;
+            this.LogDetailView.Location = new System.Drawing.Point(3, 465);
+            this.LogDetailView.Name = "LogDetailView";
+            this.LogDetailView.Size = new System.Drawing.Size(732, 193);
+            this.LogDetailView.TabIndex = 2;
+            this.LogDetailView.UseCompatibleStateImageBehavior = false;
+            this.LogDetailView.View = System.Windows.Forms.View.Details;
             // 
             // LogGUI
             // 
@@ -326,6 +370,7 @@
             this.pnl_Button.ResumeLayout(false);
             this.pnl_Filter.ResumeLayout(false);
             this.pnl_Filter.PerformLayout();
+            this.pnl_Log.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -336,7 +381,6 @@
         internal System.Windows.Forms.Button btn_FullLog;
         private System.Windows.Forms.TableLayoutPanel pnl_LogGUI;
         internal System.Windows.Forms.GroupBox Log;
-        internal System.Windows.Forms.ListView LogView;
         private System.Windows.Forms.TableLayoutPanel pnl_Button;
         private System.Windows.Forms.TableLayoutPanel pnl_Filter;
         private System.Windows.Forms.ComboBox cbox_Column1;
@@ -351,5 +395,9 @@
         private System.Windows.Forms.Button btn_Export;
         private System.Windows.Forms.Button btn_SelectMode;
         internal System.Windows.Forms.Button btn_RandomAlarm;
+        private System.Windows.Forms.Button btn_Asc;
+        private System.Windows.Forms.TableLayoutPanel pnl_Log;
+        internal System.Windows.Forms.ListView LogDetailView;
+        internal System.Windows.Forms.ListView LogView;
     }
 }

@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -43,6 +44,10 @@ namespace SCT_Form
         private const int Axis1TargetPositionWriteOffset = 3;
         private const int Axis2TargetPositionWriteOffset = 26;
         private const int AxisTargetPositionByteCount = 4;
+        private const long Axis1ShutdownHomePositionLimit = 2000;
+        private const int Axis1ShutdownHomeTimeoutMs = 30000;
+        private const int AxisMoveCompleteTimeoutMs = 60000;
+        private const int StartupCylinderBackTimeoutMs = 10000;
 
         private CurrentStateGUI currentGUI;
         private MaintGUI maintGUI;
@@ -62,6 +67,7 @@ namespace SCT_Form
         public MainGUI()
         {
             InitializeComponent();
+            FormClosing += Form1_FormClosing;
 
             
         //grpbox_Tower.Enabled = false;
@@ -99,7 +105,7 @@ namespace SCT_Form
             SystemConnect();
             servoMotorON();
             isServoMotorOn = true;
-            setBasicPoint();
+            RecoverCylinderThenHomeAtStartup();
 
             Mainpnl_CurrentStateGUI();
             UpdateDateTimeLabels();
@@ -306,9 +312,14 @@ namespace SCT_Form
             EtherCAT_M.Digital_Output(14, on);
         }
 
+        internal void SetWaferExhaust(bool on)
+        {
+            EtherCAT_M.Digital_Output(15, on);
+        }
+
         internal bool IsCylinderForward()
         {
-            return EtherCAT_M.Digital_Input(13) && !EtherCAT_M.Digital_Input(12);
+            return EtherCAT_M.Digital_Input(13);
         }
 
         internal bool IsCylinderBack()
@@ -319,13 +330,13 @@ namespace SCT_Form
         internal bool IsChamberDoorOpen(string module)
         {
             EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
-            return EtherCAT_M.Digital_Input(profile.DoorUpSensor) && !EtherCAT_M.Digital_Input(profile.DoorDownSensor);
+            return EtherCAT_M.Digital_Input(profile.DoorDownSensor);
         }
 
         internal bool IsChamberDoorClosed(string module)
         {
             EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
-            return !EtherCAT_M.Digital_Input(profile.DoorUpSensor) && EtherCAT_M.Digital_Input(profile.DoorDownSensor);
+            return EtherCAT_M.Digital_Input(profile.DoorUpSensor);
         }
 
         internal bool IsRobotFacingModule(string module)
@@ -771,15 +782,6 @@ namespace SCT_Form
                     // 모드에 맞게 버튼 색상 스타일 출력
                     UpdateModeButtonStyles();
 
-                    // 모든 챔버 문 초기 닫기 출력
-                    EtherCAT_M.Digital_Output(5, false);
-                    EtherCAT_M.Digital_Output(4, true);
-                    EtherCAT_M.Digital_Output(8, false);
-                    EtherCAT_M.Digital_Output(7, true);
-                    EtherCAT_M.Digital_Output(11, false);
-                    EtherCAT_M.Digital_Output(10, true);
-                    WriteSystemLog("INFO", "장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력");
-
                     // 황색등 점등
                     ApplyTowerLampStatus(settings.IdleLampStatus);
                     WriteSystemLog("INFO", "타워램프 상태 변경: " + settings.IdleLampStatus + " (장비 대기)");
@@ -865,6 +867,35 @@ namespace SCT_Form
             WriteSystemLog("INFO", "수동 제어: 타워램프 전체 등 OFF");
         }
         // --- 프로그램 종료 처리 ---
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!isConnect || EtherCAT_M == null) return;
+
+            try
+            {
+                if (!IsCylinderForward()) return;
+
+                e.Cancel = true;
+                WriteSystemLog("WARN", "Application close blocked: robot cylinder is forward");
+                MessageBox.Show(
+                    "웨이퍼 이송 실린더가 전진되어 있어 프로그램을 종료할 수 없습니다.\r\n실린더를 후진한 뒤 다시 종료해주세요.",
+                    "Close Blocked",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                e.Cancel = true;
+                log.Error("폼 종료 전 실린더 상태 확인 중 예외 발생: ", ex);
+                WriteSystemLog("ERROR", $"폼 종료 전 실린더 상태 확인 중 예외 발생: {ex.Message}");
+                MessageBox.Show(
+                    "실린더 상태를 확인할 수 없어 프로그램 종료를 중단했습니다.",
+                    "Close Blocked",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+        }
+
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             WriteSystemLog("INFO", "Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동");
@@ -881,16 +912,22 @@ namespace SCT_Form
                 EtherCAT_M.Digital_Output(6, false);
                 EtherCAT_M.Digital_Output(9, false);
 
-                EtherCAT_M.Digital_Output(5, false);
-                EtherCAT_M.Digital_Output(4, true);
-                EtherCAT_M.Digital_Output(8, false);
-                EtherCAT_M.Digital_Output(7, true);
-                EtherCAT_M.Digital_Output(11, false);
-                EtherCAT_M.Digital_Output(10, true);
+                SetWaferSuction(false);
+                EtherCAT_M.Digital_Output(15, false);
 
-                WriteSystemLog("INFO", "안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료");
+                if (WaitUntilCylinderBack(StartupCylinderBackTimeoutMs))
+                {
+                    CloseAllChamberDoors();
+                    WriteSystemLog("INFO", "안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료");
 
-                setBasicPoint();
+                    setBasicPoint();
+                    WaitUntilAxis1PositionBelow(Axis1ShutdownHomePositionLimit, Axis1ShutdownHomeTimeoutMs);
+                }
+                else
+                {
+                    WriteSystemLog("ERROR", "안전 셧다운 중단: 실린더 후진 센서 미확인으로 도어 폐쇄 및 원점복귀 생략");
+                }
+
                 servoMotorOFF();
                 isServoMotorOn = false;
                 WriteSystemLog("INFO", "안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료");
@@ -1112,6 +1149,47 @@ namespace SCT_Form
             HomeAxis2LR(); //좌우 원점복귀
         }
 
+        internal void RecoverCylinderThenHomeAtStartup()
+        {
+            if (!IsCylinderBack())
+            {
+                WriteSystemLog("WARN", "Startup recovery: cylinder is not back. Cylinder back output applied before homing.");
+                MoveCylinderBack();
+
+                if (!WaitUntilCylinderBack(StartupCylinderBackTimeoutMs))
+                {
+                    WriteSystemLog("ERROR", "Startup recovery canceled: cylinder back sensor was not confirmed. Homing skipped.");
+                    MessageBox.Show(
+                        "실린더 후진 센서가 확인되지 않아 원점복귀를 실행하지 않았습니다.\r\n실린더 상태를 확인한 뒤 다시 시도해주세요.",
+                        "Startup Safety",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            WriteSystemLog("INFO", "Startup recovery: cylinder back confirmed. Homing started.");
+            CloseAllChamberDoors();
+            setBasicPoint();
+        }
+
+        private void CloseAllChamberDoors()
+        {
+            if (!IsCylinderBack())
+            {
+                WriteSystemLog("WARN", "Chamber door close skipped: cylinder back sensor is not confirmed.");
+                return;
+            }
+
+            EtherCAT_M.Digital_Output(5, false);
+            EtherCAT_M.Digital_Output(4, true);
+            EtherCAT_M.Digital_Output(8, false);
+            EtherCAT_M.Digital_Output(7, true);
+            EtherCAT_M.Digital_Output(11, false);
+            EtherCAT_M.Digital_Output(10, true);
+            WriteSystemLog("INFO", "Chamber door close output applied after cylinder back confirmation.");
+        }
+
         internal void HomeAxis1UD()
         {
             ClearAxisTargetPosition(Axis1TargetPositionWriteOffset);
@@ -1130,17 +1208,15 @@ namespace SCT_Form
             bool wasMoving = IsAxis1Moving();
             WriteSystemLog("DEBUG", $"UD move requested. Target={targetPosition}, CurrentReadback={currentPos}, WasMoving={wasMoving}, WriteData[0-6] before={DumpWriteDataBytes(0, 7)}");
 
-            // Axis1_UD_Move_Send()는 매번 컨트롤워드를 63(New-Setpoint=1, Change-Set-Immediately=1)으로
-            // 남겨둔 채 끝난다. 다음 이동 시 POS_Update가 이 "켜진 채로 남은" 컨트롤워드 상태에서
-            // 새 좌표를 먼저 전송해버리면, 드라이브가 이를 진행 중이던 이동에 대한 즉시 갱신으로 해석해
-            // 새 rising-edge 없이 이전 상태를 기준으로 새 좌표를 반영하려는 것으로 추정된다.
-            // POS_Update 이전에 컨트롤워드를 15(New-Setpoint=0, Change-Set-Immediately=0)로 먼저
-            // 내려서 전송(settle)해, 다음 Move_Send()의 15->47->63이 확실한 새 rising-edge가 되도록 한다.
-            SettleAxisControlword(0);
+            if (wasMoving)
+            {
+                WriteSystemLog("WARN", $"UD move ignored. Previous move is still running. Target={targetPosition}");
+                return;
+            }
 
-            ClearAxisTargetPosition(Axis1TargetPositionWriteOffset);
             EtherCAT_M.Axis1_UD_POS_Update(targetPosition);
             EtherCAT_M.Axis1_UD_Move_Send();
+            ScheduleAxisControlwordSettle(0, 100);
 
             WriteSystemLog("DEBUG", $"UD move sent. Target={targetPosition}, WriteData[0-6] after={DumpWriteDataBytes(0, 7)}");
         }
@@ -1180,6 +1256,93 @@ namespace SCT_Form
 
             writeData[controlWordOffset] = 15;
             EtherCAT_M.Digital_Output(0, EtherCAT_M.Digital_Out_Value[0]);
+        }
+
+        private void ResetAxisMoveCommand(int controlWordOffset, int targetPositionOffset)
+        {
+            SettleAxisControlword(controlWordOffset);
+            Thread.Sleep(50);
+            ClearAxisTargetPosition(targetPositionOffset);
+        }
+
+        private void LatchAndSettleAxisMoveCommand(int controlWordOffset)
+        {
+            ScheduleAxisControlwordSettle(controlWordOffset, 100);
+        }
+
+        private void ScheduleAxisControlwordSettle(int controlWordOffset, int delayMs)
+        {
+            System.Windows.Forms.Timer settleTimer = new System.Windows.Forms.Timer();
+            settleTimer.Interval = Math.Max(1, delayMs);
+            settleTimer.Tick += (sender, e) =>
+            {
+                settleTimer.Stop();
+                settleTimer.Dispose();
+                SettleAxisControlword(controlWordOffset);
+            };
+            settleTimer.Start();
+        }
+
+        private bool WaitUntilAxis1TargetReached(int timeoutMs)
+        {
+            DateTime deadline = DateTime.Now.AddMilliseconds(timeoutMs);
+            while (DateTime.Now < deadline)
+            {
+                if (IsAxis1TargetReached()) return true;
+                Thread.Sleep(100);
+            }
+
+            return IsAxis1TargetReached();
+        }
+
+        private bool WaitUntilCylinderBack(int timeoutMs)
+        {
+            DateTime deadline = DateTime.Now.AddMilliseconds(timeoutMs);
+            while (DateTime.Now < deadline)
+            {
+                if (IsCylinderBack()) return true;
+                Thread.Sleep(100);
+                Application.DoEvents();
+            }
+
+            return IsCylinderBack();
+        }
+
+        private bool WaitUntilAxis1PositionBelow(long positionLimit, int timeoutMs)
+        {
+            DateTime deadline = DateTime.Now.AddMilliseconds(timeoutMs);
+            long currentPosition;
+
+            while (DateTime.Now < deadline)
+            {
+                if (TryReadAxis1Position(out currentPosition) && currentPosition < positionLimit)
+                {
+                    WriteSystemLog("INFO", $"UD shutdown home confirmed. Current={currentPosition}, Limit={positionLimit}");
+                    return true;
+                }
+
+                Thread.Sleep(100);
+            }
+
+            if (TryReadAxis1Position(out currentPosition))
+            {
+                WriteSystemLog("WARN", $"UD shutdown home wait timeout. Current={currentPosition}, Limit={positionLimit}");
+            }
+            else
+            {
+                WriteSystemLog("WARN", "UD shutdown home wait timeout. Current position read failed.");
+            }
+
+            return false;
+        }
+
+        private bool TryReadAxis1Position(out long currentPosition)
+        {
+            currentPosition = 0;
+            if (EtherCAT_M == null) return false;
+
+            string positionText = EtherCAT_M.Axis1_is_PosData();
+            return long.TryParse(positionText, NumberStyles.Integer, CultureInfo.InvariantCulture, out currentPosition);
         }
 
         // 진단용: 이전 이동이 완료(Target Reached)됐는지 여부. 현재는 이동을 막지 않고 로그에만 남긴다.
@@ -1287,6 +1450,11 @@ namespace SCT_Form
                 if (maintGUI != null)
                 {
                     maintGUI.SetCurrentPositionLabel(currentUDPos, currentLRPos);
+                }
+
+                if (currentGUI != null && !currentGUI.IsDisposed)
+                {
+                    currentGUI.RefreshDoorStatusLabels();
                 }
             }
             catch (Exception ex)

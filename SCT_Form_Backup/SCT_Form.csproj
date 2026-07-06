@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Core\AppDataPaths.cs" />
     <Compile Include="Core\AccountService.cs" />
+    <Compile Include="Core\EquipmentSettings.cs" />
     <Compile Include="Features\Recipe\ChamberRecipeSelection.cs" />
     <Compile Include="Features\Recipe\ChamberRecipeSetting.cs">
       <SubType>Form</SubType>
@@ -70,6 +71,8 @@
     <Compile Include="Features\Operation\CurrentStateGUI.Designer.cs">
       <DependentUpon>CurrentStateGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Operation\WaferAutoSequencer.cs" />
+    <Compile Include="Features\Operation\AutoSequenceBuilder.cs" />
     <Compile Include="Auth\IDSearch.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,6 +85,7 @@
     <Compile Include="Auth\LogInGUI.Designer.cs">
       <DependentUpon>LogInGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\EquipmentLayout.cs" />
     <Compile Include="Main\MainGUI.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -30,13 +30,10 @@
         {
             this.pnl_PMC = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMC = new System.Windows.Forms.Label();
-            this.waferControl3 = new SCT_Form.WaferControl();
             this.pnl_PMA = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMA = new System.Windows.Forms.Label();
-            this.waferControl2 = new SCT_Form.WaferControl();
             this.pnl_PMB = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMB = new System.Windows.Forms.Label();
-            this.waferControl1 = new SCT_Form.WaferControl();
             this.pnl_Robot = new System.Windows.Forms.Panel();
             this.lbl_Robot = new System.Windows.Forms.Label();
             this.pnl_FOUP_A = new System.Windows.Forms.TableLayoutPanel();
@@ -138,6 +135,9 @@
             this.lbl_RecipeSelect = new System.Windows.Forms.Label();
             this.cbox_ProcessRecipe = new System.Windows.Forms.ComboBox();
             this.btn_Start = new System.Windows.Forms.Button();
+            this.waferControl3 = new SCT_Form.WaferControl();
+            this.waferControl2 = new SCT_Form.WaferControl();
+            this.waferControl1 = new SCT_Form.WaferControl();
             this.pnl_PMC.SuspendLayout();
             this.pnl_PMA.SuspendLayout();
             this.pnl_PMB.SuspendLayout();
@@ -189,17 +189,6 @@
             this.lbl_PMC.Text = "PM C";
             this.lbl_PMC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // waferControl3
-            // 
-            this.waferControl3.BackColor = System.Drawing.Color.Transparent;
-            this.waferControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.waferControl3.Location = new System.Drawing.Point(21, 72);
-            this.waferControl3.Margin = new System.Windows.Forms.Padding(20);
-            this.waferControl3.Name = "waferControl3";
-            this.waferControl3.Size = new System.Drawing.Size(140, 140);
-            this.waferControl3.State = SCT_Form.WaferControl.WaferState.Empty;
-            this.waferControl3.TabIndex = 1;
-            // 
             // pnl_PMA
             // 
             this.pnl_PMA.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -228,17 +217,6 @@
             this.lbl_PMA.Text = "PM A";
             this.lbl_PMA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // waferControl2
-            // 
-            this.waferControl2.BackColor = System.Drawing.Color.Transparent;
-            this.waferControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.waferControl2.Location = new System.Drawing.Point(21, 72);
-            this.waferControl2.Margin = new System.Windows.Forms.Padding(20);
-            this.waferControl2.Name = "waferControl2";
-            this.waferControl2.Size = new System.Drawing.Size(140, 140);
-            this.waferControl2.State = SCT_Form.WaferControl.WaferState.Empty;
-            this.waferControl2.TabIndex = 1;
-            // 
             // pnl_PMB
             // 
             this.pnl_PMB.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -266,17 +244,6 @@
             this.lbl_PMB.TabIndex = 0;
             this.lbl_PMB.Text = "PM B";
             this.lbl_PMB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // waferControl1
-            // 
-            this.waferControl1.BackColor = System.Drawing.Color.Transparent;
-            this.waferControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.waferControl1.Location = new System.Drawing.Point(21, 72);
-            this.waferControl1.Margin = new System.Windows.Forms.Padding(20);
-            this.waferControl1.Name = "waferControl1";
-            this.waferControl1.Size = new System.Drawing.Size(140, 140);
-            this.waferControl1.State = SCT_Form.WaferControl.WaferState.Empty;
-            this.waferControl1.TabIndex = 1;
             // 
             // pnl_Robot
             // 
@@ -1597,6 +1564,39 @@
             this.btn_Start.Text = "Start";
             this.btn_Start.UseVisualStyleBackColor = true;
             this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
+            // 
+            // waferControl3
+            // 
+            this.waferControl3.BackColor = System.Drawing.Color.Transparent;
+            this.waferControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.waferControl3.Location = new System.Drawing.Point(21, 72);
+            this.waferControl3.Margin = new System.Windows.Forms.Padding(20);
+            this.waferControl3.Name = "waferControl3";
+            this.waferControl3.Size = new System.Drawing.Size(140, 140);
+            this.waferControl3.State = SCT_Form.WaferControl.WaferState.Empty;
+            this.waferControl3.TabIndex = 1;
+            // 
+            // waferControl2
+            // 
+            this.waferControl2.BackColor = System.Drawing.Color.Transparent;
+            this.waferControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.waferControl2.Location = new System.Drawing.Point(21, 72);
+            this.waferControl2.Margin = new System.Windows.Forms.Padding(20);
+            this.waferControl2.Name = "waferControl2";
+            this.waferControl2.Size = new System.Drawing.Size(140, 140);
+            this.waferControl2.State = SCT_Form.WaferControl.WaferState.Empty;
+            this.waferControl2.TabIndex = 1;
+            // 
+            // waferControl1
+            // 
+            this.waferControl1.BackColor = System.Drawing.Color.Transparent;
+            this.waferControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.waferControl1.Location = new System.Drawing.Point(21, 72);
+            this.waferControl1.Margin = new System.Windows.Forms.Padding(20);
+            this.waferControl1.Name = "waferControl1";
+            this.waferControl1.Size = new System.Drawing.Size(140, 140);
+            this.waferControl1.State = SCT_Form.WaferControl.WaferState.Empty;
+            this.waferControl1.TabIndex = 1;
             // 
             // CurrentStateGUI
             // 

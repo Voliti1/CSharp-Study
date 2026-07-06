@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -38,6 +40,9 @@ namespace SCT_Form
         private const long DefaultRobotDeceleration = 1000000;
         private const long DefaultRobotMaxVelocity = 100000000;
         private const long DefaultRobotVelocity = 1000000;
+        private const int Axis1TargetPositionWriteOffset = 3;
+        private const int Axis2TargetPositionWriteOffset = 26;
+        private const int AxisTargetPositionByteCount = 4;
 
         private CurrentStateGUI currentGUI;
         private MaintGUI maintGUI;
@@ -46,9 +51,13 @@ namespace SCT_Form
         private SettingGUI settingGUI;
         private LoginState loginStateGUI;
         private AccountInfo currentAccount;
+        private EquipmentSettings settings;
         private readonly List<SystemLogEntry> systemLogs = new List<SystemLogEntry>();
+        private readonly HashSet<string> systemLogKeys = new HashSet<string>();
+        private readonly Dictionary<string, Color> pmStatusColors = new Dictionary<string, Color>();
+        private readonly HashSet<string> activePmAlarms = new HashSet<string>();
         private long nextLogId;
-        private const int MaxSystemLogCount = 5000;
+        private const int MaxSystemLogCount = 20000;
         
         public MainGUI()
         {
@@ -74,6 +83,10 @@ namespace SCT_Form
         //LogView.Columns.Add("레벨", 70, HorizontalAlignment.Center);
         //LogView.Columns.Add("메시지", 400, HorizontalAlignment.Left);
 
+            settings = EquipmentSettingsService.Current;
+            InitializePmStatusColors();
+            LoadSystemLogsFromFiles();
+
             currentGUI = new CurrentStateGUI(this);
             maintGUI = new MaintGUI(this);
             logGUI = new LogGUI(this);
@@ -81,6 +94,7 @@ namespace SCT_Form
             settingGUI = new SettingGUI(this);
 
             InitializeLoginEntryPoints();
+            ApplyTemporaryTestLogin();
 
             SystemConnect();
             servoMotorON();
@@ -108,6 +122,21 @@ namespace SCT_Form
             tBox_ID.Click += LoginTextBox_Click;
             tBox_PW.Click += LoginTextBox_Click;
             UpdateLoginDisplay();
+        }
+
+        private void ApplyTemporaryTestLogin()
+        {
+            currentAccount = new AccountInfo
+            {
+                UserId = "voliti",
+                Password = "1",
+                UserLevel = AccountService.AdminLevel,
+                UserName = "voliti",
+                CreatedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            };
+
+            ShowLoginStatePanel();
+            WriteSystemLog("User", "INFO", "임시 자동 로그인: " + currentAccount.UserId);
         }
 
         private void LoginTextBox_Click(object sender, EventArgs e)
@@ -184,9 +213,22 @@ namespace SCT_Form
 
         internal bool EnsureEquipmentOperationAllowed()
         {
-            if (IsLoggedIn) return true;
+            if (!IsLoggedIn)
+            {
+                MessageBox.Show("장비 동작을 하려면 로그인해주세요", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
 
-            MessageBox.Show("장비 동작을 하려면 로그인해주세요", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return EnsureDoorInterlockAllowed();
+        }
+
+        private bool EnsureDoorInterlockAllowed()
+        {
+            if (settings == null || !settings.DoorOpenInterlock) return true;
+            if (!isChamADoorOpen && !isChamBDoorOpen && !isChamCDoorOpen) return true;
+
+            MessageBox.Show("Door Open Interlock 상태입니다. Chamber Door를 닫은 후 동작해주세요.", "Safety Interlock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            WriteSystemLog("Alarm", "WARN", "Door Open Interlock: 장비 동작 차단");
             return false;
         }
 
@@ -198,12 +240,218 @@ namespace SCT_Form
             return false;
         }
 
+        internal void SetChamberDoorStatus(string pmName, bool isOpen)
+        {
+            string normalizedPmName = NormalizePmName(pmName);
+
+            if (normalizedPmName == "PM A")
+            {
+                isChamADoorOpen = isOpen;
+            }
+            else if (normalizedPmName == "PM B")
+            {
+                isChamBDoorOpen = isOpen;
+            }
+            else if (normalizedPmName == "PM C")
+            {
+                isChamCDoorOpen = isOpen;
+            }
+
+            if (currentGUI != null && !currentGUI.IsDisposed)
+            {
+                currentGUI.SetDoorStatus(normalizedPmName, isOpen);
+            }
+        }
+
+        private const long RobotFacingToleranceCounts = 500;
+
+        internal void OpenChamberDoor(string module)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            EtherCAT_M.Digital_Output(profile.DoorOpenOutput, true);
+            EtherCAT_M.Digital_Output(profile.DoorCloseOutput, false);
+            SetChamberDoorStatus(EquipmentLayout.NormalizeModule(module), true);
+        }
+
+        internal void CloseChamberDoor(string module)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            EtherCAT_M.Digital_Output(profile.DoorOpenOutput, false);
+            EtherCAT_M.Digital_Output(profile.DoorCloseOutput, true);
+            SetChamberDoorStatus(EquipmentLayout.NormalizeModule(module), false);
+        }
+
+        internal void SetChamberLamp(string module, bool on)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            EtherCAT_M.Digital_Output(profile.LampOutput, on);
+            EtherCAT_M.Digital_Output(1, !on);
+            EtherCAT_M.Digital_Output(2, on);
+        }
+
+        internal void MoveCylinderFront()
+        {
+            EtherCAT_M.Digital_Output(13, false);
+            EtherCAT_M.Digital_Output(12, true);
+        }
+
+        internal void MoveCylinderBack()
+        {
+            EtherCAT_M.Digital_Output(12, false);
+            EtherCAT_M.Digital_Output(13, true);
+        }
+
+        internal void SetWaferSuction(bool on)
+        {
+            EtherCAT_M.Digital_Output(14, on);
+        }
+
+        internal bool IsCylinderForward()
+        {
+            return EtherCAT_M.Digital_Input(13) && !EtherCAT_M.Digital_Input(12);
+        }
+
+        internal bool IsCylinderBack()
+        {
+            return EtherCAT_M.Digital_Input(12) && !EtherCAT_M.Digital_Input(13);
+        }
+
+        internal bool IsChamberDoorOpen(string module)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            return EtherCAT_M.Digital_Input(profile.DoorUpSensor) && !EtherCAT_M.Digital_Input(profile.DoorDownSensor);
+        }
+
+        internal bool IsChamberDoorClosed(string module)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            return !EtherCAT_M.Digital_Input(profile.DoorUpSensor) && EtherCAT_M.Digital_Input(profile.DoorDownSensor);
+        }
+
+        internal bool IsRobotFacingModule(string module)
+        {
+            EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
+            long current;
+            if (!long.TryParse(EtherCAT_M.Axis2_is_PosData(), out current)) return false;
+            return Math.Abs(current - profile.LR) <= RobotFacingToleranceCounts;
+        }
+
         internal List<SystemLogEntry> GetSystemLogSnapshot()
         {
             lock (systemLogs)
             {
                 return systemLogs.Select(item => item.Clone()).ToList();
             }
+        }
+
+        internal bool ShowDebugLog
+        {
+            get { return settings == null || settings.ShowDebugLog; }
+        }
+
+        internal int MaxDisplayLogCount
+        {
+            get { return settings == null ? 5000 : settings.MaxDisplayLogCount; }
+        }
+
+        internal void ApplyEquipmentSettings(EquipmentSettings newSettings)
+        {
+            settings = newSettings ?? EquipmentSettingsService.Current;
+            TrimSystemLogs();
+
+            if (isConnect && EtherCAT_M != null)
+            {
+                EtherCAT_M.ReadData_Send_Start(settings.EtherCatReadCycleMs);
+                WriteSystemLog("Communication", "INFO", "EtherCAT Read Cycle 적용: " + settings.EtherCatReadCycleMs + " ms");
+            }
+
+            if (logGUI != null && !logGUI.IsDisposed)
+            {
+                logGUI.RefreshLogs(true);
+            }
+        }
+
+        private void InitializePmStatusColors()
+        {
+            pmStatusColors["PM A"] = lbl_PMAStatus.ForeColor;
+            pmStatusColors["PM B"] = lbl_PMBStatus.ForeColor;
+            pmStatusColors["PM C"] = lbl_PMCStatus.ForeColor;
+        }
+
+        internal void RaisePmAlarm(string pmName, string level, string message)
+        {
+            string normalizedPmName = NormalizePmName(pmName);
+            System.Windows.Forms.Label statusLabel = GetPmStatusLabel(normalizedPmName);
+            if (statusLabel == null) return;
+
+            activePmAlarms.Add(normalizedPmName);
+            statusLabel.ForeColor = Color.Red;
+
+            string alarmMessage = normalizedPmName + " " + (message ?? string.Empty);
+            WriteSystemLog("Alarm", level, alarmMessage.Trim());
+
+            if (settings != null)
+            {
+                ApplyTowerLampStatus(settings.AlarmLampStatus);
+            }
+        }
+
+        internal bool TrySyncPmStatusLabel(System.Windows.Forms.Label targetLabel, Color statusColor)
+        {
+            string pmName = GetPmNameByStatusLabel(targetLabel);
+            if (string.IsNullOrEmpty(pmName)) return false;
+
+            pmStatusColors[pmName] = statusColor;
+            targetLabel.ForeColor = activePmAlarms.Contains(pmName) ? Color.Red : statusColor;
+            return true;
+        }
+
+        private void ResetPmAlarms()
+        {
+            if (activePmAlarms.Count == 0)
+            {
+                WriteSystemLog("Alarm", "INFO", "Alarm Reset 요청: Active PM Alarm 없음");
+                return;
+            }
+
+            foreach (string pmName in activePmAlarms.ToList())
+            {
+                System.Windows.Forms.Label statusLabel = GetPmStatusLabel(pmName);
+                if (statusLabel != null)
+                {
+                    Color statusColor;
+                    statusLabel.ForeColor = pmStatusColors.TryGetValue(pmName, out statusColor) ? statusColor : Color.Gray;
+                }
+            }
+
+            activePmAlarms.Clear();
+            ApplyTowerLampForMode();
+            WriteSystemLog("Alarm", "INFO", "Alarm Reset 완료: PM Alarm 표시 해제");
+        }
+
+        private string NormalizePmName(string pmName)
+        {
+            string value = string.IsNullOrWhiteSpace(pmName) ? string.Empty : pmName.Trim().ToUpper();
+            if (value == "PMA" || value == "PM A") return "PM A";
+            if (value == "PMB" || value == "PM B") return "PM B";
+            if (value == "PMC" || value == "PM C") return "PM C";
+            return string.Empty;
+        }
+
+        private System.Windows.Forms.Label GetPmStatusLabel(string pmName)
+        {
+            if (pmName == "PM A") return lbl_PMAStatus;
+            if (pmName == "PM B") return lbl_PMBStatus;
+            if (pmName == "PM C") return lbl_PMCStatus;
+            return null;
+        }
+
+        private string GetPmNameByStatusLabel(System.Windows.Forms.Label statusLabel)
+        {
+            if (statusLabel == lbl_PMAStatus) return "PM A";
+            if (statusLabel == lbl_PMBStatus) return "PM B";
+            if (statusLabel == lbl_PMCStatus) return "PM C";
+            return string.Empty;
         }
 
         internal void DeleteSystemLogs(IEnumerable<long> logIds)
@@ -220,6 +468,165 @@ namespace SCT_Form
             {
                 logGUI.RefreshLogs(true);
             }
+        }
+
+        private void LoadSystemLogsFromFiles()
+        {
+            if (!Directory.Exists(AppDataPaths.LogFolderPath)) return;
+
+            CleanupExpiredLogFiles();
+            DateTime minimumLogTime = DateTime.Now.Date.AddDays(-EquipmentSettingsService.Current.LogRetentionDays);
+
+            foreach (string filePath in Directory.GetFiles(AppDataPaths.LogFolderPath, "Log_*.log").OrderBy(item => item))
+            {
+                try
+                {
+                    foreach (string line in File.ReadLines(filePath))
+                    {
+                        SystemLogEntry entry;
+                        if (TryParseLogFileLine(line, out entry) && entry.Time >= minimumLogTime)
+                        {
+                            AddSystemLogEntry(entry, true);
+                        }
+                    }
+                }
+                catch
+                {
+                    // 로그 조회용 파일 로드 실패는 장비 시작을 막지 않는다.
+                }
+            }
+        }
+
+        private void CleanupExpiredLogFiles()
+        {
+            DateTime minimumLogDate = DateTime.Now.Date.AddDays(-EquipmentSettingsService.Current.LogRetentionDays);
+            foreach (string filePath in Directory.GetFiles(AppDataPaths.LogFolderPath, "Log_*.log"))
+            {
+                string fileName = Path.GetFileNameWithoutExtension(filePath);
+                if (string.IsNullOrWhiteSpace(fileName) || !fileName.StartsWith("Log_")) continue;
+
+                DateTime logDate;
+                if (!DateTime.TryParseExact(fileName.Substring(4), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out logDate)) continue;
+                if (logDate >= minimumLogDate) continue;
+
+                try
+                {
+                    File.Delete(filePath);
+                }
+                catch
+                {
+                    // 실행 중 잠긴 로그 파일은 다음 기동 때 다시 정리한다.
+                }
+            }
+        }
+
+        private bool TryParseLogFileLine(string line, out SystemLogEntry entry)
+        {
+            entry = null;
+            if (string.IsNullOrWhiteSpace(line) || line.Length < 26) return false;
+
+            DateTime logTime;
+            if (!DateTime.TryParseExact(
+                line.Substring(0, 23),
+                "yyyy-MM-dd HH:mm:ss,fff",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out logTime))
+            {
+                return false;
+            }
+
+            string rest = line.Substring(23).Trim();
+            string level;
+            string message;
+            if (!TryParseLogBody(rest, out level, out message)) return false;
+
+            entry = new SystemLogEntry
+            {
+                Time = logTime,
+                Category = ResolveLogCategory(level, message),
+                Level = level,
+                Message = message
+            };
+
+            return true;
+        }
+
+        private bool TryParseLogBody(string text, out string level, out string message)
+        {
+            level = string.Empty;
+            message = string.Empty;
+            if (string.IsNullOrWhiteSpace(text) || text[0] != '[') return false;
+
+            int closeBracketIndex = text.IndexOf(']');
+            if (closeBracketIndex <= 1) return false;
+
+            string bracketValue = text.Substring(1, closeBracketIndex - 1).Trim();
+            string body = text.Substring(closeBracketIndex + 1).TrimStart();
+
+            if (IsLogLevel(bracketValue))
+            {
+                level = bracketValue;
+                message = body;
+                return true;
+            }
+
+            int levelEndIndex = body.IndexOf(' ');
+            if (levelEndIndex <= 0) return false;
+
+            level = body.Substring(0, levelEndIndex).Trim().ToUpper();
+            if (!IsLogLevel(level)) return false;
+
+            string remainder = body.Substring(levelEndIndex).TrimStart();
+            int messageSeparatorIndex = remainder.IndexOf(" - ");
+            message = messageSeparatorIndex >= 0
+                ? remainder.Substring(messageSeparatorIndex + 3)
+                : remainder;
+            return true;
+        }
+
+        private bool IsLogLevel(string value)
+        {
+            string upperValue = string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim().ToUpper();
+            return upperValue == "DEBUG" || upperValue == "INFO" || upperValue == "WARN" || upperValue == "ERROR" || upperValue == "FATAL";
+        }
+
+        private void AddSystemLogEntry(SystemLogEntry entry, bool skipDuplicate)
+        {
+            if (entry == null) return;
+
+            lock (systemLogs)
+            {
+                string key = GetSystemLogKey(entry);
+                if (skipDuplicate && systemLogKeys.Contains(key)) return;
+
+                entry.Id = ++nextLogId;
+                systemLogs.Add(entry);
+                systemLogKeys.Add(key);
+                TrimSystemLogs();
+            }
+        }
+
+        private void TrimSystemLogs()
+        {
+            int maxCount = settings == null ? MaxSystemLogCount : settings.MaxDisplayLogCount;
+            if (systemLogs.Count <= maxCount) return;
+
+            int removeCount = systemLogs.Count - maxCount;
+            for (int index = 0; index < removeCount; index++)
+            {
+                systemLogKeys.Remove(GetSystemLogKey(systemLogs[index]));
+            }
+
+            systemLogs.RemoveRange(0, removeCount);
+        }
+
+        private string GetSystemLogKey(SystemLogEntry entry)
+        {
+            return entry.Time.ToString("yyyy-MM-dd HH:mm:ss,fff", CultureInfo.InvariantCulture)
+                + "|" + entry.Level
+                + "|" + entry.Category
+                + "|" + entry.Message;
         }
 
         // 파일 로그(log4net) 저장과 화면 로그 목록 갱신을 동시에 수행하는 전용 메서드
@@ -258,26 +665,42 @@ namespace SCT_Form
 
             SystemLogEntry entry = new SystemLogEntry
             {
-                Id = ++nextLogId,
                 Time = DateTime.Now,
                 Category = logCategory,
                 Level = upperLevel,
                 Message = logMessage
             };
 
-            lock (systemLogs)
-            {
-                systemLogs.Add(entry);
-                if (systemLogs.Count > MaxSystemLogCount)
-                {
-                    systemLogs.RemoveRange(0, systemLogs.Count - MaxSystemLogCount);
-                }
-            }
+            AddSystemLogEntry(entry, false);
 
             if (logGUI != null && !logGUI.IsDisposed)
             {
                 logGUI.RefreshLogs(false);
             }
+
+            if (ShouldAutoStop(upperLevel))
+            {
+                ForceStopAllChambers();
+                ApplyTowerLampStatus(settings.AlarmLampStatus);
+            }
+        }
+
+        private bool ShouldAutoStop(string level)
+        {
+            if (settings == null || !settings.AlarmAutoStop) return false;
+
+            int currentLevel = GetAlarmLevelRank(level);
+            int thresholdLevel = GetAlarmLevelRank(settings.AutoStopAlarmLevel);
+            return currentLevel > 0 && currentLevel >= thresholdLevel;
+        }
+
+        private int GetAlarmLevelRank(string level)
+        {
+            string upperLevel = string.IsNullOrWhiteSpace(level) ? string.Empty : level.Trim().ToUpper();
+            if (upperLevel == "WARN") return 1;
+            if (upperLevel == "ERROR") return 2;
+            if (upperLevel == "FATAL") return 3;
+            return 0;
         }
 
         private string ResolveLogCategory(string level, string message)
@@ -297,26 +720,47 @@ namespace SCT_Form
             if (text.Contains("초기화") || text.Contains("종료") || text.IndexOf("Application", StringComparison.OrdinalIgnoreCase) >= 0) return "System";
             return "Equipment Operation";
         }
+
         private void SystemConnect()
         {
             WriteSystemLog("INFO", "EtherCAT 마스터 연결 시도 중...");
             try
             {
-                if (EtherCAT_M.CIFX_50RE_Connect() == true)
+                bool isConnected = false;
+                int retryCount = settings == null ? 3 : settings.ReconnectRetryCount;
+                for (int attempt = 0; attempt <= retryCount; attempt++)
+                {
+                    if (EtherCAT_M.CIFX_50RE_Connect() == true)
+                    {
+                        isConnected = true;
+                        break;
+                    }
+
+                    if (attempt < retryCount)
+                    {
+                        WriteSystemLog("WARN", "EtherCAT 마스터 연결 재시도: " + (attempt + 1) + "/" + retryCount);
+                    }
+                }
+
+                if (isConnected)
                 {
                     WriteSystemLog("INFO", "EtherCAT 마스터 연결 성공 (Connect OK)");
                     isConnect = true;
 
-                    EtherCAT_M.ReadData_Send_Start(300);
+                    EtherCAT_M.ReadData_Send_Start(settings.EtherCatReadCycleMs);
                     EtherCAT_M.ReadData_Timer_Start();
                     // 타이머 시작 같은 개발 분석용 세부 로직은 라벨을 가리지 않고 파일에만 남김
-                    log.Debug("EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)");
+                    log.Debug("EtherCAT 데이터 리드 타이머 시작 (주기: " + settings.EtherCatReadCycleMs + "ms)");
 
                     lbl_CurrentConnect.ForeColor = Color.Lime;
 
                     // 플래그 초기화
                     isChamALampOn = false; isChamBLampOn = false; isChamCLampOn = false;
                     isChamADoorOpen = false; isChamBDoorOpen = false; isChamCDoorOpen = false;
+                    if (currentGUI != null && !currentGUI.IsDisposed)
+                    {
+                        currentGUI.RefreshDoorStatusLabels();
+                    }
 
                     currentUbarState = "Operate";
 
@@ -337,8 +781,8 @@ namespace SCT_Form
                     WriteSystemLog("INFO", "장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력");
 
                     // 황색등 점등
-                    EtherCAT_M.Digital_Output(1, true);
-                    WriteSystemLog("INFO", "타워램프 상태 변경: 황색등(Yellow) ON (장비 대기)");
+                    ApplyTowerLampStatus(settings.IdleLampStatus);
+                    WriteSystemLog("INFO", "타워램프 상태 변경: " + settings.IdleLampStatus + " (장비 대기)");
                 }
                 else
                 {
@@ -426,6 +870,9 @@ namespace SCT_Form
             WriteSystemLog("INFO", "Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동");
             try
             {
+                EtherCAT_M.Digital_Output(12, false);
+                EtherCAT_M.Digital_Output(13, true);
+
                 // 타워등, 챔버등, 실린더 오프 가동
                 EtherCAT_M.Digital_Output(0, false);
                 EtherCAT_M.Digital_Output(1, false);
@@ -440,6 +887,7 @@ namespace SCT_Form
                 EtherCAT_M.Digital_Output(7, true);
                 EtherCAT_M.Digital_Output(11, false);
                 EtherCAT_M.Digital_Output(10, true);
+
                 WriteSystemLog("INFO", "안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료");
 
                 setBasicPoint();
@@ -465,16 +913,24 @@ namespace SCT_Form
 
             UpdateModeButtonStyles();
 
-            ForceStopAllChambers();
+            if (settings.ModeChangeForceStop)
+            {
+                ForceStopAllChambers();
+            }
 
             Mainpnl_CurrentStateGUI();
 
-            EtherCAT_M.Digital_Output(1, true);
+            ApplyTowerLampForMode();
         }
 
         private void btn_Home_Click(object sender, EventArgs e)
         {
             btn_Operate_Click(sender, e);
+        }
+
+        private void btn_AlarmReset_Click(object sender, EventArgs e)
+        {
+            ResetPmAlarms();
         }
 
         private void btn_maint_Click(object sender, EventArgs e)
@@ -486,11 +942,14 @@ namespace SCT_Form
 
             UpdateModeButtonStyles();
 
-            ForceStopAllChambers();
+            if (settings.ModeChangeForceStop)
+            {
+                ForceStopAllChambers();
+            }
 
             Mainpnl_MaintGUI();
 
-            EtherCAT_M.Digital_Output(1, true);
+            ApplyTowerLampForMode();
         }
         private void btn_Recipe_Click(object sender, EventArgs e)
         {
@@ -501,11 +960,14 @@ namespace SCT_Form
 
             UpdateModeButtonStyles();
 
-            ForceStopAllChambers();
+            if (settings.ModeChangeForceStop)
+            {
+                ForceStopAllChambers();
+            }
 
             Mainpnl_RecipeGUI();
 
-            EtherCAT_M.Digital_Output(1, true);
+            ApplyTowerLampForMode();
         }
 
         private void btn_Log_Click(object sender, EventArgs e)
@@ -516,11 +978,14 @@ namespace SCT_Form
 
             UpdateModeButtonStyles();
 
-            ForceStopAllChambers();
+            if (settings.ModeChangeForceStop)
+            {
+                ForceStopAllChambers();
+            }
 
             Mainpnl_LogGUI();
 
-            EtherCAT_M.Digital_Output(1, true);
+            ApplyTowerLampForMode();
         }
         private void btn_Setting_Click(object sender, EventArgs e)
         {
@@ -531,11 +996,43 @@ namespace SCT_Form
 
             UpdateModeButtonStyles();
 
-            ForceStopAllChambers();
+            if (settings.ModeChangeForceStop)
+            {
+                ForceStopAllChambers();
+            }
 
             Mainpnl_SettingGUI();
 
-            EtherCAT_M.Digital_Output(1, true);
+            ApplyTowerLampForMode();
+        }
+
+        private void ApplyTowerLampForMode()
+        {
+            if (settings == null) return;
+
+            if (currentUbarState == "Maint" || currentUbarState == "Recipe" || currentUbarState == "Setting")
+            {
+                ApplyTowerLampStatus(settings.MaintenanceLampStatus);
+                return;
+            }
+
+            ApplyTowerLampStatus(settings.IdleLampStatus);
+        }
+
+        private void ApplyTowerLampStatus(string status)
+        {
+            if (!isConnect || EtherCAT_M == null) return;
+
+            string lampStatus = string.IsNullOrWhiteSpace(status) ? "Off" : status.Trim();
+            bool redOn = string.Equals(lampStatus, "Red", StringComparison.OrdinalIgnoreCase);
+            bool yellowOn = string.Equals(lampStatus, "Yellow", StringComparison.OrdinalIgnoreCase);
+            bool greenOn = string.Equals(lampStatus, "Green", StringComparison.OrdinalIgnoreCase);
+
+            EtherCAT_M.Digital_Output(0, redOn);
+            EtherCAT_M.Digital_Output(1, yellowOn);
+            EtherCAT_M.Digital_Output(2, greenOn);
+
+            isGreenLightOn = greenOn;
         }
         private void ForceStopAllChambers()
         {
@@ -611,8 +1108,105 @@ namespace SCT_Form
         }
         internal void setBasicPoint()
         {
-            EtherCAT_M.Axis1_UD_Homming(); //상하 원점복귀
-            EtherCAT_M.Axis2_LR_Homming(); //좌우 원점복귀
+            HomeAxis1UD(); //상하 원점복귀
+            HomeAxis2LR(); //좌우 원점복귀
+        }
+
+        internal void HomeAxis1UD()
+        {
+            ClearAxisTargetPosition(Axis1TargetPositionWriteOffset);
+            EtherCAT_M.Axis1_UD_Homming();
+        }
+
+        internal void HomeAxis2LR()
+        {
+            ClearAxisTargetPosition(Axis2TargetPositionWriteOffset);
+            EtherCAT_M.Axis2_LR_Homming();
+        }
+
+        internal void MoveAxis1UDTo(long targetPosition)
+        {
+            string currentPos = EtherCAT_M?.Axis1_is_PosData() ?? "N/A";
+            bool wasMoving = IsAxis1Moving();
+            WriteSystemLog("DEBUG", $"UD move requested. Target={targetPosition}, CurrentReadback={currentPos}, WasMoving={wasMoving}, WriteData[0-6] before={DumpWriteDataBytes(0, 7)}");
+
+            // Axis1_UD_Move_Send()는 매번 컨트롤워드를 63(New-Setpoint=1, Change-Set-Immediately=1)으로
+            // 남겨둔 채 끝난다. 다음 이동 시 POS_Update가 이 "켜진 채로 남은" 컨트롤워드 상태에서
+            // 새 좌표를 먼저 전송해버리면, 드라이브가 이를 진행 중이던 이동에 대한 즉시 갱신으로 해석해
+            // 새 rising-edge 없이 이전 상태를 기준으로 새 좌표를 반영하려는 것으로 추정된다.
+            // POS_Update 이전에 컨트롤워드를 15(New-Setpoint=0, Change-Set-Immediately=0)로 먼저
+            // 내려서 전송(settle)해, 다음 Move_Send()의 15->47->63이 확실한 새 rising-edge가 되도록 한다.
+            SettleAxisControlword(0);
+
+            ClearAxisTargetPosition(Axis1TargetPositionWriteOffset);
+            EtherCAT_M.Axis1_UD_POS_Update(targetPosition);
+            EtherCAT_M.Axis1_UD_Move_Send();
+
+            WriteSystemLog("DEBUG", $"UD move sent. Target={targetPosition}, WriteData[0-6] after={DumpWriteDataBytes(0, 7)}");
+        }
+
+        internal void MoveAxis2LRTo(long targetPosition)
+        {
+            string currentPos = EtherCAT_M?.Axis2_is_PosData() ?? "N/A";
+            bool wasMoving = IsAxis2Moving();
+            WriteSystemLog("DEBUG", $"LR move requested. Target={targetPosition}, CurrentReadback={currentPos}, WasMoving={wasMoving}, WriteData[23-29] before={DumpWriteDataBytes(23, 7)}");
+
+            SettleAxisControlword(23);
+
+            ClearAxisTargetPosition(Axis2TargetPositionWriteOffset);
+            EtherCAT_M.Axis2_LR_POS_Update(targetPosition);
+            EtherCAT_M.Axis2_LR_Move_Send();
+
+            WriteSystemLog("DEBUG", $"LR move sent. Target={targetPosition}, WriteData[23-29] after={DumpWriteDataBytes(23, 7)}");
+        }
+
+        internal bool IsAxis1TargetReached()
+        {
+            return EtherCAT_M != null && EtherCAT_M.Axis1_Status("PP_D");
+        }
+
+        internal bool IsAxis2TargetReached()
+        {
+            return EtherCAT_M != null && EtherCAT_M.Axis2_Status("PP_D");
+        }
+
+        // 컨트롤워드를 15(Switch On|Enable Voltage|Quick Stop|Enable Operation, New-Setpoint/Change-Immediately=0)로
+        // 내려 전송한다. IEG3268_Dll이 컨트롤워드만 단독으로 전송하는 public API를 제공하지 않으므로,
+        // Digital_Output(기존 값 그대로 재기록)을 이용해 WriteData 전체를 flush시킨다.
+        private void SettleAxisControlword(int controlWordOffset)
+        {
+            byte[] writeData = EtherCAT_M?.WriteData;
+            if (writeData == null || writeData.Length <= controlWordOffset) return;
+
+            writeData[controlWordOffset] = 15;
+            EtherCAT_M.Digital_Output(0, EtherCAT_M.Digital_Out_Value[0]);
+        }
+
+        // 진단용: 이전 이동이 완료(Target Reached)됐는지 여부. 현재는 이동을 막지 않고 로그에만 남긴다.
+        private bool IsAxis1Moving()
+        {
+            return EtherCAT_M != null && EtherCAT_M.Axis1_Status("PP_M") && !EtherCAT_M.Axis1_Status("PP_D");
+        }
+
+        private bool IsAxis2Moving()
+        {
+            return EtherCAT_M != null && EtherCAT_M.Axis2_Status("PP_M") && !EtherCAT_M.Axis2_Status("PP_D");
+        }
+
+        private string DumpWriteDataBytes(int start, int count)
+        {
+            byte[] writeData = EtherCAT_M?.WriteData;
+            if (writeData == null || writeData.Length < start + count) return "N/A";
+
+            return string.Join(" ", writeData.Skip(start).Take(count).Select(b => b.ToString("X2")));
+        }
+
+        private void ClearAxisTargetPosition(int startIndex)
+        {
+            byte[] writeData = EtherCAT_M?.WriteData;
+            if (writeData == null || writeData.Length < startIndex + AxisTargetPositionByteCount) return;
+
+            Array.Clear(writeData, startIndex, AxisTargetPositionByteCount);
         }
 
         internal void SetRobotAxisConfig(long acceleration, long deceleration, long maxVelocity, long velocity)

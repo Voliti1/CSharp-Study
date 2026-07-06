@@ -51,7 +51,7 @@
             this.lbl_PMStatus_PMA = new System.Windows.Forms.Label();
             this.pnl_Connection = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_TopBarText = new System.Windows.Forms.Label();
-            this.btn_Home = new System.Windows.Forms.Button();
+            this.btn_AlarmReset = new System.Windows.Forms.Button();
             this.pnl_LoginChange = new System.Windows.Forms.Panel();
             this.pnl_LogIn = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PW = new System.Windows.Forms.Label();
@@ -188,7 +188,7 @@
             this.pnl_Top.Controls.Add(this.pnl_PMStatus, 2, 0);
             this.pnl_Top.Controls.Add(this.pnl_Connection, 3, 0);
             this.pnl_Top.Controls.Add(this.lbl_TopBarText, 0, 0);
-            this.pnl_Top.Controls.Add(this.btn_Home, 5, 0);
+            this.pnl_Top.Controls.Add(this.btn_AlarmReset, 5, 0);
             this.pnl_Top.Controls.Add(this.pnl_LoginChange, 1, 0);
             this.pnl_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Top.Location = new System.Drawing.Point(0, 0);
@@ -358,18 +358,18 @@
             this.lbl_TopBarText.Text = "실습 장비\r\n제어 GUI";
             this.lbl_TopBarText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btn_Home
+            // btn_AlarmReset
             // 
-            this.btn_Home.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Home.Font = new System.Drawing.Font("Segoe UI Symbol", 18F, System.Drawing.FontStyle.Bold);
-            this.btn_Home.ForeColor = System.Drawing.Color.Black;
-            this.btn_Home.Location = new System.Drawing.Point(903, 3);
-            this.btn_Home.Name = "btn_Home";
-            this.btn_Home.Size = new System.Drawing.Size(94, 44);
-            this.btn_Home.TabIndex = 57;
-            this.btn_Home.Text = "⌂";
-            this.btn_Home.UseVisualStyleBackColor = false;
-            this.btn_Home.Click += new System.EventHandler(this.btn_Home_Click);
+            this.btn_AlarmReset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_AlarmReset.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_AlarmReset.ForeColor = System.Drawing.Color.Black;
+            this.btn_AlarmReset.Location = new System.Drawing.Point(903, 3);
+            this.btn_AlarmReset.Name = "btn_AlarmReset";
+            this.btn_AlarmReset.Size = new System.Drawing.Size(94, 44);
+            this.btn_AlarmReset.TabIndex = 57;
+            this.btn_AlarmReset.Text = "Alarm\r\nReset";
+            this.btn_AlarmReset.UseVisualStyleBackColor = false;
+            this.btn_AlarmReset.Click += new System.EventHandler(this.btn_AlarmReset_Click);
             // 
             // pnl_LoginChange
             // 
@@ -552,7 +552,7 @@
         private System.Windows.Forms.TableLayoutPanel pnl_Datetime;
         private System.Windows.Forms.Label lbl_Time;
         private System.Windows.Forms.Label lbl_Date;
-        private System.Windows.Forms.Button btn_Home;
+        private System.Windows.Forms.Button btn_AlarmReset;
         private System.Windows.Forms.Panel pnl_LoginChange;
     }
 }

@@ -42,6 +42,7 @@ namespace SCT_Form
             InitializeProgressBar(pnl_PMB_progressbar);
             InitializeProgressBar(pnl_PMC_progressbar);
             RefreshDoorStatusLabels();
+            ResetAutoWaferDisplay();
 
             chamberProcessTimer.Interval = 1000;
             chamberProcessTimer.Tick += chamberProcessTimer_Tick;
@@ -57,33 +58,49 @@ namespace SCT_Form
         {
             if (main == null) return;
 
-            SetDoorStatusLabel(lbl_PMA_DoorStatus, main.isChamADoorOpen);
-            SetDoorStatusLabel(lbl_PMB_DoorStatus, main.isChamBDoorOpen);
-            SetDoorStatusLabel(lbl_PMC_DoorStatus, main.isChamCDoorOpen);
+            SetDoorStatusLabel(lbl_PMA_DoorStatus, "PM A");
+            SetDoorStatusLabel(lbl_PMB_DoorStatus, "PM B");
+            SetDoorStatusLabel(lbl_PMC_DoorStatus, "PM C");
         }
 
         internal void SetDoorStatus(string pmName, bool isOpen)
         {
             if (pmName == "PM A")
             {
-                SetDoorStatusLabel(lbl_PMA_DoorStatus, isOpen);
+                SetDoorStatusLabel(lbl_PMA_DoorStatus, pmName);
             }
             else if (pmName == "PM B")
             {
-                SetDoorStatusLabel(lbl_PMB_DoorStatus, isOpen);
+                SetDoorStatusLabel(lbl_PMB_DoorStatus, pmName);
             }
             else if (pmName == "PM C")
             {
-                SetDoorStatusLabel(lbl_PMC_DoorStatus, isOpen);
+                SetDoorStatusLabel(lbl_PMC_DoorStatus, pmName);
             }
         }
 
-        private void SetDoorStatusLabel(Label label, bool isOpen)
+        private void SetDoorStatusLabel(Label label, string module)
         {
             if (label == null) return;
 
-            label.Text = isOpen ? "Door Open" : "Door Close";
-            label.ForeColor = isOpen ? Color.Goldenrod : Color.DimGray;
+            bool isOpen = main != null && main.IsChamberDoorOpen(module);
+            bool isClosed = main != null && main.IsChamberDoorClosed(module);
+
+            if (isOpen && !isClosed)
+            {
+                label.Text = "Door Open";
+                label.ForeColor = Color.Goldenrod;
+            }
+            else if (!isOpen && isClosed)
+            {
+                label.Text = "Door Close";
+                label.ForeColor = Color.DimGray;
+            }
+            else
+            {
+                label.Text = "Door Check";
+                label.ForeColor = Color.Firebrick;
+            }
         }
 
         private void InitializeProcessRecipeSelector()
@@ -188,6 +205,64 @@ namespace SCT_Form
         private void SetFoupBColor(Color color)
         {
             SetPanelColors(color, pnl_FOUP_B_5, pnl_FOUP_B_4, pnl_FOUP_B_3, pnl_FOUP_B_2, pnl_FOUP_B_1);
+        }
+
+        private void ResetAutoWaferDisplay()
+        {
+            SetFoupAColor(FoupFullColor);
+            SetFoupBColor(FoupEmptyColor);
+            SetModuleWaferState("PM A", false);
+            SetModuleWaferState("PM B", false);
+            SetModuleWaferState("PM C", false);
+        }
+
+        private void SetFoupSlotState(string foup, int slot, bool hasWafer)
+        {
+            Panel slotPanel = GetFoupSlotPanel(foup, slot);
+            if (slotPanel == null) return;
+
+            slotPanel.BackColor = hasWafer ? FoupFullColor : FoupEmptyColor;
+        }
+
+        private Panel GetFoupSlotPanel(string foup, int slot)
+        {
+            bool isFoupA = string.Equals(foup, "FOUP A", StringComparison.OrdinalIgnoreCase);
+            bool isFoupB = string.Equals(foup, "FOUP B", StringComparison.OrdinalIgnoreCase);
+            if (!isFoupA && !isFoupB) return null;
+
+            if (isFoupA)
+            {
+                if (slot == 1) return pnl_FOUP_A_1;
+                if (slot == 2) return pnl_FOUP_A_2;
+                if (slot == 3) return pnl_FOUP_A_3;
+                if (slot == 4) return pnl_FOUP_A_4;
+                if (slot == 5) return pnl_FOUP_A_5;
+            }
+
+            if (slot == 1) return pnl_FOUP_B_1;
+            if (slot == 2) return pnl_FOUP_B_2;
+            if (slot == 3) return pnl_FOUP_B_3;
+            if (slot == 4) return pnl_FOUP_B_4;
+            if (slot == 5) return pnl_FOUP_B_5;
+
+            return null;
+        }
+
+        private void SetModuleWaferState(string module, bool hasWafer)
+        {
+            WaferControl waferControl = GetModuleWaferControl(module);
+            if (waferControl == null) return;
+
+            waferControl.State = hasWafer ? WaferControl.WaferState.Present : WaferControl.WaferState.Empty;
+        }
+
+        private WaferControl GetModuleWaferControl(string module)
+        {
+            string normalizedModule = EquipmentLayout.NormalizeModule(module);
+            if (normalizedModule == "PM A") return waferControl2;
+            if (normalizedModule == "PM B") return waferControl1;
+            if (normalizedModule == "PM C") return waferControl3;
+            return null;
         }
 
         private void SetPanelColors(Color color, params Panel[] panels)
@@ -330,8 +405,22 @@ namespace SCT_Form
             {
                 if (isProcessRecipePaused) return;
 
+                string previousModule = waferSequencer.CurrentModule;
+                bool wasProcessTimeStep = IsAutoProcessTimeStep();
+                int previousElapsedSeconds = waferSequencer.CurrentElapsedSeconds;
+                int previousTotalSeconds = waferSequencer.CurrentTotalSeconds;
+
                 waferSequencer.Tick();
-                UpdateAutoSequenceDisplay();
+
+                if (wasProcessTimeStep)
+                {
+                    int elapsedSeconds = Math.Min(previousTotalSeconds, previousElapsedSeconds + 1);
+                    UpdateAutoProcessTimeDisplay(previousModule, elapsedSeconds, previousTotalSeconds, elapsedSeconds >= previousTotalSeconds);
+                }
+                else
+                {
+                    UpdateAutoSequenceDisplay();
+                }
 
                 if (!waferSequencer.IsRunning)
                 {
@@ -396,18 +485,68 @@ namespace SCT_Form
             if (string.IsNullOrEmpty(module)) return;
 
             Label messageLabel = GetModuleMessageLabel(module);
+            messageLabel.Text = waferSequencer.CurrentDescription;
+
+            if (IsAutoProcessTimeStep())
+            {
+                UpdateAutoProcessTimeDisplay(module, waferSequencer.CurrentElapsedSeconds, waferSequencer.CurrentTotalSeconds, false);
+            }
+        }
+
+        private bool IsAutoProcessTimeStep()
+        {
+            return waferSequencer.CurrentKind == WaferAutoSequencer.AutoStepKind.WaitElapsed &&
+                string.Equals(waferSequencer.CurrentDescription, waferSequencer.CurrentModule + " process running", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private void UpdateAutoProcessTimeDisplay(string module, int elapsedSeconds, int totalSeconds, bool isCompleted)
+        {
+            if (string.IsNullOrEmpty(module)) return;
+
+            elapsedSeconds = Math.Max(0, Math.Min(elapsedSeconds, Math.Max(1, totalSeconds)));
+            totalSeconds = Math.Max(1, totalSeconds);
+
+            Label messageLabel = GetModuleMessageLabel(module);
             Label stepNumberLabel = GetModuleStepNumberLabel(module);
             Label recipeTimeLabel = GetModuleRecipeTimeLabel(module);
             Panel progressPanel = GetModuleProgressPanel(module);
+            Label statusLabel = GetModuleStatusLabel(module);
+            Label mainStatusLabel = GetModuleMainStatusLabel(module);
 
-            messageLabel.Text = waferSequencer.CurrentDescription;
-            stepNumberLabel.Text = waferSequencer.CurrentStepIndex + " / " + waferSequencer.TotalStepCount + " step";
+            int stepNumber = GetProcessTimeStepNumber(elapsedSeconds, totalSeconds);
+            messageLabel.Text = isCompleted ? module + " process complete" : module + " process running";
+            stepNumberLabel.Text = stepNumber + " / 3 step";
+            recipeTimeLabel.Text = elapsedSeconds + " / " + totalSeconds;
+            UpdateProgressBar(progressPanel, GetProgressFillPanel(progressPanel), elapsedSeconds, totalSeconds);
 
-            if (waferSequencer.CurrentKind == WaferAutoSequencer.AutoStepKind.WaitElapsed)
+            if (statusLabel != null)
             {
-                recipeTimeLabel.Text = waferSequencer.CurrentElapsedSeconds + " / " + waferSequencer.CurrentTotalSeconds;
-                UpdateProgressBar(progressPanel, GetProgressFillPanel(progressPanel), waferSequencer.CurrentElapsedSeconds, waferSequencer.CurrentTotalSeconds);
+                statusLabel.ForeColor = isCompleted ? Color.Silver : Color.Lime;
+                SyncStatusLabel(statusLabel, mainStatusLabel);
             }
+        }
+
+        private int GetProcessTimeStepNumber(int elapsedSeconds, int totalSeconds)
+        {
+            if (elapsedSeconds <= 0) return 1;
+            return Math.Max(1, Math.Min(3, (int)Math.Ceiling((double)elapsedSeconds * 3 / Math.Max(1, totalSeconds))));
+        }
+
+        private Label GetModuleStatusLabel(string module)
+        {
+            string normalized = NormalizeModule(module);
+            if (normalized == "PM B") return lbl_PMB_Status;
+            if (normalized == "PM C") return lbl_PMC_Status;
+            return lbl_PMA_Status;
+        }
+
+        private Label GetModuleMainStatusLabel(string module)
+        {
+            string normalized = NormalizeModule(module);
+            if (main == null) return null;
+            if (normalized == "PM B") return main.lbl_PMBStatus;
+            if (normalized == "PM C") return main.lbl_PMCStatus;
+            return main.lbl_PMAStatus;
         }
 
         private bool AdvanceChamberProcess(ChamberProcessState state)
@@ -857,7 +996,8 @@ namespace SCT_Form
             isProcessRecipePaused = false;
 
             List<ChamberRecipeSelection> moduleSteps = recipe.Steps.Select(s => s.Recipe).ToList();
-            waferSequencer.Start(AutoSequenceBuilder.Build(main, moduleSteps));
+            ResetAutoWaferDisplay();
+            waferSequencer.Start(AutoSequenceBuilder.Build(main, moduleSteps, SetFoupSlotState, SetModuleWaferState));
             UpdateAutoSequenceDisplay();
             chamberProcessTimer.Start();
         }
@@ -907,6 +1047,7 @@ namespace SCT_Form
 
             isProcessRecipePaused = false;
             currentProcessRecipe = null;
+            main.setBasicPoint();
         }
 
         private class ProcessRecipeComboItem

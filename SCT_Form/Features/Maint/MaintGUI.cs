@@ -41,6 +41,14 @@ namespace SCT_Form
             return main == null || main.EnsureEquipmentOperationAllowed();
         }
 
+        private bool CanOperateCylinder()
+        {
+            if (main == null || main.IsLoggedIn) return true;
+
+            MessageBox.Show("Login is required to operate equipment.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
+        }
+
         private bool CanCloseChamberDoor()
         {
             if (main == null || main.IsLoggedIn) return true;
@@ -280,24 +288,24 @@ namespace SCT_Form
         private void btn_ExON_Click(object sender, EventArgs e)
         {
             if (!CanOperateEquipment()) return;
-            main.EtherCAT_M.Digital_Output(15, true);
+            main.SetWaferExhaust(true);
         }
 
         private void btn_ExOFF_Click(object sender, EventArgs e)
         {
             if (!CanOperateEquipment()) return;
-            main.EtherCAT_M.Digital_Output(15, false);
+            main.SetWaferExhaust(false);
         }
 
         private void btn_moveFront_Click(object sender, EventArgs e)
         {
-            if (!CanOperateEquipment()) return;
+            if (!CanOperateCylinder()) return;
             main.MoveCylinderFront();
         }
 
         private void btn_moveBack_Click(object sender, EventArgs e)
         {
-            if (!CanOperateEquipment()) return;
+            if (!CanOperateCylinder()) return;
             main.MoveCylinderBack();
         }
 

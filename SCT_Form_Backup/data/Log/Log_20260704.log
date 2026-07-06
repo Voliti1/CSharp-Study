@@ -1,0 +1,262 @@
+2026-07-04 16:30:12,618 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 16:30:17,630 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 16:30:17,631 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 16:30:17,634 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 16:30:17,634 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: 황색등(Yellow) ON (장비 대기)
+2026-07-04 16:30:18,730 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 16:31:25,648 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 16:31:25,649 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 16:32:14,305 [1] WARN  SCT_Form.MainGUI - Random alarm: Robot axis position error
+2026-07-04 16:32:15,025 [1] ERROR SCT_Form.MainGUI - Random alarm: Door interlock error
+2026-07-04 16:32:15,235 [1] ERROR SCT_Form.MainGUI - Random alarm: Robot axis position error
+2026-07-04 16:34:16,501 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 16:34:16,506 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 16:34:16,945 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 16:34:16,946 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 16:45:28,262 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 16:45:33,272 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 16:45:33,273 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 16:45:33,274 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 16:45:33,275 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: 황색등(Yellow) ON (장비 대기)
+2026-07-04 16:45:34,372 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 16:45:41,900 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 16:45:41,902 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 16:47:11,041 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 16:47:11,046 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 16:47:11,474 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 16:47:11,475 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 16:51:29,741 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 16:51:34,753 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 16:51:34,754 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 16:51:34,755 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 16:51:34,756 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: 황색등(Yellow) ON (장비 대기)
+2026-07-04 16:51:35,842 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 16:51:42,041 [1] INFO  SCT_Form.MainGUI - 로그인: voliti
+2026-07-04 16:51:44,175 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 16:51:44,176 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 16:51:59,987 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 16:52:00,049 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 16:52:31,363 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 16:52:31,417 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 16:52:31,894 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 16:52:31,979 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 17:32:12,267 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 17:32:17,276 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 17:32:17,278 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 17:32:17,280 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 17:32:17,281 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: 황색등(Yellow) ON (장비 대기)
+2026-07-04 17:32:18,371 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 17:32:24,832 [1] INFO  SCT_Form.MainGUI - 로그인: voliti
+2026-07-04 17:32:26,469 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 17:32:26,470 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 17:32:38,987 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 17:32:38,992 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 17:32:39,424 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 17:32:39,424 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 17:32:56,189 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 17:33:01,199 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 17:33:01,200 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 17:33:01,202 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 17:33:01,203 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: 황색등(Yellow) ON (장비 대기)
+2026-07-04 17:33:02,286 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 17:33:06,522 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 17:33:06,527 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 17:33:06,955 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 17:33:06,956 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 17:43:07,959 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 17:43:12,974 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 17:43:12,976 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 17:43:12,978 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 17:43:12,979 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 17:43:14,061 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 17:48:30,578 [1] INFO  SCT_Form.MainGUI - 로그인: voliti
+2026-07-04 17:48:32,839 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 17:48:32,841 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 17:48:37,738 [1] INFO  SCT_Form.MainGUI - EtherCAT Read Cycle 적용: 400 ms
+2026-07-04 17:48:42,406 [1] INFO  SCT_Form.MainGUI - EtherCAT Read Cycle 적용: 300 ms
+2026-07-04 17:50:05,428 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 17:50:05,433 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 17:50:05,860 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 17:50:05,861 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 17:51:09,451 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 17:51:14,462 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 17:51:14,463 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 17:51:14,464 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 17:51:14,465 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 17:51:15,556 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 17:51:24,484 [1] INFO  SCT_Form.MainGUI - 로그인: voliti
+2026-07-04 17:51:25,899 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 17:51:25,901 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 17:52:28,891 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 17:52:28,895 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 17:52:29,324 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 17:52:29,325 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 17:55:44,445 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 17:55:49,455 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 17:55:49,456 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 17:55:49,458 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 17:55:49,459 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 17:55:50,545 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 17:56:44,033 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 17:56:44,037 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 17:56:44,473 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 17:56:44,474 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 18:20:46,609 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 18:20:51,620 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 18:20:51,622 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 18:20:51,625 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 18:20:51,626 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 18:20:52,711 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 18:20:58,788 [1] INFO  SCT_Form.MainGUI - 로그인: voliti
+2026-07-04 18:21:01,195 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:21:01,196 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:21:02,887 [1] INFO  SCT_Form.MainGUI - Alarm Reset 요청: Active PM Alarm 없음
+2026-07-04 18:21:04,822 [1] ERROR SCT_Form.MainGUI - PM C Random alarm: Process timeout detected
+2026-07-04 18:21:04,823 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:21:04,825 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:21:06,909 [1] WARN  SCT_Form.MainGUI - PM C Random alarm: Robot axis position error
+2026-07-04 18:21:07,795 [1] WARN  SCT_Form.MainGUI - PM A Random alarm: EtherCAT communication warning
+2026-07-04 18:21:08,508 [1] WARN  SCT_Form.MainGUI - PM B Random alarm: EtherCAT communication warning
+2026-07-04 18:21:09,277 [1] INFO  SCT_Form.MainGUI - Alarm Reset 완료: PM Alarm 표시 해제
+2026-07-04 18:21:59,483 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 18:21:59,488 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 18:21:59,920 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 18:21:59,920 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 18:24:57,919 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 18:25:02,930 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 18:25:02,931 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 18:25:02,933 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 18:25:02,934 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 18:25:04,020 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 18:25:05,937 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:25:05,938 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:25:44,400 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 18:25:44,405 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 18:25:44,840 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 18:25:44,841 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 18:26:01,615 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 18:26:06,626 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 18:26:06,626 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 18:26:06,629 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 18:26:06,630 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 18:26:07,722 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 18:26:11,567 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:26:11,570 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:26:17,978 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 18:26:17,983 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 18:26:18,421 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 18:26:18,421 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 18:26:38,214 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 18:26:43,225 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 18:26:43,225 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 18:26:43,228 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 18:26:43,229 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 18:26:44,319 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 18:26:46,024 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:26:46,026 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:27:02,135 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:27:02,198 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:27:03,457 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:27:03,512 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:29:06,558 [1] INFO  SCT_Form.MainGUI - Alarm Reset 요청: Active PM Alarm 없음
+2026-07-04 18:29:14,028 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 18:29:14,098 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 18:29:14,588 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 18:29:14,643 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 18:32:10,642 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 18:32:15,653 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 18:32:15,655 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 18:32:15,657 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 18:32:15,658 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 18:32:16,755 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 18:48:17,184 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 18:48:17,190 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 18:48:17,621 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 18:48:17,622 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 18:59:10,073 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 18:59:15,083 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 18:59:15,084 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 18:59:15,086 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 18:59:15,087 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 18:59:16,178 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 18:59:27,136 [1] INFO  SCT_Form.MainGUI - 로그인: voliti
+2026-07-04 18:59:30,997 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:30,999 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:31,903 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:31,905 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:32,932 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:32,933 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:35,758 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:35,760 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:36,577 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:36,579 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:37,077 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:37,078 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:37,643 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:37,645 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:50,643 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:50,645 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:51,405 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:51,407 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:52,029 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:52,031 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:53,087 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:53,089 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 18:59:53,768 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 18:59:53,771 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:00:26,141 [1] INFO  SCT_Form.MainGUI - Log Export 완료: C:\Users\User\Desktop\검색필터내용나열.csv
+2026-07-04 19:00:47,176 [1] INFO  SCT_Form.MainGUI - Log Export 완료: C:\Users\User\Desktop\SelectedLog.csv
+2026-07-04 19:01:14,514 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:01:14,516 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:01:27,084 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 19:01:27,089 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 19:01:27,524 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 19:01:27,525 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 19:01:29,617 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 19:01:34,627 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 19:01:34,627 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 19:01:34,630 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 19:01:34,630 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 19:01:35,714 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 19:01:54,806 [1] INFO  SCT_Form.MainGUI - 로그인: voliti
+2026-07-04 19:01:57,093 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:01:57,096 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:02:04,363 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:02:04,365 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:02:06,415 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:02:06,474 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:02:07,863 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:02:07,910 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:02:08,201 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:02:08,244 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:02:08,592 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:02:08,646 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:02:08,933 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:02:08,980 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:02:09,305 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:02:09,360 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:02:11,901 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:02:11,948 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:04:08,289 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 19:04:08,344 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 19:04:08,819 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 19:04:08,869 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-04 19:09:33,306 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-04 19:09:38,316 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-04 19:09:38,316 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-04 19:09:38,318 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-04 19:09:38,319 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-04 19:09:39,399 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-04 19:09:49,691 [1] INFO  SCT_Form.MainGUI - 로그인: voliti
+2026-07-04 19:09:59,143 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:09:59,143 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:10:03,016 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:10:03,016 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:13:39,795 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:13:39,797 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:13:40,775 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-04 19:13:40,775 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-04 19:13:42,275 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-04 19:13:42,281 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-04 19:13:42,696 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-04 19:13:42,696 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료

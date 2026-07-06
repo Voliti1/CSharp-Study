@@ -1,0 +1,59 @@
+2026-07-06 08:52:19,395 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 08:52:19,403 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 08:52:24,408 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 08:52:24,408 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 08:52:24,409 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 08:52:24,410 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 08:52:25,505 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 08:52:31,589 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:52:31,591 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:52:32,727 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:52:32,729 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:10,472 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:10,474 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:17,571 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:17,573 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:17,873 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:17,875 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:18,285 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:18,287 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:18,987 [1] WARN  SCT_Form.MainGUI - PM C Random alarm: Robot axis position error
+2026-07-06 08:53:19,180 [1] WARN  SCT_Form.MainGUI - PM B Random alarm: Process timeout detected
+2026-07-06 08:53:21,588 [1] WARN  SCT_Form.MainGUI - PM B Random alarm: Chamber pressure warning
+2026-07-06 08:53:22,291 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:22,293 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:32,021 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:32,024 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:33,840 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:33,843 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:36,771 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:36,773 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:41,860 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:41,863 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:43,249 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:43,250 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:48,719 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:48,723 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:54:00,705 [1] INFO  SCT_Form.MainGUI - Alarm Reset 완료: PM Alarm 표시 해제
+2026-07-06 09:01:26,306 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:26,308 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:27,870 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:27,873 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:28,102 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:28,104 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:28,752 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:28,756 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:29,005 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:29,007 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:29,488 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:29,490 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:29,779 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:29,781 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:30,179 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:30,182 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:32,301 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:32,306 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:33,150 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:01:33,156 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:01:33,583 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:01:33,584 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료

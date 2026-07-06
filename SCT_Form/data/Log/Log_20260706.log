@@ -1,0 +1,1173 @@
+2026-07-06 08:52:19,395 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 08:52:19,403 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 08:52:24,408 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 08:52:24,408 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 08:52:24,409 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 08:52:24,410 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 08:52:25,505 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 08:52:31,589 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:52:31,591 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:52:32,727 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:52:32,729 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:10,472 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:10,474 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:17,571 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:17,573 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:17,873 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:17,875 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:18,285 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:18,287 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:18,987 [1] WARN  SCT_Form.MainGUI - PM C Random alarm: Robot axis position error
+2026-07-06 08:53:19,180 [1] WARN  SCT_Form.MainGUI - PM B Random alarm: Process timeout detected
+2026-07-06 08:53:21,588 [1] WARN  SCT_Form.MainGUI - PM B Random alarm: Chamber pressure warning
+2026-07-06 08:53:22,291 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:22,293 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:32,021 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:32,024 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:33,840 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:33,843 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:36,771 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:36,773 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:41,860 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:41,863 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:43,249 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:43,250 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:53:48,719 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 08:53:48,723 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 08:54:00,705 [1] INFO  SCT_Form.MainGUI - Alarm Reset 완료: PM Alarm 표시 해제
+2026-07-06 09:01:26,306 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:26,308 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:27,870 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:27,873 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:28,102 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:28,104 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:28,752 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:28,756 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:29,005 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:29,007 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:29,488 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:29,490 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:29,779 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:29,781 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:30,179 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:30,182 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:32,301 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:01:32,306 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:01:33,150 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:01:33,156 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:01:33,583 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:01:33,584 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:12:45,631 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:12:45,639 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:12:50,641 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:12:50,642 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:12:50,644 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:12:50,645 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:12:51,747 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:12:53,352 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:12:53,355 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:14:32,163 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:14:32,168 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:14:32,611 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:14:32,612 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:14:34,809 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:14:34,817 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:14:36,082 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:14:36,083 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:14:36,085 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:14:36,086 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:14:37,180 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:14:45,737 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 위치 이동
+2026-07-06 09:14:45,740 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=1, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:14:46,073 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:14:47,082 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진입 높이 하강
+2026-07-06 09:14:47,083 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=1070, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:14:47,414 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=3F 00 01 1B 88 01 00
+2026-07-06 09:14:48,087 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 전진
+2026-07-06 09:14:50,095 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 웨이퍼 들어올림
+2026-07-06 09:14:50,095 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=1071, WasMoving=False, WriteData[0-6] before=3F 00 01 1B 88 01 00
+2026-07-06 09:14:50,425 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=3F 00 01 2C 9D 04 00
+2026-07-06 09:14:51,096 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진공 흡착
+2026-07-06 09:14:51,096 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 후진
+2026-07-06 09:14:53,095 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 위치 이동
+2026-07-06 09:14:53,096 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13139, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 09:14:53,417 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 09:14:58,949 [1] WARN  SCT_Form.MainGUI - 자동공정 Abort: 사용자 Abort 요청
+2026-07-06 09:15:01,622 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:15:01,628 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:15:02,058 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:15:02,060 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:15:06,863 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:15:06,871 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:15:08,210 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:15:08,211 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:15:08,213 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:15:08,214 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:15:09,313 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:15:16,149 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:15:16,152 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:15:17,099 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:15:17,101 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:15:23,321 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:15:23,326 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:15:23,769 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:15:23,779 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:15:54,858 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:15:54,865 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:15:56,319 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:15:56,320 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:15:56,321 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:15:56,322 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:15:57,422 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:16:02,095 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 위치 이동
+2026-07-06 09:16:02,098 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=0, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:16:02,432 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:16:03,443 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진입 높이 하강
+2026-07-06 09:16:03,444 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=1029, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:16:03,776 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=3F 00 01 1B 88 01 00
+2026-07-06 09:16:04,464 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 전진
+2026-07-06 09:16:06,460 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 웨이퍼 들어올림
+2026-07-06 09:16:06,460 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=1031, WasMoving=False, WriteData[0-6] before=3F 00 01 1B 88 01 00
+2026-07-06 09:16:06,790 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=3F 00 01 2C 9D 04 00
+2026-07-06 09:16:07,462 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진공 흡착
+2026-07-06 09:16:07,466 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 후진
+2026-07-06 09:16:11,101 [1] INFO  SCT_Form.MainGUI - Alarm Reset 요청: Active PM Alarm 없음
+2026-07-06 09:16:11,858 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:16:11,864 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:16:12,303 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:16:12,309 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:16:14,840 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:16:14,848 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:16:16,229 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:16:16,229 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:16:16,231 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:16:16,232 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:16:17,336 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:16:18,190 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:16:18,196 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:16:18,630 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:16:18,639 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:19:35,934 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:19:35,942 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:19:37,361 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:19:37,362 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:19:37,363 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:19:37,364 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:19:38,463 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:19:41,025 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 위치 이동
+2026-07-06 09:19:41,028 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=-6, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:19:41,361 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:19:43,358 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진입 높이 하강
+2026-07-06 09:19:43,358 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=277, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:19:43,689 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=3F 00 01 1B 88 01 00
+2026-07-06 09:19:44,361 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 전진
+2026-07-06 09:19:46,353 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 웨이퍼 들어올림
+2026-07-06 09:19:46,353 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=278, WasMoving=False, WriteData[0-6] before=3F 00 01 1B 88 01 00
+2026-07-06 09:19:46,676 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=3F 00 01 2C 9D 04 00
+2026-07-06 09:19:47,362 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진공 흡착
+2026-07-06 09:19:48,351 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 후진
+2026-07-06 09:19:50,361 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 위치 이동
+2026-07-06 09:19:50,361 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13139, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 09:19:50,688 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 09:19:52,356 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 진입 높이 상승
+2026-07-06 09:19:52,356 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=278, WasMoving=False, WriteData[0-6] before=3F 00 01 2C 9D 04 00
+2026-07-06 09:19:52,683 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 09:19:54,353 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 문 열기
+2026-07-06 09:20:00,914 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:20:00,920 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:20:01,365 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:20:01,370 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:20:06,512 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:20:06,520 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:20:07,850 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:20:07,850 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:20:07,853 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:20:07,854 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:20:08,949 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:20:11,049 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:20:11,055 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:20:11,489 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:20:11,490 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:20:15,118 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:20:15,128 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:20:16,540 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:20:16,540 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:20:16,542 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:20:16,543 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:20:17,638 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:20:18,743 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:20:18,744 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:20:20,284 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=0, CurrentReadback=551, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:20:20,615 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=0, WriteData[0-6] after=3F 00 01 00 00 00 00
+2026-07-06 09:20:24,711 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=0, CurrentReadback=-805, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:20:25,032 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=0, WriteData[0-6] after=3F 00 01 00 00 00 00
+2026-07-06 09:20:26,094 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=0, CurrentReadback=-804, WasMoving=False, WriteData[0-6] before=3F 00 01 00 00 00 00
+2026-07-06 09:20:26,422 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=0, WriteData[0-6] after=3F 00 01 00 00 00 00
+2026-07-06 09:20:29,293 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=10000, CurrentReadback=-804, WasMoving=False, WriteData[0-6] before=3F 00 01 00 00 00 00
+2026-07-06 09:20:29,617 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=10000, WriteData[0-6] after=3F 00 01 10 27 00 00
+2026-07-06 09:20:30,753 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=10000, CurrentReadback=-804, WasMoving=False, WriteData[0-6] before=3F 00 01 10 27 00 00
+2026-07-06 09:20:31,086 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=10000, WriteData[0-6] after=3F 00 01 10 27 00 00
+2026-07-06 09:20:31,737 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=-10000, CurrentReadback=-804, WasMoving=False, WriteData[0-6] before=3F 00 01 10 27 00 00
+2026-07-06 09:20:32,059 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=-10000, WriteData[0-6] after=3F 00 01 F0 D8 FF FF
+2026-07-06 09:20:37,039 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=-805, WasMoving=False, WriteData[0-6] before=3F 00 01 F0 D8 FF FF
+2026-07-06 09:20:37,371 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:20:38,440 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=-804, WasMoving=False, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:20:38,775 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:20:43,067 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=1119, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:20:43,399 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:20:44,237 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=1121, WasMoving=False, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:20:44,566 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:20:46,114 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=10000, CurrentReadback=1121, WasMoving=False, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:20:46,448 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=10000, WriteData[0-6] after=3F 00 01 10 27 00 00
+2026-07-06 09:20:50,774 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:20:50,780 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:20:51,216 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:20:51,218 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:20:53,677 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:20:53,685 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:20:55,088 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:20:55,089 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:20:55,090 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:20:55,091 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:20:56,182 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:20:58,194 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:20:58,196 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:21:01,184 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=0, CurrentReadback=-917, WasMoving=False, WriteData[0-6] before=0F 00 01 00 00 00 00
+2026-07-06 09:21:01,512 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=0, WriteData[0-6] after=3F 00 01 00 00 00 00
+2026-07-06 09:21:07,959 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=-918, WasMoving=True, WriteData[0-6] before=3F 00 01 00 00 00 00
+2026-07-06 09:21:08,282 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:10,364 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=-918, WasMoving=False, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:21:10,686 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:17,784 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=392, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:21:18,115 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:19,082 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=388, WasMoving=False, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:21:19,410 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:19,842 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=390, WasMoving=True, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:21:20,176 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:20,177 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=55165, WasMoving=True, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:21:20,503 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:20,505 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=99910, WasMoving=False, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:21:20,831 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:20,833 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=118638, WasMoving=True, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:21:21,158 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:21,237 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=158067, WasMoving=True, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:21:21,564 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:21,565 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=158196, WasMoving=True, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:21:21,893 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:43,144 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=100000, CurrentReadback=0, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:21:43,477 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=100000, WriteData[23-29] after=3F 00 01 A0 86 01 00
+2026-07-06 09:21:44,817 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:21:44,823 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:21:45,263 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:21:45,267 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:21:51,102 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:21:51,112 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:21:52,556 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:21:52,557 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:21:52,559 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:21:52,560 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:21:53,651 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:21:55,822 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:21:55,824 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:22:23,356 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=978, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:22:23,673 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:22:24,912 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=978, WasMoving=False, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:22:25,233 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:22:25,815 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100000, CurrentReadback=978, WasMoving=False, WriteData[0-6] before=3F 00 01 A0 86 01 00
+2026-07-06 09:22:26,139 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100000, WriteData[0-6] after=3F 00 01 A0 86 01 00
+2026-07-06 09:23:22,568 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:23:22,574 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:23:23,014 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:23:23,023 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:23:44,004 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:23:44,011 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:23:45,382 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:23:45,383 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:23:45,385 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:23:45,386 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:23:46,485 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:23:48,791 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:23:48,793 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:23:52,656 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=516, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:23:52,979 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=3F 00 01 D9 0E 2E 00
+2026-07-06 09:23:57,444 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=3016652, WasMoving=True, WriteData[0-6] before=3F 00 01 D9 0E 2E 00
+2026-07-06 09:23:57,770 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=3F 00 01 9F 01 2B 00
+2026-07-06 09:24:00,727 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:24:00,733 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:24:01,173 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:24:01,182 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:24:05,277 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:24:05,286 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:24:06,711 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:24:06,712 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:24:06,714 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:24:06,715 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:24:07,811 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:24:09,461 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:24:09,463 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:24:10,821 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=-1854, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:24:11,152 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=3F 00 01 9F 01 2B 00
+2026-07-06 09:24:15,083 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2705966, WasMoving=True, WriteData[0-6] before=3F 00 01 9F 01 2B 00
+2026-07-06 09:24:15,405 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=3F 00 01 D9 0E 2E 00
+2026-07-06 09:24:17,896 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:24:17,902 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:24:18,339 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:24:18,341 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:25:32,511 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:25:32,520 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:25:33,978 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:25:33,978 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:25:33,981 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:25:33,982 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:25:35,069 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:25:37,618 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:25:37,621 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:25:40,463 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=-25, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:25:40,852 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:25:44,865 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2757794, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:25:45,248 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:25:48,453 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2119399, CurrentReadback=3638305, WasMoving=True, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:25:48,837 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2119399, WriteData[0-6] after=0F 00 01 E7 56 20 00
+2026-07-06 09:25:51,519 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2332102, CurrentReadback=2128385, WasMoving=True, WriteData[0-6] before=0F 00 01 E7 56 20 00
+2026-07-06 09:25:51,912 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2332102, WriteData[0-6] after=0F 00 01 C6 95 23 00
+2026-07-06 09:25:54,612 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2332102, CurrentReadback=858584, WasMoving=True, WriteData[0-6] before=0F 00 01 C6 95 23 00
+2026-07-06 09:25:55,005 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2332102, WriteData[0-6] after=0F 00 01 C6 95 23 00
+2026-07-06 09:25:56,637 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=847435, WasMoving=True, WriteData[0-6] before=0F 00 01 C6 95 23 00
+2026-07-06 09:25:57,023 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:26:11,123 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=1533972, WasMoving=True, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:26:11,518 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=0F 00 01 1B 88 01 00
+2026-07-06 09:26:14,320 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=6089, WasMoving=True, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 09:26:14,703 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=0F 00 01 2C 9D 04 00
+2026-07-06 09:26:18,071 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=364, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:26:18,465 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=0F 00 01 1B 88 01 00
+2026-07-06 09:26:21,217 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=100549, WasMoving=True, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 09:26:21,607 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=0F 00 01 2C 9D 04 00
+2026-07-06 09:26:23,358 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=781878, CurrentReadback=361422, WasMoving=True, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 09:26:23,749 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=781878, WriteData[0-6] after=0F 00 01 36 EE 0B 00
+2026-07-06 09:26:26,273 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=982378, CurrentReadback=840994, WasMoving=True, WriteData[0-6] before=0F 00 01 36 EE 0B 00
+2026-07-06 09:26:26,654 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=982378, WriteData[0-6] after=0F 00 01 6A FD 0E 00
+2026-07-06 09:26:30,602 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=7195, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:26:30,936 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:26:33,840 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=7194, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 09:26:34,175 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:26:46,443 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:26:46,449 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:26:46,891 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:26:46,896 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:26:49,111 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:26:49,118 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:26:50,486 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:26:50,486 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:26:50,489 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:26:50,490 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:26:51,577 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:26:53,102 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:26:53,105 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:27:01,318 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:27:01,324 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:27:01,766 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:27:01,767 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:27:03,884 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:27:03,895 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:27:05,135 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:27:05,135 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:27:05,138 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:27:05,140 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:27:06,227 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:27:07,614 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:27:07,616 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:27:09,440 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=-3, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:27:09,776 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:27:11,240 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=267, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:27:11,631 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=0F 00 01 1B 88 01 00
+2026-07-06 09:27:19,193 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=100387, WasMoving=True, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 09:27:19,580 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=0F 00 01 2C 9D 04 00
+2026-07-06 09:27:26,210 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=781878, CurrentReadback=360027, WasMoving=False, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 09:27:26,594 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=781878, WriteData[0-6] after=0F 00 01 36 EE 0B 00
+2026-07-06 09:27:26,596 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=781878, CurrentReadback=360018, WasMoving=True, WriteData[0-6] before=0F 00 01 36 EE 0B 00
+2026-07-06 09:27:26,987 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=781878, WriteData[0-6] after=0F 00 01 36 EE 0B 00
+2026-07-06 09:27:26,993 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=781878, CurrentReadback=360005, WasMoving=True, WriteData[0-6] before=0F 00 01 36 EE 0B 00
+2026-07-06 09:27:27,375 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=781878, WriteData[0-6] after=0F 00 01 36 EE 0B 00
+2026-07-06 09:27:32,378 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=982378, CurrentReadback=839533, WasMoving=False, WriteData[0-6] before=0F 00 01 36 EE 0B 00
+2026-07-06 09:27:32,773 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=982378, WriteData[0-6] after=0F 00 01 6A FD 0E 00
+2026-07-06 09:27:36,683 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1432388, CurrentReadback=1040081, WasMoving=True, WriteData[0-6] before=0F 00 01 6A FD 0E 00
+2026-07-06 09:27:37,065 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1432388, WriteData[0-6] after=0F 00 01 44 DB 15 00
+2026-07-06 09:27:40,215 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1627604, CurrentReadback=1490152, WasMoving=True, WriteData[0-6] before=0F 00 01 44 DB 15 00
+2026-07-06 09:27:40,610 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1627604, WriteData[0-6] after=0F 00 01 D4 D5 18 00
+2026-07-06 09:27:42,615 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2119399, CurrentReadback=1685408, WasMoving=True, WriteData[0-6] before=0F 00 01 D4 D5 18 00
+2026-07-06 09:27:43,007 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2119399, WriteData[0-6] after=0F 00 01 E7 56 20 00
+2026-07-06 09:27:44,698 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2332102, CurrentReadback=2174298, WasMoving=True, WriteData[0-6] before=0F 00 01 E7 56 20 00
+2026-07-06 09:27:45,083 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2332102, WriteData[0-6] after=0F 00 01 C6 95 23 00
+2026-07-06 09:27:46,523 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=2389956, WasMoving=True, WriteData[0-6] before=0F 00 01 C6 95 23 00
+2026-07-06 09:27:46,918 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:27:48,683 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2876189, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:27:49,074 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:27:53,566 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:27:53,571 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:27:54,013 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:27:54,024 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:27:59,729 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:27:59,737 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:28:01,113 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:28:01,113 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:28:01,115 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:28:01,116 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:28:02,216 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:28:03,463 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:28:03,465 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:28:10,918 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=19304, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:28:11,243 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:28:12,387 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=19304, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 09:28:12,716 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:28:15,534 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:28:15,540 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:28:15,981 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:28:15,981 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:28:21,445 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:28:21,452 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:28:22,692 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:28:22,693 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:28:22,695 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:28:22,696 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:28:23,796 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:28:26,632 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:28:26,634 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:28:29,802 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=221, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:28:30,193 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:28:34,083 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=0, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:28:34,414 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:28:35,977 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2818632, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:28:36,371 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:28:40,190 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:28:40,197 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:28:40,635 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:28:40,642 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:28:49,141 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:28:49,148 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:28:50,561 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:28:50,562 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:28:50,564 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:28:50,565 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:28:51,663 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:28:54,672 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:28:54,677 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:28:55,111 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:28:55,121 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:28:59,436 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:28:59,444 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:29:01,541 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:29:01,541 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:29:01,544 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:29:01,545 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:29:02,643 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:29:07,216 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 위치 이동
+2026-07-06 09:29:07,218 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=0, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:29:07,552 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:29:08,569 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진입 높이 하강
+2026-07-06 09:29:08,573 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=-217, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:29:08,954 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=0F 00 01 1B 88 01 00
+2026-07-06 09:29:16,589 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 전진
+2026-07-06 09:29:18,590 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 웨이퍼 들어올림
+2026-07-06 09:29:18,590 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=100349, WasMoving=False, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 09:29:18,978 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=0F 00 01 2C 9D 04 00
+2026-07-06 09:29:24,600 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진공 흡착
+2026-07-06 09:29:25,612 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 후진
+2026-07-06 09:29:27,612 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 위치 이동
+2026-07-06 09:29:27,612 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13140, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 09:29:27,941 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 09:29:29,598 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 진입 높이 상승
+2026-07-06 09:29:29,598 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=360700, WasMoving=True, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 09:29:29,985 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=0F 00 01 43 A7 11 00
+2026-07-06 09:29:37,661 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 문 열기
+2026-07-06 09:29:47,602 [1] WARN  SCT_Form.MainGUI - 자동공정 Abort: PM A 웨이퍼 로딩 중 - 문 열림 확인 단계에서 센서 응답이 10초 내에 확인되지 않았습니다.
+2026-07-06 09:30:03,640 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:30:03,647 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:30:04,089 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:30:04,098 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:30:07,608 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:30:07,615 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:30:09,068 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:30:09,068 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:30:09,071 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:30:09,072 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:30:10,171 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:30:13,228 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:30:13,231 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:30:19,068 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:30:19,073 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:30:19,508 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:30:19,518 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:32:29,938 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:32:29,945 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:32:31,354 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:32:31,354 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:32:31,356 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:32:31,357 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:32:32,460 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:32:34,261 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 위치 이동
+2026-07-06 09:32:34,264 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=-4, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:32:34,590 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:32:35,589 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진입 높이 하강
+2026-07-06 09:32:35,590 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=590, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:32:35,984 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=0F 00 01 1B 88 01 00
+2026-07-06 09:32:40,584 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 전진
+2026-07-06 09:32:42,588 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 웨이퍼 들어올림
+2026-07-06 09:32:42,590 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=100331, WasMoving=True, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 09:32:42,985 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=0F 00 01 2C 9D 04 00
+2026-07-06 09:32:50,586 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진공 흡착
+2026-07-06 09:32:51,586 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 후진
+2026-07-06 09:32:53,586 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 위치 이동
+2026-07-06 09:32:53,586 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13139, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 09:32:53,914 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 09:32:55,598 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 진입 높이 상승
+2026-07-06 09:32:55,600 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=360461, WasMoving=False, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 09:32:55,989 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=0F 00 01 43 A7 11 00
+2026-07-06 09:33:07,680 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 문 열기
+2026-07-06 09:33:17,763 [1] WARN  SCT_Form.MainGUI - 자동공정 Abort: PM A 웨이퍼 로딩 중 - 문 열림 확인 단계에서 센서 응답이 10초 내에 확인되지 않았습니다.
+2026-07-06 09:33:21,158 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:33:21,166 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:33:21,605 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:33:21,612 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:33:23,949 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:33:23,959 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:33:25,382 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:33:25,382 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:33:25,384 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:33:25,385 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:33:26,486 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:33:27,605 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:33:27,606 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:33:27,963 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:33:27,965 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:33:30,659 [1] INFO  SCT_Form.MainGUI - 수동 제어: Chamber A 도어 OPEN 명령 요청
+2026-07-06 09:33:30,661 [1] INFO  SCT_Form.MainGUI - Chamber A 도어 OPEN 완료
+2026-07-06 09:34:13,175 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:34:13,182 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:34:13,619 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:34:13,629 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:36:00,378 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:36:00,386 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:36:01,776 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:36:01,777 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:36:01,778 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:36:01,779 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:36:02,878 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:36:07,313 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:36:07,318 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:36:14,038 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=91, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:36:14,426 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=0F 00 01 13 50 0C 00
+2026-07-06 09:36:44,610 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=806930, WasMoving=True, WriteData[0-6] before=0F 00 01 13 50 0C 00
+2026-07-06 09:36:45,001 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:36:48,665 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=3389904, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:36:49,060 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:36:50,808 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=3618840, WasMoving=True, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:36:51,205 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:36:54,849 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2818250, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:36:55,242 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:36:57,706 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2231937, WasMoving=True, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:36:58,097 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:36:58,917 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=2231983, WasMoving=True, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:36:59,313 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:37:01,023 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2031926, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:37:01,421 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:37:03,349 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=2232441, WasMoving=True, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:37:03,738 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:37:14,924 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:37:14,926 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:37:18,529 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:37:18,531 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:37:21,303 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=2032187, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:37:21,696 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=0F 00 01 13 50 0C 00
+2026-07-06 09:37:25,911 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=-1093, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:37:26,303 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=0F 00 01 13 50 0C 00
+2026-07-06 09:37:29,426 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=807177, WasMoving=True, WriteData[0-6] before=0F 00 01 13 50 0C 00
+2026-07-06 09:37:29,822 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=0F 00 01 43 A7 11 00
+2026-07-06 09:37:50,281 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=-9, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:37:50,680 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:39:41,470 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:39:41,477 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:39:41,916 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:39:41,918 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:39:57,382 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:39:57,390 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:39:58,758 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:39:58,758 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:39:58,761 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:39:58,762 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:39:59,856 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:40:01,596 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:40:01,598 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:40:13,341 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:40:13,347 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:40:13,784 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:40:13,787 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:40:52,446 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:40:52,453 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:40:53,895 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:40:53,896 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:40:53,898 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:40:53,898 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:40:54,997 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:40:56,638 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:40:56,639 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:41:00,870 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=-65288, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:41:01,371 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:41:02,525 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=-65287, WasMoving=False, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:41:03,014 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:41:03,152 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=-65287, WasMoving=False, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:41:03,658 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:41:07,683 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:41:07,689 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:41:08,122 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:41:08,125 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:41:12,806 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:41:12,814 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:41:14,584 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:41:14,585 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:41:14,587 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:41:14,588 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:41:15,691 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:41:17,153 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:41:17,155 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:41:18,828 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=-318, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:41:19,331 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:41:24,787 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=-2147, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:41:25,281 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:41:25,820 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:41:26,314 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:41:26,802 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=0, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:41:27,127 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:41:28,019 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:41:28,517 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:41:28,659 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2119399, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:41:29,160 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2119399, WriteData[0-6] after=0F 00 01 E7 56 20 00
+2026-07-06 09:41:29,272 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2332102, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 E7 56 20 00
+2026-07-06 09:41:29,769 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2332102, WriteData[0-6] after=0F 00 01 C6 95 23 00
+2026-07-06 09:41:29,871 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1432388, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 C6 95 23 00
+2026-07-06 09:41:30,362 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1432388, WriteData[0-6] after=0F 00 01 44 DB 15 00
+2026-07-06 09:41:30,364 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1627604, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 44 DB 15 00
+2026-07-06 09:41:30,861 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1627604, WriteData[0-6] after=0F 00 01 D4 D5 18 00
+2026-07-06 09:41:31,263 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 D4 D5 18 00
+2026-07-06 09:41:31,768 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=0F 00 01 13 50 0C 00
+2026-07-06 09:41:32,867 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 13 50 0C 00
+2026-07-06 09:41:33,372 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=0F 00 01 13 50 0C 00
+2026-07-06 09:41:33,752 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 13 50 0C 00
+2026-07-06 09:41:34,251 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=0F 00 01 43 A7 11 00
+2026-07-06 09:46:11,941 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:46:11,943 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:46:17,465 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:46:17,559 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:46:18,233 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:46:18,315 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:46:20,210 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:46:20,211 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:47:50,815 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:47:50,817 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:47:56,255 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 위치 이동
+2026-07-06 09:47:56,255 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=13140, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 09:47:56,587 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:47:57,583 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진입 높이 하강
+2026-07-06 09:47:57,583 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 43 A7 11 00
+2026-07-06 09:47:58,076 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=0F 00 01 1B 88 01 00
+2026-07-06 09:47:58,595 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 전진
+2026-07-06 09:48:00,582 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 웨이퍼 들어올림
+2026-07-06 09:48:00,582 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 09:48:01,073 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=0F 00 01 2C 9D 04 00
+2026-07-06 09:48:01,591 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진공 흡착
+2026-07-06 09:48:02,584 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 후진
+2026-07-06 09:48:04,615 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 위치 이동
+2026-07-06 09:48:04,615 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13139, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 09:48:04,943 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 09:48:06,619 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 진입 높이 상승
+2026-07-06 09:48:06,620 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=-2145, WasMoving=False, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 09:48:07,120 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=0F 00 01 43 A7 11 00
+2026-07-06 09:48:07,242 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:48:07,250 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:48:07,685 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:48:07,690 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:48:13,579 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:48:13,586 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:48:15,040 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:48:15,040 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:48:15,042 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:48:15,043 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:48:16,139 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:48:17,833 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 위치 이동
+2026-07-06 09:48:17,835 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=3263, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:48:18,165 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:48:19,162 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진입 높이 하강
+2026-07-06 09:48:19,163 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=-1441, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:48:19,598 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=0F 00 01 1B 88 01 00
+2026-07-06 09:48:25,162 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 전진
+2026-07-06 09:48:28,169 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 웨이퍼 들어올림
+2026-07-06 09:48:28,169 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=100358, WasMoving=False, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 09:48:28,605 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=0F 00 01 2C 9D 04 00
+2026-07-06 09:48:35,176 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 진공 흡착
+2026-07-06 09:48:36,188 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 준비 중 (FOUP A) - 실린더 후진
+2026-07-06 09:48:38,199 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 위치 이동
+2026-07-06 09:48:38,201 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13137, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 09:48:38,531 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 09:48:40,217 [1] INFO  SCT_Form.MainGUI - 자동공정: PM A 웨이퍼 로딩 중 - 진입 높이 상승
+2026-07-06 09:48:40,217 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=362216, WasMoving=False, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 09:48:40,656 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=0F 00 01 43 A7 11 00
+2026-07-06 09:48:45,185 [1] WARN  SCT_Form.MainGUI - 자동공정 Abort: 사용자 Abort 요청
+2026-07-06 09:54:26,028 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:54:26,035 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:54:26,037 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:54:26,037 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:54:26,038 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:54:26,040 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:54:27,130 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:54:28,921 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:54:28,928 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:54:29,359 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=221, Limit=2000
+2026-07-06 09:54:29,359 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:54:29,366 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:55:16,080 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:55:16,087 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:55:21,091 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:55:21,091 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:55:21,093 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:55:21,094 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:55:22,200 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:55:27,115 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - LR move
+2026-07-06 09:55:27,117 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=0, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:55:27,452 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:55:34,992 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:55:34,999 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:55:35,444 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=0, Limit=2000
+2026-07-06 09:55:35,444 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:55:35,445 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:55:37,490 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:55:37,498 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:55:39,034 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:55:39,035 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:55:39,037 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:55:39,038 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:55:40,140 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:55:44,870 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - LR move
+2026-07-06 09:55:44,873 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=0, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:55:45,198 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:55:47,200 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD down
+2026-07-06 09:55:47,200 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=-23504, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:55:47,638 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=0F 00 01 1B 88 01 00
+2026-07-06 09:55:48,477 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:55:48,485 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:55:49,453 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=-555, Limit=2000
+2026-07-06 09:55:49,454 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:55:49,464 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:55:53,768 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:55:53,776 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:55:55,204 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:55:55,204 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:55:55,206 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:55:55,207 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:55:56,295 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:55:57,919 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - LR move
+2026-07-06 09:55:57,922 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=55, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:55:58,249 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:56:00,250 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD down
+2026-07-06 09:56:00,254 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=-63780, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:56:00,686 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=0F 00 01 1B 88 01 00
+2026-07-06 09:56:04,632 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:56:04,634 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:56:06,046 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=100456, WasMoving=False, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 09:56:06,486 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:56:06,489 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder front
+2026-07-06 09:56:08,542 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:56:08,549 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:56:09,961 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=-64195, Limit=2000
+2026-07-06 09:56:09,962 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:56:09,963 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:56:12,819 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:56:12,827 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:56:14,193 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:56:14,193 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:56:14,196 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:56:14,197 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:56:15,280 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:56:18,111 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:56:18,113 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:56:18,476 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:56:18,477 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:56:19,384 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 09:56:19,386 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 09:56:21,889 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=-37, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:56:22,314 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:56:27,142 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2818700, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:56:30,944 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:56:30,946 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2818533, WasMoving=False, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:56:31,379 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:56:31,381 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2818462, WasMoving=False, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:56:31,813 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:56:31,815 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=2951305, WasMoving=True, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:56:36,587 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:56:38,639 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2818231, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:56:42,217 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:56:44,992 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=3018640, WasMoving=True, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:56:47,813 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:56:49,116 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=3018513, WasMoving=False, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:56:49,550 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:56:51,169 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2818235, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:56:55,618 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:57:02,960 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=3018457, WasMoving=False, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:57:03,388 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:57:04,722 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=3018457, CurrentReadback=2818577, WasMoving=True, WriteData[0-6] before=0F 00 01 9F 01 2B 00
+2026-07-06 09:57:09,393 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=3018457, WriteData[0-6] after=0F 00 01 D9 0E 2E 00
+2026-07-06 09:57:10,749 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2332102, CurrentReadback=3016554, WasMoving=True, WriteData[0-6] before=0F 00 01 D9 0E 2E 00
+2026-07-06 09:57:15,298 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2332102, WriteData[0-6] after=0F 00 01 C6 95 23 00
+2026-07-06 09:57:18,239 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2119399, CurrentReadback=2331911, WasMoving=True, WriteData[0-6] before=0F 00 01 C6 95 23 00
+2026-07-06 09:57:21,271 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2119399, WriteData[0-6] after=0F 00 01 E7 56 20 00
+2026-07-06 09:57:39,500 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2332102, CurrentReadback=2119406, WasMoving=False, WriteData[0-6] before=0F 00 01 E7 56 20 00
+2026-07-06 09:57:39,938 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2332102, WriteData[0-6] after=0F 00 01 C6 95 23 00
+2026-07-06 09:57:42,127 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=2818463, CurrentReadback=2332323, WasMoving=True, WriteData[0-6] before=0F 00 01 C6 95 23 00
+2026-07-06 09:57:45,600 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=2818463, WriteData[0-6] after=0F 00 01 9F 01 2B 00
+2026-07-06 09:57:56,890 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 09:57:56,898 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 09:57:58,630 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=-67663, Limit=2000
+2026-07-06 09:57:58,631 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 09:57:58,639 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 09:59:26,364 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 09:59:26,372 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 09:59:27,746 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 09:59:27,747 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 09:59:27,749 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 09:59:27,750 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 09:59:28,837 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 09:59:30,885 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - LR move
+2026-07-06 09:59:30,888 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=-8, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 09:59:31,209 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 09:59:32,233 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD down
+2026-07-06 09:59:32,234 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=-65937, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 09:59:32,559 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=3F 00 01 1B 88 01 00
+2026-07-06 09:59:38,284 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder front
+2026-07-06 09:59:40,313 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD up
+2026-07-06 09:59:40,313 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=100419, WasMoving=False, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 09:59:40,638 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=3F 00 01 2C 9D 04 00
+2026-07-06 09:59:46,352 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - vacuum on
+2026-07-06 09:59:47,376 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder back
+2026-07-06 09:59:49,408 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - FOUP slot empty
+2026-07-06 09:59:49,409 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - LR move
+2026-07-06 09:59:49,409 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13139, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 09:59:49,733 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 09:59:51,422 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - UD up
+2026-07-06 09:59:51,422 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=427289, WasMoving=False, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 09:59:51,748 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 09:59:59,467 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - door open
+2026-07-06 10:00:29,634 [1] WARN  SCT_Form.MainGUI - 자동공정 Abort: PM A load - door open wait 단계에서 센서 응답이 30초 내에 확인되지 않았습니다.
+2026-07-06 10:00:33,727 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 10:00:33,734 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 10:00:35,044 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=-37377, Limit=2000
+2026-07-06 10:00:35,044 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 10:00:35,054 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 10:04:53,999 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 10:04:54,007 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 10:04:55,324 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 10:04:55,325 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 10:04:55,327 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 10:04:55,328 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 10:04:56,414 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 10:04:57,966 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - LR move
+2026-07-06 10:04:57,969 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=4, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 10:04:58,292 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 10:04:59,287 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD down
+2026-07-06 10:04:59,288 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=194, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 10:04:59,612 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=3F 00 01 1B 88 01 00
+2026-07-06 10:05:04,318 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder front
+2026-07-06 10:05:06,337 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD up
+2026-07-06 10:05:06,339 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=100423, WasMoving=False, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 10:05:06,664 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=3F 00 01 2C 9D 04 00
+2026-07-06 10:05:12,434 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - vacuum on
+2026-07-06 10:05:13,454 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder back
+2026-07-06 10:05:15,456 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - FOUP slot empty
+2026-07-06 10:05:15,457 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - LR move
+2026-07-06 10:05:15,457 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13142, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 10:05:15,781 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 10:05:17,457 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - UD up
+2026-07-06 10:05:17,457 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=302363, WasMoving=False, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 10:05:17,784 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 10:05:25,502 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - door open
+2026-07-06 10:05:26,496 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - cylinder front
+2026-07-06 10:05:29,045 [1] WARN  SCT_Form.MainGUI - Door Open Interlock: 장비 동작 차단
+2026-07-06 10:05:34,563 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - vacuum off
+2026-07-06 10:05:35,573 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - UD down
+2026-07-06 10:05:35,573 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=1156919, WasMoving=False, WriteData[0-6] before=0F 00 01 43 A7 11 00
+2026-07-06 10:05:35,898 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=3F 00 01 13 50 0C 00
+2026-07-06 10:05:41,648 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - cylinder back
+2026-07-06 10:05:43,665 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - PM wafer present
+2026-07-06 10:05:43,665 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - door close
+2026-07-06 10:05:44,673 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A process start
+2026-07-06 10:05:54,782 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A process complete
+2026-07-06 10:05:55,790 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - door open
+2026-07-06 10:05:56,797 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - cylinder front
+2026-07-06 10:05:58,794 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - UD down
+2026-07-06 10:05:58,794 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=806934, WasMoving=False, WriteData[0-6] before=0F 00 01 13 50 0C 00
+2026-07-06 10:05:59,119 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=3F 00 01 13 50 0C 00
+2026-07-06 10:05:59,801 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - UD up
+2026-07-06 10:05:59,801 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=806934, WasMoving=False, WriteData[0-6] before=0F 00 01 13 50 0C 00
+2026-07-06 10:06:00,125 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 10:06:05,845 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - vacuum on
+2026-07-06 10:06:06,839 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - cylinder back
+2026-07-06 10:06:08,857 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - PM wafer empty
+2026-07-06 10:06:08,857 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - door close
+2026-07-06 10:06:09,863 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B load - LR move
+2026-07-06 10:06:09,864 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-190823, CurrentReadback=-59064, WasMoving=False, WriteData[23-29] before=3F 00 01 48 19 FF FF
+2026-07-06 10:06:10,190 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-190823, WriteData[23-29] after=3F 00 01 99 16 FD FF
+2026-07-06 10:06:11,895 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B load - UD up
+2026-07-06 10:06:11,895 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=1156916, WasMoving=False, WriteData[0-6] before=0F 00 01 43 A7 11 00
+2026-07-06 10:06:12,220 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 10:06:13,912 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B load - door open
+2026-07-06 10:06:14,921 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B load - cylinder front
+2026-07-06 10:06:16,940 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B load - vacuum off
+2026-07-06 10:06:17,949 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B load - UD down
+2026-07-06 10:06:17,949 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=1156925, WasMoving=False, WriteData[0-6] before=0F 00 01 43 A7 11 00
+2026-07-06 10:06:18,276 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=3F 00 01 13 50 0C 00
+2026-07-06 10:06:24,016 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B load - cylinder back
+2026-07-06 10:06:26,013 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B load - PM wafer present
+2026-07-06 10:06:26,014 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B load - door close
+2026-07-06 10:06:27,022 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B process start
+2026-07-06 10:06:37,119 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B process complete
+2026-07-06 10:06:38,124 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B unload - door open
+2026-07-06 10:06:39,128 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B unload - cylinder front
+2026-07-06 10:06:41,151 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B unload - UD down
+2026-07-06 10:06:41,152 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=806935, WasMoving=False, WriteData[0-6] before=0F 00 01 13 50 0C 00
+2026-07-06 10:06:41,477 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=3F 00 01 13 50 0C 00
+2026-07-06 10:06:42,174 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B unload - UD up
+2026-07-06 10:06:42,174 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=806935, WasMoving=False, WriteData[0-6] before=0F 00 01 13 50 0C 00
+2026-07-06 10:06:42,500 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 10:06:44,178 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B unload - vacuum on
+2026-07-06 10:06:45,186 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B unload - cylinder back
+2026-07-06 10:06:47,201 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B unload - PM wafer empty
+2026-07-06 10:06:47,202 [1] INFO  SCT_Form.MainGUI - Auto Process: PM B unload - door close
+2026-07-06 10:06:48,221 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C load - LR move
+2026-07-06 10:06:48,222 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-322000, CurrentReadback=-190822, WasMoving=False, WriteData[23-29] before=3F 00 01 99 16 FD FF
+2026-07-06 10:06:48,546 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-322000, WriteData[23-29] after=3F 00 01 30 16 FB FF
+2026-07-06 10:06:50,224 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C load - UD up
+2026-07-06 10:06:50,225 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=1156979, WasMoving=False, WriteData[0-6] before=0F 00 01 43 A7 11 00
+2026-07-06 10:06:50,551 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 10:06:52,243 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C load - door open
+2026-07-06 10:06:53,238 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C load - cylinder front
+2026-07-06 10:06:56,276 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C load - vacuum off
+2026-07-06 10:06:57,284 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C load - UD down
+2026-07-06 10:06:57,285 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=1156917, WasMoving=False, WriteData[0-6] before=0F 00 01 43 A7 11 00
+2026-07-06 10:06:57,612 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=3F 00 01 13 50 0C 00
+2026-07-06 10:07:03,316 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C load - cylinder back
+2026-07-06 10:07:05,342 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C load - PM wafer present
+2026-07-06 10:07:05,343 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C load - door close
+2026-07-06 10:07:06,334 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C process start
+2026-07-06 10:07:16,366 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C process complete
+2026-07-06 10:07:17,386 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload - door open
+2026-07-06 10:07:18,394 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload - cylinder front
+2026-07-06 10:07:20,427 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload - UD down
+2026-07-06 10:07:20,427 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=806935, WasMoving=False, WriteData[0-6] before=0F 00 01 13 50 0C 00
+2026-07-06 10:07:20,749 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=3F 00 01 13 50 0C 00
+2026-07-06 10:07:21,430 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload - UD up
+2026-07-06 10:07:21,430 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=806934, WasMoving=False, WriteData[0-6] before=0F 00 01 13 50 0C 00
+2026-07-06 10:07:21,756 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 10:07:27,498 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload - vacuum on
+2026-07-06 10:07:28,493 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload - cylinder back
+2026-07-06 10:07:30,494 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload - PM wafer empty
+2026-07-06 10:07:30,495 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload - door close
+2026-07-06 10:07:31,488 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload to FOUP B - LR move
+2026-07-06 10:07:31,488 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-395093, CurrentReadback=-322001, WasMoving=False, WriteData[23-29] before=3F 00 01 30 16 FB FF
+2026-07-06 10:07:31,814 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-395093, WriteData[23-29] after=3F 00 01 AB F8 F9 FF
+2026-07-06 10:07:33,502 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload to FOUP B - UD up
+2026-07-06 10:07:33,503 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=1156911, WasMoving=False, WriteData[0-6] before=0F 00 01 43 A7 11 00
+2026-07-06 10:07:33,828 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=3F 00 01 2C 9D 04 00
+2026-07-06 10:07:40,542 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload to FOUP B - cylinder front
+2026-07-06 10:07:42,541 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload to FOUP B - vacuum off
+2026-07-06 10:07:43,536 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload to FOUP B - UD down
+2026-07-06 10:07:43,536 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=302410, WasMoving=False, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 10:07:43,863 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=3F 00 01 1B 88 01 00
+2026-07-06 10:07:49,588 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload to FOUP B - cylinder back
+2026-07-06 10:07:51,585 [1] INFO  SCT_Form.MainGUI - Auto Process: PM C unload to FOUP B - FOUP slot present
+2026-07-06 10:08:16,305 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - LR move
+2026-07-06 10:08:16,305 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=-395093, WasMoving=False, WriteData[23-29] before=3F 00 01 AB F8 F9 FF
+2026-07-06 10:08:16,628 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 10:08:18,641 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD down
+2026-07-06 10:08:18,641 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=100378, WasMoving=False, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 10:08:18,966 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=3F 00 01 1B 88 01 00
+2026-07-06 10:08:19,648 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder front
+2026-07-06 10:08:21,664 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD up
+2026-07-06 10:08:21,664 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=100378, WasMoving=False, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 10:08:21,990 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=3F 00 01 2C 9D 04 00
+2026-07-06 10:08:27,697 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - vacuum on
+2026-07-06 10:08:28,712 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder back
+2026-07-06 10:08:30,720 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - FOUP slot empty
+2026-07-06 10:08:30,721 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - LR move
+2026-07-06 10:08:30,721 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13142, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 10:08:31,046 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 10:08:32,721 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - UD up
+2026-07-06 10:08:32,722 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=302357, WasMoving=False, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 10:08:33,047 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 10:08:40,754 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - door open
+2026-07-06 10:08:41,757 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - cylinder front
+2026-07-06 10:08:51,786 [1] WARN  SCT_Form.MainGUI - 자동공정 Abort: PM A load - cylinder front wait 단계에서 센서 응답이 10초 내에 확인되지 않았습니다.
+2026-07-06 10:08:58,166 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 10:08:58,173 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 10:08:59,481 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=-258, Limit=2000
+2026-07-06 10:08:59,482 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 10:08:59,485 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 10:09:06,469 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 10:09:06,478 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 10:09:07,845 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 10:09:07,846 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 10:09:07,848 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 10:09:07,849 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 10:09:08,942 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 10:09:10,009 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 10:09:10,012 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 10:09:13,621 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 10:09:13,628 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 10:09:44,137 [1] WARN  SCT_Form.MainGUI - UD shutdown home wait timeout. Current=70285, Limit=2000
+2026-07-06 10:09:44,139 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 10:09:44,144 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 10:11:21,762 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 10:11:21,769 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 10:11:23,059 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 10:11:23,061 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 10:11:23,062 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 10:11:23,063 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 10:11:23,726 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=0, WasMoving=False, WriteData[0-6] before=0F 00 01 00 00 00 00
+2026-07-06 10:11:24,051 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 10:11:24,052 [1] INFO  SCT_Form.MainGUI - Startup safety move: PM A upper UD position requested and cylinder back output applied
+2026-07-06 10:11:24,053 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 10:14:30,882 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 10:14:30,889 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 10:14:32,197 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=-160164, Limit=2000
+2026-07-06 10:14:32,197 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 10:14:32,203 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 10:18:33,315 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 10:18:33,323 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 10:18:34,754 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 10:18:34,755 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 10:18:34,756 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 10:18:34,758 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 10:18:35,406 [1] INFO  SCT_Form.MainGUI - Startup recovery: cylinder back confirmed. Homing started.
+2026-07-06 10:18:35,842 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 10:18:39,157 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - LR move
+2026-07-06 10:18:39,160 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=0, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 10:18:39,483 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 10:18:40,491 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD down
+2026-07-06 10:18:40,491 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=-158895, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 10:18:40,816 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=3F 00 01 1B 88 01 00
+2026-07-06 10:18:46,567 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder front
+2026-07-06 10:18:48,581 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD up
+2026-07-06 10:18:48,581 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=100329, WasMoving=False, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 10:18:48,908 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=3F 00 01 2C 9D 04 00
+2026-07-06 10:18:50,332 [1] WARN  SCT_Form.MainGUI - Application close blocked: robot cylinder is forward
+2026-07-06 10:18:54,538 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 10:18:54,540 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 10:18:55,592 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - vacuum on
+2026-07-06 10:18:56,584 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder back
+2026-07-06 10:18:59,624 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - FOUP slot empty
+2026-07-06 10:18:59,625 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - LR move
+2026-07-06 10:18:59,625 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13141, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 10:18:59,951 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 10:19:01,625 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - UD up
+2026-07-06 10:19:01,625 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=519375, WasMoving=True, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 10:19:01,625 [1] WARN  SCT_Form.MainGUI - UD move ignored. Previous move is still running. Target=1156931
+2026-07-06 10:19:03,614 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - door open
+2026-07-06 10:19:04,626 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - cylinder front
+2026-07-06 10:19:14,741 [1] WARN  SCT_Form.MainGUI - 자동공정 Abort: PM A load - cylinder front wait 단계에서 센서 응답이 10초 내에 확인되지 않았습니다.
+2026-07-06 10:19:43,510 [1] WARN  SCT_Form.MainGUI - Door Open Interlock: 장비 동작 차단
+2026-07-06 10:20:19,155 [1] WARN  SCT_Form.MainGUI - Door Open Interlock: 장비 동작 차단
+2026-07-06 10:20:20,759 [1] WARN  SCT_Form.MainGUI - Application close blocked: robot cylinder is forward
+2026-07-06 10:20:31,643 [1] WARN  SCT_Form.MainGUI - Application close blocked: robot cylinder is forward
+2026-07-06 10:20:36,027 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 10:20:36,036 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 10:20:36,037 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 10:20:36,038 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 10:20:36,040 [1] INFO  SCT_Form.MainGUI - 장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력
+2026-07-06 10:20:36,041 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 10:20:36,689 [1] WARN  SCT_Form.MainGUI - Startup recovery: cylinder is not back. Cylinder back output applied before homing.
+2026-07-06 10:20:42,670 [1] INFO  SCT_Form.MainGUI - Startup recovery: cylinder back confirmed. Homing started.
+2026-07-06 10:20:43,105 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 10:20:46,063 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 10:20:46,071 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 10:20:46,501 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=-158299, Limit=2000
+2026-07-06 10:20:46,501 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 10:20:46,509 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 10:23:29,834 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 10:23:29,843 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 10:23:31,234 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 10:23:31,234 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 10:23:31,235 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 10:23:31,892 [1] INFO  SCT_Form.MainGUI - Startup recovery: cylinder back confirmed. Homing started.
+2026-07-06 10:23:31,893 [1] INFO  SCT_Form.MainGUI - Chamber door close output applied after cylinder back confirmation.
+2026-07-06 10:23:32,327 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 10:23:35,467 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - LR move
+2026-07-06 10:23:35,470 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=13140, CurrentReadback=-1, WasMoving=False, WriteData[23-29] before=1F 00 06 00 00 00 00
+2026-07-06 10:23:35,803 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=13140, WriteData[23-29] after=3F 00 01 54 33 00 00
+2026-07-06 10:23:36,813 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD down
+2026-07-06 10:23:36,813 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=100379, CurrentReadback=-157409, WasMoving=False, WriteData[0-6] before=1F 00 06 00 00 00 00
+2026-07-06 10:23:37,139 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=100379, WriteData[0-6] after=3F 00 01 1B 88 01 00
+2026-07-06 10:23:43,866 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder front
+2026-07-06 10:23:46,894 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - UD up
+2026-07-06 10:23:46,894 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=302380, CurrentReadback=100388, WasMoving=False, WriteData[0-6] before=0F 00 01 1B 88 01 00
+2026-07-06 10:23:47,221 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=302380, WriteData[0-6] after=3F 00 01 2C 9D 04 00
+2026-07-06 10:23:54,921 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - vacuum on
+2026-07-06 10:23:55,930 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - cylinder back
+2026-07-06 10:23:58,960 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load from FOUP A - FOUP slot empty
+2026-07-06 10:23:58,961 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - LR move
+2026-07-06 10:23:58,961 [1] INFO  SCT_Form.MainGUI - LR move requested. Target=-59064, CurrentReadback=13141, WasMoving=False, WriteData[23-29] before=3F 00 01 54 33 00 00
+2026-07-06 10:23:59,282 [1] INFO  SCT_Form.MainGUI - LR move sent. Target=-59064, WriteData[23-29] after=3F 00 01 48 19 FF FF
+2026-07-06 10:24:00,976 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - UD up
+2026-07-06 10:24:00,976 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=519334, WasMoving=True, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 10:24:00,977 [1] WARN  SCT_Form.MainGUI - UD move ignored. Previous move is still running. Target=1156931
+2026-07-06 10:24:07,034 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - door open
+2026-07-06 10:24:08,032 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - cylinder front
+2026-07-06 10:24:10,042 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - vacuum off
+2026-07-06 10:24:11,035 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - UD down
+2026-07-06 10:24:11,035 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=519348, WasMoving=True, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 10:24:11,036 [1] WARN  SCT_Form.MainGUI - UD move ignored. Previous move is still running. Target=806931
+2026-07-06 10:24:16,073 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - cylinder back
+2026-07-06 10:24:18,073 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - PM wafer present
+2026-07-06 10:24:18,073 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A load - door close
+2026-07-06 10:24:19,096 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A process start
+2026-07-06 10:24:29,157 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A process complete
+2026-07-06 10:24:30,148 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - door open
+2026-07-06 10:24:31,144 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - cylinder front
+2026-07-06 10:24:33,161 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - UD down
+2026-07-06 10:24:33,162 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=519351, WasMoving=True, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 10:24:33,162 [1] WARN  SCT_Form.MainGUI - UD move ignored. Previous move is still running. Target=806931
+2026-07-06 10:24:35,167 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - UD up
+2026-07-06 10:24:35,167 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=1156931, CurrentReadback=519351, WasMoving=False, WriteData[0-6] before=0F 00 01 2C 9D 04 00
+2026-07-06 10:24:35,493 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=1156931, WriteData[0-6] after=3F 00 01 43 A7 11 00
+2026-07-06 10:24:43,188 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - vacuum on
+2026-07-06 10:24:44,197 [1] INFO  SCT_Form.MainGUI - Auto Process: PM A unload - cylinder back
+2026-07-06 10:24:45,319 [1] WARN  SCT_Form.MainGUI - Door Open Interlock: 장비 동작 차단
+2026-07-06 10:24:47,097 [1] WARN  SCT_Form.MainGUI - Door Open Interlock: 장비 동작 차단
+2026-07-06 10:24:48,470 [1] WARN  SCT_Form.MainGUI - Application close blocked: robot cylinder is forward
+2026-07-06 10:24:54,305 [1] WARN  SCT_Form.MainGUI - 자동공정 Abort: PM A unload - cylinder back wait 단계에서 센서 응답이 10초 내에 확인되지 않았습니다.
+2026-07-06 10:24:58,548 [1] WARN  SCT_Form.MainGUI - Application close blocked: robot cylinder is forward
+2026-07-06 10:25:08,747 [1] INFO  SCT_Form.MainGUI - 임시 자동 로그인: voliti
+2026-07-06 10:25:08,755 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 시도 중...
+2026-07-06 10:25:08,757 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 연결 성공 (Connect OK)
+2026-07-06 10:25:08,757 [1] DEBUG SCT_Form.MainGUI - EtherCAT 데이터 리드 타이머 시작 (주기: 300ms)
+2026-07-06 10:25:08,758 [1] INFO  SCT_Form.MainGUI - 타워램프 상태 변경: Yellow (장비 대기)
+2026-07-06 10:25:09,408 [1] WARN  SCT_Form.MainGUI - Startup recovery: cylinder is not back. Cylinder back output applied before homing.
+2026-07-06 10:25:19,410 [1] ERROR SCT_Form.MainGUI - Startup recovery canceled: cylinder back sensor was not confirmed. Homing skipped.
+2026-07-06 10:25:19,411 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 10:25:19,413 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 10:25:21,557 [1] INFO  SCT_Form.MainGUI - 시스템 초기화 완료 (초기 모드: AUTO)
+2026-07-06 10:25:23,535 [1] INFO  SCT_Form.MainGUI - 모드 변경에 따른 전 공정 인터록(Force Stop) 가동
+2026-07-06 10:25:23,537 [1] DEBUG SCT_Form.MainGUI - 인터록 완료: 모든 공정 인터록 및 GUI 상태 리셋 완료
+2026-07-06 10:25:26,808 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=1373660, WasMoving=True, WriteData[0-6] before=0F 00 01 00 00 00 00
+2026-07-06 10:25:26,809 [1] WARN  SCT_Form.MainGUI - UD move ignored. Previous move is still running. Target=806931
+2026-07-06 10:25:27,981 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=1373661, WasMoving=False, WriteData[0-6] before=0F 00 01 00 00 00 00
+2026-07-06 10:25:28,305 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=3F 00 01 13 50 0C 00
+2026-07-06 10:25:28,307 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=1373662, WasMoving=False, WriteData[0-6] before=3F 00 01 13 50 0C 00
+2026-07-06 10:25:28,631 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=3F 00 01 13 50 0C 00
+2026-07-06 10:25:28,633 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=1373662, WasMoving=False, WriteData[0-6] before=3F 00 01 13 50 0C 00
+2026-07-06 10:25:28,957 [1] INFO  SCT_Form.MainGUI - UD move sent. Target=806931, WriteData[0-6] after=3F 00 01 13 50 0C 00
+2026-07-06 10:25:28,959 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=1372778, WasMoving=True, WriteData[0-6] before=3F 00 01 13 50 0C 00
+2026-07-06 10:25:28,960 [1] WARN  SCT_Form.MainGUI - UD move ignored. Previous move is still running. Target=806931
+2026-07-06 10:25:28,961 [1] INFO  SCT_Form.MainGUI - UD move requested. Target=806931, CurrentReadback=1372778, WasMoving=True, WriteData[0-6] before=3F 00 01 13 50 0C 00
+2026-07-06 10:25:28,961 [1] WARN  SCT_Form.MainGUI - UD move ignored. Previous move is still running. Target=806931
+2026-07-06 10:25:48,137 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 10:25:48,144 [1] INFO  SCT_Form.MainGUI - Chamber door close output applied after cylinder back confirmation.
+2026-07-06 10:25:48,144 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 10:25:49,129 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=-148151, Limit=2000
+2026-07-06 10:25:49,129 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 10:25:49,139 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
