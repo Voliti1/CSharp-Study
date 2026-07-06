@@ -1241,17 +1241,9 @@ namespace SCT_Form
                 return;
             }
 
-            // 이전 이동이 끝난 뒤 컨트롤워드를 63(New-Setpoint=1, Change-Set-Immediately=1)으로 남겨두면,
-            // 다음 이동의 POS_Update가 그 "켜진 채로 남은" 상태에서 새 좌표를 먼저 전송하게 되어
-            // 드라이브가 이를 진행 중이던 이동에 대한 상대 보정으로 오해해 좌표가 더해진 것처럼
-            // 움직이는 현상이 있었다(Axis2_LR과 달리 Axis1_UD만 컨트롤워드 정리를 이동 "이후"
-            // 100ms 뒤 비동기로 미뤄서 처리하고 있었음). Axis2와 동일하게 새 좌표를 쓰기 "전"에
-            // 동기적으로 컨트롤워드를 정리해서, 다음 클릭이 아무리 빨리 들어와도 항상 절대좌표로만
-            // 이동하도록 한다.
-            SettleAxisControlword(0);
-
             EtherCAT_M.Axis1_UD_POS_Update(targetPosition);
             EtherCAT_M.Axis1_UD_Move_Send();
+            ScheduleAxisControlwordSettle(0, 100);
 
             pendingAxis1TargetPosition = targetPosition;
             pendingAxis1VerifyDeadline = DateTime.Now.AddMilliseconds(Axis1PositionVerifyTimeoutMs);
@@ -1302,6 +1294,31 @@ namespace SCT_Form
 
             writeData[controlWordOffset] = 15;
             EtherCAT_M.Digital_Output(0, EtherCAT_M.Digital_Out_Value[0]);
+        }
+
+        private void ResetAxisMoveCommand(int controlWordOffset, int targetPositionOffset)
+        {
+            SettleAxisControlword(controlWordOffset);
+            Thread.Sleep(50);
+            ClearAxisTargetPosition(targetPositionOffset);
+        }
+
+        private void LatchAndSettleAxisMoveCommand(int controlWordOffset)
+        {
+            ScheduleAxisControlwordSettle(controlWordOffset, 100);
+        }
+
+        private void ScheduleAxisControlwordSettle(int controlWordOffset, int delayMs)
+        {
+            System.Windows.Forms.Timer settleTimer = new System.Windows.Forms.Timer();
+            settleTimer.Interval = Math.Max(1, delayMs);
+            settleTimer.Tick += (sender, e) =>
+            {
+                settleTimer.Stop();
+                settleTimer.Dispose();
+                SettleAxisControlword(controlWordOffset);
+            };
+            settleTimer.Start();
         }
 
         private bool WaitUntilAxis1TargetReached(int timeoutMs)
