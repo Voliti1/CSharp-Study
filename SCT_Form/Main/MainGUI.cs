@@ -52,6 +52,11 @@ namespace SCT_Form
         private const int Axis1PositionVerifyTimeoutMs = 60000;
         private long? pendingAxis1TargetPosition;
         private DateTime pendingAxis1VerifyDeadline;
+
+        // UD 축 상한 소프트 리밋: 특정 이동 명령과 무관하게 timer1(200ms)마다 항상 확인해서,
+        // 실제 좌표가 이 값을 넘어가면(과도한 튐/기계적 리밋 접근 등 원인 불문) 즉시 Axis
+        // Position Fault를 걸어 추가 이동을 전부 차단한다. 물리적 충돌을 막기 위한 안전장치.
+        private const long Axis1UpperSoftLimit = 3100000;
         private const int AxisTargetPositionByteCount = 4;
         private const long Axis1ShutdownHomePositionLimit = 2000;
         private const int Axis1ShutdownHomeTimeoutMs = 30000;
@@ -1412,6 +1417,27 @@ namespace SCT_Form
             }
         }
 
+        // 특정 이동 명령의 목표값과 무관하게, 매 tick마다 UD 좌표가 상한 소프트 리밋을
+        // 넘었는지 확인한다. 넘었다면 원인(과도한 튐, 리밋 스위치 접근 등)과 상관없이
+        // 즉시 차단해서 기계적 끝단과의 추가 충돌을 막는다.
+        private void CheckAxis1SoftLimit()
+        {
+            if (isAxisPositionFault) return;
+
+            long currentPosition;
+            if (!TryReadAxis1Position(out currentPosition)) return;
+            if (currentPosition <= Axis1UpperSoftLimit) return;
+
+            pendingAxis1TargetPosition = null;
+            isAxisPositionFault = true;
+            WriteSystemLog("Alarm", "ERROR", $"UD 축 상한 소프트 리밋 초과: 현재={currentPosition}, 리밋={Axis1UpperSoftLimit}. 장비 동작이 즉시 차단되었습니다. Alarm Reset 필요.");
+
+            if (settings != null)
+            {
+                ApplyTowerLampStatus(settings.AlarmLampStatus);
+            }
+        }
+
         // 진단용: 이전 이동이 완료(Target Reached)됐는지 여부. 현재는 이동을 막지 않고 로그에만 남긴다.
         private bool IsAxis1Moving()
         {
@@ -1515,6 +1541,7 @@ namespace SCT_Form
                 string currentLRPos = EtherCAT_M.Axis2_is_PosData();
 
                 CheckAxis1PositionVerification();
+                CheckAxis1SoftLimit();
 
                 if (maintGUI != null)
                 {
