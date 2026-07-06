@@ -319,7 +319,54 @@ namespace SCT_Form
             SetChamberDoorStatus(EquipmentLayout.NormalizeModule(module), false);
         }
 
+        private const int ChamberLampBlinkCount = 5;
+        private const int ChamberLampBlinkIntervalMs = 1000;
+        private readonly Dictionary<string, System.Windows.Forms.Timer> chamberLampBlinkTimers = new Dictionary<string, System.Windows.Forms.Timer>();
+
         internal void SetChamberLamp(string module, bool on)
+        {
+            string normalized = EquipmentLayout.NormalizeModule(module);
+            StopChamberLampBlink(normalized);
+            SetChamberLampOutput(normalized, on);
+        }
+
+        internal void BlinkChamberLamp(string module)
+        {
+            string normalized = EquipmentLayout.NormalizeModule(module);
+            StopChamberLampBlink(normalized);
+
+            int toggleCount = 0;
+            int totalToggles = (ChamberLampBlinkCount * 2) - 1;
+            SetChamberLampOutput(normalized, true);
+
+            System.Windows.Forms.Timer blinkTimer = new System.Windows.Forms.Timer();
+            blinkTimer.Interval = ChamberLampBlinkIntervalMs;
+            blinkTimer.Tick += (sender, e) =>
+            {
+                toggleCount++;
+                SetChamberLampOutput(normalized, toggleCount % 2 == 0);
+                if (toggleCount >= totalToggles)
+                {
+                    StopChamberLampBlink(normalized);
+                }
+            };
+
+            chamberLampBlinkTimers[normalized] = blinkTimer;
+            blinkTimer.Start();
+        }
+
+        private void StopChamberLampBlink(string module)
+        {
+            System.Windows.Forms.Timer blinkTimer;
+            if (chamberLampBlinkTimers.TryGetValue(module, out blinkTimer))
+            {
+                blinkTimer.Stop();
+                blinkTimer.Dispose();
+                chamberLampBlinkTimers.Remove(module);
+            }
+        }
+
+        private void SetChamberLampOutput(string module, bool on)
         {
             EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
             EtherCAT_M.Digital_Output(profile.LampOutput, on);
@@ -356,9 +403,9 @@ namespace SCT_Form
 
         internal void SetAllChamberLamps(bool on)
         {
-            EtherCAT_M.Digital_Output(EquipmentLayout.GetModule("PM A").LampOutput, on);
-            EtherCAT_M.Digital_Output(EquipmentLayout.GetModule("PM B").LampOutput, on);
-            EtherCAT_M.Digital_Output(EquipmentLayout.GetModule("PM C").LampOutput, on);
+            SetChamberLamp("PM A", on);
+            SetChamberLamp("PM B", on);
+            SetChamberLamp("PM C", on);
         }
 
         internal bool IsCylinderForward()
