@@ -10,6 +10,7 @@ namespace SCT_Form
         private const int AxisMoveTimeoutSeconds = 60;
         private const int DoorMoveTimeoutSeconds = 30;
         private const int VacuumSettleSeconds = 1;
+        private const long Axis1PositionToleranceCounts = 5000;
 
         internal static List<WaferAutoSequencer.AutoStep> Build(
             MainGUI main,
@@ -79,7 +80,12 @@ namespace SCT_Form
         private static void AddAxis1Move(List<WaferAutoSequencer.AutoStep> steps, MainGUI main, string module, string description, long targetPosition)
         {
             AddAction(steps, main, module, description, () => main.MoveAxis1UDTo(targetPosition));
-            AddWaitSensor(steps, module, description + " target reached wait", main.IsAxis1TargetReached, AxisMoveTimeoutSeconds);
+            AddWaitSensor(
+                steps,
+                module,
+                description + " target reached wait",
+                () => main.IsAxis1TargetReached() && main.IsAxis1AtPosition(targetPosition, Axis1PositionToleranceCounts),
+                AxisMoveTimeoutSeconds);
         }
 
         private static void AddAxis2Move(List<WaferAutoSequencer.AutoStep> steps, MainGUI main, string module, string description, long targetPosition)

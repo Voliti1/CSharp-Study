@@ -22,6 +22,14 @@ namespace SCT_Form
             public long LR;
             public long Wafer1Down;
             public long Wafer1Up;
+            public long Wafer2Down;
+            public long Wafer2Up;
+            public long Wafer3Down;
+            public long Wafer3Up;
+            public long Wafer4Down;
+            public long Wafer4Up;
+            public long Wafer5Down;
+            public long Wafer5Up;
         }
 
         private static readonly Dictionary<string, ModuleProfile> Modules = new Dictionary<string, ModuleProfile>
@@ -31,10 +39,11 @@ namespace SCT_Form
             { "PM C", new ModuleProfile { LR = -322000, UDDown = 806931, UDUp = 1156931, DoorOpenOutput = 11, DoorCloseOutput = 10, DoorUpSensor = 10, DoorDownSensor = 11, LampOutput = 9 } },
         };
 
+        // 상/하(UD) 좌표는 FOUP A/B 공통(동일 높이), 좌/우(LR) 좌표만 FOUP마다 다름.
         private static readonly Dictionary<string, FoupProfile> Foups = new Dictionary<string, FoupProfile>
         {
-            { "FOUP A", new FoupProfile { LR = 13140, Wafer1Down = 100379, Wafer1Up = 302380 } },
-            { "FOUP B", new FoupProfile { LR = -395093, Wafer1Down = 100379, Wafer1Up = 302380 } },
+            { "FOUP A", new FoupProfile { LR = 13140, Wafer1Down = 100379, Wafer1Up = 302380, Wafer2Down = 781878, Wafer2Up = 982378, Wafer3Down = 1432388, Wafer3Up = 1627604, Wafer4Down = 2119399, Wafer4Up = 2332102, Wafer5Down = 2818463, Wafer5Up = 3018457 } },
+            { "FOUP B", new FoupProfile { LR = -395093, Wafer1Down = 100379, Wafer1Up = 302380, Wafer2Down = 781878, Wafer2Up = 982378, Wafer3Down = 1432388, Wafer3Up = 1627604, Wafer4Down = 2119399, Wafer4Up = 2332102, Wafer5Down = 2818463, Wafer5Up = 3018457 } },
         };
 
         internal static string NormalizeModule(string module)

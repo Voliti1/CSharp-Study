@@ -34,6 +34,7 @@ namespace SCT_Form
         internal bool isChamCDoorOpen = false;
         internal bool isServoMotorOn = false;
         internal bool isAxisMoving = false;
+        internal bool isAxisPositionFault = false;
 
         internal string currentUbarState = "Operate";
 
@@ -43,6 +44,14 @@ namespace SCT_Form
         private const long DefaultRobotVelocity = 1000000;
         private const int Axis1TargetPositionWriteOffset = 3;
         private const int Axis2TargetPositionWriteOffset = 26;
+
+        // UD(상하) 축 위치 확인 안전장치: 이동 명령 후 목표값 ±허용범위 내에 도달하는지
+        // timer1(200ms)로 비동기 확인한다. 시간 내 도달하지 못하면 Axis Position Fault를
+        // 걸어 EnsureEquipmentOperationAllowed()를 통해 모든 수동/자동 이동을 차단한다.
+        private const long Axis1PositionToleranceCounts = 5000;
+        private const int Axis1PositionVerifyTimeoutMs = 60000;
+        private long? pendingAxis1TargetPosition;
+        private DateTime pendingAxis1VerifyDeadline;
         private const int AxisTargetPositionByteCount = 4;
         private const long Axis1ShutdownHomePositionLimit = 2000;
         private const int Axis1ShutdownHomeTimeoutMs = 30000;
@@ -222,6 +231,12 @@ namespace SCT_Form
             if (!IsLoggedIn)
             {
                 MessageBox.Show("장비 동작을 하려면 로그인해주세요", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (isAxisPositionFault)
+            {
+                MessageBox.Show("UD 축 위치 확인 실패로 장비 동작이 차단되었습니다. Alarm Reset 후 다시 시도하세요.", "Axis Position Fault", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -419,6 +434,12 @@ namespace SCT_Form
 
         private void ResetPmAlarms()
         {
+            if (isAxisPositionFault)
+            {
+                isAxisPositionFault = false;
+                WriteSystemLog("Alarm", "INFO", "UD 위치 확인 오류(Axis Position Fault) 해제됨");
+            }
+
             if (activePmAlarms.Count == 0)
             {
                 WriteSystemLog("Alarm", "INFO", "Alarm Reset 요청: Active PM Alarm 없음");
@@ -1208,6 +1229,12 @@ namespace SCT_Form
             bool wasMoving = IsAxis1Moving();
             WriteSystemLog("DEBUG", $"UD move requested. Target={targetPosition}, CurrentReadback={currentPos}, WasMoving={wasMoving}, WriteData[0-6] before={DumpWriteDataBytes(0, 7)}");
 
+            if (isAxisPositionFault)
+            {
+                WriteSystemLog("WARN", $"UD move blocked. Axis position fault is active (Alarm Reset 필요). Target={targetPosition}");
+                return;
+            }
+
             if (wasMoving)
             {
                 WriteSystemLog("WARN", $"UD move ignored. Previous move is still running. Target={targetPosition}");
@@ -1217,6 +1244,9 @@ namespace SCT_Form
             EtherCAT_M.Axis1_UD_POS_Update(targetPosition);
             EtherCAT_M.Axis1_UD_Move_Send();
             ScheduleAxisControlwordSettle(0, 100);
+
+            pendingAxis1TargetPosition = targetPosition;
+            pendingAxis1VerifyDeadline = DateTime.Now.AddMilliseconds(Axis1PositionVerifyTimeoutMs);
 
             WriteSystemLog("DEBUG", $"UD move sent. Target={targetPosition}, WriteData[0-6] after={DumpWriteDataBytes(0, 7)}");
         }
@@ -1239,6 +1269,14 @@ namespace SCT_Form
         internal bool IsAxis1TargetReached()
         {
             return EtherCAT_M != null && EtherCAT_M.Axis1_Status("PP_D");
+        }
+
+        internal bool IsAxis1AtPosition(long expectedPosition, long toleranceCounts)
+        {
+            long currentPosition;
+            if (!TryReadAxis1Position(out currentPosition)) return false;
+
+            return Math.Abs(currentPosition - expectedPosition) <= toleranceCounts;
         }
 
         internal bool IsAxis2TargetReached()
@@ -1345,6 +1383,35 @@ namespace SCT_Form
             return long.TryParse(positionText, NumberStyles.Integer, CultureInfo.InvariantCulture, out currentPosition);
         }
 
+        // timer1(200ms)에서 호출되는 비동기 위치 확인. UI를 멈추지 않고 매 tick마다
+        // 목표값 도달 여부만 확인하다가, 허용범위 안에 들어오면 통과, 타임아웃까지
+        // 못 들어오면 Axis Position Fault를 걸어 이후 UD 이동을 전부 차단한다.
+        private void CheckAxis1PositionVerification()
+        {
+            if (!pendingAxis1TargetPosition.HasValue) return;
+
+            long currentPosition;
+            if (!TryReadAxis1Position(out currentPosition)) return;
+
+            long target = pendingAxis1TargetPosition.Value;
+            if (Math.Abs(currentPosition - target) <= Axis1PositionToleranceCounts)
+            {
+                pendingAxis1TargetPosition = null;
+                return;
+            }
+
+            if (DateTime.Now < pendingAxis1VerifyDeadline) return;
+
+            pendingAxis1TargetPosition = null;
+            isAxisPositionFault = true;
+            WriteSystemLog("Alarm", "ERROR", $"UD 위치 확인 실패: 목표={target}, 현재={currentPosition} (허용범위 ±{Axis1PositionToleranceCounts} 밖). 장비 동작이 차단되었습니다. Alarm Reset 필요.");
+
+            if (settings != null)
+            {
+                ApplyTowerLampStatus(settings.AlarmLampStatus);
+            }
+        }
+
         // 진단용: 이전 이동이 완료(Target Reached)됐는지 여부. 현재는 이동을 막지 않고 로그에만 남긴다.
         private bool IsAxis1Moving()
         {
@@ -1446,6 +1513,8 @@ namespace SCT_Form
             {
                 string currentUDPos = EtherCAT_M.Axis1_is_PosData();
                 string currentLRPos = EtherCAT_M.Axis2_is_PosData();
+
+                CheckAxis1PositionVerification();
 
                 if (maintGUI != null)
                 {
