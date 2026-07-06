@@ -83,7 +83,7 @@ namespace SCT_Form
                     sensorWaitElapsedSeconds++;
                     if (sensorWaitElapsedSeconds >= step.TimeoutSeconds)
                     {
-                        Abort(step.Description + " 단계에서 센서 응답이 " + step.TimeoutSeconds + "초 내에 확인되지 않았습니다.");
+                        Abort(step.Description + " sensor wait timeout after " + step.TimeoutSeconds + " sec.");
                     }
                     return;
 

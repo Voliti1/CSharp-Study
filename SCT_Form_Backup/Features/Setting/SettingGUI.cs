@@ -188,7 +188,6 @@ namespace SCT_Form
             EquipmentSettingsService.Save(settings);
             AppDataPaths.EnsureBaseFolders();
             main?.ApplyEquipmentSettings(settings);
-            MessageBox.Show("Settings have been applied.", "Setting", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private EquipmentSettings BuildSettingsFromControls()

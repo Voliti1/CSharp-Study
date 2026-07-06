@@ -387,7 +387,6 @@ namespace SCT_Form
 
                 File.WriteAllText(dialog.FileName, BuildCsv(exportLogs), Encoding.UTF8);
                 main?.WriteSystemLog("Data Export", "INFO", "Log Export 완료: " + dialog.FileName);
-                MessageBox.Show("Log Export가 완료되었습니다.", "Log Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

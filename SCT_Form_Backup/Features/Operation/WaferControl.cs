@@ -29,7 +29,7 @@ namespace SCT_Form
         {
             InitializeComponent();
 
-            Size = new Size(120, 120);
+            Size = new Size(100, 100);
             DoubleBuffered = true;
         }
 

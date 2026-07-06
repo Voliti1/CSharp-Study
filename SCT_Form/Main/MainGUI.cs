@@ -1,4 +1,4 @@
-﻿using IEG3268_Dll;
+using IEG3268_Dll;
 using log4net;
 using log4net.Repository.Hierarchy;
 using System;
@@ -36,6 +36,7 @@ namespace SCT_Form
         internal bool isAxisMoving = false;
         internal bool isAxisPositionFault = false;
         internal bool isWaferSuctionOn = false;
+        private int consecutiveConnectionFailures = 0;
 
         internal string currentUbarState = "Operate";
 
@@ -49,7 +50,7 @@ namespace SCT_Form
         // UD(상하) 축 위치 확인 안전장치: 이동 명령 후 목표값 ±허용범위 내에 도달하는지
         // timer1(200ms)로 비동기 확인한다. 시간 내 도달하지 못하면 Axis Position Fault를
         // 걸어 EnsureEquipmentOperationAllowed()를 통해 모든 수동/자동 이동을 차단한다.
-        private const long Axis1PositionToleranceCounts = 5000;
+        private const long Axis1PositionToleranceCounts = 70000;
         private const int Axis1PositionVerifyTimeoutMs = 60000;
         private long? pendingAxis1TargetPosition;
         private DateTime pendingAxis1VerifyDeadline;
@@ -120,7 +121,6 @@ namespace SCT_Form
             SystemConnect();
             servoMotorON();
             isServoMotorOn = true;
-            RecoverCylinderThenHomeAtStartup();
 
             Mainpnl_CurrentStateGUI();
             UpdateDateTimeLabels();
@@ -174,7 +174,6 @@ namespace SCT_Form
                 currentAccount = loginGUI.LoggedInAccount;
                 ShowLoginStatePanel();
                 WriteSystemLog("User", "INFO", "로그인: " + currentAccount.UserId);
-                MessageBox.Show("로그인되었습니다.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -219,7 +218,6 @@ namespace SCT_Form
             loginStateGUI = null;
             ShowLoginInputPanel();
             WriteSystemLog("User", "INFO", "로그아웃: " + logoutUserId);
-            MessageBox.Show("로그아웃되었습니다.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         internal bool IsLoggedIn
@@ -911,6 +909,7 @@ namespace SCT_Form
             SystemConnect();
             servoMotorON();
         }
+
         // --- 타워 램프 제어 영역 ---
         private void RedLightOn_Click(object sender, EventArgs e)
         {
@@ -976,31 +975,8 @@ namespace SCT_Form
         // --- 프로그램 종료 처리 ---
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!isConnect || EtherCAT_M == null) return;
-
-            try
-            {
-                if (IsCylinderBack()) return;
-
-                e.Cancel = true;
-                WriteSystemLog("WARN", "Application close blocked: robot cylinder back sensor is not confirmed. " + GetCylinderSensorSnapshot());
-                MessageBox.Show(
-                    "웨이퍼 이송 실린더 후진 센서가 확인되지 않아 프로그램을 종료할 수 없습니다.\r\n실린더를 후진한 뒤 다시 종료해주세요.",
-                    "Close Blocked",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            }
-            catch (Exception ex)
-            {
-                e.Cancel = true;
-                log.Error("폼 종료 전 실린더 상태 확인 중 예외 발생: ", ex);
-                WriteSystemLog("ERROR", $"폼 종료 전 실린더 상태 확인 중 예외 발생: {ex.Message}");
-                MessageBox.Show(
-                    "실린더 상태를 확인할 수 없어 프로그램 종료를 중단했습니다.",
-                    "Close Blocked",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            }
+            // 프로그램 종료 시 자동 원점복귀(Homing) 기능이 제거되었고, 재기동 시 Initialize 시퀀스에서 
+            // 실린더 후진을 안전하게 먼저 체크하고 후진시키도록 수정되었으므로, 종료 시점의 실린더 센서 차단 락은 제거합니다.
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -1008,10 +984,12 @@ namespace SCT_Form
             WriteSystemLog("INFO", "Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동");
             try
             {
+                // 강제적인 기구 동작(실린더 이동/도어 닫기)을 셧다운 중에 유발하지 않기 위해 
+                // 전/후진 밸브 출력을 모두 OFF로 바꾸어 동력을 차단합니다.
                 EtherCAT_M.Digital_Output(12, false);
-                EtherCAT_M.Digital_Output(13, true);
+                EtherCAT_M.Digital_Output(13, false);
 
-                // 타워등, 챔버등, 실린더 오프 가동
+                // 타워등, 챔버등, 진공 소등
                 EtherCAT_M.Digital_Output(0, false);
                 EtherCAT_M.Digital_Output(1, false);
                 EtherCAT_M.Digital_Output(2, false);
@@ -1022,22 +1000,9 @@ namespace SCT_Form
                 SetWaferSuction(false);
                 EtherCAT_M.Digital_Output(15, false);
 
-                if (WaitUntilCylinderBack(StartupCylinderBackTimeoutMs))
-                {
-                    CloseAllChamberDoors();
-                    WriteSystemLog("INFO", "안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료");
-
-                    setBasicPoint();
-                    WaitUntilAxis1PositionBelow(Axis1ShutdownHomePositionLimit, Axis1ShutdownHomeTimeoutMs);
-                }
-                else
-                {
-                    WriteSystemLog("ERROR", "안전 셧다운 중단: 실린더 후진 센서 미확인으로 도어 폐쇄 및 원점복귀 생략");
-                }
-
                 servoMotorOFF();
                 isServoMotorOn = false;
-                WriteSystemLog("INFO", "안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료");
+                WriteSystemLog("INFO", "안전 셧다운 완료: 램프 소등 및 서보 모터 OFF 완료");
 
                 EtherCAT_M.CIFX_50RE_Disconnect();
                 WriteSystemLog("INFO", "EtherCAT 마스터 통신 채널 정상 해제 완료");
@@ -1504,6 +1469,23 @@ namespace SCT_Form
             return long.TryParse(positionText, NumberStyles.Integer, CultureInfo.InvariantCulture, out currentPosition);
         }
 
+        private bool TryReadAxis2Position(out long currentPosition)
+        {
+            currentPosition = 0;
+            if (EtherCAT_M == null) return false;
+
+            string positionText = EtherCAT_M.Axis2_is_PosData();
+            return long.TryParse(positionText, NumberStyles.Integer, CultureInfo.InvariantCulture, out currentPosition);
+        }
+
+        internal bool IsAxis2AtPosition(long expectedPosition, long toleranceCounts)
+        {
+            long currentPosition;
+            if (!TryReadAxis2Position(out currentPosition)) return false;
+
+            return Math.Abs(currentPosition - expectedPosition) <= toleranceCounts;
+        }
+
         // timer1(200ms)에서 호출되는 비동기 위치 확인. UI를 멈추지 않고 매 tick마다
         // 목표값 도달 여부만 확인하다가, 허용범위 안에 들어오면 통과, 타임아웃까지
         // 못 들어오면 Axis Position Fault를 걸어 이후 UD 이동을 전부 차단한다.
@@ -1670,6 +1652,7 @@ namespace SCT_Form
                     currentGUI.UpdateRobotPosition(currentLRPos);
                     currentGUI.SetRobotWaferState(isWaferSuctionOn);
                     currentGUI.SetRobotCylinderState(IsCylinderForward(), IsCylinderBack());
+                    currentGUI.UpdateControlButtons();
                 }
             }
             catch (Exception ex)

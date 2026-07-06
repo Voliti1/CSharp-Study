@@ -30,13 +30,10 @@
         {
             this.pnl_PMC = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMC = new System.Windows.Forms.Label();
-            this.waferControl3 = new SCT_Form.WaferControl();
             this.pnl_PMA = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMA = new System.Windows.Forms.Label();
-            this.waferControl1 = new SCT_Form.WaferControl();
             this.pnl_PMB = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMB = new System.Windows.Forms.Label();
-            this.waferControl2 = new SCT_Form.WaferControl();
             this.pnl_FOUP_A = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_FOUP_A_1 = new System.Windows.Forms.Panel();
             this.pnl_FOUP_A_2 = new System.Windows.Forms.Panel();
@@ -50,9 +47,6 @@
             this.pnl_FOUP_B_5 = new System.Windows.Forms.Panel();
             this.pnl_FOUP_B_4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.pnl_FOUPB_Manual = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_FOUPB_Empty = new System.Windows.Forms.Button();
-            this.btn_FOUPB_Full = new System.Windows.Forms.Button();
             this.pnl_FOUPB = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_FOUPB_cuurentLockStatus = new System.Windows.Forms.Label();
             this.label1lbl_FOUPB_cuurentLOTID = new System.Windows.Forms.Label();
@@ -65,9 +59,6 @@
             this.lbl_FOUPA_LotID = new System.Windows.Forms.Label();
             this.lbl_FOUPA_LockStatus = new System.Windows.Forms.Label();
             this.lbl_FOUPA_cuurentLOTID = new System.Windows.Forms.Label();
-            this.pnl_FOUPA_Manual = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_FOUPA_Empty = new System.Windows.Forms.Button();
-            this.btn_FOUPA_Full = new System.Windows.Forms.Button();
             this.tablepnl_PMA = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_PMA_recipe = new System.Windows.Forms.Label();
             this.lbl_PMA_step = new System.Windows.Forms.Label();
@@ -141,16 +132,18 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_FOUPB = new System.Windows.Forms.Label();
             this.pnl_Robot = new System.Windows.Forms.Panel();
+            this.btn_Initialize = new System.Windows.Forms.Button();
+            this.waferControl3 = new SCT_Form.WaferControl();
+            this.waferControl2 = new SCT_Form.WaferControl();
+            this.waferControl1 = new SCT_Form.WaferControl();
             this.pnl_PMC.SuspendLayout();
             this.pnl_PMA.SuspendLayout();
             this.pnl_PMB.SuspendLayout();
             this.pnl_FOUP_A.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.pnl_FOUPB_Manual.SuspendLayout();
             this.pnl_FOUPB.SuspendLayout();
             this.pnl_FOUPA.SuspendLayout();
-            this.pnl_FOUPA_Manual.SuspendLayout();
             this.tablepnl_PMA.SuspendLayout();
             this.toppnl_PMA.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -193,23 +186,13 @@
             this.lbl_PMC.Text = "PM C";
             this.lbl_PMC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // waferControl3
-            // 
-            this.waferControl3.BackColor = System.Drawing.Color.Transparent;
-            this.waferControl3.Location = new System.Drawing.Point(16, 57);
-            this.waferControl3.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
-            this.waferControl3.Name = "waferControl3";
-            this.waferControl3.Size = new System.Drawing.Size(100, 100);
-            this.waferControl3.State = SCT_Form.WaferControl.WaferState.Empty;
-            this.waferControl3.TabIndex = 1;
-            // 
             // pnl_PMA
             // 
             this.pnl_PMA.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.pnl_PMA.ColumnCount = 1;
             this.pnl_PMA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnl_PMA.Controls.Add(this.lbl_PMA, 0, 0);
-            this.pnl_PMA.Controls.Add(this.waferControl1, 0, 1);
+            this.pnl_PMA.Controls.Add(this.waferControl2, 0, 1);
             this.pnl_PMA.Location = new System.Drawing.Point(49, 193);
             this.pnl_PMA.Name = "pnl_PMA";
             this.pnl_PMA.RowCount = 3;
@@ -231,23 +214,13 @@
             this.lbl_PMA.Text = "PM A";
             this.lbl_PMA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // waferControl1
-            // 
-            this.waferControl1.BackColor = System.Drawing.Color.Transparent;
-            this.waferControl1.Location = new System.Drawing.Point(16, 57);
-            this.waferControl1.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
-            this.waferControl1.Name = "waferControl1";
-            this.waferControl1.Size = new System.Drawing.Size(100, 100);
-            this.waferControl1.State = SCT_Form.WaferControl.WaferState.Empty;
-            this.waferControl1.TabIndex = 1;
-            // 
             // pnl_PMB
             // 
             this.pnl_PMB.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.pnl_PMB.ColumnCount = 1;
             this.pnl_PMB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnl_PMB.Controls.Add(this.lbl_PMB, 0, 0);
-            this.pnl_PMB.Controls.Add(this.waferControl2, 0, 1);
+            this.pnl_PMB.Controls.Add(this.waferControl1, 0, 1);
             this.pnl_PMB.Location = new System.Drawing.Point(244, 0);
             this.pnl_PMB.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_PMB.Name = "pnl_PMB";
@@ -269,16 +242,6 @@
             this.lbl_PMB.TabIndex = 0;
             this.lbl_PMB.Text = "PM B";
             this.lbl_PMB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // waferControl2
-            // 
-            this.waferControl2.BackColor = System.Drawing.Color.Transparent;
-            this.waferControl2.Location = new System.Drawing.Point(16, 57);
-            this.waferControl2.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
-            this.waferControl2.Name = "waferControl2";
-            this.waferControl2.Size = new System.Drawing.Size(100, 100);
-            this.waferControl2.State = SCT_Form.WaferControl.WaferState.Empty;
-            this.waferControl2.TabIndex = 1;
             // 
             // pnl_FOUP_A
             // 
@@ -423,14 +386,12 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.Controls.Add(this.pnl_FOUPB_Manual, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.pnl_FOUPB, 4, 1);
             this.tableLayoutPanel2.Controls.Add(this.lbl_FOUP_A, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.pnl_FOUP_A, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.lbl_FOUP_B, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.pnl_FOUPA, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.pnl_FOUPA_Manual, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(16, 463);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -438,49 +399,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(607, 182);
             this.tableLayoutPanel2.TabIndex = 43;
-            // 
-            // pnl_FOUPB_Manual
-            // 
-            this.pnl_FOUPB_Manual.ColumnCount = 2;
-            this.pnl_FOUPB_Manual.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnl_FOUPB_Manual.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnl_FOUPB_Manual.Controls.Add(this.btn_FOUPB_Empty, 1, 0);
-            this.pnl_FOUPB_Manual.Controls.Add(this.btn_FOUPB_Full, 0, 0);
-            this.pnl_FOUPB_Manual.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUPB_Manual.Location = new System.Drawing.Point(424, 0);
-            this.pnl_FOUPB_Manual.Margin = new System.Windows.Forms.Padding(0);
-            this.pnl_FOUPB_Manual.Name = "pnl_FOUPB_Manual";
-            this.pnl_FOUPB_Manual.RowCount = 1;
-            this.pnl_FOUPB_Manual.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnl_FOUPB_Manual.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnl_FOUPB_Manual.Size = new System.Drawing.Size(183, 27);
-            this.pnl_FOUPB_Manual.TabIndex = 49;
-            // 
-            // btn_FOUPB_Empty
-            // 
-            this.btn_FOUPB_Empty.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_FOUPB_Empty.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_FOUPB_Empty.Location = new System.Drawing.Point(92, 1);
-            this.btn_FOUPB_Empty.Margin = new System.Windows.Forms.Padding(1);
-            this.btn_FOUPB_Empty.Name = "btn_FOUPB_Empty";
-            this.btn_FOUPB_Empty.Size = new System.Drawing.Size(90, 25);
-            this.btn_FOUPB_Empty.TabIndex = 1;
-            this.btn_FOUPB_Empty.Text = "Empty";
-            this.btn_FOUPB_Empty.UseVisualStyleBackColor = true;
-            this.btn_FOUPB_Empty.Click += new System.EventHandler(this.btn_FOUPB_Empty_Click);
-            // 
-            // btn_FOUPB_Full
-            // 
-            this.btn_FOUPB_Full.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_FOUPB_Full.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_FOUPB_Full.Location = new System.Drawing.Point(1, 1);
-            this.btn_FOUPB_Full.Margin = new System.Windows.Forms.Padding(1);
-            this.btn_FOUPB_Full.Name = "btn_FOUPB_Full";
-            this.btn_FOUPB_Full.Size = new System.Drawing.Size(89, 25);
-            this.btn_FOUPB_Full.TabIndex = 0;
-            this.btn_FOUPB_Full.Text = "Full";
-            this.btn_FOUPB_Full.UseVisualStyleBackColor = true;
-            this.btn_FOUPB_Full.Click += new System.EventHandler(this.btn_FOUPB_Full_Click);
             // 
             // pnl_FOUPB
             // 
@@ -630,49 +548,6 @@
             this.lbl_FOUPA_cuurentLOTID.TabIndex = 2;
             this.lbl_FOUPA_cuurentLOTID.Text = "L001";
             this.lbl_FOUPA_cuurentLOTID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnl_FOUPA_Manual
-            // 
-            this.pnl_FOUPA_Manual.ColumnCount = 2;
-            this.pnl_FOUPA_Manual.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnl_FOUPA_Manual.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnl_FOUPA_Manual.Controls.Add(this.btn_FOUPA_Empty, 1, 0);
-            this.pnl_FOUPA_Manual.Controls.Add(this.btn_FOUPA_Full, 0, 0);
-            this.pnl_FOUPA_Manual.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_FOUPA_Manual.Location = new System.Drawing.Point(91, 0);
-            this.pnl_FOUPA_Manual.Margin = new System.Windows.Forms.Padding(0);
-            this.pnl_FOUPA_Manual.Name = "pnl_FOUPA_Manual";
-            this.pnl_FOUPA_Manual.RowCount = 1;
-            this.pnl_FOUPA_Manual.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnl_FOUPA_Manual.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnl_FOUPA_Manual.Size = new System.Drawing.Size(182, 27);
-            this.pnl_FOUPA_Manual.TabIndex = 48;
-            // 
-            // btn_FOUPA_Empty
-            // 
-            this.btn_FOUPA_Empty.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_FOUPA_Empty.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_FOUPA_Empty.Location = new System.Drawing.Point(92, 1);
-            this.btn_FOUPA_Empty.Margin = new System.Windows.Forms.Padding(1);
-            this.btn_FOUPA_Empty.Name = "btn_FOUPA_Empty";
-            this.btn_FOUPA_Empty.Size = new System.Drawing.Size(89, 25);
-            this.btn_FOUPA_Empty.TabIndex = 1;
-            this.btn_FOUPA_Empty.Text = "Empty";
-            this.btn_FOUPA_Empty.UseVisualStyleBackColor = true;
-            this.btn_FOUPA_Empty.Click += new System.EventHandler(this.btn_FOUPA_Empty_Click);
-            // 
-            // btn_FOUPA_Full
-            // 
-            this.btn_FOUPA_Full.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_FOUPA_Full.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_FOUPA_Full.Location = new System.Drawing.Point(1, 1);
-            this.btn_FOUPA_Full.Margin = new System.Windows.Forms.Padding(1);
-            this.btn_FOUPA_Full.Name = "btn_FOUPA_Full";
-            this.btn_FOUPA_Full.Size = new System.Drawing.Size(89, 25);
-            this.btn_FOUPA_Full.TabIndex = 0;
-            this.btn_FOUPA_Full.Text = "Full";
-            this.btn_FOUPA_Full.UseVisualStyleBackColor = true;
-            this.btn_FOUPA_Full.Click += new System.EventHandler(this.btn_FOUPA_Full_Click);
             // 
             // tablepnl_PMA
             // 
@@ -1477,12 +1352,14 @@
             // 
             // pnl_ProcessButton
             // 
-            this.pnl_ProcessButton.ColumnCount = 5;
-            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.pnl_ProcessButton.ColumnCount = 6;
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.pnl_ProcessButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.pnl_ProcessButton.Controls.Add(this.btn_Initialize, 5, 0);
             this.pnl_ProcessButton.Controls.Add(this.btn_Abort, 4, 0);
             this.pnl_ProcessButton.Controls.Add(this.btn_Continue, 3, 0);
             this.pnl_ProcessButton.Controls.Add(this.btn_Pause, 2, 0);
@@ -1492,16 +1369,16 @@
             this.pnl_ProcessButton.Name = "pnl_ProcessButton";
             this.pnl_ProcessButton.RowCount = 1;
             this.pnl_ProcessButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnl_ProcessButton.Size = new System.Drawing.Size(608, 90);
+            this.pnl_ProcessButton.Size = new System.Drawing.Size(737, 90);
             this.pnl_ProcessButton.TabIndex = 47;
             // 
             // btn_Abort
             // 
             this.btn_Abort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Abort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
-            this.btn_Abort.Location = new System.Drawing.Point(487, 3);
+            this.btn_Abort.Location = new System.Drawing.Point(491, 3);
             this.btn_Abort.Name = "btn_Abort";
-            this.btn_Abort.Size = new System.Drawing.Size(118, 84);
+            this.btn_Abort.Size = new System.Drawing.Size(116, 84);
             this.btn_Abort.TabIndex = 4;
             this.btn_Abort.Text = "Abort";
             this.btn_Abort.UseVisualStyleBackColor = true;
@@ -1511,9 +1388,9 @@
             // 
             this.btn_Continue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Continue.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
-            this.btn_Continue.Location = new System.Drawing.Point(366, 3);
+            this.btn_Continue.Location = new System.Drawing.Point(369, 3);
             this.btn_Continue.Name = "btn_Continue";
-            this.btn_Continue.Size = new System.Drawing.Size(115, 84);
+            this.btn_Continue.Size = new System.Drawing.Size(116, 84);
             this.btn_Continue.TabIndex = 3;
             this.btn_Continue.Text = "Continue";
             this.btn_Continue.UseVisualStyleBackColor = true;
@@ -1523,9 +1400,9 @@
             // 
             this.btn_Pause.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Pause.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
-            this.btn_Pause.Location = new System.Drawing.Point(245, 3);
+            this.btn_Pause.Location = new System.Drawing.Point(247, 3);
             this.btn_Pause.Name = "btn_Pause";
-            this.btn_Pause.Size = new System.Drawing.Size(115, 84);
+            this.btn_Pause.Size = new System.Drawing.Size(116, 84);
             this.btn_Pause.TabIndex = 2;
             this.btn_Pause.Text = "Pause";
             this.btn_Pause.UseVisualStyleBackColor = true;
@@ -1538,13 +1415,14 @@
             this.pnl_RecipeSelect.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.pnl_RecipeSelect.Controls.Add(this.lbl_RecipeSelect, 0, 0);
             this.pnl_RecipeSelect.Controls.Add(this.cbox_ProcessRecipe, 0, 1);
+            this.pnl_RecipeSelect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_RecipeSelect.Location = new System.Drawing.Point(3, 3);
             this.pnl_RecipeSelect.Name = "pnl_RecipeSelect";
             this.pnl_RecipeSelect.RowCount = 2;
             this.pnl_RecipeSelect.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.pnl_RecipeSelect.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.pnl_RecipeSelect.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.pnl_RecipeSelect.Size = new System.Drawing.Size(115, 84);
+            this.pnl_RecipeSelect.Size = new System.Drawing.Size(116, 84);
             this.pnl_RecipeSelect.TabIndex = 0;
             // 
             // lbl_RecipeSelect
@@ -1553,7 +1431,7 @@
             this.lbl_RecipeSelect.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold);
             this.lbl_RecipeSelect.Location = new System.Drawing.Point(3, 0);
             this.lbl_RecipeSelect.Name = "lbl_RecipeSelect";
-            this.lbl_RecipeSelect.Size = new System.Drawing.Size(109, 42);
+            this.lbl_RecipeSelect.Size = new System.Drawing.Size(110, 42);
             this.lbl_RecipeSelect.TabIndex = 0;
             this.lbl_RecipeSelect.Text = "Process Recipe";
             this.lbl_RecipeSelect.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1571,9 +1449,9 @@
             // 
             this.btn_Start.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Start.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
-            this.btn_Start.Location = new System.Drawing.Point(124, 3);
+            this.btn_Start.Location = new System.Drawing.Point(125, 3);
             this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(115, 84);
+            this.btn_Start.Size = new System.Drawing.Size(116, 84);
             this.btn_Start.TabIndex = 1;
             this.btn_Start.Text = "Start";
             this.btn_Start.UseVisualStyleBackColor = true;
@@ -1627,6 +1505,48 @@
             this.pnl_Robot.Size = new System.Drawing.Size(250, 250);
             this.pnl_Robot.TabIndex = 52;
             // 
+            // btn_Initialize
+            // 
+            this.btn_Initialize.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Initialize.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
+            this.btn_Initialize.Location = new System.Drawing.Point(613, 3);
+            this.btn_Initialize.Name = "btn_Initialize";
+            this.btn_Initialize.Size = new System.Drawing.Size(121, 84);
+            this.btn_Initialize.TabIndex = 5;
+            this.btn_Initialize.Text = "Initialize";
+            this.btn_Initialize.UseVisualStyleBackColor = true;
+            this.btn_Initialize.Click += new System.EventHandler(this.btn_Initialize_Click);
+            // 
+            // waferControl3
+            // 
+            this.waferControl3.BackColor = System.Drawing.Color.Transparent;
+            this.waferControl3.Location = new System.Drawing.Point(16, 57);
+            this.waferControl3.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
+            this.waferControl3.Name = "waferControl3";
+            this.waferControl3.Size = new System.Drawing.Size(100, 100);
+            this.waferControl3.State = SCT_Form.WaferControl.WaferState.Empty;
+            this.waferControl3.TabIndex = 1;
+            // 
+            // waferControl2
+            // 
+            this.waferControl2.BackColor = System.Drawing.Color.Transparent;
+            this.waferControl2.Location = new System.Drawing.Point(16, 57);
+            this.waferControl2.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
+            this.waferControl2.Name = "waferControl2";
+            this.waferControl2.Size = new System.Drawing.Size(100, 100);
+            this.waferControl2.State = SCT_Form.WaferControl.WaferState.Empty;
+            this.waferControl2.TabIndex = 1;
+            // 
+            // waferControl1
+            // 
+            this.waferControl1.BackColor = System.Drawing.Color.Transparent;
+            this.waferControl1.Location = new System.Drawing.Point(16, 57);
+            this.waferControl1.Margin = new System.Windows.Forms.Padding(15, 5, 15, 5);
+            this.waferControl1.Name = "waferControl1";
+            this.waferControl1.Size = new System.Drawing.Size(100, 100);
+            this.waferControl1.State = SCT_Form.WaferControl.WaferState.Empty;
+            this.waferControl1.TabIndex = 1;
+            // 
             // CurrentStateGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1650,10 +1570,8 @@
             this.pnl_FOUP_A.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.pnl_FOUPB_Manual.ResumeLayout(false);
             this.pnl_FOUPB.ResumeLayout(false);
             this.pnl_FOUPA.ResumeLayout(false);
-            this.pnl_FOUPA_Manual.ResumeLayout(false);
             this.tablepnl_PMA.ResumeLayout(false);
             this.toppnl_PMA.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -1755,12 +1673,6 @@
         private System.Windows.Forms.Label lbl_FOUPB_cuurentLockStatus;
         private System.Windows.Forms.Label label1lbl_FOUPB_cuurentLOTID;
         private System.Windows.Forms.Label lbl_FOUPA_cuurentLockStatus;
-        private System.Windows.Forms.TableLayoutPanel pnl_FOUPA_Manual;
-        private System.Windows.Forms.Button btn_FOUPA_Empty;
-        private System.Windows.Forms.Button btn_FOUPA_Full;
-        private System.Windows.Forms.TableLayoutPanel pnl_FOUPB_Manual;
-        private System.Windows.Forms.Button btn_FOUPB_Empty;
-        private System.Windows.Forms.Button btn_FOUPB_Full;
         private System.Windows.Forms.Button btn_PMA_Setting;
         private System.Windows.Forms.Button btn_PMB_Setting;
         private System.Windows.Forms.Button btn_PMC_Setting;
@@ -1786,5 +1698,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbl_FOUPB;
         private System.Windows.Forms.Panel pnl_Robot;
+        private System.Windows.Forms.Button btn_Initialize;
     }
 }

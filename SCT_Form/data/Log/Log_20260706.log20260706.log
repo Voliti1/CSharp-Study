@@ -1,0 +1,12 @@
+﻿2026-07-06 10:53:33,160 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 10:53:33,168 [1] INFO  SCT_Form.MainGUI - Chamber door close output applied after cylinder back confirmation.
+2026-07-06 10:53:33,169 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 10:53:35,009 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=783, Limit=2000
+2026-07-06 10:53:35,010 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 10:53:35,018 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료
+2026-07-06 16:47:36,047 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-06 16:47:36,054 [1] INFO  SCT_Form.MainGUI - Chamber door close output applied after cylinder back confirmation.
+2026-07-06 16:47:36,054 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료
+2026-07-06 16:47:36,490 [1] INFO  SCT_Form.MainGUI - UD shutdown home confirmed. Current=146, Limit=2000
+2026-07-06 16:47:36,490 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료
+2026-07-06 16:47:36,499 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료

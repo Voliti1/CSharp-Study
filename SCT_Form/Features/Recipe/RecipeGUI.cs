@@ -342,7 +342,6 @@ namespace SCT_Form
             currentRecipePath = filePath;
             LoadRecipeList();
             SelectRecipeInList(filePath);
-            MessageBox.Show("Recipe가 저장되었습니다.", "Recipe", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private RecipeData CreateRecipeDataFromInputs(out string validationMessage)

@@ -1,4 +1,4 @@
-﻿using IEG3268_Dll;
+using IEG3268_Dll;
 using log4net;
 using log4net.Repository.Hierarchy;
 using System;
@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -33,6 +34,9 @@ namespace SCT_Form
         internal bool isChamCDoorOpen = false;
         internal bool isServoMotorOn = false;
         internal bool isAxisMoving = false;
+        internal bool isAxisPositionFault = false;
+        internal bool isWaferSuctionOn = false;
+        private int consecutiveConnectionFailures = 0;
 
         internal string currentUbarState = "Operate";
 
@@ -42,7 +46,24 @@ namespace SCT_Form
         private const long DefaultRobotVelocity = 1000000;
         private const int Axis1TargetPositionWriteOffset = 3;
         private const int Axis2TargetPositionWriteOffset = 26;
+
+        // UD(상하) 축 위치 확인 안전장치: 이동 명령 후 목표값 ±허용범위 내에 도달하는지
+        // timer1(200ms)로 비동기 확인한다. 시간 내 도달하지 못하면 Axis Position Fault를
+        // 걸어 EnsureEquipmentOperationAllowed()를 통해 모든 수동/자동 이동을 차단한다.
+        private const long Axis1PositionToleranceCounts = 70000;
+        private const int Axis1PositionVerifyTimeoutMs = 60000;
+        private long? pendingAxis1TargetPosition;
+        private DateTime pendingAxis1VerifyDeadline;
+
+        // UD 축 상한 소프트 리밋: 특정 이동 명령과 무관하게 timer1(200ms)마다 항상 확인해서,
+        // 실제 좌표가 이 값을 넘어가면(과도한 튐/기계적 리밋 접근 등 원인 불문) 즉시 Axis
+        // Position Fault를 걸어 추가 이동을 전부 차단한다. 물리적 충돌을 막기 위한 안전장치.
+        private const long Axis1UpperSoftLimit = 3100000;
         private const int AxisTargetPositionByteCount = 4;
+        private const long Axis1ShutdownHomePositionLimit = 2000;
+        private const int Axis1ShutdownHomeTimeoutMs = 30000;
+        private const int AxisMoveCompleteTimeoutMs = 60000;
+        private const int StartupCylinderBackTimeoutMs = 10000;
 
         private CurrentStateGUI currentGUI;
         private MaintGUI maintGUI;
@@ -62,6 +83,7 @@ namespace SCT_Form
         public MainGUI()
         {
             InitializeComponent();
+            FormClosing += Form1_FormClosing;
 
             
         //grpbox_Tower.Enabled = false;
@@ -99,7 +121,6 @@ namespace SCT_Form
             SystemConnect();
             servoMotorON();
             isServoMotorOn = true;
-            setBasicPoint();
 
             Mainpnl_CurrentStateGUI();
             UpdateDateTimeLabels();
@@ -153,7 +174,6 @@ namespace SCT_Form
                 currentAccount = loginGUI.LoggedInAccount;
                 ShowLoginStatePanel();
                 WriteSystemLog("User", "INFO", "로그인: " + currentAccount.UserId);
-                MessageBox.Show("로그인되었습니다.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -198,7 +218,6 @@ namespace SCT_Form
             loginStateGUI = null;
             ShowLoginInputPanel();
             WriteSystemLog("User", "INFO", "로그아웃: " + logoutUserId);
-            MessageBox.Show("로그아웃되었습니다.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         internal bool IsLoggedIn
@@ -219,13 +238,32 @@ namespace SCT_Form
                 return false;
             }
 
+            if (isAxisPositionFault)
+            {
+                MessageBox.Show("UD 축 위치 확인 실패로 장비 동작이 차단되었습니다. Alarm Reset 후 다시 시도하세요.", "Axis Position Fault", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return EnsureDoorInterlockAllowed();
         }
 
         private bool EnsureDoorInterlockAllowed()
         {
             if (settings == null || !settings.DoorOpenInterlock) return true;
-            if (!isChamADoorOpen && !isChamBDoorOpen && !isChamCDoorOpen) return true;
+
+            bool isAnyDoorOpen;
+            try
+            {
+                isAnyDoorOpen = IsChamberDoorOpen("PM A") || IsChamberDoorOpen("PM B") || IsChamberDoorOpen("PM C");
+            }
+            catch (Exception ex)
+            {
+                WriteSystemLog("Alarm", "ERROR", "Door Open Interlock: door sensor read failed - " + ex.Message);
+                MessageBox.Show("Chamber Door 센서 상태를 확인할 수 없어 장비 동작이 차단되었습니다.", "Safety Interlock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!isAnyDoorOpen) return true;
 
             MessageBox.Show("Door Open Interlock 상태입니다. Chamber Door를 닫은 후 동작해주세요.", "Safety Interlock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             WriteSystemLog("Alarm", "WARN", "Door Open Interlock: 장비 동작 차단");
@@ -303,12 +341,29 @@ namespace SCT_Form
 
         internal void SetWaferSuction(bool on)
         {
+            isWaferSuctionOn = on;
             EtherCAT_M.Digital_Output(14, on);
+            if (currentGUI != null && !currentGUI.IsDisposed)
+            {
+                currentGUI.SetRobotWaferState(on);
+            }
+        }
+
+        internal void SetWaferExhaust(bool on)
+        {
+            EtherCAT_M.Digital_Output(15, on);
+        }
+
+        internal void SetAllChamberLamps(bool on)
+        {
+            EtherCAT_M.Digital_Output(EquipmentLayout.GetModule("PM A").LampOutput, on);
+            EtherCAT_M.Digital_Output(EquipmentLayout.GetModule("PM B").LampOutput, on);
+            EtherCAT_M.Digital_Output(EquipmentLayout.GetModule("PM C").LampOutput, on);
         }
 
         internal bool IsCylinderForward()
         {
-            return EtherCAT_M.Digital_Input(13) && !EtherCAT_M.Digital_Input(12);
+            return EtherCAT_M.Digital_Input(13);
         }
 
         internal bool IsCylinderBack()
@@ -316,16 +371,21 @@ namespace SCT_Form
             return EtherCAT_M.Digital_Input(12) && !EtherCAT_M.Digital_Input(13);
         }
 
+        internal string GetCylinderSensorSnapshot()
+        {
+            return "BackInput12=" + EtherCAT_M.Digital_Input(12) + ", FrontInput13=" + EtherCAT_M.Digital_Input(13);
+        }
+
         internal bool IsChamberDoorOpen(string module)
         {
             EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
-            return EtherCAT_M.Digital_Input(profile.DoorUpSensor) && !EtherCAT_M.Digital_Input(profile.DoorDownSensor);
+            return EtherCAT_M.Digital_Input(profile.DoorDownSensor);
         }
 
         internal bool IsChamberDoorClosed(string module)
         {
             EquipmentLayout.ModuleProfile profile = EquipmentLayout.GetModule(module);
-            return !EtherCAT_M.Digital_Input(profile.DoorUpSensor) && EtherCAT_M.Digital_Input(profile.DoorDownSensor);
+            return EtherCAT_M.Digital_Input(profile.DoorUpSensor);
         }
 
         internal bool IsRobotFacingModule(string module)
@@ -408,6 +468,12 @@ namespace SCT_Form
 
         private void ResetPmAlarms()
         {
+            if (isAxisPositionFault)
+            {
+                isAxisPositionFault = false;
+                WriteSystemLog("Alarm", "INFO", "UD 위치 확인 오류(Axis Position Fault) 해제됨");
+            }
+
             if (activePmAlarms.Count == 0)
             {
                 WriteSystemLog("Alarm", "INFO", "Alarm Reset 요청: Active PM Alarm 없음");
@@ -481,7 +547,7 @@ namespace SCT_Form
             {
                 try
                 {
-                    foreach (string line in File.ReadLines(filePath))
+                    foreach (string line in ReadLogFileLines(filePath))
                     {
                         SystemLogEntry entry;
                         if (TryParseLogFileLine(line, out entry) && entry.Time >= minimumLogTime)
@@ -495,6 +561,56 @@ namespace SCT_Form
                     // 로그 조회용 파일 로드 실패는 장비 시작을 막지 않는다.
                 }
             }
+        }
+
+        // 로그 파일은 UTF-8로 기록되지만(App.config appender encoding), 과거 빌드(ANSI/CP949)가
+        // 기록한 줄이 한 파일 안에 섞여 있을 수 있다. 줄 단위로 UTF-8 해석을 시도하고
+        // 실패한 줄만 CP949로 재해석해서, 혼합 인코딩 파일도 전부 정상 표시되게 한다.
+        private static List<string> ReadLogFileLines(string filePath)
+        {
+            byte[] bytes = File.ReadAllBytes(filePath);
+            UTF8Encoding utf8Strict = new UTF8Encoding(false, true);
+            Encoding cp949 = Encoding.GetEncoding(949);
+            List<string> lines = new List<string>();
+
+            int lineStart = 0;
+            for (int i = 0; i <= bytes.Length; i++)
+            {
+                if (i != bytes.Length && bytes[i] != (byte)'\n') continue;
+
+                int lineLength = i - lineStart;
+                if (lineLength > 0 && bytes[lineStart + lineLength - 1] == (byte)'\r') lineLength--;
+
+                if (lineLength > 0)
+                {
+                    // UTF-8 BOM(EF BB BF) 제거
+                    if (lineLength >= 3 && bytes[lineStart] == 0xEF && bytes[lineStart + 1] == 0xBB && bytes[lineStart + 2] == 0xBF)
+                    {
+                        lineStart += 3;
+                        lineLength -= 3;
+                    }
+
+                    string line;
+                    try
+                    {
+                        line = utf8Strict.GetString(bytes, lineStart, lineLength);
+                    }
+                    catch (DecoderFallbackException)
+                    {
+                        line = cp949.GetString(bytes, lineStart, lineLength);
+                    }
+
+                    lines.Add(line);
+                }
+                else
+                {
+                    lines.Add(string.Empty);
+                }
+
+                lineStart = i + 1;
+            }
+
+            return lines;
         }
 
         private void CleanupExpiredLogFiles()
@@ -771,15 +887,6 @@ namespace SCT_Form
                     // 모드에 맞게 버튼 색상 스타일 출력
                     UpdateModeButtonStyles();
 
-                    // 모든 챔버 문 초기 닫기 출력
-                    EtherCAT_M.Digital_Output(5, false);
-                    EtherCAT_M.Digital_Output(4, true);
-                    EtherCAT_M.Digital_Output(8, false);
-                    EtherCAT_M.Digital_Output(7, true);
-                    EtherCAT_M.Digital_Output(11, false);
-                    EtherCAT_M.Digital_Output(10, true);
-                    WriteSystemLog("INFO", "장비 초기화 세팅: 모든 챔버 도어 CLOSE 명령 출력");
-
                     // 황색등 점등
                     ApplyTowerLampStatus(settings.IdleLampStatus);
                     WriteSystemLog("INFO", "타워램프 상태 변경: " + settings.IdleLampStatus + " (장비 대기)");
@@ -802,6 +909,7 @@ namespace SCT_Form
             SystemConnect();
             servoMotorON();
         }
+
         // --- 타워 램프 제어 영역 ---
         private void RedLightOn_Click(object sender, EventArgs e)
         {
@@ -865,15 +973,23 @@ namespace SCT_Form
             WriteSystemLog("INFO", "수동 제어: 타워램프 전체 등 OFF");
         }
         // --- 프로그램 종료 처리 ---
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // 프로그램 종료 시 자동 원점복귀(Homing) 기능이 제거되었고, 재기동 시 Initialize 시퀀스에서 
+            // 실린더 후진을 안전하게 먼저 체크하고 후진시키도록 수정되었으므로, 종료 시점의 실린더 센서 차단 락은 제거합니다.
+        }
+
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             WriteSystemLog("INFO", "Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동");
             try
             {
+                // 강제적인 기구 동작(실린더 이동/도어 닫기)을 셧다운 중에 유발하지 않기 위해 
+                // 전/후진 밸브 출력을 모두 OFF로 바꾸어 동력을 차단합니다.
                 EtherCAT_M.Digital_Output(12, false);
-                EtherCAT_M.Digital_Output(13, true);
+                EtherCAT_M.Digital_Output(13, false);
 
-                // 타워등, 챔버등, 실린더 오프 가동
+                // 타워등, 챔버등, 진공 소등
                 EtherCAT_M.Digital_Output(0, false);
                 EtherCAT_M.Digital_Output(1, false);
                 EtherCAT_M.Digital_Output(2, false);
@@ -881,19 +997,12 @@ namespace SCT_Form
                 EtherCAT_M.Digital_Output(6, false);
                 EtherCAT_M.Digital_Output(9, false);
 
-                EtherCAT_M.Digital_Output(5, false);
-                EtherCAT_M.Digital_Output(4, true);
-                EtherCAT_M.Digital_Output(8, false);
-                EtherCAT_M.Digital_Output(7, true);
-                EtherCAT_M.Digital_Output(11, false);
-                EtherCAT_M.Digital_Output(10, true);
+                SetWaferSuction(false);
+                EtherCAT_M.Digital_Output(15, false);
 
-                WriteSystemLog("INFO", "안전 셧다운 완료: 모든 램프 소등 및 도어 폐쇄 완료");
-
-                setBasicPoint();
                 servoMotorOFF();
                 isServoMotorOn = false;
-                WriteSystemLog("INFO", "안전 셧다운 완료: 로봇 초기 위치 설정 및 서보 모터 종료");
+                WriteSystemLog("INFO", "안전 셧다운 완료: 램프 소등 및 서보 모터 OFF 완료");
 
                 EtherCAT_M.CIFX_50RE_Disconnect();
                 WriteSystemLog("INFO", "EtherCAT 마스터 통신 채널 정상 해제 완료");
@@ -951,6 +1060,7 @@ namespace SCT_Form
 
             ApplyTowerLampForMode();
         }
+        // Recipe/Log 화면은 조회 성격이라 모드 변경 인터록(Force Stop)을 걸지 않는다.
         private void btn_Recipe_Click(object sender, EventArgs e)
         {
             if (!EnsureAdminSettingAllowed()) return;
@@ -959,11 +1069,6 @@ namespace SCT_Form
             currentUbarState = "Recipe";
 
             UpdateModeButtonStyles();
-
-            if (settings.ModeChangeForceStop)
-            {
-                ForceStopAllChambers();
-            }
 
             Mainpnl_RecipeGUI();
 
@@ -977,11 +1082,6 @@ namespace SCT_Form
             currentUbarState = "Log";
 
             UpdateModeButtonStyles();
-
-            if (settings.ModeChangeForceStop)
-            {
-                ForceStopAllChambers();
-            }
 
             Mainpnl_LogGUI();
 
@@ -1112,6 +1212,83 @@ namespace SCT_Form
             HomeAxis2LR(); //좌우 원점복귀
         }
 
+        internal void RecoverCylinderThenHomeAtStartup()
+        {
+            if (!IsCylinderBack())
+            {
+                WriteSystemLog("WARN", "Startup recovery: cylinder is not back. Cylinder back output applied before homing.");
+                MoveCylinderBack();
+
+                if (!WaitUntilCylinderBack(StartupCylinderBackTimeoutMs))
+                {
+                    WriteSystemLog("ERROR", "Startup recovery canceled: cylinder back sensor was not confirmed. Homing skipped.");
+                    MessageBox.Show(
+                        "실린더 후진 센서가 확인되지 않아 원점복귀를 실행하지 않았습니다.\r\n실린더 상태를 확인한 뒤 다시 시도해주세요.",
+                        "Startup Safety",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            WriteSystemLog("INFO", "Startup recovery: cylinder back confirmed. Homing started.");
+            CloseAllChamberDoors();
+            setBasicPoint();
+        }
+
+        internal bool SafeAbortAndHome()
+        {
+            try
+            {
+                WriteSystemLog("WARN", "Abort safety recovery started.");
+                SetWaferExhaust(false);
+                SetAllChamberLamps(false);
+                MoveCylinderBack();
+
+                if (!WaitUntilCylinderBack(StartupCylinderBackTimeoutMs))
+                {
+                    WriteSystemLog("ERROR", "Abort safety recovery canceled: cylinder back sensor was not confirmed. " + GetCylinderSensorSnapshot());
+                    MessageBox.Show(
+                        "실린더 후진 센서가 확인되지 않아 Abort 후 원점복귀를 실행하지 않았습니다.\r\n실린더 상태를 확인해주세요.",
+                        "Abort Safety",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return false;
+                }
+
+                setBasicPoint();
+                WriteSystemLog("WARN", "Abort safety recovery completed: cylinder back confirmed and homing started.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                WriteSystemLog("ERROR", "Abort safety recovery failed: " + ex.Message);
+                MessageBox.Show(
+                    "Abort 안전 복구 중 오류가 발생했습니다.\r\n" + ex.Message,
+                    "Abort Safety",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private void CloseAllChamberDoors()
+        {
+            if (!IsCylinderBack())
+            {
+                WriteSystemLog("WARN", "Chamber door close skipped: cylinder back sensor is not confirmed.");
+                return;
+            }
+
+            EtherCAT_M.Digital_Output(5, false);
+            EtherCAT_M.Digital_Output(4, true);
+            EtherCAT_M.Digital_Output(8, false);
+            EtherCAT_M.Digital_Output(7, true);
+            EtherCAT_M.Digital_Output(11, false);
+            EtherCAT_M.Digital_Output(10, true);
+            WriteSystemLog("INFO", "Chamber door close output applied after cylinder back confirmation.");
+        }
+
         internal void HomeAxis1UD()
         {
             ClearAxisTargetPosition(Axis1TargetPositionWriteOffset);
@@ -1130,17 +1307,32 @@ namespace SCT_Form
             bool wasMoving = IsAxis1Moving();
             WriteSystemLog("DEBUG", $"UD move requested. Target={targetPosition}, CurrentReadback={currentPos}, WasMoving={wasMoving}, WriteData[0-6] before={DumpWriteDataBytes(0, 7)}");
 
-            // Axis1_UD_Move_Send()는 매번 컨트롤워드를 63(New-Setpoint=1, Change-Set-Immediately=1)으로
-            // 남겨둔 채 끝난다. 다음 이동 시 POS_Update가 이 "켜진 채로 남은" 컨트롤워드 상태에서
-            // 새 좌표를 먼저 전송해버리면, 드라이브가 이를 진행 중이던 이동에 대한 즉시 갱신으로 해석해
-            // 새 rising-edge 없이 이전 상태를 기준으로 새 좌표를 반영하려는 것으로 추정된다.
-            // POS_Update 이전에 컨트롤워드를 15(New-Setpoint=0, Change-Set-Immediately=0)로 먼저
-            // 내려서 전송(settle)해, 다음 Move_Send()의 15->47->63이 확실한 새 rising-edge가 되도록 한다.
-            SettleAxisControlword(0);
+            if (isAxisPositionFault)
+            {
+                WriteSystemLog("WARN", $"UD move blocked. Axis position fault is active (Alarm Reset 필요). Target={targetPosition}");
+                return;
+            }
 
-            ClearAxisTargetPosition(Axis1TargetPositionWriteOffset);
+            // PP_D(target reached) 비트는 서보 정착 꼬리 동안 흔들려서(chatter), 직전 이동이
+            // 사실상 끝났는데도 WasMoving=True로 판정되는 경우가 로그로 확인됐다.
+            // "추적 중인 직전 이동이 있고(pending) 아직 목표 ±허용범위에 못 들어간" 경우에만
+            // 진짜 이동 중으로 보고 차단한다. pending이 이미 도달 확인으로 지워진 뒤라면
+            // PP_D가 흔들려도 새 명령을 받는다.
+            bool previousMoveInFlight = pendingAxis1TargetPosition.HasValue
+                && !IsAxis1AtPosition(pendingAxis1TargetPosition.Value, Axis1PositionToleranceCounts);
+
+            if (wasMoving && previousMoveInFlight)
+            {
+                WriteSystemLog("WARN", $"UD move ignored. Previous move is still running. Target={targetPosition}");
+                return;
+            }
+
             EtherCAT_M.Axis1_UD_POS_Update(targetPosition);
             EtherCAT_M.Axis1_UD_Move_Send();
+            ScheduleAxisControlwordSettle(0, 100);
+
+            pendingAxis1TargetPosition = targetPosition;
+            pendingAxis1VerifyDeadline = DateTime.Now.AddMilliseconds(Axis1PositionVerifyTimeoutMs);
 
             WriteSystemLog("DEBUG", $"UD move sent. Target={targetPosition}, WriteData[0-6] after={DumpWriteDataBytes(0, 7)}");
         }
@@ -1165,6 +1357,14 @@ namespace SCT_Form
             return EtherCAT_M != null && EtherCAT_M.Axis1_Status("PP_D");
         }
 
+        internal bool IsAxis1AtPosition(long expectedPosition, long toleranceCounts)
+        {
+            long currentPosition;
+            if (!TryReadAxis1Position(out currentPosition)) return false;
+
+            return Math.Abs(currentPosition - expectedPosition) <= toleranceCounts;
+        }
+
         internal bool IsAxis2TargetReached()
         {
             return EtherCAT_M != null && EtherCAT_M.Axis2_Status("PP_D");
@@ -1180,6 +1380,160 @@ namespace SCT_Form
 
             writeData[controlWordOffset] = 15;
             EtherCAT_M.Digital_Output(0, EtherCAT_M.Digital_Out_Value[0]);
+        }
+
+        private void ResetAxisMoveCommand(int controlWordOffset, int targetPositionOffset)
+        {
+            SettleAxisControlword(controlWordOffset);
+            Thread.Sleep(50);
+            ClearAxisTargetPosition(targetPositionOffset);
+        }
+
+        private void LatchAndSettleAxisMoveCommand(int controlWordOffset)
+        {
+            ScheduleAxisControlwordSettle(controlWordOffset, 100);
+        }
+
+        private void ScheduleAxisControlwordSettle(int controlWordOffset, int delayMs)
+        {
+            System.Windows.Forms.Timer settleTimer = new System.Windows.Forms.Timer();
+            settleTimer.Interval = Math.Max(1, delayMs);
+            settleTimer.Tick += (sender, e) =>
+            {
+                settleTimer.Stop();
+                settleTimer.Dispose();
+                SettleAxisControlword(controlWordOffset);
+            };
+            settleTimer.Start();
+        }
+
+        private bool WaitUntilAxis1TargetReached(int timeoutMs)
+        {
+            DateTime deadline = DateTime.Now.AddMilliseconds(timeoutMs);
+            while (DateTime.Now < deadline)
+            {
+                if (IsAxis1TargetReached()) return true;
+                Thread.Sleep(100);
+            }
+
+            return IsAxis1TargetReached();
+        }
+
+        private bool WaitUntilCylinderBack(int timeoutMs)
+        {
+            DateTime deadline = DateTime.Now.AddMilliseconds(timeoutMs);
+            while (DateTime.Now < deadline)
+            {
+                if (IsCylinderBack()) return true;
+                Thread.Sleep(100);
+                Application.DoEvents();
+            }
+
+            return IsCylinderBack();
+        }
+
+        private bool WaitUntilAxis1PositionBelow(long positionLimit, int timeoutMs)
+        {
+            DateTime deadline = DateTime.Now.AddMilliseconds(timeoutMs);
+            long currentPosition;
+
+            while (DateTime.Now < deadline)
+            {
+                if (TryReadAxis1Position(out currentPosition) && currentPosition < positionLimit)
+                {
+                    WriteSystemLog("INFO", $"UD shutdown home confirmed. Current={currentPosition}, Limit={positionLimit}");
+                    return true;
+                }
+
+                Thread.Sleep(100);
+            }
+
+            if (TryReadAxis1Position(out currentPosition))
+            {
+                WriteSystemLog("WARN", $"UD shutdown home wait timeout. Current={currentPosition}, Limit={positionLimit}");
+            }
+            else
+            {
+                WriteSystemLog("WARN", "UD shutdown home wait timeout. Current position read failed.");
+            }
+
+            return false;
+        }
+
+        private bool TryReadAxis1Position(out long currentPosition)
+        {
+            currentPosition = 0;
+            if (EtherCAT_M == null) return false;
+
+            string positionText = EtherCAT_M.Axis1_is_PosData();
+            return long.TryParse(positionText, NumberStyles.Integer, CultureInfo.InvariantCulture, out currentPosition);
+        }
+
+        private bool TryReadAxis2Position(out long currentPosition)
+        {
+            currentPosition = 0;
+            if (EtherCAT_M == null) return false;
+
+            string positionText = EtherCAT_M.Axis2_is_PosData();
+            return long.TryParse(positionText, NumberStyles.Integer, CultureInfo.InvariantCulture, out currentPosition);
+        }
+
+        internal bool IsAxis2AtPosition(long expectedPosition, long toleranceCounts)
+        {
+            long currentPosition;
+            if (!TryReadAxis2Position(out currentPosition)) return false;
+
+            return Math.Abs(currentPosition - expectedPosition) <= toleranceCounts;
+        }
+
+        // timer1(200ms)에서 호출되는 비동기 위치 확인. UI를 멈추지 않고 매 tick마다
+        // 목표값 도달 여부만 확인하다가, 허용범위 안에 들어오면 통과, 타임아웃까지
+        // 못 들어오면 Axis Position Fault를 걸어 이후 UD 이동을 전부 차단한다.
+        private void CheckAxis1PositionVerification()
+        {
+            if (!pendingAxis1TargetPosition.HasValue) return;
+
+            long currentPosition;
+            if (!TryReadAxis1Position(out currentPosition)) return;
+
+            long target = pendingAxis1TargetPosition.Value;
+            if (Math.Abs(currentPosition - target) <= Axis1PositionToleranceCounts)
+            {
+                pendingAxis1TargetPosition = null;
+                return;
+            }
+
+            if (DateTime.Now < pendingAxis1VerifyDeadline) return;
+
+            pendingAxis1TargetPosition = null;
+            isAxisPositionFault = true;
+            WriteSystemLog("Alarm", "ERROR", $"UD 위치 확인 실패: 목표={target}, 현재={currentPosition} (허용범위 ±{Axis1PositionToleranceCounts} 밖). 장비 동작이 차단되었습니다. Alarm Reset 필요.");
+
+            if (settings != null)
+            {
+                ApplyTowerLampStatus(settings.AlarmLampStatus);
+            }
+        }
+
+        // 특정 이동 명령의 목표값과 무관하게, 매 tick마다 UD 좌표가 상한 소프트 리밋을
+        // 넘었는지 확인한다. 넘었다면 원인(과도한 튐, 리밋 스위치 접근 등)과 상관없이
+        // 즉시 차단해서 기계적 끝단과의 추가 충돌을 막는다.
+        private void CheckAxis1SoftLimit()
+        {
+            if (isAxisPositionFault) return;
+
+            long currentPosition;
+            if (!TryReadAxis1Position(out currentPosition)) return;
+            if (currentPosition <= Axis1UpperSoftLimit) return;
+
+            pendingAxis1TargetPosition = null;
+            isAxisPositionFault = true;
+            WriteSystemLog("Alarm", "ERROR", $"UD 축 상한 소프트 리밋 초과: 현재={currentPosition}, 리밋={Axis1UpperSoftLimit}. 장비 동작이 즉시 차단되었습니다. Alarm Reset 필요.");
+
+            if (settings != null)
+            {
+                ApplyTowerLampStatus(settings.AlarmLampStatus);
+            }
         }
 
         // 진단용: 이전 이동이 완료(Target Reached)됐는지 여부. 현재는 이동을 막지 않고 로그에만 남긴다.
@@ -1284,9 +1638,21 @@ namespace SCT_Form
                 string currentUDPos = EtherCAT_M.Axis1_is_PosData();
                 string currentLRPos = EtherCAT_M.Axis2_is_PosData();
 
+                CheckAxis1PositionVerification();
+                CheckAxis1SoftLimit();
+
                 if (maintGUI != null)
                 {
                     maintGUI.SetCurrentPositionLabel(currentUDPos, currentLRPos);
+                }
+
+                if (currentGUI != null && !currentGUI.IsDisposed)
+                {
+                    currentGUI.RefreshDoorStatusLabels();
+                    currentGUI.UpdateRobotPosition(currentLRPos);
+                    currentGUI.SetRobotWaferState(isWaferSuctionOn);
+                    currentGUI.SetRobotCylinderState(IsCylinderForward(), IsCylinderBack());
+                    currentGUI.UpdateControlButtons();
                 }
             }
             catch (Exception ex)

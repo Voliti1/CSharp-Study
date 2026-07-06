@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Name = "WaferControl";
-            this.Size = new System.Drawing.Size(180, 180);
+            this.Size = new System.Drawing.Size(100, 100);
             this.ResumeLayout(false);
 
         }

@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 namespace SCT_Form
 {
@@ -25,10 +27,21 @@ namespace SCT_Form
         private ProcessRecipeData currentProcessRecipe;
         private bool isProcessRecipeRunning;
         private bool isProcessRecipePaused;
+        private bool isUserAbortRecoveryRunning;
+        private bool isInitializing = false;
+        private bool isProcessCompleted = false;
         private ChamberProcessState pmaProcessState;
         private ChamberProcessState pmbProcessState;
         private ChamberProcessState pmcProcessState;
         private readonly WaferAutoSequencer waferSequencer = new WaferAutoSequencer();
+        private bool robotHasWafer;
+        private bool robotCylinderForward;
+        private bool robotCylinderBack;
+        private long? currentRobotLRPosition;
+        private string currentRobotFacingName = "FOUP A";
+        private long currentRobotFacingDiff;
+        private const long RobotFacingDisplayToleranceCounts = 5000;
+        private RobotMapPanel robotPanel;
 
         public CurrentStateGUI(MainGUI mainGUI)
         {
@@ -42,6 +55,8 @@ namespace SCT_Form
             InitializeProgressBar(pnl_PMB_progressbar);
             InitializeProgressBar(pnl_PMC_progressbar);
             RefreshDoorStatusLabels();
+            ResetAutoWaferDisplay();
+            InitializeRobotPositionMap();
 
             chamberProcessTimer.Interval = 1000;
             chamberProcessTimer.Tick += chamberProcessTimer_Tick;
@@ -49,41 +64,228 @@ namespace SCT_Form
             waferSequencer.Aborted += reason =>
             {
                 main.WriteSystemLog("WARN", "자동공정 Abort: " + reason);
+                if (!isUserAbortRecoveryRunning)
+                {
+                    main.SafeAbortAndHome();
+                }
                 MessageBox.Show(reason, "Process Aborted", MessageBoxButtons.OK, MessageBoxIcon.Error);
             };
+        }
+
+        // 디자이너의 빈 pnl_Robot 자리에 더블버퍼링 되는 RobotMapPanel을 얹어
+        // 로봇 상태(방향/전진·후진/웨이퍼 보유)를 그린다.
+        private void InitializeRobotPositionMap()
+        {
+            if (robotPanel != null) return;
+
+            robotPanel = new RobotMapPanel();
+            robotPanel.Location = pnl_Robot.Location;
+            robotPanel.Size = pnl_Robot.Size;
+            robotPanel.Anchor = pnl_Robot.Anchor;
+            robotPanel.Margin = pnl_Robot.Margin;
+            robotPanel.BackColor = Color.White;
+            robotPanel.BorderStyle = BorderStyle.FixedSingle;
+            robotPanel.Paint += robotPanel_Paint;
+
+            Controls.Remove(pnl_Robot);
+            Controls.Add(robotPanel);
+            robotPanel.BringToFront();
+        }
+
+        internal void SetRobotWaferState(bool hasWafer)
+        {
+            robotHasWafer = hasWafer;
+            if (robotPanel != null) robotPanel.Invalidate();
+        }
+
+        internal void SetRobotCylinderState(bool isForward, bool isBack)
+        {
+            robotCylinderForward = isForward;
+            robotCylinderBack = isBack;
+            if (robotPanel != null) robotPanel.Invalidate();
+        }
+
+        internal void UpdateRobotPosition(string currentLRPos)
+        {
+            long parsed;
+            if (!long.TryParse(currentLRPos, out parsed))
+            {
+                // 순간적인 통신 딜레이나 파싱 실패 시, 이전의 정상적인 로봇 그래픽 위치를 유지하여
+                // 그래픽이 FOUP A(디폴트 각도) 방향으로 오작동하여 멈춰버리는 현상을 방지합니다.
+                return;
+            }
+
+            currentRobotLRPosition = parsed;
+            RobotTarget nearest = GetNearestRobotTarget(parsed);
+            currentRobotFacingName = nearest == null ? "UNKNOWN" : nearest.Name;
+            currentRobotFacingDiff = nearest == null ? 0 : Math.Abs(parsed - nearest.LR);
+            if (robotPanel != null) robotPanel.Invalidate();
+        }
+
+        private RobotTarget GetNearestRobotTarget(long lrPosition)
+        {
+            RobotTarget nearest = null;
+            long nearestDiff = long.MaxValue;
+
+            foreach (RobotTarget target in GetRobotTargets())
+            {
+                long diff = Math.Abs(lrPosition - target.LR);
+                if (diff >= nearestDiff) continue;
+
+                nearest = target;
+                nearestDiff = diff;
+            }
+
+            return nearest;
+        }
+
+        private RobotTarget GetRobotTarget(string targetName)
+        {
+            foreach (RobotTarget target in GetRobotTargets())
+            {
+                if (string.Equals(target.Name, targetName, StringComparison.OrdinalIgnoreCase)) return target;
+            }
+
+            return null;
+        }
+
+        // 각 스테이션을 바라볼 때의 회전 각도(12시=0도, 시계방향 +).
+        // PM A=9시(270도), PM B=12시(0도), PM C=3시(90도),
+        // FOUP A/B는 화면 배치에 맞춰 좌하단/우하단.
+        private List<RobotTarget> GetRobotTargets()
+        {
+            return new List<RobotTarget>
+            {
+                new RobotTarget("PM A", EquipmentLayout.GetModule("PM A").LR, 270F),
+                new RobotTarget("PM B", EquipmentLayout.GetModule("PM B").LR, 0F),
+                new RobotTarget("PM C", EquipmentLayout.GetModule("PM C").LR, 90F),
+                new RobotTarget("FOUP A", EquipmentLayout.GetFoup("FOUP A").LR, 225F),
+                new RobotTarget("FOUP B", EquipmentLayout.GetFoup("FOUP B").LR, 135F)
+            };
+        }
+
+        private void robotPanel_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+
+            Rectangle bounds = robotPanel.ClientRectangle;
+            PointF robotCenter = new PointF(bounds.Width / 2F, bounds.Height / 2F);
+            RobotTarget nearest = currentRobotLRPosition.HasValue ? GetNearestRobotTarget(currentRobotLRPosition.Value) : GetRobotTarget("FOUP A");
+            bool isFacingTarget = nearest != null && currentRobotFacingDiff <= RobotFacingDisplayToleranceCounts;
+            float rotationDegrees = nearest == null ? 0F : nearest.AngleDegrees;
+
+            DrawPhotoStyleRobot(g, robotCenter, rotationDegrees, isFacingTarget);
+        }
+
+        private void DrawPhotoStyleRobot(Graphics g, PointF center, float rotationDegrees, bool isFacingTarget)
+        {
+            // 실린더 전진 시 그립(엔드이펙터)이 몸체에서 더 멀리 뻗고, 후진 시 몸체 쪽으로 당겨진다.
+            float gripCenterY;
+            if (robotCylinderForward && !robotCylinderBack) gripCenterY = -98F;
+            else if (!robotCylinderForward && robotCylinderBack) gripCenterY = -60F;
+            else gripCenterY = -80F;
+
+            GraphicsState state = g.Save();
+            g.TranslateTransform(center.X, center.Y);
+            g.RotateTransform(rotationDegrees);
+
+            using (Pen outlinePen = new Pen(Color.Black, 4F))
+            using (Pen armPen = new Pen(isFacingTarget ? Color.SeaGreen : Color.DarkOrange, 7F))
+            using (Brush bodyBrush = new SolidBrush(Color.FromArgb(238, 241, 246)))
+            using (Brush bodyShadowBrush = new SolidBrush(Color.FromArgb(206, 214, 224)))
+            using (Brush waferBrush = new SolidBrush(robotHasWafer ? Color.Gold : Color.White))
+            using (GraphicsPath bodyPath = new GraphicsPath())
+            {
+                armPen.StartCap = LineCap.Round;
+                armPen.EndCap = LineCap.Round;
+
+                bodyPath.AddRectangle(new RectangleF(-14F, -34F, 28F, 72F));
+                g.FillPath(bodyBrush, bodyPath);
+                g.FillRectangle(bodyShadowBrush, 3F, -30F, 8F, 64F);
+                g.DrawPath(outlinePen, bodyPath);
+
+                // 몸체 -> 그립을 잇는 암 (전진/후진에 따라 길이 변화)
+                g.DrawLine(armPen, 0F, -30F, 0F, gripCenterY + 22F);
+
+                RectangleF waferGripRect = new RectangleF(-24F, gripCenterY - 24F, 48F, 48F);
+                g.FillEllipse(waferBrush, waferGripRect);
+                g.DrawEllipse(outlinePen, waferGripRect);
+            }
+
+            g.Restore(state);
+        }
+
+        private class RobotTarget
+        {
+            public RobotTarget(string name, long lr, float angleDegrees)
+            {
+                Name = name;
+                LR = lr;
+                AngleDegrees = angleDegrees;
+            }
+
+            public string Name { get; private set; }
+            public long LR { get; private set; }
+            public float AngleDegrees { get; private set; }
+        }
+
+        private class RobotMapPanel : Panel
+        {
+            public RobotMapPanel()
+            {
+                DoubleBuffered = true;
+                ResizeRedraw = true;
+            }
         }
 
         internal void RefreshDoorStatusLabels()
         {
             if (main == null) return;
 
-            SetDoorStatusLabel(lbl_PMA_DoorStatus, main.isChamADoorOpen);
-            SetDoorStatusLabel(lbl_PMB_DoorStatus, main.isChamBDoorOpen);
-            SetDoorStatusLabel(lbl_PMC_DoorStatus, main.isChamCDoorOpen);
+            SetDoorStatusLabel(lbl_PMA_DoorStatus, "PM A");
+            SetDoorStatusLabel(lbl_PMB_DoorStatus, "PM B");
+            SetDoorStatusLabel(lbl_PMC_DoorStatus, "PM C");
         }
 
         internal void SetDoorStatus(string pmName, bool isOpen)
         {
             if (pmName == "PM A")
             {
-                SetDoorStatusLabel(lbl_PMA_DoorStatus, isOpen);
+                SetDoorStatusLabel(lbl_PMA_DoorStatus, pmName);
             }
             else if (pmName == "PM B")
             {
-                SetDoorStatusLabel(lbl_PMB_DoorStatus, isOpen);
+                SetDoorStatusLabel(lbl_PMB_DoorStatus, pmName);
             }
             else if (pmName == "PM C")
             {
-                SetDoorStatusLabel(lbl_PMC_DoorStatus, isOpen);
+                SetDoorStatusLabel(lbl_PMC_DoorStatus, pmName);
             }
         }
 
-        private void SetDoorStatusLabel(Label label, bool isOpen)
+        private void SetDoorStatusLabel(Label label, string module)
         {
             if (label == null) return;
 
-            label.Text = isOpen ? "Door Open" : "Door Close";
-            label.ForeColor = isOpen ? Color.Goldenrod : Color.DimGray;
+            bool isOpen = main != null && main.IsChamberDoorOpen(module);
+            bool isClosed = main != null && main.IsChamberDoorClosed(module);
+
+            if (isOpen && !isClosed)
+            {
+                label.Text = "Door Open";
+                label.ForeColor = Color.Goldenrod;
+            }
+            else if (!isOpen && isClosed)
+            {
+                label.Text = "Door Close";
+                label.ForeColor = Color.DimGray;
+            }
+            else
+            {
+                label.Text = "Door Check";
+                label.ForeColor = Color.Firebrick;
+            }
         }
 
         private void InitializeProcessRecipeSelector()
@@ -188,6 +390,64 @@ namespace SCT_Form
         private void SetFoupBColor(Color color)
         {
             SetPanelColors(color, pnl_FOUP_B_5, pnl_FOUP_B_4, pnl_FOUP_B_3, pnl_FOUP_B_2, pnl_FOUP_B_1);
+        }
+
+        private void ResetAutoWaferDisplay()
+        {
+            SetFoupAColor(FoupFullColor);
+            SetFoupBColor(FoupEmptyColor);
+            SetModuleWaferState("PM A", false);
+            SetModuleWaferState("PM B", false);
+            SetModuleWaferState("PM C", false);
+        }
+
+        private void SetFoupSlotState(string foup, int slot, bool hasWafer)
+        {
+            Panel slotPanel = GetFoupSlotPanel(foup, slot);
+            if (slotPanel == null) return;
+
+            slotPanel.BackColor = hasWafer ? FoupFullColor : FoupEmptyColor;
+        }
+
+        private Panel GetFoupSlotPanel(string foup, int slot)
+        {
+            bool isFoupA = string.Equals(foup, "FOUP A", StringComparison.OrdinalIgnoreCase);
+            bool isFoupB = string.Equals(foup, "FOUP B", StringComparison.OrdinalIgnoreCase);
+            if (!isFoupA && !isFoupB) return null;
+
+            if (isFoupA)
+            {
+                if (slot == 1) return pnl_FOUP_A_1;
+                if (slot == 2) return pnl_FOUP_A_2;
+                if (slot == 3) return pnl_FOUP_A_3;
+                if (slot == 4) return pnl_FOUP_A_4;
+                if (slot == 5) return pnl_FOUP_A_5;
+            }
+
+            if (slot == 1) return pnl_FOUP_B_1;
+            if (slot == 2) return pnl_FOUP_B_2;
+            if (slot == 3) return pnl_FOUP_B_3;
+            if (slot == 4) return pnl_FOUP_B_4;
+            if (slot == 5) return pnl_FOUP_B_5;
+
+            return null;
+        }
+
+        private void SetModuleWaferState(string module, bool hasWafer)
+        {
+            WaferControl waferControl = GetModuleWaferControl(module);
+            if (waferControl == null) return;
+
+            waferControl.State = hasWafer ? WaferControl.WaferState.Present : WaferControl.WaferState.Empty;
+        }
+
+        private WaferControl GetModuleWaferControl(string module)
+        {
+            string normalizedModule = EquipmentLayout.NormalizeModule(module);
+            if (normalizedModule == "PM A") return waferControl2;
+            if (normalizedModule == "PM B") return waferControl1;
+            if (normalizedModule == "PM C") return waferControl3;
+            return null;
         }
 
         private void SetPanelColors(Color color, params Panel[] panels)
@@ -330,8 +590,22 @@ namespace SCT_Form
             {
                 if (isProcessRecipePaused) return;
 
+                string previousModule = waferSequencer.CurrentModule;
+                bool wasProcessTimeStep = IsAutoProcessTimeStep();
+                int previousElapsedSeconds = waferSequencer.CurrentElapsedSeconds;
+                int previousTotalSeconds = waferSequencer.CurrentTotalSeconds;
+
                 waferSequencer.Tick();
-                UpdateAutoSequenceDisplay();
+
+                if (wasProcessTimeStep)
+                {
+                    int elapsedSeconds = Math.Min(previousTotalSeconds, previousElapsedSeconds + 1);
+                    UpdateAutoProcessTimeDisplay(previousModule, elapsedSeconds, previousTotalSeconds, elapsedSeconds >= previousTotalSeconds);
+                }
+                else
+                {
+                    UpdateAutoSequenceDisplay();
+                }
 
                 if (!waferSequencer.IsRunning)
                 {
@@ -340,7 +614,7 @@ namespace SCT_Form
 
                     if (!waferSequencer.IsAborted)
                     {
-                        MessageBox.Show("Process Recipe가 완료되었습니다.", "Process Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        isProcessCompleted = true;
                     }
                 }
 
@@ -396,18 +670,68 @@ namespace SCT_Form
             if (string.IsNullOrEmpty(module)) return;
 
             Label messageLabel = GetModuleMessageLabel(module);
+            messageLabel.Text = waferSequencer.CurrentDescription;
+
+            if (IsAutoProcessTimeStep())
+            {
+                UpdateAutoProcessTimeDisplay(module, waferSequencer.CurrentElapsedSeconds, waferSequencer.CurrentTotalSeconds, false);
+            }
+        }
+
+        private bool IsAutoProcessTimeStep()
+        {
+            return waferSequencer.CurrentKind == WaferAutoSequencer.AutoStepKind.WaitElapsed &&
+                string.Equals(waferSequencer.CurrentDescription, waferSequencer.CurrentModule + " process running", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private void UpdateAutoProcessTimeDisplay(string module, int elapsedSeconds, int totalSeconds, bool isCompleted)
+        {
+            if (string.IsNullOrEmpty(module)) return;
+
+            elapsedSeconds = Math.Max(0, Math.Min(elapsedSeconds, Math.Max(1, totalSeconds)));
+            totalSeconds = Math.Max(1, totalSeconds);
+
+            Label messageLabel = GetModuleMessageLabel(module);
             Label stepNumberLabel = GetModuleStepNumberLabel(module);
             Label recipeTimeLabel = GetModuleRecipeTimeLabel(module);
             Panel progressPanel = GetModuleProgressPanel(module);
+            Label statusLabel = GetModuleStatusLabel(module);
+            Label mainStatusLabel = GetModuleMainStatusLabel(module);
 
-            messageLabel.Text = waferSequencer.CurrentDescription;
-            stepNumberLabel.Text = waferSequencer.CurrentStepIndex + " / " + waferSequencer.TotalStepCount + " step";
+            int stepNumber = GetProcessTimeStepNumber(elapsedSeconds, totalSeconds);
+            messageLabel.Text = isCompleted ? module + " process complete" : module + " process running";
+            stepNumberLabel.Text = stepNumber + " / 3 step";
+            recipeTimeLabel.Text = elapsedSeconds + " / " + totalSeconds;
+            UpdateProgressBar(progressPanel, GetProgressFillPanel(progressPanel), elapsedSeconds, totalSeconds);
 
-            if (waferSequencer.CurrentKind == WaferAutoSequencer.AutoStepKind.WaitElapsed)
+            if (statusLabel != null)
             {
-                recipeTimeLabel.Text = waferSequencer.CurrentElapsedSeconds + " / " + waferSequencer.CurrentTotalSeconds;
-                UpdateProgressBar(progressPanel, GetProgressFillPanel(progressPanel), waferSequencer.CurrentElapsedSeconds, waferSequencer.CurrentTotalSeconds);
+                statusLabel.ForeColor = isCompleted ? Color.Silver : Color.Lime;
+                SyncStatusLabel(statusLabel, mainStatusLabel);
             }
+        }
+
+        private int GetProcessTimeStepNumber(int elapsedSeconds, int totalSeconds)
+        {
+            if (elapsedSeconds <= 0) return 1;
+            return Math.Max(1, Math.Min(3, (int)Math.Ceiling((double)elapsedSeconds * 3 / Math.Max(1, totalSeconds))));
+        }
+
+        private Label GetModuleStatusLabel(string module)
+        {
+            string normalized = NormalizeModule(module);
+            if (normalized == "PM B") return lbl_PMB_Status;
+            if (normalized == "PM C") return lbl_PMC_Status;
+            return lbl_PMA_Status;
+        }
+
+        private Label GetModuleMainStatusLabel(string module)
+        {
+            string normalized = NormalizeModule(module);
+            if (main == null) return null;
+            if (normalized == "PM B") return main.lbl_PMBStatus;
+            if (normalized == "PM C") return main.lbl_PMCStatus;
+            return main.lbl_PMAStatus;
         }
 
         private bool AdvanceChamberProcess(ChamberProcessState state)
@@ -821,6 +1145,7 @@ namespace SCT_Form
         private void btn_Start_Click(object sender, EventArgs e)
         {
             if (!CanOperateEquipment()) return;
+            isProcessCompleted = false;
 
             LoadProcessRecipeSelector();
 
@@ -857,7 +1182,8 @@ namespace SCT_Form
             isProcessRecipePaused = false;
 
             List<ChamberRecipeSelection> moduleSteps = recipe.Steps.Select(s => s.Recipe).ToList();
-            waferSequencer.Start(AutoSequenceBuilder.Build(main, moduleSteps));
+            ResetAutoWaferDisplay();
+            waferSequencer.Start(AutoSequenceBuilder.Build(main, moduleSteps, SetFoupSlotState, SetModuleWaferState));
             UpdateAutoSequenceDisplay();
             chamberProcessTimer.Start();
         }
@@ -897,6 +1223,7 @@ namespace SCT_Form
 
             chamberProcessTimer.Stop();
             AbortActiveProcesses();
+            isUserAbortRecoveryRunning = true;
 
             if (isProcessRecipeRunning)
             {
@@ -907,6 +1234,8 @@ namespace SCT_Form
 
             isProcessRecipePaused = false;
             currentProcessRecipe = null;
+            main.SafeAbortAndHome();
+            isUserAbortRecoveryRunning = false;
         }
 
         private class ProcessRecipeComboItem
@@ -939,6 +1268,190 @@ namespace SCT_Form
         {
             public int StepNo { get; set; }
             public ChamberRecipeSelection Recipe { get; set; }
+        }
+
+        public void UpdateControlButtons()
+        {
+            if (main == null) return;
+
+            // 1. 초기화 중이거나 연결 해제 상태인 경우 모든 버튼 비활성화
+            if (isInitializing || !main.isConnect || main.EtherCAT_M == null)
+            {
+                btn_Start.Enabled = false;
+                btn_Pause.Enabled = false;
+                btn_Continue.Enabled = false;
+                btn_Abort.Enabled = false;
+                btn_Initialize.Enabled = !isInitializing && main.isConnect; // 초기화 중이 아니고 연결된 경우에만 활성화 가능
+                return;
+            }
+
+            // 2. 센서 상태 읽기 및 범위 체크 (10000 ~ -10000)
+            long udPos = 0;
+            long lrPos = 0;
+            bool hasUd = long.TryParse(main.EtherCAT_M.Axis1_is_PosData(), out udPos);
+            bool hasLr = long.TryParse(main.EtherCAT_M.Axis2_is_PosData(), out lrPos);
+
+            bool isUdOutOfRange = !hasUd || udPos < -10000 || udPos > 10000;
+            bool isLrOutOfRange = !hasLr || lrPos < -10000 || lrPos > 10000;
+            bool isCylinderNotSafe = main.IsCylinderForward() || !main.IsCylinderBack();
+            bool isAnyDoorOpen = main.IsChamberDoorOpen("PM A") || main.IsChamberDoorOpen("PM B") || main.IsChamberDoorOpen("PM C");
+
+            // 3. 가동 상태에 따른 활성화 처리
+            if (isProcessRecipeRunning)
+            {
+                // 가동 중 상태
+                btn_Start.Enabled = false;
+                btn_Initialize.Enabled = false;
+
+                if (isProcessRecipePaused)
+                {
+                    btn_Pause.Enabled = false;
+                    btn_Continue.Enabled = true;
+                    btn_Abort.Enabled = true;
+                }
+                else
+                {
+                    btn_Pause.Enabled = true;
+                    btn_Continue.Enabled = false;
+                    btn_Abort.Enabled = true;
+                }
+            }
+            else
+            {
+                // 정지/대기 상태
+                btn_Pause.Enabled = false;
+                btn_Continue.Enabled = false;
+                btn_Abort.Enabled = false;
+                btn_Initialize.Enabled = true; // 정상 대기 상태에서도 임의로 초기화(원점 복귀)를 누를 수 있도록 활성화
+                btn_Start.Enabled = true;      // 대기 상태에서는 항상 Start와 Initialize가 활성화되며, 시작 클릭 시점에 안전 검증을 수행합니다.
+            }
+        }
+
+        private async void btn_Initialize_Click(object sender, EventArgs e)
+        {
+            if (isInitializing) return;
+
+            isProcessCompleted = false;
+            isInitializing = true;
+            UpdateControlButtons(); // 모든 버튼 즉시 비활성화
+            ResetAllChamberProcessDisplays(); // PM 정보 표시 패널 디폴트로 초기화
+
+            try
+            {
+                main.WriteSystemLog("INFO", "장비 초기화(Initialize) 시퀀스 시작");
+
+                // 1단계: 무조건 실린더 후진 먼저 체크하고 후진시키기
+                if (!main.IsCylinderBack())
+                {
+                    main.WriteSystemLog("WARN", "장비 초기화: 실린더가 후진상태가 아닙니다. 후진을 시작합니다.");
+                    main.MoveCylinderBack();
+
+                    int cylinderTimeoutMs = 10000;
+                    int cylinderElapsedMs = 0;
+                    while (!main.IsCylinderBack() && cylinderElapsedMs < cylinderTimeoutMs)
+                    {
+                        await Task.Delay(100);
+                        cylinderElapsedMs += 100;
+                    }
+
+                    if (!main.IsCylinderBack())
+                    {
+                        main.WriteSystemLog("ERROR", "장비 초기화 실패: 실린더 후진 센서 확인 불가");
+                        MessageBox.Show("실린더 후진 확인에 실패했습니다. 실린더 상태 및 센서를 확인하십시오.", "Initialize Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                main.WriteSystemLog("INFO", "장비 초기화: 실린더 후진 확인 완료");
+
+                // 2단계: 상하 원점복귀, 좌우 원점복귀
+                main.WriteSystemLog("INFO", "장비 초기화: 축 원점복귀(UD & LR)를 시작합니다.");
+                main.HomeAxis1UD();
+                main.HomeAxis2LR();
+
+                int axisTimeoutMs = 60000;
+                int axisElapsedMs = 0;
+                while (axisElapsedMs < axisTimeoutMs)
+                {
+                    bool udAtHome = main.IsAxis1AtPosition(0, 10000);
+                    bool lrAtHome = main.IsAxis2AtPosition(0, 10000);
+
+                    if (udAtHome && lrAtHome) break;
+
+                    await Task.Delay(200);
+                    axisElapsedMs += 200;
+                }
+
+                if (!main.IsAxis1AtPosition(0, 10000) || !main.IsAxis2AtPosition(0, 10000))
+                {
+                    main.WriteSystemLog("ERROR", "장비 초기화 실패: 축 원점복귀(Homing) 확인 불가 또는 타임아웃");
+                    MessageBox.Show("축 원점복귀에 실패했습니다. 서보 드라이브 상태를 확인하십시오.", "Initialize Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                main.WriteSystemLog("INFO", "장비 초기화: 축 원점복귀 확인 완료");
+
+                // 3단계: PM 문(Chamber Door) 열림 여부 센서로 체크해서 닫기
+                main.WriteSystemLog("INFO", "장비 초기화: 챔버 도어 상태 검사 및 닫기 시작");
+                bool doorCloseTriggered = false;
+                foreach (string pm in new[] { "PM A", "PM B", "PM C" })
+                {
+                    if (main.IsChamberDoorOpen(pm))
+                    {
+                        main.WriteSystemLog("WARN", $"장비 초기화: {pm} 도어가 열려있습니다. 도어를 닫습니다.");
+                        main.CloseChamberDoor(pm);
+                        doorCloseTriggered = true;
+                    }
+                }
+
+                if (doorCloseTriggered)
+                {
+                    int doorTimeoutMs = 30000;
+                    int doorElapsedMs = 0;
+                    while (doorElapsedMs < doorTimeoutMs)
+                    {
+                        bool allClosed = true;
+                        foreach (string pm in new[] { "PM A", "PM B", "PM C" })
+                        {
+                            if (main.IsChamberDoorOpen(pm) || !main.IsChamberDoorClosed(pm))
+                            {
+                                allClosed = false;
+                            }
+                        }
+
+                        if (allClosed) break;
+
+                        await Task.Delay(200);
+                        doorElapsedMs += 200;
+                    }
+
+                    bool finalClosed = true;
+                    foreach (string pm in new[] { "PM A", "PM B", "PM C" })
+                    {
+                        if (!main.IsChamberDoorClosed(pm))
+                        {
+                            finalClosed = false;
+                            main.WriteSystemLog("ERROR", $"장비 초기화 실패: {pm} 도어 닫힘 상태가 확인되지 않았습니다.");
+                        }
+                    }
+
+                    if (!finalClosed)
+                    {
+                        MessageBox.Show("챔버 도어가 닫히지 않아 초기화를 중단합니다.", "Initialize Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                main.WriteSystemLog("INFO", "장비 초기화 완료: 장비가 정상 정렬 상태입니다.");
+            }
+            catch (Exception ex)
+            {
+                main.WriteSystemLog("ERROR", $"장비 초기화 중 예외 오류 발생: {ex.Message}");
+                MessageBox.Show($"초기화 중 오류가 발생했습니다:\r\n{ex.Message}", "Initialize Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                isInitializing = false;
+                UpdateControlButtons(); // 최종 버튼 상태로 갱신
+            }
         }
     }
 }

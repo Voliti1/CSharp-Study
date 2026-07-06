@@ -440,7 +440,6 @@ namespace SCT_Form
             currentRecipePath = filePath;
             LoadProcessRecipeList();
             SelectRecipeInList(filePath);
-            MessageBox.Show("Process Recipe가 저장되었습니다.", "Process Recipe", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private ProcessRecipeData CreateProcessRecipeDataFromInputs(out string validationMessage)
