@@ -13,6 +13,7 @@ namespace SCT_Form
         private const int VacuumSettleSeconds = 1;
         private const long Axis1PositionToleranceCounts = 70000;
         private const long Axis2PositionToleranceCounts = 30000;
+        private const int WaferSlotCount = 5;
 
         internal static List<WaferAutoSequencer.AutoStep> Build(
             MainGUI main,
@@ -26,17 +27,20 @@ namespace SCT_Form
             string firstModule = EquipmentLayout.NormalizeModule(recipeSteps[0].Module);
             string lastModule = EquipmentLayout.NormalizeModule(recipeSteps[recipeSteps.Count - 1].Module);
 
-            AddPickFromFoup(steps, main, FoupASource, firstModule, firstModule + " load from FOUP A", setFoupSlotState);
-
-            foreach (ChamberRecipeSelection recipeStep in recipeSteps)
+            for (int slot = 1; slot <= WaferSlotCount; slot++)
             {
-                string module = EquipmentLayout.NormalizeModule(recipeStep.Module);
-                AddPlaceIntoModule(steps, main, module, setModuleWaferState);
-                AddProcessWait(steps, main, module, recipeStep.ProcessTime);
-                AddPickFromModule(steps, main, module, setModuleWaferState);
-            }
+                AddPickFromFoup(steps, main, FoupASource, slot, firstModule, firstModule + " load from FOUP A (slot " + slot + ")", setFoupSlotState);
 
-            AddPlaceIntoFoup(steps, main, FoupBDestination, lastModule, lastModule + " unload to FOUP B", setFoupSlotState);
+                foreach (ChamberRecipeSelection recipeStep in recipeSteps)
+                {
+                    string module = EquipmentLayout.NormalizeModule(recipeStep.Module);
+                    AddPlaceIntoModule(steps, main, module, setModuleWaferState);
+                    AddProcessWait(steps, main, module, recipeStep.ProcessTime);
+                    AddPickFromModule(steps, main, module, setModuleWaferState);
+                }
+
+                AddPlaceIntoFoup(steps, main, FoupBDestination, slot, lastModule, lastModule + " unload to FOUP B (slot " + slot + ")", setFoupSlotState);
+            }
 
             return steps;
         }
@@ -97,17 +101,44 @@ namespace SCT_Form
         {
             AddAction(steps, main, module, description, () => main.MoveAxis2LRTo(targetPosition));
             AddWaitSensor(
-                steps, 
-                module, 
-                description + " target reached wait", 
-                () => main.IsAxis2AtPosition(targetPosition, Axis2PositionToleranceCounts), 
+                steps,
+                module,
+                description + " target reached wait",
+                () => main.IsAxis2AtPosition(targetPosition, Axis2PositionToleranceCounts),
                 AxisMoveTimeoutSeconds);
+        }
+
+        private static long GetWaferUp(EquipmentLayout.FoupProfile profile, int slot)
+        {
+            switch (slot)
+            {
+                case 1: return profile.Wafer1Up;
+                case 2: return profile.Wafer2Up;
+                case 3: return profile.Wafer3Up;
+                case 4: return profile.Wafer4Up;
+                case 5: return profile.Wafer5Up;
+                default: throw new ArgumentOutOfRangeException(nameof(slot), slot, "FOUP slot must be between 1 and 5.");
+            }
+        }
+
+        private static long GetWaferDown(EquipmentLayout.FoupProfile profile, int slot)
+        {
+            switch (slot)
+            {
+                case 1: return profile.Wafer1Down;
+                case 2: return profile.Wafer2Down;
+                case 3: return profile.Wafer3Down;
+                case 4: return profile.Wafer4Down;
+                case 5: return profile.Wafer5Down;
+                default: throw new ArgumentOutOfRangeException(nameof(slot), slot, "FOUP slot must be between 1 and 5.");
+            }
         }
 
         private static void AddPickFromFoup(
             List<WaferAutoSequencer.AutoStep> steps,
             MainGUI main,
             string foup,
+            int slot,
             string displayModule,
             string label,
             Action<string, int, bool> setFoupSlotState)
@@ -115,15 +146,15 @@ namespace SCT_Form
             EquipmentLayout.FoupProfile profile = EquipmentLayout.GetFoup(foup);
 
             AddAxis2Move(steps, main, displayModule, label + " - LR move", profile.LR);
-            AddAxis1Move(steps, main, displayModule, label + " - UD down", profile.Wafer1Down);
+            AddAxis1Move(steps, main, displayModule, label + " - UD down", GetWaferDown(profile, slot));
             AddAction(steps, main, displayModule, label + " - cylinder front", main.MoveCylinderFront);
             AddWaitSensor(steps, displayModule, label + " - cylinder front wait", main.IsCylinderForward, CylinderMoveTimeoutSeconds);
-            AddAxis1Move(steps, main, displayModule, label + " - UD up", profile.Wafer1Up);
+            AddAxis1Move(steps, main, displayModule, label + " - UD up", GetWaferUp(profile, slot));
             AddAction(steps, main, displayModule, label + " - vacuum on", () => main.SetWaferSuction(true));
             AddWaitElapsed(steps, displayModule, label + " - vacuum settle", VacuumSettleSeconds);
             AddAction(steps, main, displayModule, label + " - cylinder back", main.MoveCylinderBack);
             AddWaitSensor(steps, displayModule, label + " - cylinder back wait", main.IsCylinderBack, CylinderMoveTimeoutSeconds);
-            AddAction(steps, main, displayModule, label + " - FOUP slot empty", () => setFoupSlotState?.Invoke(foup, 1, false));
+            AddAction(steps, main, displayModule, label + " - FOUP slot empty", () => setFoupSlotState?.Invoke(foup, slot, false));
         }
 
         private static void AddPlaceIntoModule(
@@ -166,7 +197,7 @@ namespace SCT_Form
                 TotalSeconds = Math.Max(1, processTimeSeconds)
             });
 
-            AddAction(steps, main, module, module + " process complete", () => main.SetChamberLamp(module, false));
+            AddAction(steps, main, module, module + " process complete", () => main.BlinkChamberLamp(module));
         }
 
         private static void AddPickFromModule(
@@ -198,6 +229,7 @@ namespace SCT_Form
             List<WaferAutoSequencer.AutoStep> steps,
             MainGUI main,
             string foup,
+            int slot,
             string displayModule,
             string label,
             Action<string, int, bool> setFoupSlotState)
@@ -205,17 +237,17 @@ namespace SCT_Form
             EquipmentLayout.FoupProfile profile = EquipmentLayout.GetFoup(foup);
 
             AddAxis2Move(steps, main, displayModule, label + " - LR move", profile.LR);
-            AddAxis1Move(steps, main, displayModule, label + " - UD up", profile.Wafer1Up);
+            AddAxis1Move(steps, main, displayModule, label + " - UD up", GetWaferUp(profile, slot));
             AddAction(steps, main, displayModule, label + " - cylinder front", main.MoveCylinderFront);
             AddWaitSensor(steps, displayModule, label + " - cylinder front wait", main.IsCylinderForward, CylinderMoveTimeoutSeconds);
             AddAction(steps, main, displayModule, label + " - vacuum off", () => main.SetWaferSuction(false));
             AddAction(steps, main, displayModule, label + " - exhaust on", () => main.SetWaferExhaust(true));
             AddWaitElapsed(steps, displayModule, label + " - vacuum settle", VacuumSettleSeconds);
-            AddAxis1Move(steps, main, displayModule, label + " - UD down", profile.Wafer1Down);
+            AddAxis1Move(steps, main, displayModule, label + " - UD down", GetWaferDown(profile, slot));
             AddAction(steps, main, displayModule, label + " - cylinder back", main.MoveCylinderBack);
             AddWaitSensor(steps, displayModule, label + " - cylinder back wait", main.IsCylinderBack, CylinderMoveTimeoutSeconds);
             AddAction(steps, main, displayModule, label + " - exhaust off", () => main.SetWaferExhaust(false));
-            AddAction(steps, main, displayModule, label + " - FOUP slot present", () => setFoupSlotState?.Invoke(foup, 1, true));
+            AddAction(steps, main, displayModule, label + " - FOUP slot present", () => setFoupSlotState?.Invoke(foup, slot, true));
         }
     }
 }
