@@ -1308,12 +1308,14 @@ namespace SCT_Form
             }
 
             // PP_D(target reached) 비트는 서보 정착 꼬리 동안 흔들려서(chatter), 직전 이동이
-            // 사실상 끝났는데도 WasMoving=True로 판정되는 경우가 로그로 확인됐다. 실제 위치가
-            // 직전 목표의 ±허용범위 안이면 이동이 끝난 것으로 보고 새 명령을 허용한다.
-            bool previousMoveSettled = pendingAxis1TargetPosition.HasValue
-                && IsAxis1AtPosition(pendingAxis1TargetPosition.Value, Axis1PositionToleranceCounts);
+            // 사실상 끝났는데도 WasMoving=True로 판정되는 경우가 로그로 확인됐다.
+            // "추적 중인 직전 이동이 있고(pending) 아직 목표 ±허용범위에 못 들어간" 경우에만
+            // 진짜 이동 중으로 보고 차단한다. pending이 이미 도달 확인으로 지워진 뒤라면
+            // PP_D가 흔들려도 새 명령을 받는다.
+            bool previousMoveInFlight = pendingAxis1TargetPosition.HasValue
+                && !IsAxis1AtPosition(pendingAxis1TargetPosition.Value, Axis1PositionToleranceCounts);
 
-            if (wasMoving && !previousMoveSettled)
+            if (wasMoving && previousMoveInFlight)
             {
                 WriteSystemLog("WARN", $"UD move ignored. Previous move is still running. Target={targetPosition}");
                 return;
