@@ -165,9 +165,9 @@ namespace SCT_Form
             AddWaitSensor(steps, module, label + " - robot facing wait", () => main.IsRobotFacingModule(module));
             AddAction(steps, main, module, label + " - door open", () => main.OpenChamberDoor(module));
             AddWaitSensor(steps, module, label + " - door open wait", () => main.IsChamberDoorOpen(module), DoorMoveTimeoutSeconds);
+            AddAxis1Move(steps, main, module, label + " - UD down", profile.UDDown);
             AddAction(steps, main, module, label + " - cylinder front", main.MoveCylinderFront);
             AddWaitSensor(steps, module, label + " - cylinder front wait", main.IsCylinderForward);
-            AddAxis1Move(steps, main, module, label + " - UD down", profile.UDDown);
             AddAxis1Move(steps, main, module, label + " - UD up", profile.UDUp);
             AddAction(steps, main, module, label + " - vacuum on", () => main.SetWaferSuction(true));
             AddWaitElapsed(steps, module, label + " - vacuum settle", VacuumSettleSeconds);
