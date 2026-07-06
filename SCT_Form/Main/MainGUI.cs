@@ -1095,6 +1095,7 @@ namespace SCT_Form
 
             ApplyTowerLampForMode();
         }
+        // Recipe/Log 화면은 조회 성격이라 모드 변경 인터록(Force Stop)을 걸지 않는다.
         private void btn_Recipe_Click(object sender, EventArgs e)
         {
             if (!EnsureAdminSettingAllowed()) return;
@@ -1103,11 +1104,6 @@ namespace SCT_Form
             currentUbarState = "Recipe";
 
             UpdateModeButtonStyles();
-
-            if (settings.ModeChangeForceStop)
-            {
-                ForceStopAllChambers();
-            }
 
             Mainpnl_RecipeGUI();
 
@@ -1121,11 +1117,6 @@ namespace SCT_Form
             currentUbarState = "Log";
 
             UpdateModeButtonStyles();
-
-            if (settings.ModeChangeForceStop)
-            {
-                ForceStopAllChambers();
-            }
 
             Mainpnl_LogGUI();
 
