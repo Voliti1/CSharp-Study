@@ -630,7 +630,7 @@ namespace SCT_Form
         {
             if (processRecipeGUI == null)
             {
-                processRecipeGUI = new ProcessRecipe();
+                processRecipeGUI = new ProcessRecipe(main);
             }
 
             isProcessRecipeMode = true;

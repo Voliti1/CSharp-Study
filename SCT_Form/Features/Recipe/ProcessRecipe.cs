@@ -17,11 +17,27 @@ namespace SCT_Form
         private readonly List<ProcessRecipeStep> processSteps = new List<ProcessRecipeStep>();
         private string currentRecipePath;
         private int selectedStepIndex = -1;
+        private MainGUI main;
 
         public ProcessRecipe()
         {
             InitializeComponent();
             InitializeProcessRecipeScreen();
+        }
+
+        public ProcessRecipe(MainGUI mainGUI) : this()
+        {
+            main = mainGUI;
+        }
+
+        private string GetCurrentUserName()
+        {
+            if (main != null && main.tBox_ID != null && !string.IsNullOrWhiteSpace(main.tBox_ID.Text))
+            {
+                return main.tBox_ID.Text.Trim();
+            }
+
+            return Environment.UserName;
         }
 
         private void InitializeProcessRecipeScreen()
@@ -488,7 +504,7 @@ namespace SCT_Form
 
             string now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string createdBy = string.IsNullOrWhiteSpace(GetDetailInputValue("CreatedBy"))
-                ? Environment.UserName
+                ? GetCurrentUserName()
                 : GetDetailInputValue("CreatedBy");
 
             ProcessRecipeData recipe = new ProcessRecipeData();
@@ -518,7 +534,7 @@ namespace SCT_Form
         {
             if (recipe == null)
             {
-                if (key == "CreatedBy") return Environment.UserName;
+                if (key == "CreatedBy") return GetCurrentUserName();
                 if (key == "ModifiedDate") return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 if (key == "TotalProcessTime") return GetTotalProcessTime().ToString();
                 return string.Empty;
