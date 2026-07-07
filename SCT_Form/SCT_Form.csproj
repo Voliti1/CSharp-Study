@@ -141,6 +141,12 @@
     <Compile Include="Features\Recipe\ProcessRecipe.Designer.cs">
       <DependentUpon>ProcessRecipe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Recipe\ProcessRecipe.Editor.cs">
+      <DependentUpon>ProcessRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Recipe\ProcessRecipe.FileOps.cs">
+      <DependentUpon>ProcessRecipe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Features\Maint\MaintGUI.cs">
       <SubType>UserControl</SubType>
