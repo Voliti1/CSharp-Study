@@ -116,7 +116,6 @@ namespace SCT_Form
             settingGUI = new SettingGUI(this);
 
             InitializeLoginEntryPoints();
-            ApplyTemporaryTestLogin();
 
             SystemConnect();
             servoMotorON();
@@ -143,21 +142,6 @@ namespace SCT_Form
             tBox_ID.Click += LoginTextBox_Click;
             tBox_PW.Click += LoginTextBox_Click;
             UpdateLoginDisplay();
-        }
-
-        private void ApplyTemporaryTestLogin()
-        {
-            currentAccount = new AccountInfo
-            {
-                UserId = "voliti",
-                Password = "1",
-                UserLevel = AccountService.AdminLevel,
-                UserName = "voliti",
-                CreatedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-            };
-
-            ShowLoginStatePanel();
-            WriteSystemLog("User", "INFO", "임시 자동 로그인: " + currentAccount.UserId);
         }
 
         private void LoginTextBox_Click(object sender, EventArgs e)
