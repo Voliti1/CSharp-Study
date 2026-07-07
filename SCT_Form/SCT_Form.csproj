@@ -71,6 +71,24 @@
     <Compile Include="Features\Operation\CurrentStateGUI.Designer.cs">
       <DependentUpon>CurrentStateGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Operation\CurrentStateGUI.RobotDisplay.cs">
+      <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Operation\CurrentStateGUI.EquipmentDisplay.cs">
+      <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Operation\CurrentStateGUI.RecipeData.cs">
+      <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Operation\CurrentStateGUI.ChamberRecipePreview.cs">
+      <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Operation\CurrentStateGUI.AutoSequence.cs">
+      <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Operation\CurrentStateGUI.Initialize.cs">
+      <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Operation\WaferAutoSequencer.cs" />
     <Compile Include="Features\Operation\AutoSequenceBuilder.cs" />
     <Compile Include="Auth\IDSearch.cs">
