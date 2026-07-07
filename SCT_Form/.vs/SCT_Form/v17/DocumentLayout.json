@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\features\\operation\\currentstategui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:features\\operation\\currentstategui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\main\\maingui.connection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:main\\maingui.connection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\features\\maint\\maintgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:features\\maint\\maintgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\main\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:main\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\features\\operation\\autosequencebuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:features\\operation\\autosequencebuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\features\\operation\\currentstategui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:features\\operation\\currentstategui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\main\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:main\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\features\\maint\\maintgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:features\\maint\\maintgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\main\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:main\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|c:\\users\\user\\desktop\\csharp-study\\sct_form\\main\\maingui.axismotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A118A8D-9C97-48C9-B324-43CE75F6BEC7}|SCT_Form.csproj|solutionrelative:main\\maingui.axismotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,63 +42,78 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "MainGUI.Connection.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Main\\MainGUI.Connection.cs",
+              "RelativeDocumentMoniker": "Main\\MainGUI.Connection.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Main\\MainGUI.Connection.cs",
+              "RelativeToolTip": "Main\\MainGUI.Connection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T01:38:14.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainGUI.AxisMotion.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Main\\MainGUI.AxisMotion.cs",
+              "RelativeDocumentMoniker": "Main\\MainGUI.AxisMotion.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Main\\MainGUI.AxisMotion.cs",
+              "RelativeToolTip": "Main\\MainGUI.AxisMotion.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T01:27:12.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AutoSequenceBuilder.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Features\\Operation\\AutoSequenceBuilder.cs",
+              "RelativeDocumentMoniker": "Features\\Operation\\AutoSequenceBuilder.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Features\\Operation\\AutoSequenceBuilder.cs",
+              "RelativeToolTip": "Features\\Operation\\AutoSequenceBuilder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T00:31:50.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainGUI.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Main\\MainGUI.cs",
               "RelativeDocumentMoniker": "Main\\MainGUI.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Main\\MainGUI.cs",
               "RelativeToolTip": "Main\\MainGUI.cs",
-              "ViewState": "AgIAAHoDAAAAAAAAAAAswJADAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAswIkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-06T09:13:32.895Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainGUI.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Main\\MainGUI.cs",
-              "RelativeDocumentMoniker": "Main\\MainGUI.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Main\\MainGUI.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "Main\\MainGUI.cs [\uB514\uC790\uC778]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T09:40:08.22Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CurrentStateGUI.cs [\uB514\uC790\uC778]",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Features\\Operation\\CurrentStateGUI.cs",
-              "RelativeDocumentMoniker": "Features\\Operation\\CurrentStateGUI.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Features\\Operation\\CurrentStateGUI.cs [\uB514\uC790\uC778]",
-              "RelativeToolTip": "Features\\Operation\\CurrentStateGUI.cs [\uB514\uC790\uC778]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T09:35:59.368Z",
-              "EditorCaption": " [\uB514\uC790\uC778]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CurrentStateGUI.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Features\\Operation\\CurrentStateGUI.cs",
               "RelativeDocumentMoniker": "Features\\Operation\\CurrentStateGUI.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Features\\Operation\\CurrentStateGUI.cs",
               "RelativeToolTip": "Features\\Operation\\CurrentStateGUI.cs",
-              "ViewState": "AgIAAOgEAAAAAAAAAIA9wEwFAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-06T09:27:24.135Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "MaintGUI.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Features\\Maint\\MaintGUI.cs",
               "RelativeDocumentMoniker": "Features\\Maint\\MaintGUI.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\CSharp-Study\\SCT_Form\\Features\\Maint\\MaintGUI.cs",
               "RelativeToolTip": "Features\\Maint\\MaintGUI.cs",
-              "ViewState": "AgIAABQCAAAAAAAAAAAhwC4CAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-06T08:59:05.569Z",
               "EditorCaption": ""

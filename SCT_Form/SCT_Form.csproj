@@ -73,21 +73,27 @@
     </Compile>
     <Compile Include="Features\Operation\CurrentStateGUI.RobotDisplay.cs">
       <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Operation\CurrentStateGUI.EquipmentDisplay.cs">
       <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Operation\CurrentStateGUI.RecipeData.cs">
       <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Operation\CurrentStateGUI.ChamberRecipePreview.cs">
       <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Operation\CurrentStateGUI.AutoSequence.cs">
       <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Operation\CurrentStateGUI.Initialize.cs">
       <DependentUpon>CurrentStateGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Operation\WaferAutoSequencer.cs" />
     <Compile Include="Features\Operation\AutoSequenceBuilder.cs" />
@@ -118,21 +124,27 @@
     </Compile>
     <Compile Include="Main\MainGUI.Login.cs">
       <DependentUpon>MainGUI.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\MainGUI.ChamberHardware.cs">
       <DependentUpon>MainGUI.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\MainGUI.PmStatus.cs">
       <DependentUpon>MainGUI.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\MainGUI.SystemLog.cs">
       <DependentUpon>MainGUI.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\MainGUI.Connection.cs">
       <DependentUpon>MainGUI.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\MainGUI.AxisMotion.cs">
       <DependentUpon>MainGUI.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\Program.cs" />
     <Compile Include="Features\Recipe\ProcessRecipe.cs">
@@ -143,9 +155,11 @@
     </Compile>
     <Compile Include="Features\Recipe\ProcessRecipe.Editor.cs">
       <DependentUpon>ProcessRecipe.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Recipe\ProcessRecipe.FileOps.cs">
       <DependentUpon>ProcessRecipe.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Features\Maint\MaintGUI.cs">
@@ -156,15 +170,19 @@
     </Compile>
     <Compile Include="Features\Maint\MaintGUI.ChamberControls.cs">
       <DependentUpon>MaintGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Maint\MaintGUI.CylinderAndServo.cs">
       <DependentUpon>MaintGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Maint\MaintGUI.AxisJog.cs">
       <DependentUpon>MaintGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Maint\MaintGUI.PositionTeach.cs">
       <DependentUpon>MaintGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Log\LogGUI.cs">
       <SubType>UserControl</SubType>
@@ -186,12 +204,15 @@
     </Compile>
     <Compile Include="Features\Recipe\RecipeGUI.Editor.cs">
       <DependentUpon>RecipeGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Recipe\RecipeGUI.FileOps.cs">
       <DependentUpon>RecipeGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Recipe\RecipeGUI.ProcessRecipeSwitch.cs">
       <DependentUpon>RecipeGUI.cs</DependentUpon>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Features\Setting\SettingGUI.cs">
       <SubType>UserControl</SubType>

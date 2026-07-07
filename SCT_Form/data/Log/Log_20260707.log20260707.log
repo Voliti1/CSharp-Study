@@ -1,0 +1,3 @@
+﻿2026-07-07 09:16:55,913 [1] INFO  SCT_Form.MainGUI - Application 중단 감지: 안전 시퀀스(Abnormal Stop) 가동
+2026-07-07 09:16:55,919 [1] INFO  SCT_Form.MainGUI - 안전 셧다운 완료: 램프 소등 및 서보 모터 OFF 완료
+2026-07-07 09:16:55,919 [1] INFO  SCT_Form.MainGUI - EtherCAT 마스터 통신 채널 정상 해제 완료

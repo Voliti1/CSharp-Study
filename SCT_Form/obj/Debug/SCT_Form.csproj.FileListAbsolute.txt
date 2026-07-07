@@ -36,3 +36,4 @@ C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\CodexCheck\IEG3268_Dll.dll
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\CodexCheck\log4net.dll
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\CodexCheck\log4net.pdb
 C:\Users\User\Desktop\CSharp-Study\SCT_Form\bin\CodexCheck\log4net.xml
+C:\Users\User\Desktop\CSharp-Study\SCT_Form\obj\Debug\SCT_Form.Features.Setting.AccountSetting.resources
