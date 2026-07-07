@@ -154,6 +154,18 @@
     <Compile Include="Features\Maint\MaintGUI.Designer.cs">
       <DependentUpon>MaintGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Maint\MaintGUI.ChamberControls.cs">
+      <DependentUpon>MaintGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Maint\MaintGUI.CylinderAndServo.cs">
+      <DependentUpon>MaintGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Maint\MaintGUI.AxisJog.cs">
+      <DependentUpon>MaintGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Maint\MaintGUI.PositionTeach.cs">
+      <DependentUpon>MaintGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Log\LogGUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
