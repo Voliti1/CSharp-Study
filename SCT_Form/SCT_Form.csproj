@@ -166,6 +166,15 @@
     <Compile Include="Features\Recipe\RecipeGUI.Designer.cs">
       <DependentUpon>RecipeGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Recipe\RecipeGUI.Editor.cs">
+      <DependentUpon>RecipeGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Recipe\RecipeGUI.FileOps.cs">
+      <DependentUpon>RecipeGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Recipe\RecipeGUI.ProcessRecipeSwitch.cs">
+      <DependentUpon>RecipeGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Setting\SettingGUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
