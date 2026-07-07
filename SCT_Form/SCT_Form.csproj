@@ -85,11 +85,35 @@
     <Compile Include="Auth\LogInGUI.Designer.cs">
       <DependentUpon>LogInGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Setting\AccountSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Setting\AccountSetting.Designer.cs">
+      <DependentUpon>AccountSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\EquipmentLayout.cs" />
     <Compile Include="Main\MainGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\MainGUI.Designer.cs">
+      <DependentUpon>MainGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\MainGUI.Login.cs">
+      <DependentUpon>MainGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\MainGUI.ChamberHardware.cs">
+      <DependentUpon>MainGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\MainGUI.PmStatus.cs">
+      <DependentUpon>MainGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\MainGUI.SystemLog.cs">
+      <DependentUpon>MainGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\MainGUI.Connection.cs">
+      <DependentUpon>MainGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\MainGUI.AxisMotion.cs">
       <DependentUpon>MainGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Program.cs" />
@@ -165,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Auth\LoginState.resx">
       <DependentUpon>LoginState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Setting\AccountSetting.resx">
+      <DependentUpon>AccountSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\MainGUI.resx">
       <DependentUpon>MainGUI.cs</DependentUpon>
